@@ -1,6 +1,6 @@
 const letterSpacing = {
-  "tracking-lg": "-0.5px",
-  "tracking-md": "0px",
-};
+  lg: "-0.5px",
+  md: "0px",
+} as const;
 
 export default letterSpacing;

@@ -1,21 +1,123 @@
 const fontSize = {
-  "font-size-t1": ["11px", { lineHeight: "auto" }],
-  "font-size-t2": ["12px", { lineHeight: "auto" }],
-  "font-size-t3": ["13px", { lineHeight: "auto" }],
-  "font-size-t4": ["14px", { lineHeight: "auto" }],
-  "font-size-t5": ["16px", { lineHeight: "auto" }],
-  "font-size-t6": ["18px", { lineHeight: "auto" }],
-  "font-size-t7": ["20px", { lineHeight: "auto" }],
-  "font-size-t8": ["22px", { lineHeight: "auto" }],
-  "font-size-t9": ["24px", { lineHeight: "auto" }],
-  "font-size-t10": ["28px", { lineHeight: "auto" }],
-  "font-size-t11": ["32px", { lineHeight: "auto" }],
-  "font-size-t12": ["36px", { lineHeight: "auto" }],
-  "font-size-t13": ["40px", { lineHeight: "auto" }],
-  "font-size-t14": ["48px", { lineHeight: "auto" }],
-  "font-size-t15": ["56px", { lineHeight: "auto" }],
-  "font-size-t16": ["64px", { lineHeight: "auto" }],
-  "font-size-t17": ["80px", { lineHeight: "auto" }],
-};
+  t1: [
+    "11px",
+    {
+      "@media (max-width: 768px)": ["11px"],
+      "@media (max-width: 375px)": ["11px"],
+    },
+  ],
+  t2: [
+    "12px",
+    {
+      "@media (max-width: 768px)": ["12px"],
+      "@media (max-width: 375px)": ["12px"],
+    },
+  ],
+  t3: [
+    "13px",
+    {
+      "@media (max-width: 768px)": ["13px"],
+      "@media (max-width: 375px)": ["12px"],
+    },
+  ],
+  t4: [
+    "14px",
+    {
+      "@media (max-width: 768px)": ["14px"],
+      "@media (max-width: 375px)": ["14px"],
+    },
+  ],
+  t5: [
+    "16px",
+    {
+      "@media (max-width: 768px)": ["16px"],
+      "@media (max-width: 375px)": ["14px"],
+    },
+  ],
+  t6: [
+    "18px",
+    {
+      "@media (max-width: 768px)": ["18px"],
+      "@media (max-width: 375px)": ["14px"],
+    },
+  ],
+  t7: [
+    "20px",
+    {
+      "@media (max-width: 768px)": ["20px"],
+      "@media (max-width: 375px)": ["14px"],
+    },
+  ],
+  t8: [
+    "22px",
+    {
+      "@media (max-width: 768px)": ["20px"],
+      "@media (max-width: 375px)": ["16px"],
+    },
+  ],
+  t9: [
+    "24px",
+    {
+      "@media (max-width: 768px)": ["22px"],
+      "@media (max-width: 375px)": ["16px"],
+    },
+  ],
+  t10: [
+    "28px",
+    {
+      "@media (max-width: 768px)": ["24px"],
+      "@media (max-width: 375px)": ["16px"],
+    },
+  ],
+  t11: [
+    "32px",
+    {
+      "@media (max-width: 768px)": ["28px"],
+      "@media (max-width: 375px)": ["18px"],
+    },
+  ],
+  t12: [
+    "36px",
+    {
+      "@media (max-width: 768px)": ["32px"],
+      "@media (max-width: 375px)": ["20px"],
+    },
+  ],
+  t13: [
+    "40px",
+    {
+      "@media (max-width: 768px)": ["36px"],
+      "@media (max-width: 375px)": ["22px"],
+    },
+  ],
+  t14: [
+    "48px",
+    {
+      "@media (max-width: 768px)": ["40px"],
+      "@media (max-width: 375px)": ["22px"],
+    },
+  ],
+  t15: [
+    "56px",
+    {
+      "@media (max-width: 768px)": ["48px"],
+      "@media (max-width: 375px)": ["32px"],
+    },
+  ],
+  t16: [
+    "64px",
+    {
+      "@media (max-width: 768px)": ["56px"],
+      "@media (max-width: 375px)": ["32px"],
+    },
+  ],
+  t17: [
+    "80px",
+    {
+      "@media (max-width: 768px)": ["64px"],
+      "@media (max-width: 375px)": ["32px"],
+    },
+  ],
+} as const;
 
 export default fontSize;

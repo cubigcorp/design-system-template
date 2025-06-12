@@ -1,8 +1,8 @@
 const fontWeight = {
-  "font/weight-400": "400",
-  "font/weight-500": "500",
-  "font/weight-600": "600",
-  "font/weight-700": "700",
-};
+  "400": "400",
+  "500": "500",
+  "600": "600",
+  "700": "700",
+} as const;
 
 export default fontWeight;

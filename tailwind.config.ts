@@ -4,6 +4,7 @@ import lineHeight from "./src/tokens/lineHeight";
 import fontWeight from "./src/tokens/fontWeight";
 import letterSpacing from "./src/tokens/letterSpacing";
 import fontFamily from "./src/tokens/fontFamily";
+import color from "./src/tokens/color";
 
 type FontSizeToken = typeof fontSize;
 type LineHeightToken = typeof lineHeight;
@@ -14,6 +15,7 @@ type TokenGroups = {
   fontWeight: typeof fontWeight;
   letterSpacing: typeof letterSpacing;
   fontFamily: typeof fontFamily;
+  colors: typeof color;
 };
 
 const tokens: TokenGroups = {
@@ -22,6 +24,7 @@ const tokens: TokenGroups = {
   fontWeight,
   letterSpacing,
   fontFamily,
+  colors: color,
 };
 
 const tailwindConfig = {
@@ -30,24 +33,37 @@ const tailwindConfig = {
     "./src/components/**/*.{ts,tsx}",
     "./src/stories/**/*.{ts,tsx}",
   ],
+  safelist: [
+    // 모든 색상의 배경, 텍스트, 보더 클래스를 safelist에 추가
+    {
+      pattern:
+        /^(bg|text|border)-(common|gray|neutral|red|orange|yellow|lime|green|emerald|teal|cyan|blue|purple|deeppurple|pink)-(25|50|100|200|300|400|500|600|700|800|850|900|925|950|975|990|1000|0|dimmer)$/,
+    },
+  ],
   theme: {
     extend: {
-      // 모든 토큰 그룹에 대해 var(--groupName-key) 형식으로 매핑
+      // colors는 별도로 처리 (중첩된 객체 구조)
+      colors: color,
+
+      // 나머지 토큰들은 기존 방식으로 처리
       ...Object.fromEntries(
-        Object.entries(tokens).map(([groupName, groupTokens]) => [
-          groupName,
-          Object.fromEntries(
-            Object.entries(groupTokens as Record<string, unknown>).map(
-              ([key, raw]) => [
-                key,
-                typeof raw === "string"
-                  ? raw // static token
-                  : `var(--${groupName}-${key})`, // responsive token
-              ]
-            )
-          ),
-        ])
+        Object.entries(tokens)
+          .filter(([groupName]) => groupName !== "colors") // colors 제외
+          .map(([groupName, groupTokens]) => [
+            groupName,
+            Object.fromEntries(
+              Object.entries(groupTokens as Record<string, unknown>).map(
+                ([key, raw]) => [
+                  key,
+                  typeof raw === "string"
+                    ? raw // static token
+                    : `var(--${groupName}-${key})`, // responsive token
+                ]
+              )
+            ),
+          ])
       ),
+
       // 반응형 브레이크포인트 정의
       screens: {
         sm: "375px", // mobile 이하
@@ -63,7 +79,9 @@ const tailwindConfig = {
       const tabletVars: Record<string, string> = {};
       const mobileVars: Record<string, string> = {};
 
-      const groupNames = Object.keys(tokens) as Array<keyof TokenGroups>;
+      const groupNames = Object.keys(tokens).filter(
+        (name) => name !== "colors"
+      ) as Array<keyof Omit<TokenGroups, "colors">>;
       for (const groupName of groupNames) {
         const groupTokens = tokens[groupName];
         for (const key in groupTokens) {

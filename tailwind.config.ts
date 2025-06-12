@@ -25,7 +25,11 @@ const tokens: TokenGroups = {
 };
 
 const tailwindConfig = {
-  content: ["./src/app/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}"],
+  content: [
+    "./src/app/**/*.{ts,tsx}",
+    "./src/components/**/*.{ts,tsx}",
+    "./src/stories/**/*.{ts,tsx}",
+  ],
   theme: {
     extend: {
       // 모든 토큰 그룹에 대해 var(--groupName-key) 형식으로 매핑

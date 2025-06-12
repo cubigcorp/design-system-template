@@ -1,4 +1,9 @@
 @import "../styles/fonts.css";
+@import "../styles/display.css";
+@import "../styles/title.css";
+@import "../styles/heading.css";
+@import "../styles/body.css";
+@import "../styles/caption.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

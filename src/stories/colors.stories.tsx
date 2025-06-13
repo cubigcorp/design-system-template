@@ -240,7 +240,186 @@ const meta: Meta<typeof ColorSwatch> = {
   argTypes: {
     colorName: {
       control: "select",
-      options: Object.keys(colorValues).sort(),
+      options: [
+        // Common
+        "common-0",
+        "common-100",
+        "common-dimmer",
+        // Gray
+        "gray-25",
+        "gray-50",
+        "gray-100",
+        "gray-200",
+        "gray-300",
+        "gray-400",
+        "gray-500",
+        "gray-600",
+        "gray-700",
+        "gray-800",
+        "gray-850",
+        "gray-900",
+        "gray-925",
+        "gray-950",
+        "gray-975",
+        "gray-990",
+        "gray-1000",
+        // Neutral
+        "neutral-50",
+        "neutral-100",
+        "neutral-200",
+        "neutral-300",
+        "neutral-400",
+        "neutral-500",
+        "neutral-600",
+        "neutral-700",
+        "neutral-800",
+        "neutral-900",
+        "neutral-950",
+        // Red
+        "red-50",
+        "red-100",
+        "red-200",
+        "red-300",
+        "red-400",
+        "red-500",
+        "red-600",
+        "red-700",
+        "red-800",
+        "red-900",
+        "red-950",
+        // Orange
+        "orange-50",
+        "orange-100",
+        "orange-200",
+        "orange-300",
+        "orange-400",
+        "orange-500",
+        "orange-600",
+        "orange-700",
+        "orange-800",
+        "orange-900",
+        "orange-950",
+        // Yellow
+        "yellow-50",
+        "yellow-100",
+        "yellow-200",
+        "yellow-300",
+        "yellow-400",
+        "yellow-500",
+        "yellow-600",
+        "yellow-700",
+        "yellow-800",
+        "yellow-900",
+        "yellow-950",
+        // Lime
+        "lime-50",
+        "lime-100",
+        "lime-200",
+        "lime-300",
+        "lime-400",
+        "lime-500",
+        "lime-600",
+        "lime-700",
+        "lime-800",
+        "lime-900",
+        "lime-950",
+        // Green
+        "green-50",
+        "green-100",
+        "green-200",
+        "green-300",
+        "green-400",
+        "green-500",
+        "green-600",
+        "green-700",
+        "green-800",
+        "green-900",
+        "green-950",
+        // Emerald
+        "emerald-50",
+        "emerald-100",
+        "emerald-200",
+        "emerald-300",
+        "emerald-400",
+        "emerald-500",
+        "emerald-600",
+        "emerald-700",
+        "emerald-800",
+        "emerald-900",
+        "emerald-950",
+        // Teal
+        "teal-50",
+        "teal-100",
+        "teal-200",
+        "teal-300",
+        "teal-400",
+        "teal-500",
+        "teal-600",
+        "teal-700",
+        "teal-800",
+        "teal-900",
+        "teal-950",
+        // Cyan
+        "cyan-50",
+        "cyan-100",
+        "cyan-200",
+        "cyan-300",
+        "cyan-400",
+        "cyan-500",
+        "cyan-600",
+        "cyan-700",
+        "cyan-800",
+        "cyan-900",
+        "cyan-950",
+        // Blue
+        "blue-50",
+        "blue-100",
+        "blue-200",
+        "blue-300",
+        "blue-400",
+        "blue-500",
+        "blue-600",
+        "blue-700",
+        "blue-800",
+        "blue-900",
+        "blue-950",
+        // Purple
+        "purple-50",
+        "purple-100",
+        "purple-200",
+        "purple-300",
+        "purple-400",
+        "purple-500",
+        "purple-600",
+        "purple-700",
+        "purple-800",
+        "purple-900",
+        "purple-950",
+        // Deep Purple
+        "deeppurple-50",
+        "deeppurple-100",
+        "deeppurple-200",
+        "deeppurple-300",
+        "deeppurple-400",
+        "deeppurple-500",
+        "deeppurple-600",
+        "deeppurple-700",
+        "deeppurple-800",
+        "deeppurple-900",
+        "deeppurple-950",
+        // Pink
+        "pink-50",
+        "pink-100",
+        "pink-200",
+        "pink-300",
+        "pink-400",
+        "pink-500",
+        "pink-600",
+        "pink-700",
+        "pink-800",
+        "pink-900",
+        "pink-950",
+      ],
       description: "컬러 토큰 이름 (자동으로 bg- 클래스 생성)",
     },
     colorValue: {
@@ -379,9 +558,39 @@ export const GrayScale: Story = {
           textColor="text-white"
         />
         <ColorSwatch
+          colorName="gray-850"
+          colorValue="#666970"
+          className="bg-gray-850"
+          textColor="text-white"
+        />
+        <ColorSwatch
+          colorName="gray-925"
+          colorValue="#404145"
+          className="bg-gray-925"
+          textColor="text-white"
+        />
+        <ColorSwatch
           colorName="gray-950"
           colorValue="#303135"
           className="bg-gray-950"
+          textColor="text-white"
+        />
+        <ColorSwatch
+          colorName="gray-975"
+          colorValue="#222325"
+          className="bg-gray-975"
+          textColor="text-white"
+        />
+        <ColorSwatch
+          colorName="gray-990"
+          colorValue="#171719"
+          className="bg-gray-990"
+          textColor="text-white"
+        />
+        <ColorSwatch
+          colorName="gray-1000"
+          colorValue="#0f0f10"
+          className="bg-gray-1000"
           textColor="text-white"
         />
       </div>

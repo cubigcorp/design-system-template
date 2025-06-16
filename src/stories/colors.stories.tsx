@@ -1805,7 +1805,9 @@ export const Positive: Story = {
 };
 
 export const Negative: Story = {
-  args: {},
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="space-y-8">
       <div>
@@ -2058,7 +2060,9 @@ export const Negative: Story = {
 };
 
 export const Cautionary: Story = {
-  args: {},
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="space-y-8">
       <div>
@@ -2298,7 +2302,9 @@ export const Cautionary: Story = {
 };
 
 export const Info: Story = {
-  args: {},
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="space-y-8">
       <div>
@@ -2540,6 +2546,9 @@ export const Info: Story = {
 };
 
 export const Border: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
   render: () => (
     <div className="space-y-8 p-8">
       {/* Header */}

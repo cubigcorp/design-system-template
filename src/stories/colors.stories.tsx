@@ -8,6 +8,7 @@ import {
   cautioniaryColor,
   infoColor,
   borderColor,
+  layerColor,
 } from "../tokens";
 
 // 모든 컬러 값 매핑 (color.ts에서 가져온 전체 컬러 팔레트)
@@ -616,7 +617,8 @@ export const Text: Story = {
     <div className="space-y-8">
       <h2 className="text-2xl font-bold mb-4">Text</h2>
       <div className="text-sm text-gray-600 mb-6">
-        텍스트의 계층 구조와 가독성을 위한 기본적인 기능성 색상입니다.
+        텍스트의 계층 구조와 가독성을 고려해 정의된 색상입니다. 본문, 제목,
+        비활성 텍스트 등 다양한 정보 밀도에 따라 사용됩니다.
       </div>
 
       {/* Light Mode Tokens */}
@@ -1355,7 +1357,8 @@ export const Brand: Story = {
     <div className="space-y-8">
       <h2 className="text-2xl font-bold mb-4">Brand</h2>
       <div className="text-sm text-gray-600 mb-6">
-        브랜드 정체성을 나타내는 핵심 색상입니다.
+        브랜드 정체성을 드러내는 핵심 색상입니다. 로고, 주요 버튼, 강조 영역 등
+        브랜드를 대표하는 요소에 사용됩니다.
       </div>
 
       {/* Light Mode Tokens */}
@@ -1587,7 +1590,8 @@ export const Positive: Story = {
     <div className="space-y-8">
       <h2 className="text-2xl font-bold mb-4">Positive</h2>
       <div className="text-sm text-gray-600 mb-6">
-        성공, 완료, 승인 등의 긍정적인 상태를 나타내는 색상입니다.
+        성공, 완료, 승인 등 긍정적인 상태를 전달할 때 사용되는 색상입니다. 알림
+        배지나 확인 메시지 등에 활용됩니다.
       </div>
 
       {/* Light Mode Tokens */}
@@ -1807,7 +1811,9 @@ export const Negative: Story = {
       <div>
         <h2 className="text-2xl font-bold mb-2">Negative</h2>
         <p className="text-gray-600 mb-6">
-          오류, 실패, 경고 등 부정적인 상황에 사용하는 컬러 토큰입니다.
+          오류, 실패, 경고 등 부정적인 상태를 강조하기 위한 색상입니다. 경고
+          메시지나 입력 오류 등의 피드백에 사용됩니다. 사용자에게 부정적인
+          상태나 문제를 명확히 전달하여 즉각적인 주의를 끌 수 있습니다.
         </p>
       </div>
 
@@ -2058,7 +2064,8 @@ export const Cautionary: Story = {
       <div>
         <h2 className="text-2xl font-bold mb-2">Cautionary</h2>
         <p className="text-gray-600 mb-6">
-          주의를 요하는 상태나 행동을 예고할 때 사용하는 컬러 토큰입니다.
+          주의를 요하는 상태나 행동을 예고할 때 사용됩니다. 예: 유효하지만 위험
+          가능성이 있는 입력 또는 조건 경고 등.
         </p>
       </div>
 
@@ -2297,7 +2304,8 @@ export const Info: Story = {
       <div>
         <h2 className="text-2xl font-bold mb-2">Info</h2>
         <p className="text-gray-600 mb-6">
-          중립적이고 보완적인 정보 전달을 위한 색상입니다.
+          중립적이고 보완적인 정보 전달을 위한 색상입니다. 도구 설명, 시스템
+          메시지, 참고사항 등에 활용됩니다.
         </p>
       </div>
 
@@ -2529,4 +2537,702 @@ export const Info: Story = {
       </div>
     </div>
   ),
+};
+
+export const Border: Story = {
+  render: () => (
+    <div className="space-y-8 p-8">
+      {/* Header */}
+      <div className="space-y-2">
+        <h2 className="text-2xl font-bold">Border</h2>
+        <p className="text-gray-600">
+          요소 간 구분과 구조를 명확히 하기 위한 테두리 색상입니다. 컴포넌트
+          경계, 입력 필드 등 다양한 레이아웃 요소에 사용됩니다.
+        </p>
+      </div>
+
+      {/* Light Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+          Light Mode
+        </h3>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.light["color-border-primary"],
+                }}
+              />
+              <span className="font-medium">color-border-primary</span>
+            </div>
+            <span className="text-sm text-gray-500">gray-200</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    borderColor.light["color-border-alternative"],
+                }}
+              />
+              <span className="font-medium">color-border-alternative</span>
+            </div>
+            <span className="text-sm text-gray-500">gray-100</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.light["color-border-focused"],
+                }}
+              />
+              <span className="font-medium">color-border-focused</span>
+            </div>
+            <span className="text-sm text-gray-500">gray-800</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.light["color-border-brand"],
+                }}
+              />
+              <span className="font-medium">color-border-brand</span>
+            </div>
+            <span className="text-sm text-gray-500">deeppurple-600</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.light["color-border-positive"],
+                }}
+              />
+              <span className="font-medium">color-border-positive</span>
+            </div>
+            <span className="text-sm text-gray-500">green-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.light["color-border-cautionary"],
+                }}
+              />
+              <span className="font-medium">color-border-cautionary</span>
+            </div>
+            <span className="text-sm text-gray-500">yellow-200</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.light["color-border-info"],
+                }}
+              />
+              <span className="font-medium">color-border-info</span>
+            </div>
+            <span className="text-sm text-gray-500">blue-200</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.light["color-border-negative"],
+                }}
+              />
+              <span className="font-medium">color-border-negative</span>
+            </div>
+            <span className="text-sm text-gray-500">red-300</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Dark Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+          Dark Mode
+        </h3>
+        <div
+          className="p-6 rounded-lg space-y-3"
+          style={{ backgroundColor: "#171719" }}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.dark["color-border-primary"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-border-primary
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">gray-925</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.dark["color-border-alternative"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-border-alternative
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">gray-950</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.dark["color-border-focused"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-border-focused
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">gray-800</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.dark["color-border-brand"],
+                }}
+              />
+              <span className="font-medium text-white">color-border-brand</span>
+            </div>
+            <span className="text-sm text-gray-400">deeppurple-600</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.dark["color-border-positive"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-border-positive
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">green-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.dark["color-border-cautionary"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-border-cautionary
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">yellow-200</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.dark["color-border-info"],
+                }}
+              />
+              <span className="font-medium text-white">color-border-info</span>
+            </div>
+            <span className="text-sm text-gray-400">blue-200</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: borderColor.dark["color-border-negative"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-border-negative
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">red-300</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Border Usage Examples */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Light Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+            Light Mode
+          </h3>
+          <div className="bg-white border rounded-lg p-6 space-y-4 relative">
+            <div className="flex items-center gap-4 mb-4">
+              <div
+                className="px-2 py-1 text-white rounded text-xs font-mono"
+                style={{
+                  backgroundColor: borderColor.light["color-border-primary"],
+                }}
+              >
+                color-border-primary
+              </div>
+              <div
+                className="px-2 py-1 text-white rounded text-xs font-mono"
+                style={{
+                  backgroundColor: borderColor.light["color-border-focused"],
+                }}
+              >
+                color-border-focused
+              </div>
+            </div>
+
+            <div className="space-y-4 w-full max-w-sm">
+              <div
+                className="p-4 rounded-lg bg-white"
+                style={{
+                  border: `1px solid ${borderColor.light["color-border-primary"]}`,
+                }}
+              >
+                <div className="space-y-3">
+                  <h4 className="font-medium text-gray-900">회원가입</h4>
+                  <div className="space-y-2">
+                    <input
+                      type="text"
+                      placeholder="이름을 입력해주세요"
+                      className="w-full p-3 rounded-lg bg-gray-50"
+                      style={{
+                        border: `1px solid ${borderColor.light["color-border-primary"]}`,
+                      }}
+                    />
+                    <input
+                      type="email"
+                      placeholder="이메일을 입력해주세요"
+                      className="w-full p-3 rounded-lg bg-gray-50"
+                      style={{
+                        border: `1px solid ${borderColor.light["color-border-focused"]}`,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dark Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+            Dark Mode
+          </h3>
+          <div
+            className="rounded-lg p-6 space-y-4 relative"
+            style={{ backgroundColor: "#171719" }}
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <div
+                className="px-2 py-1 text-black rounded text-xs font-mono"
+                style={{
+                  backgroundColor: borderColor.dark["color-border-primary"],
+                }}
+              >
+                color-border-primary
+              </div>
+              <div
+                className="px-2 py-1 text-white rounded text-xs font-mono"
+                style={{
+                  backgroundColor: borderColor.dark["color-border-focused"],
+                }}
+              >
+                color-border-focused
+              </div>
+            </div>
+
+            <div className="space-y-4 w-full max-w-sm">
+              <div
+                className="p-4 rounded-lg"
+                style={{
+                  backgroundColor: "#1a1a1c",
+                  border: `1px solid ${borderColor.dark["color-border-primary"]}`,
+                }}
+              >
+                <div className="space-y-3">
+                  <h4 className="font-medium text-white">회원가입</h4>
+                  <div className="space-y-2">
+                    <input
+                      type="text"
+                      placeholder="이름을 입력해주세요"
+                      className="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400"
+                      style={{
+                        border: `1px solid ${borderColor.dark["color-border-primary"]}`,
+                      }}
+                    />
+                    <input
+                      type="email"
+                      placeholder="이메일을 입력해주세요"
+                      className="w-full p-3 rounded-lg bg-gray-800 text-white placeholder-gray-400"
+                      style={{
+                        border: `1px solid ${borderColor.dark["color-border-focused"]}`,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+  args: {},
+};
+
+export const Layer: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div className="space-y-8">
+      <h2 className="text-2xl font-bold mb-4">Layer</h2>
+      <div className="text-sm text-gray-600 mb-6">
+        UI 내 다양한 깊이와 구조를 시각적으로 구분하기 위한 배경 색상입니다.
+        모달, 시트, 카드 등의 계층 구조 표현에 사용됩니다.
+      </div>
+
+      {/* Light Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+          Light Mode
+        </h3>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: layerColor.light["bg-layer-basement"],
+                }}
+              />
+              <span className="font-medium">color-bg-layer-basement</span>
+            </div>
+            <span className="text-sm text-gray-500">gray-50</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full border border-gray-300"
+                style={{
+                  backgroundColor: layerColor.light["bg-layer-default"],
+                }}
+              />
+              <span className="font-medium">color-bg-layer-default</span>
+            </div>
+            <span className="text-sm text-gray-500">common-white</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: layerColor.light["bg-layer-fill"],
+                }}
+              />
+              <span className="font-medium">color-bg-layer-fill</span>
+            </div>
+            <span className="text-sm text-gray-500">gray-25</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full border border-gray-300"
+                style={{
+                  backgroundColor: layerColor.light["bg-layer-floating"],
+                }}
+              />
+              <span className="font-medium">color-bg-layer-floating</span>
+            </div>
+            <span className="text-sm text-gray-500">common-white</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: layerColor.light["bg-overlay"],
+                }}
+              />
+              <span className="font-medium">color-bg-overlay</span>
+            </div>
+            <span className="text-sm text-gray-500">common-dimmer</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Dark Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+          Dark Mode
+        </h3>
+        <div
+          className="p-6 rounded-lg space-y-3"
+          style={{ backgroundColor: "#171719" }}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: layerColor.dark["bg-layer-basement"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-layer-basement
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">gray-990</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: layerColor.dark["bg-layer-default"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-layer-default
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">gray-975</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: layerColor.dark["bg-layer-fill"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-layer-fill
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">gray-950</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: layerColor.dark["bg-layer-floating"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-layer-floating
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">gray-975</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: layerColor.dark["bg-overlay"],
+                }}
+              />
+              <span className="font-medium text-white">color-bg-overlay</span>
+            </div>
+            <span className="text-sm text-gray-400">common-dimmer</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Layer Usage Examples */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Light Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+            Light Mode
+          </h3>
+          <div className="bg-white border rounded-lg p-6 space-y-4 relative">
+            <div className="flex items-center gap-4 mb-4">
+              <div
+                className="px-2 py-1 text-black rounded text-xs font-mono"
+                style={{
+                  backgroundColor: layerColor.light["bg-layer-basement"],
+                }}
+              >
+                bg-layer-basement
+              </div>
+              <div
+                className="px-2 py-1 text-black rounded text-xs font-mono border border-gray-300"
+                style={{
+                  backgroundColor: layerColor.light["bg-layer-default"],
+                }}
+              >
+                bg-layer-default
+              </div>
+              <div
+                className="px-2 py-1 text-black rounded text-xs font-mono"
+                style={{
+                  backgroundColor: layerColor.light["bg-layer-fill"],
+                }}
+              >
+                bg-layer-fill
+              </div>
+            </div>
+
+            {/* 레이어 구조 예시 */}
+            <div
+              className="p-4 rounded-lg"
+              style={{
+                backgroundColor: layerColor.light["bg-layer-basement"],
+              }}
+            >
+              <div className="text-sm text-gray-600 mb-3">
+                앱 배경 (basement)
+              </div>
+              <div
+                className="p-4 rounded-lg shadow-sm"
+                style={{
+                  backgroundColor: layerColor.light["bg-layer-default"],
+                }}
+              >
+                <div className="text-sm text-gray-600 mb-3">
+                  메인 컨텐츠 (default)
+                </div>
+                <div
+                  className="p-3 rounded"
+                  style={{
+                    backgroundColor: layerColor.light["bg-layer-fill"],
+                  }}
+                >
+                  <div className="text-sm text-gray-600 mb-2">
+                    카드 영역 (fill)
+                  </div>
+                  <div
+                    className="p-3 rounded shadow-md"
+                    style={{
+                      backgroundColor: layerColor.light["bg-layer-floating"],
+                    }}
+                  >
+                    <div className="text-sm text-gray-600">
+                      플로팅 요소 (floating)
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dark Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+            Dark Mode
+          </h3>
+          <div
+            className="rounded-lg p-6 space-y-4 relative"
+            style={{ backgroundColor: "#171719" }}
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <div
+                className="px-2 py-1 text-white rounded text-xs font-mono"
+                style={{
+                  backgroundColor: layerColor.dark["bg-layer-basement"],
+                }}
+              >
+                bg-layer-basement
+              </div>
+              <div
+                className="px-2 py-1 text-white rounded text-xs font-mono"
+                style={{
+                  backgroundColor: layerColor.dark["bg-layer-default"],
+                }}
+              >
+                bg-layer-default
+              </div>
+              <div
+                className="px-2 py-1 text-white rounded text-xs font-mono"
+                style={{
+                  backgroundColor: layerColor.dark["bg-layer-fill"],
+                }}
+              >
+                bg-layer-fill
+              </div>
+            </div>
+
+            {/* 레이어 구조 예시 */}
+            <div
+              className="p-4 rounded-lg"
+              style={{
+                backgroundColor: layerColor.dark["bg-layer-basement"],
+              }}
+            >
+              <div className="text-sm text-gray-400 mb-3">
+                앱 배경 (basement)
+              </div>
+              <div
+                className="p-4 rounded-lg shadow-sm"
+                style={{
+                  backgroundColor: layerColor.dark["bg-layer-default"],
+                }}
+              >
+                <div className="text-sm text-gray-400 mb-3">
+                  메인 컨텐츠 (default)
+                </div>
+                <div
+                  className="p-3 rounded"
+                  style={{
+                    backgroundColor: layerColor.dark["bg-layer-fill"],
+                  }}
+                >
+                  <div className="text-sm text-gray-400 mb-2">
+                    카드 영역 (fill)
+                  </div>
+                  <div
+                    className="p-3 rounded shadow-md"
+                    style={{
+                      backgroundColor: layerColor.dark["bg-layer-floating"],
+                    }}
+                  >
+                    <div className="text-sm text-gray-400">
+                      플로팅 요소 (floating)
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+  args: {},
 };

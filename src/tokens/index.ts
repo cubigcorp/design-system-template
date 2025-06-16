@@ -6,6 +6,7 @@ export { default as negativeColor } from "./negativeColor";
 export { default as cautioniaryColor } from "./cautioniaryColor";
 export { default as infoColor } from "./infoColor";
 export { borderColor } from "./borderColor";
+export { layerColor } from "./layerColor";
 export { default as fontFamily } from "./fontFamily";
 export { default as fontWeight } from "./fontWeight";
 export { default as fontSize } from "./fontSize";

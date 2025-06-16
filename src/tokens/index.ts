@@ -1,5 +1,13 @@
+export { default as color } from "./color";
+export { default as textColor } from "./textColor";
+export { default as brandColor } from "./brandColor";
+export { default as positiveColor } from "./positiveColor";
+export { default as negativeColor } from "./negativeColor";
+export { default as cautioniaryColor } from "./cautioniaryColor";
+export { default as infoColor } from "./infoColor";
+export { borderColor } from "./borderColor";
+export { default as fontFamily } from "./fontFamily";
+export { default as fontWeight } from "./fontWeight";
 export { default as fontSize } from "./fontSize";
 export { default as lineHeight } from "./lineHeight";
-export { default as fontWeight } from "./fontWeight";
 export { default as letterSpacing } from "./letterSpacing";
-export { default as fontFamily } from "./fontFamily";

@@ -1,5 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import "../app/globals.css";
+import {
+  textColor,
+  brandColor,
+  positiveColor,
+  negativeColor,
+  cautioniaryColor,
+  infoColor,
+  borderColor,
+} from "../tokens";
 
 // 모든 컬러 값 매핑 (color.ts에서 가져온 전체 컬러 팔레트)
 const colorValues: Record<string, string> = {
@@ -598,6 +607,361 @@ export const GrayScale: Story = {
   ),
 };
 
+// Text Colors
+export const Text: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div className="space-y-8">
+      <h2 className="text-2xl font-bold mb-4">Text</h2>
+      <div className="text-sm text-gray-600 mb-6">
+        텍스트의 계층 구조와 가독성을 위한 기본적인 기능성 색상입니다.
+      </div>
+
+      {/* Light Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+          Light Mode
+        </h3>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: textColor.light["fg-neutral-strong"],
+                }}
+              />
+              <span className="font-medium">color-fg-neutral-strong</span>
+            </div>
+            <span className="text-sm text-gray-500">gray-1000</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: textColor.light["fg-neutral-primary"],
+                }}
+              />
+              <span className="font-medium">color-fg-neutral-primary</span>
+            </div>
+            <span className="text-sm text-gray-500">gray-990</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: textColor.light["fg-neutral-alternative"],
+                }}
+              />
+              <span className="font-medium">color-fg-neutral-alternative</span>
+            </div>
+            <span className="text-sm text-gray-500">gray-800</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: textColor.light["fg-neutral-assistive"],
+                }}
+              />
+              <span className="font-medium">color-fg-neutral-assistive</span>
+            </div>
+            <span className="text-sm text-gray-500">gray-400</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: textColor.light["fg-neutral-disable"],
+                }}
+              />
+              <span className="font-medium">color-fg-neutral-disable</span>
+            </div>
+            <span className="text-sm text-gray-500">gray-300</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Dark Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+          Dark Mode
+        </h3>
+        <div
+          className="p-6 rounded-lg space-y-3"
+          style={{ backgroundColor: "#171719" }}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: textColor.dark["fg-neutral-strong"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-fg-neutral-strong
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">gray-25</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: textColor.dark["fg-neutral-primary"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-fg-neutral-primary
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">gray-300</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: textColor.dark["fg-neutral-alternative"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-fg-neutral-alternative
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">gray-600</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: textColor.dark["fg-neutral-assistive"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-fg-neutral-assistive
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">gray-800</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: textColor.dark["fg-neutral-disable"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-fg-neutral-disable
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">gray-900</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Text Usage Examples */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Light Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+            Light Mode
+          </h3>
+          <div className="bg-white border rounded-lg p-6 space-y-4 relative">
+            {/* 회원가입 */}
+            <div className="flex items-center justify-between">
+              <span
+                className="text-sm"
+                style={{ color: textColor.light["fg-neutral-alternative"] }}
+              >
+                회원가입
+              </span>
+              <div className="px-2 py-1 bg-gray-200 rounded text-xs font-mono">
+                fg-neutral-alternative
+              </div>
+            </div>
+
+            {/* 메인 제목 */}
+            <div className="flex items-center justify-between">
+              <h1
+                className="text-xl font-bold"
+                style={{ color: textColor.light["fg-neutral-strong"] }}
+              >
+                사용하실 닉네임을 입력해주세요.
+              </h1>
+              <div className="px-2 py-1 bg-gray-800 text-white rounded text-xs font-mono">
+                fg-neutral-strong
+              </div>
+            </div>
+
+            {/* 설명 텍스트 */}
+            <div className="flex items-center justify-between">
+              <p
+                className="text-sm"
+                style={{ color: textColor.light["fg-neutral-primary"] }}
+              >
+                입력하신 정보는 안전하게 보호되며, 서비스 제공에만 사용됩니다.
+              </p>
+              <div className="px-2 py-1 bg-gray-700 text-white rounded text-xs font-mono">
+                fg-neutral-primary
+              </div>
+            </div>
+
+            {/* 닉네임 라벨 */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label
+                  className="text-sm font-medium"
+                  style={{ color: textColor.light["fg-neutral-primary"] }}
+                >
+                  닉네임
+                </label>
+                <div className="px-2 py-1 bg-gray-700 text-white rounded text-xs font-mono">
+                  fg-neutral-primary
+                </div>
+              </div>
+
+              {/* 입력 필드와 중복확인 버튼 */}
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2">
+                  <div className="px-2 py-1 bg-gray-400 text-white rounded text-xs font-mono">
+                    fg-neutral-assistive
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="이름을 입력해 주세요"
+                    className="px-3 py-2 border border-gray-300 rounded-md"
+                    style={{ color: textColor.light["fg-neutral-primary"] }}
+                  />
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    className="px-3 py-2 border border-gray-300 rounded-md text-sm"
+                    style={{ color: textColor.light["fg-neutral-disable"] }}
+                  >
+                    중복확인
+                  </button>
+                  <div className="px-2 py-1 bg-gray-400 text-white rounded text-xs font-mono">
+                    fg-neutral-disable
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dark Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+            Dark Mode
+          </h3>
+          <div
+            className="rounded-lg p-6 space-y-4 relative"
+            style={{ backgroundColor: "#171719" }}
+          >
+            {/* 회원가입 */}
+            <div className="flex items-center justify-between">
+              <span
+                className="text-sm"
+                style={{ color: textColor.dark["fg-neutral-alternative"] }}
+              >
+                회원가입
+              </span>
+              <div className="px-2 py-1 bg-gray-600 text-white rounded text-xs font-mono">
+                fg-neutral-alternative
+              </div>
+            </div>
+
+            {/* 메인 제목 */}
+            <div className="flex items-center justify-between">
+              <h1
+                className="text-xl font-bold"
+                style={{ color: textColor.dark["fg-neutral-strong"] }}
+              >
+                사용하실 닉네임을 입력해주세요.
+              </h1>
+              <div className="px-2 py-1 bg-gray-100 text-black rounded text-xs font-mono">
+                fg-neutral-strong
+              </div>
+            </div>
+
+            {/* 설명 텍스트 */}
+            <div className="flex items-center justify-between">
+              <p
+                className="text-sm"
+                style={{ color: textColor.dark["fg-neutral-primary"] }}
+              >
+                입력하신 정보는 안전하게 보호되며, 서비스 제공에만 사용됩니다.
+              </p>
+              <div className="px-2 py-1 bg-gray-300 text-black rounded text-xs font-mono">
+                fg-neutral-primary
+              </div>
+            </div>
+
+            {/* 닉네임 라벨 */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label
+                  className="text-sm font-medium"
+                  style={{ color: textColor.dark["fg-neutral-primary"] }}
+                >
+                  닉네임
+                </label>
+                <div className="px-2 py-1 bg-gray-300 text-black rounded text-xs font-mono">
+                  fg-neutral-primary
+                </div>
+              </div>
+
+              {/* 입력 필드와 중복확인 버튼 */}
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2">
+                  <div className="px-2 py-1 bg-gray-500 text-white rounded text-xs font-mono">
+                    fg-neutral-assistive
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="이름을 입력해 주세요"
+                    className="px-3 py-2 border border-gray-600 rounded-md"
+                    style={{
+                      color: textColor.dark["fg-neutral-primary"],
+                      backgroundColor: "#222325",
+                    }}
+                  />
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    className="px-3 py-2 border border-gray-600 rounded-md text-sm"
+                    style={{ color: textColor.dark["fg-neutral-disable"] }}
+                  >
+                    중복확인
+                  </button>
+                  <div className="px-2 py-1 bg-gray-500 text-white rounded text-xs font-mono">
+                    fg-neutral-disable
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
 // Primary Colors
 export const PrimaryColors: Story = {
   parameters: {
@@ -974,6 +1338,1191 @@ export const ColorAccessibility: Story = {
             <div className="bg-gray-100 text-gray-200 p-4 rounded-lg border">
               <div className="font-semibold">Very Low Contrast</div>
               <div className="text-sm">Accessibility issue</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+// Brand Colors
+export const Brand: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div className="space-y-8">
+      <h2 className="text-2xl font-bold mb-4">Brand</h2>
+      <div className="text-sm text-gray-600 mb-6">
+        브랜드 정체성을 나타내는 핵심 색상입니다.
+      </div>
+
+      {/* Light Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+          Light Mode
+        </h3>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: brandColor.light["fg-brand-primary"],
+                }}
+              />
+              <span className="font-medium">color-fg-brand-primary</span>
+            </div>
+            <span className="text-sm text-gray-500">deeppurple-800</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: brandColor.light["bg-brand-primary-default"],
+                }}
+              />
+              <span className="font-medium">
+                color-bg-brand-primary-default
+              </span>
+            </div>
+            <span className="text-sm text-gray-500">deeppurple-800</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: brandColor.light["bg-brand-primary-pressed"],
+                }}
+              />
+              <span className="font-medium">
+                color-bg-brand-primary-pressed
+              </span>
+            </div>
+            <span className="text-sm text-gray-500">deeppurple-900</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Dark Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+          Dark Mode
+        </h3>
+        <div
+          className="p-6 rounded-lg space-y-3"
+          style={{ backgroundColor: "#171719" }}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{ backgroundColor: brandColor.dark["fg-brand-primary"] }}
+              />
+              <span className="font-medium text-white">
+                color-fg-brand-primary
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">deeppurple-800</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: brandColor.dark["bg-brand-primary-default"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-brand-primary-default
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">deeppurple-800</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: brandColor.dark["bg-brand-primary-pressed"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-brand-primary-pressed
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">deeppurple-700</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Brand Usage Examples */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Light Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+            Light Mode
+          </h3>
+          <div className="bg-white border rounded-lg p-6 space-y-4 relative">
+            {/* fg-brand */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-6 h-6 rounded"
+                  style={{
+                    backgroundColor: brandColor.light["fg-brand-primary"],
+                  }}
+                />
+                <span className="font-medium">fg-brand</span>
+              </div>
+            </div>
+
+            <div className="text-center space-y-4">
+              <div
+                className="flex items-center justify-center gap-1"
+                style={{ color: brandColor.light["fg-brand-primary"] }}
+              >
+                <span>👥</span>
+                <span>한국 284명이 함께 보고 있어요</span>
+              </div>
+
+              <button
+                className="w-full py-3 px-6 rounded-lg text-white font-medium transition-colors"
+                style={{
+                  backgroundColor: brandColor.light["bg-brand-primary-default"],
+                }}
+              >
+                시작하기
+              </button>
+
+              <div className="flex items-center justify-center gap-2 mt-4">
+                <div
+                  className="w-4 h-4 rounded"
+                  style={{
+                    backgroundColor:
+                      brandColor.light["bg-brand-primary-default"],
+                  }}
+                />
+                <span className="text-sm font-medium">
+                  bg-brand-primary-default
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dark Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+            Dark Mode
+          </h3>
+          <div
+            className="rounded-lg p-6 space-y-4 relative"
+            style={{ backgroundColor: "#171719" }}
+          >
+            {/* fg-brand */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-6 h-6 rounded"
+                  style={{
+                    backgroundColor: brandColor.dark["fg-brand-primary"],
+                  }}
+                />
+                <span className="font-medium text-white">fg-brand</span>
+              </div>
+            </div>
+
+            <div className="text-center space-y-4">
+              <div
+                className="flex items-center justify-center gap-1"
+                style={{ color: brandColor.dark["fg-brand-primary"] }}
+              >
+                <span>👥</span>
+                <span>한국 284명이 함께 보고 있어요</span>
+              </div>
+
+              <button
+                className="w-full py-3 px-6 rounded-lg text-white font-medium transition-colors"
+                style={{
+                  backgroundColor: brandColor.dark["bg-brand-primary-default"],
+                }}
+              >
+                시작하기
+              </button>
+
+              <div className="flex items-center justify-center gap-2 mt-4">
+                <div
+                  className="w-4 h-4 rounded"
+                  style={{
+                    backgroundColor:
+                      brandColor.dark["bg-brand-primary-default"],
+                  }}
+                />
+                <span className="text-sm font-medium text-white">
+                  bg-brand-primary-default
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+// Positive Colors
+export const Positive: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div className="space-y-8">
+      <h2 className="text-2xl font-bold mb-4">Positive</h2>
+      <div className="text-sm text-gray-600 mb-6">
+        성공, 완료, 승인 등의 긍정적인 상태를 나타내는 색상입니다.
+      </div>
+
+      {/* Light Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+          Light Mode
+        </h3>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: positiveColor.light["fg-positive-primary"],
+                }}
+              />
+              <span className="font-medium">color-fg-positive-primary</span>
+            </div>
+            <span className="text-sm text-gray-500">green-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: positiveColor.light["fg-positive-strong"],
+                }}
+              />
+              <span className="font-medium">color-fg-positive-strong</span>
+            </div>
+            <span className="text-sm text-gray-500">green-900</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    positiveColor.light["bg-positive-primary-default"],
+                }}
+              />
+              <span className="font-medium">
+                color-bg-positive-primary-default
+              </span>
+            </div>
+            <span className="text-sm text-gray-500">green-600</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    positiveColor.light["bg-positive-primary-pressed"],
+                }}
+              />
+              <span className="font-medium">
+                color-bg-positive-primary-pressed
+              </span>
+            </div>
+            <span className="text-sm text-gray-500">green-400</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Dark Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+          Dark Mode
+        </h3>
+        <div
+          className="p-6 rounded-lg space-y-3"
+          style={{ backgroundColor: "#171719" }}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: positiveColor.dark["fg-positive-primary"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-fg-positive-primary
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">green-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: positiveColor.dark["fg-positive-strong"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-fg-positive-strong
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">green-50</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    positiveColor.dark["bg-positive-primary-default"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-positive-primary-default
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">green-600</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    positiveColor.dark["bg-positive-primary-pressed"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-positive-primary-pressed
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">green-400</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Positive Usage Examples */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Light Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+            Light Mode
+          </h3>
+          <div className="bg-white border rounded-lg p-6 space-y-4 relative">
+            <div className="flex items-center gap-4">
+              <div
+                className="px-2 py-1 text-white rounded text-xs font-mono"
+                style={{
+                  backgroundColor: positiveColor.light["fg-positive-primary"],
+                }}
+              >
+                fg-positive
+              </div>
+
+              <div className="flex items-center justify-between flex-1 p-3 bg-gray-900 rounded-lg">
+                <div className="flex items-center gap-2">
+                  <span className="text-white">✓</span>
+                  <span className="text-white">완료되었어요</span>
+                </div>
+                <span
+                  className="text-sm"
+                  style={{ color: positiveColor.light["fg-positive-primary"] }}
+                >
+                  관심목록 보기 →
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dark Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+            Dark Mode
+          </h3>
+          <div
+            className="rounded-lg p-6 space-y-4 relative"
+            style={{ backgroundColor: "#171719" }}
+          >
+            <div className="flex items-center gap-4">
+              <div
+                className="px-2 py-1 text-white rounded text-xs font-mono"
+                style={{
+                  backgroundColor: positiveColor.dark["fg-positive-primary"],
+                }}
+              >
+                fg-positive
+              </div>
+
+              <div className="flex items-center justify-between flex-1 p-3 bg-gray-900 rounded-lg">
+                <div className="flex items-center gap-2">
+                  <span className="text-white">✓</span>
+                  <span className="text-white">완료되었어요</span>
+                </div>
+                <span
+                  className="text-sm"
+                  style={{ color: positiveColor.dark["fg-positive-primary"] }}
+                >
+                  관심목록 보기 →
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+export const Negative: Story = {
+  args: {},
+  render: () => (
+    <div className="space-y-8">
+      <div>
+        <h2 className="text-2xl font-bold mb-2">Negative</h2>
+        <p className="text-gray-600 mb-6">
+          오류, 실패, 경고 등 부정적인 상황에 사용하는 컬러 토큰입니다.
+        </p>
+      </div>
+
+      {/* Light Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+          Light Mode
+        </h3>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: negativeColor.light["fg-negative"],
+                }}
+              />
+              <span className="font-medium">color-fg-negative</span>
+            </div>
+            <span className="text-sm text-gray-500">red-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: negativeColor.light["fg-negative-strong"],
+                }}
+              />
+              <span className="font-medium">color-fg-negative-strong</span>
+            </div>
+            <span className="text-sm text-gray-500">red-900</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    negativeColor.light["bg-negative-primary-default"],
+                }}
+              />
+              <span className="font-medium">
+                color-bg-negative-primary-default
+              </span>
+            </div>
+            <span className="text-sm text-gray-500">red-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    negativeColor.light["bg-negative-primary-pressed"],
+                }}
+              />
+              <span className="font-medium">
+                color-bg-negative-primary-pressed
+              </span>
+            </div>
+            <span className="text-sm text-gray-500">red-600</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Dark Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+          Dark Mode
+        </h3>
+        <div
+          className="p-6 rounded-lg space-y-3"
+          style={{ backgroundColor: "#171719" }}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: negativeColor.dark["fg-negative"],
+                }}
+              />
+              <span className="font-medium text-white">color-fg-negative</span>
+            </div>
+            <span className="text-sm text-gray-400">red-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: negativeColor.dark["fg-negative-strong"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-fg-negative-strong
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">red-50</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    negativeColor.dark["bg-negative-primary-default"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-negative-primary-default
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">red-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    negativeColor.dark["bg-negative-primary-pressed"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-negative-primary-pressed
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">red-400</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Negative Usage Examples */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Light Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+            Light Mode
+          </h3>
+          <div className="bg-white border rounded-lg p-6 space-y-4 relative">
+            <div className="flex flex-col items-center gap-4 p-6">
+              <div
+                className="px-2 py-1 text-white rounded text-xs font-mono"
+                style={{
+                  backgroundColor:
+                    negativeColor.light["bg-negative-primary-default"],
+                }}
+              >
+                bg-negative-primary-default
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 max-w-sm w-full">
+                <div className="space-y-6">
+                  <h3 className="text-xl font-bold text-gray-900 text-left">
+                    글을 삭제할까요?
+                  </h3>
+                  <p className="text-sm text-gray-500 leading-relaxed text-left">
+                    모든 데이터가 삭제되고 다시 볼 수 없어요.
+                  </p>
+                  <div className="flex gap-3 pt-2">
+                    <button className="flex-1 px-6 py-3 rounded-xl text-gray-600 font-medium hover:bg-gray-50 transition-colors bg-gray-50">
+                      취소
+                    </button>
+                    <button
+                      className="flex-1 px-6 py-3 rounded-xl text-white font-medium hover:opacity-90 transition-opacity"
+                      style={{
+                        backgroundColor:
+                          negativeColor.light["bg-negative-primary-default"],
+                      }}
+                    >
+                      삭제
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dark Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+            Dark Mode
+          </h3>
+          <div
+            className="rounded-lg p-6 space-y-4 relative"
+            style={{ backgroundColor: "#171719" }}
+          >
+            <div className="flex flex-col items-center gap-4 p-6">
+              <div
+                className="px-2 py-1 text-white rounded text-xs font-mono"
+                style={{
+                  backgroundColor:
+                    negativeColor.dark["bg-negative-primary-default"],
+                }}
+              >
+                bg-negative-primary-default
+              </div>
+
+              <div
+                className="rounded-2xl p-8 max-w-sm w-full"
+                style={{ backgroundColor: "#303135" }}
+              >
+                <div className="space-y-6">
+                  <h3 className="text-xl font-bold text-white text-left">
+                    글을 삭제할까요?
+                  </h3>
+                  <p className="text-sm text-gray-400 leading-relaxed text-left">
+                    모든 데이터가 삭제되고 다시 볼 수 없어요.
+                  </p>
+                  <div className="flex gap-3 pt-2">
+                    <button
+                      className="flex-1 px-6 py-3 rounded-xl text-gray-300 font-medium hover:opacity-80 transition-opacity"
+                      style={{ backgroundColor: "#404145" }}
+                    >
+                      취소
+                    </button>
+                    <button
+                      className="flex-1 px-6 py-3 rounded-xl text-white font-medium hover:opacity-90 transition-opacity"
+                      style={{
+                        backgroundColor:
+                          negativeColor.dark["bg-negative-primary-default"],
+                      }}
+                    >
+                      삭제
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+export const Cautionary: Story = {
+  args: {},
+  render: () => (
+    <div className="space-y-8">
+      <div>
+        <h2 className="text-2xl font-bold mb-2">Cautionary</h2>
+        <p className="text-gray-600 mb-6">
+          주의를 요하는 상태나 행동을 예고할 때 사용하는 컬러 토큰입니다.
+        </p>
+      </div>
+
+      {/* Light Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+          Light Mode
+        </h3>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    cautioniaryColor.light["fg-cautionary-primary"],
+                }}
+              />
+              <span className="font-medium">color-fg-cautionary-primary</span>
+            </div>
+            <span className="text-sm text-gray-500">yellow-400</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    cautioniaryColor.light["fg-cautionary-strong"],
+                }}
+              />
+              <span className="font-medium">color-fg-cautionary-strong</span>
+            </div>
+            <span className="text-sm text-gray-500">yellow-900</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    cautioniaryColor.light["bg-cautionary-primary-default"],
+                }}
+              />
+              <span className="font-medium">
+                color-bg-cautionary-primary-default
+              </span>
+            </div>
+            <span className="text-sm text-gray-500">yellow-400</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    cautioniaryColor.light["bg-cautionary-primary-pressed"],
+                }}
+              />
+              <span className="font-medium">
+                color-bg-cautionary-primary-pressed
+              </span>
+            </div>
+            <span className="text-sm text-gray-500">yellow-500</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Dark Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+          Dark Mode
+        </h3>
+        <div
+          className="p-6 rounded-lg space-y-3"
+          style={{ backgroundColor: "#171719" }}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    cautioniaryColor.dark["fg-cautionary-primary"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-fg-cautionary-primary
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">yellow-400</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    cautioniaryColor.dark["fg-cautionary-strong"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-fg-cautionary-strong
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">yellow-50</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    cautioniaryColor.dark["bg-cautionary-primary-default"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-cautionary-primary-default
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">yellow-400</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor:
+                    cautioniaryColor.dark["bg-cautionary-primary-pressed"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-cautionary-primary-pressed
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">yellow-300</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Cautionary Usage Examples */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Light Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+            Light Mode
+          </h3>
+          <div className="bg-white border rounded-lg p-6 space-y-4 relative">
+            <div className="flex items-center gap-4">
+              <div
+                className="px-2 py-1 text-black rounded text-xs font-mono"
+                style={{
+                  backgroundColor:
+                    cautioniaryColor.light["bg-cautionary-primary-default"],
+                }}
+              >
+                bg-cautionary-primary-default
+              </div>
+
+              <div
+                className="flex items-center justify-between p-4 rounded-lg"
+                style={{
+                  backgroundColor:
+                    cautioniaryColor.light["bg-cautionary-primary-default"],
+                  width: "375px",
+                }}
+              >
+                <span className="font-medium text-black">
+                  서비스 점검시간 안내
+                </span>
+                <div className="flex items-center gap-1">
+                  <span className="text-sm font-medium text-black">
+                    자세히 보기
+                  </span>
+                  <span className="text-black">›</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dark Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+            Dark Mode
+          </h3>
+          <div
+            className="rounded-lg p-6 space-y-4 relative"
+            style={{ backgroundColor: "#171719" }}
+          >
+            <div className="flex items-center gap-4">
+              <div
+                className="px-2 py-1 text-black rounded text-xs font-mono"
+                style={{
+                  backgroundColor:
+                    cautioniaryColor.dark["bg-cautionary-primary-default"],
+                }}
+              >
+                bg-cautionary-primary-default
+              </div>
+
+              <div
+                className="flex items-center justify-between p-4 rounded-lg"
+                style={{
+                  backgroundColor:
+                    cautioniaryColor.dark["bg-cautionary-primary-default"],
+                  width: "375px",
+                }}
+              >
+                <span className="font-medium text-black">
+                  서비스 점검시간 안내
+                </span>
+                <div className="flex items-center gap-1">
+                  <span className="text-sm font-medium text-black">
+                    자세히 보기
+                  </span>
+                  <span className="text-black">›</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+export const Info: Story = {
+  args: {},
+  render: () => (
+    <div className="space-y-8">
+      <div>
+        <h2 className="text-2xl font-bold mb-2">Info</h2>
+        <p className="text-gray-600 mb-6">
+          중립적이고 보완적인 정보 전달을 위한 색상입니다.
+        </p>
+      </div>
+
+      {/* Light Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+          Light Mode
+        </h3>
+        <div className="space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: infoColor.light["fg-info-primary"],
+                }}
+              />
+              <span className="font-medium">color-fg-info-primary</span>
+            </div>
+            <span className="text-sm text-gray-500">blue-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: infoColor.light["fg-info-strong"],
+                }}
+              />
+              <span className="font-medium">color-fg-info-strong</span>
+            </div>
+            <span className="text-sm text-gray-500">blue-900</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: infoColor.light["bg-info-primary-assistive"],
+                }}
+              />
+              <span className="font-medium">
+                color-bg-info-primary-assistive
+              </span>
+            </div>
+            <span className="text-sm text-gray-500">blue-50</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: infoColor.light["bg-info-primary-default"],
+                }}
+              />
+              <span className="font-medium">color-bg-info-primary-default</span>
+            </div>
+            <span className="text-sm text-gray-500">blue-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: infoColor.light["bg-info-primary-pressed"],
+                }}
+              />
+              <span className="font-medium">color-bg-info-primary-pressed</span>
+            </div>
+            <span className="text-sm text-gray-500">blue-600</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Dark Mode Tokens */}
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold flex items-center gap-2">
+          <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+          Dark Mode
+        </h3>
+        <div
+          className="p-6 rounded-lg space-y-3"
+          style={{ backgroundColor: "#171719" }}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: infoColor.dark["fg-info-primary"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-fg-info-primary
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">blue-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: infoColor.dark["fg-info-strong"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-fg-info-strong
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">blue-50</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: infoColor.dark["bg-info-primary-assistive"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-info-primary-assistive
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">blue-900</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: infoColor.dark["bg-info-primary-default"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-info-primary-default
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">blue-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: infoColor.dark["bg-info-primary-pressed"],
+                }}
+              />
+              <span className="font-medium text-white">
+                color-bg-info-primary-pressed
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">blue-400</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Info Usage Examples */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Light Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+            Light Mode
+          </h3>
+          <div className="bg-white border rounded-lg p-6 space-y-4 relative">
+            <div className="flex items-center gap-4">
+              <div
+                className="px-2 py-1 text-white rounded text-xs font-mono"
+                style={{ backgroundColor: infoColor.light["fg-info-strong"] }}
+              >
+                fg-info-strong
+              </div>
+
+              <div
+                className="flex items-center justify-between p-4 rounded-lg"
+                style={{
+                  backgroundColor: infoColor.light["bg-info-primary-assistive"],
+                  width: "375px",
+                }}
+              >
+                <span
+                  className="font-medium"
+                  style={{ color: infoColor.light["fg-info-strong"] }}
+                >
+                  Tip 실명을 입력하면 연락 올 확률이 30% 높아요
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dark Mode Example */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+            Dark Mode
+          </h3>
+          <div
+            className="rounded-lg p-6 space-y-4 relative"
+            style={{ backgroundColor: "#171719" }}
+          >
+            <div className="flex items-center gap-4">
+              <div
+                className="px-2 py-1 text-black rounded text-xs font-mono"
+                style={{ backgroundColor: infoColor.dark["fg-info-strong"] }}
+              >
+                fg-info-strong
+              </div>
+
+              <div
+                className="flex items-center justify-between p-4 rounded-lg"
+                style={{
+                  backgroundColor: infoColor.dark["bg-info-primary-assistive"],
+                  width: "375px",
+                }}
+              >
+                <span
+                  className="font-medium"
+                  style={{ color: infoColor.dark["fg-info-strong"] }}
+                >
+                  Tip 실명을 입력하면 연락 올 확률이 30% 높아요
+                </span>
+              </div>
             </div>
           </div>
         </div>

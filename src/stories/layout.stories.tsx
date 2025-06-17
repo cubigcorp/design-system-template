@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import "../app/globals.css";
 import { radius } from "../tokens/radius";
 import { spacing } from "../tokens/spacing";
+import { shadow } from "../tokens/shadow";
 
 const RadiusDemo = () => {
   return null;
@@ -351,6 +352,242 @@ export const Gap: Story = {
                 <div className="p-4 bg-white border border-gray-200 rounded-lg">
                   카드 3
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+export const Shadow: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div className="space-y-8">
+      <div>
+        <h2 className="text-2xl font-bold mb-2">Shadow Tokens</h2>
+        <p className="text-gray-600 mb-6">
+          요소의 깊이감과 계층 구조를 표현하기 위한 그림자 토큰입니다.
+        </p>
+      </div>
+
+      <div className="space-y-12">
+        {/* Light Mode */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-white border-2 border-gray-300 rounded-full"></span>
+            Light Mode
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {Object.entries(shadow.light).map(([key, value]) => (
+              <div key={key} className="space-y-3">
+                <div className="flex items-center gap-4">
+                  <div className="font-medium">{key}</div>
+                  <div className="text-sm text-gray-500">{value}</div>
+                </div>
+                <div
+                  className="h-24 bg-white rounded-lg p-4 flex items-center justify-center border border-gray-200"
+                  style={{ boxShadow: value }}
+                >
+                  <span className="text-gray-500">Sample Content</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dark Mode */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold flex items-center gap-2">
+            <span className="w-3 h-3 bg-gray-900 rounded-full"></span>
+            Dark Mode
+          </h3>
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 rounded-xl"
+            style={{ backgroundColor: "#171719" }}
+          >
+            {Object.entries(shadow.dark).map(([key, value]) => (
+              <div key={key} className="space-y-3">
+                <div className="flex items-center gap-4">
+                  <div className="font-medium text-white">{key}</div>
+                  <div className="text-sm text-gray-400">{value}</div>
+                </div>
+                <div
+                  className="h-24 bg-gray-900 rounded-lg p-4 flex items-center justify-center border border-gray-700"
+                  style={{ boxShadow: value }}
+                >
+                  <span className="text-gray-400">Sample Content</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Usage Examples */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">사용 예시</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Input Example */}
+            <div className="space-y-3">
+              <div className="text-sm font-medium text-gray-600">
+                Input (shadow-xs)
+              </div>
+              <div className="space-y-2">
+                <input
+                  type="text"
+                  placeholder="이메일을 입력하세요"
+                  className="w-full px-4 py-2 rounded-md border border-gray-200"
+                  style={{ boxShadow: shadow.light["shadow-xs"] }}
+                />
+                <p className="text-sm text-gray-500">
+                  입력 필드와 같이 미세한 깊이감이 필요한 요소에 사용
+                </p>
+              </div>
+            </div>
+
+            {/* Dropdown Example */}
+            <div className="space-y-3">
+              <div className="text-sm font-medium text-gray-600">
+                Dropdown (shadow-sm)
+              </div>
+              <div className="relative">
+                <button
+                  className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-md flex justify-between items-center"
+                  style={{ boxShadow: shadow.light["shadow-sm"] }}
+                >
+                  <span className="text-gray-900">드롭다운 메뉴</span>
+                  <svg
+                    className="w-5 h-5 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <div
+                  className="absolute w-full mt-1 bg-white border border-gray-200 rounded-md py-1"
+                  style={{ boxShadow: shadow.light["shadow-sm"] }}
+                >
+                  <div className="px-4 py-2.5 hover:bg-gray-50 cursor-pointer">
+                    옵션 1
+                  </div>
+                  <div className="px-4 py-2.5 hover:bg-gray-50 cursor-pointer">
+                    옵션 2
+                  </div>
+                </div>
+                <p className="mt-2 text-sm text-gray-500">
+                  드롭다운, 툴팁과 같은 떠있는 요소에 사용
+                </p>
+              </div>
+            </div>
+
+            {/* Card Example */}
+            <div className="space-y-3">
+              <div className="text-sm font-medium text-gray-600">
+                Card (shadow-md)
+              </div>
+              <div
+                className="bg-white rounded-lg border border-gray-200"
+                style={{ boxShadow: shadow.light["shadow-md"] }}
+              >
+                <div className="p-4 border-b border-gray-100">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-gray-100 rounded-full"></div>
+                    <div>
+                      <div className="font-medium">사용자 이름</div>
+                      <div className="text-sm text-gray-500">2시간 전</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4">
+                  <p className="text-gray-600">카드 컨텐츠가 들어갑니다.</p>
+                </div>
+                <div className="p-4 bg-gray-50 rounded-b-lg">
+                  <div className="flex gap-2">
+                    <button className="px-3 py-1.5 bg-white border border-gray-200 rounded-md text-sm">
+                      좋아요
+                    </button>
+                    <button className="px-3 py-1.5 bg-white border border-gray-200 rounded-md text-sm">
+                      댓글
+                    </button>
+                  </div>
+                </div>
+                <p className="mt-2 text-sm text-gray-500">
+                  카드, 피드 아이템과 같이 독립된 컨텐츠를 담는 요소에 사용
+                </p>
+              </div>
+            </div>
+
+            {/* Modal Example */}
+            <div className="space-y-3">
+              <div className="text-sm font-medium text-gray-600">
+                Modal (shadow-lg)
+              </div>
+              <div
+                className="bg-white rounded-lg border border-gray-200"
+                style={{ boxShadow: shadow.light["shadow-lg"] }}
+              >
+                <div className="p-6 border-b border-gray-100">
+                  <div className="flex justify-between items-center">
+                    <h4 className="text-lg font-medium">결제 확인</h4>
+                    <button className="text-gray-400 hover:text-gray-500">
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-600">상품 금액</span>
+                      <span className="font-medium">50,000원</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-gray-600">배송비</span>
+                      <span className="font-medium">3,000원</span>
+                    </div>
+                    <div className="h-px bg-gray-100"></div>
+                    <div className="flex justify-between items-center">
+                      <span className="font-medium">총 결제금액</span>
+                      <span className="text-lg font-bold text-deeppurple-600">
+                        53,000원
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 bg-gray-50 rounded-b-lg">
+                  <div className="flex gap-3">
+                    <button className="flex-1 px-4 py-2 bg-gray-200 rounded-md">
+                      취소
+                    </button>
+                    <button className="flex-1 px-4 py-2 bg-deeppurple-600 text-white rounded-md">
+                      결제하기
+                    </button>
+                  </div>
+                </div>
+                <p className="mt-2 text-sm text-gray-500">
+                  모달, 다이얼로그와 같이 최상위에 떠있는 요소에 사용
+                </p>
               </div>
             </div>
           </div>

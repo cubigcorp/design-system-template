@@ -13,3 +13,4 @@ export { default as fontSize } from "./fontSize";
 export { default as lineHeight } from "./lineHeight";
 export { default as letterSpacing } from "./letterSpacing";
 export { radius } from "./radius";
+export { spacing } from "./spacing";

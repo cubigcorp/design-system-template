@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import "../app/globals.css";
 import { radius } from "../tokens/radius";
+import { spacing } from "../tokens/spacing";
 
 const RadiusDemo = () => {
   return null;
@@ -180,6 +181,177 @@ export const Radius: Story = {
               style={{ borderRadius: radius["rounded-full"] }}
             >
               완전한 원형 버튼
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+export const Gap: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div className="space-y-8">
+      <div>
+        <h2 className="text-2xl font-bold mb-2">Spacing - Gap Tokens</h2>
+        <p className="text-gray-600 mb-6">
+          요소들 사이의 간격을 일관되게 유지하기 위한 gap 토큰입니다.
+        </p>
+      </div>
+
+      <div className="space-y-12">
+        {/* Small Gaps (0-2) */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">작은 간격</h3>
+          <div className="space-y-8">
+            {Object.entries(spacing.gap)
+              .filter(([key]) => parseFloat(key.replace("gap-", "")) <= 2)
+              .map(([key, value]) => (
+                <div key={key} className="space-y-2">
+                  <div className="flex items-center gap-4">
+                    <div className="w-20 font-medium">{key}</div>
+                    <div className="text-sm text-gray-500">{value}</div>
+                  </div>
+                  <div className="flex items-center bg-gray-50 p-4 border border-gray-200 rounded-lg">
+                    <div className="flex" style={{ gap: value }}>
+                      <div className="w-8 h-8 bg-deeppurple-100 border border-deeppurple-200 rounded-md flex items-center justify-center text-sm text-deeppurple-700">
+                        1
+                      </div>
+                      <div className="w-8 h-8 bg-deeppurple-100 border border-deeppurple-200 rounded-md flex items-center justify-center text-sm text-deeppurple-700">
+                        2
+                      </div>
+                      <div className="w-8 h-8 bg-deeppurple-100 border border-deeppurple-200 rounded-md flex items-center justify-center text-sm text-deeppurple-700">
+                        3
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+
+        {/* Medium Gaps (2.5-5) */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">중간 간격</h3>
+          <div className="space-y-8">
+            {Object.entries(spacing.gap)
+              .filter(([key]) => {
+                const value = parseFloat(key.replace("gap-", ""));
+                return value > 2 && value <= 5;
+              })
+              .map(([key, value]) => (
+                <div key={key} className="space-y-2">
+                  <div className="flex items-center gap-4">
+                    <div className="w-20 font-medium">{key}</div>
+                    <div className="text-sm text-gray-500">{value}</div>
+                  </div>
+                  <div className="flex items-center bg-gray-50 p-4 border border-gray-200 rounded-lg">
+                    <div className="flex" style={{ gap: value }}>
+                      <div className="w-10 h-10 bg-deeppurple-100 border border-deeppurple-200 rounded-md flex items-center justify-center text-sm text-deeppurple-700">
+                        1
+                      </div>
+                      <div className="w-10 h-10 bg-deeppurple-100 border border-deeppurple-200 rounded-md flex items-center justify-center text-sm text-deeppurple-700">
+                        2
+                      </div>
+                      <div className="w-10 h-10 bg-deeppurple-100 border border-deeppurple-200 rounded-md flex items-center justify-center text-sm text-deeppurple-700">
+                        3
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+
+        {/* Large Gaps (6-16) */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">큰 간격</h3>
+          <div className="space-y-8">
+            {Object.entries(spacing.gap)
+              .filter(([key]) => parseFloat(key.replace("gap-", "")) > 5)
+              .map(([key, value]) => (
+                <div key={key} className="space-y-2">
+                  <div className="flex items-center gap-4">
+                    <div className="w-20 font-medium">{key}</div>
+                    <div className="text-sm text-gray-500">{value}</div>
+                  </div>
+                  <div className="flex items-center bg-gray-50 p-4 border border-gray-200 rounded-lg">
+                    <div className="flex" style={{ gap: value }}>
+                      <div className="w-12 h-12 bg-deeppurple-100 border border-deeppurple-200 rounded-md flex items-center justify-center text-sm text-deeppurple-700">
+                        1
+                      </div>
+                      <div className="w-12 h-12 bg-deeppurple-100 border border-deeppurple-200 rounded-md flex items-center justify-center text-sm text-deeppurple-700">
+                        2
+                      </div>
+                      <div className="w-12 h-12 bg-deeppurple-100 border border-deeppurple-200 rounded-md flex items-center justify-center text-sm text-deeppurple-700">
+                        3
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+
+        {/* Usage Examples */}
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">사용 예시</h3>
+          <div className="space-y-8">
+            {/* Button Group Example */}
+            <div className="space-y-2">
+              <div className="text-sm font-medium text-gray-600">버튼 그룹</div>
+              <div className="flex" style={{ gap: spacing.gap["gap-2"] }}>
+                <button className="px-4 py-2 bg-deeppurple-600 text-white rounded-md">
+                  저장
+                </button>
+                <button className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-md">
+                  취소
+                </button>
+              </div>
+            </div>
+
+            {/* Form Fields Example */}
+            <div className="space-y-2">
+              <div className="text-sm font-medium text-gray-600">폼 필드</div>
+              <div
+                className="flex flex-col"
+                style={{ gap: spacing.gap["gap-4"] }}
+              >
+                <input
+                  type="text"
+                  placeholder="이름"
+                  className="px-4 py-2 border border-gray-200 rounded-md"
+                />
+                <input
+                  type="email"
+                  placeholder="이메일"
+                  className="px-4 py-2 border border-gray-200 rounded-md"
+                />
+              </div>
+            </div>
+
+            {/* Card Grid Example */}
+            <div className="space-y-2">
+              <div className="text-sm font-medium text-gray-600">
+                카드 그리드
+              </div>
+              <div
+                className="grid grid-cols-3"
+                style={{ gap: spacing.gap["gap-6"] }}
+              >
+                <div className="p-4 bg-white border border-gray-200 rounded-lg">
+                  카드 1
+                </div>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg">
+                  카드 2
+                </div>
+                <div className="p-4 bg-white border border-gray-200 rounded-lg">
+                  카드 3
+                </div>
+              </div>
             </div>
           </div>
         </div>

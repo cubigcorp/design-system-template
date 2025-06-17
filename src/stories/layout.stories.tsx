@@ -3,6 +3,7 @@ import "../app/globals.css";
 import { radius } from "../tokens/radius";
 import { spacing } from "../tokens/spacing";
 import { shadow } from "../tokens/shadow";
+import brandColor from "../tokens/brandColor";
 
 const RadiusDemo = () => {
   return null;
@@ -389,10 +390,14 @@ export const Shadow: Story = {
                   <div className="text-sm text-gray-500">{value}</div>
                 </div>
                 <div
-                  className="h-24 bg-white rounded-lg p-4 flex items-center justify-center border border-gray-200"
-                  style={{ boxShadow: value }}
+                  className="h-24 rounded-lg p-4 flex items-center justify-center"
+                  style={{
+                    boxShadow: value,
+                    backgroundColor:
+                      brandColor.light["bg-brand-primary-pressed"],
+                  }}
                 >
-                  <span className="text-gray-500">Sample Content</span>
+                  <span className="text-white">시작하기</span>
                 </div>
               </div>
             ))}
@@ -416,10 +421,14 @@ export const Shadow: Story = {
                   <div className="text-sm text-gray-400">{value}</div>
                 </div>
                 <div
-                  className="h-24 bg-gray-900 rounded-lg p-4 flex items-center justify-center border border-gray-700"
-                  style={{ boxShadow: value }}
+                  className="h-24 rounded-lg p-4 flex items-center justify-center"
+                  style={{
+                    boxShadow: value,
+                    backgroundColor:
+                      brandColor.dark["bg-brand-primary-pressed"],
+                  }}
                 >
-                  <span className="text-gray-400">Sample Content</span>
+                  <span className="text-white">시작하기</span>
                 </div>
               </div>
             ))}

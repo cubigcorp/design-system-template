@@ -3045,9 +3045,7 @@ export const Layer: Story = {
                   backgroundColor: layerColor.dark["bg-layer-fill"],
                 }}
               />
-              <span className="font-medium text-white">
-                color-bg-layer-fill
-              </span>
+              <span className="font-medium text-white">color--fill</span>
             </div>
             <span className="text-sm text-gray-400">gray-950</span>
           </div>

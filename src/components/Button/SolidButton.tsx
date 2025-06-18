@@ -15,7 +15,7 @@ const StyledButton = styled.button<ButtonStyleProps>`
   gap: 6px;
   border: none;
   border-radius: ${radius["rounded-2"]};
-  font-weight: ${fontWeight["600"]};
+  font-weight: ${fontWeight["500"]};
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 

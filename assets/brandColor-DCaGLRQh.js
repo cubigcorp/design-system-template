@@ -1,1 +1,0 @@
-import{c as r}from"./color-DPnMDUZi.js";const e={light:{"fg-brand-primary":r.deeppurple[800],"bg-brand-primary-default":r.deeppurple[800],"bg-brand-primary-pressed":r.deeppurple[900]},dark:{"fg-brand-primary":r.deeppurple[800],"bg-brand-primary-default":r.deeppurple[800],"bg-brand-primary-pressed":r.deeppurple[700]}};export{e as b};

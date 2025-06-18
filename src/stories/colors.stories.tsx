@@ -1378,6 +1378,18 @@ export const Brand: Story = {
               />
               <span className="font-medium">color-fg-brand-primary</span>
             </div>
+            <span className="text-sm text-gray-500">deeppurple-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{
+                  backgroundColor: brandColor.light["fg-brand-strong"],
+                }}
+              />
+              <span className="font-medium">color-fg-brand-strong</span>
+            </div>
             <span className="text-sm text-gray-500">deeppurple-800</span>
           </div>
           <div className="flex items-center justify-between">
@@ -1431,7 +1443,19 @@ export const Brand: Story = {
                 color-fg-brand-primary
               </span>
             </div>
-            <span className="text-sm text-gray-400">deeppurple-800</span>
+            <span className="text-sm text-gray-400">deeppurple-500</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div
+                className="w-4 h-4 rounded-full"
+                style={{ backgroundColor: brandColor.dark["fg-brand-strong"] }}
+              />
+              <span className="font-medium text-white">
+                color-fg-brand-strong
+              </span>
+            </div>
+            <span className="text-sm text-gray-400">deeppurple-50</span>
           </div>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">

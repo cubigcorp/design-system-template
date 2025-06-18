@@ -67,6 +67,28 @@ export const Radius: Story = {
           </div>
         </div>
 
+        {/* rounded-1.5: 작은 컴포넌트, 입력 필드 */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <div className="font-medium">rounded-1.5</div>
+            <div className="text-sm text-gray-500">6px</div>
+          </div>
+          <div className="flex gap-4 items-center">
+            <input
+              type="text"
+              placeholder="입력 필드"
+              className="px-3 py-2 border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-deeppurple-500 focus:border-transparent"
+              style={{ borderRadius: radius["rounded-1.5"] }}
+            />
+            <div
+              className="px-3 py-2 bg-gray-100 border border-gray-200 text-sm"
+              style={{ borderRadius: radius["rounded-1.5"] }}
+            >
+              작은 컴포넌트
+            </div>
+          </div>
+        </div>
+
         {/* rounded-2: 버튼, 중첩된 컴포넌트 */}
         <div className="space-y-3">
           <div className="flex items-center gap-2">

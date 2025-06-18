@@ -62,18 +62,21 @@ const StyledButton = styled.button<ButtonStyleProps>`
           padding: 6px 12px;
           height: 32px;
           font-size: ${fontSize.t4[0]};
+          font-weight: ${fontWeight["500"]};
         `;
       case "large":
         return css`
           padding: 12px 16px;
           height: 48px;
           font-size: ${fontSize.t5[0]};
+          font-weight: ${fontWeight["500"]};
         `;
       default:
         return css`
           padding: 8px 16px;
           height: 40px;
-          font-size: ${fontSize.t4[0]};
+          font-size: ${fontSize.t5[0]};
+          font-weight: ${fontWeight["500"]};
         `;
     }
   }}
@@ -175,7 +178,7 @@ const StyledButton = styled.button<ButtonStyleProps>`
             case "pressed":
               return color.green["300"];
             default:
-              return color.green["400"];
+              return color.green["500"];
           }
         default:
           return color.gray["800"];
@@ -215,11 +218,16 @@ const StyledButton = styled.button<ButtonStyleProps>`
   ${({ disabled, variant = "primary" }) =>
     disabled &&
     css`
-      background-color: ${color.gray["50"]} !important;
+      background-color: ${variant === "primary"
+        ? color.gray["900"]
+        : color.gray["50"]} !important;
       border-color: ${variant === "primary"
         ? color.gray["800"]
         : borderColor.light["color-border-primary"]} !important;
-      color: ${textColor.light["fg-neutral-disable"]} !important;
+      color: ${variant === "primary"
+        ? textColor.light["fg-neutral-alternative"]
+        : textColor.light["fg-neutral-disable"]} !important;
+      pointer-events: none;
       cursor: not-allowed;
     `}
 
@@ -313,10 +321,15 @@ export const SolidButton = ({
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
-      {leadingIcon}
-      {!iconOnly && label}
-      {trailingIcon}
-      {loading && <Spinner />}
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          {leadingIcon}
+          {!iconOnly && label}
+          {trailingIcon}
+        </>
+      )}
     </StyledButton>
   );
 };

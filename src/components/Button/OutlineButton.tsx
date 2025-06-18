@@ -51,18 +51,21 @@ const StyledButton = styled.button<ButtonStyleProps>`
           padding: 6px 12px;
           height: 32px;
           font-size: ${fontSize.t4[0]};
+          font-weight: ${fontWeight["500"]};
         `;
       case "large":
         return css`
           padding: 12px 16px;
           height: 48px;
           font-size: ${fontSize.t5[0]};
+          font-weight: ${fontWeight["500"]};
         `;
       default:
         return css`
           padding: 8px 16px;
           height: 40px;
-          font-size: ${fontSize.t4[0]};
+          font-size: ${fontSize.t5[0]};
+          font-weight: ${fontWeight["500"]};
         `;
     }
   }}

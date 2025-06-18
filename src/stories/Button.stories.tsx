@@ -62,10 +62,16 @@ export const SolidLoading: Story = {
 export const Outline: Story = {
   render: (args) => <OutlineButton {...args} />,
   args: {
-    variant: "primary",
+    variant: "secondary",
     size: "medium",
     state: "default",
     label: "Button",
+  },
+  argTypes: {
+    variant: {
+      control: { type: "radio" },
+      options: ["secondary", "brand", "positive", "negative"],
+    },
   },
 };
 
@@ -75,6 +81,9 @@ export const OutlineWithIcon: Story = {
     ...Outline.args,
     leadingIcon: <span>🚀</span>,
   },
+  argTypes: {
+    ...Outline.argTypes,
+  },
 };
 
 export const OutlineDisabled: Story = {
@@ -82,6 +91,9 @@ export const OutlineDisabled: Story = {
   args: {
     ...Outline.args,
     disabled: true,
+  },
+  argTypes: {
+    ...Outline.argTypes,
   },
 };
 
@@ -91,16 +103,25 @@ export const OutlineLoading: Story = {
     ...Outline.args,
     loading: true,
   },
+  argTypes: {
+    ...Outline.argTypes,
+  },
 };
 
 // Text Button Stories
 export const Text: Story = {
   render: (args) => <TextButton {...args} />,
   args: {
-    variant: "primary",
+    variant: "secondary",
     size: "medium",
     state: "default",
     label: "Button",
+  },
+  argTypes: {
+    variant: {
+      control: { type: "radio" },
+      options: ["secondary", "brand", "positive", "negative"],
+    },
   },
 };
 
@@ -110,6 +131,9 @@ export const TextWithIcon: Story = {
     ...Text.args,
     leadingIcon: <span>🚀</span>,
   },
+  argTypes: {
+    ...Text.argTypes,
+  },
 };
 
 export const TextDisabled: Story = {
@@ -118,6 +142,9 @@ export const TextDisabled: Story = {
     ...Text.args,
     disabled: true,
   },
+  argTypes: {
+    ...Text.argTypes,
+  },
 };
 
 export const TextLoading: Story = {
@@ -125,5 +152,8 @@ export const TextLoading: Story = {
   args: {
     ...Text.args,
     loading: true,
+  },
+  argTypes: {
+    ...Text.argTypes,
   },
 };

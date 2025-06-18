@@ -4,6 +4,13 @@ import color from "../../tokens/color";
 import { radius } from "../../tokens/radius";
 import fontWeight from "../../tokens/fontWeight";
 import fontSize from "../../tokens/fontSize";
+import { Spinner } from "./Spinner";
+import React from "react";
+import { borderColor } from "../../tokens/borderColor";
+import textColor from "../../tokens/textColor";
+import brandColor from "../../tokens/brandColor";
+import positiveColor from "../../tokens/positiveColor";
+import negativeColor from "../../tokens/negativeColor";
 
 const StyledButton = styled.button<ButtonStyleProps>`
   // 기본 스타일
@@ -13,7 +20,7 @@ const StyledButton = styled.button<ButtonStyleProps>`
   gap: 6px;
   background: transparent;
   border-radius: ${radius["rounded-2"]};
-  font-weight: ${fontWeight["600"]};
+  font-weight: ${fontWeight["500"]};
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
@@ -26,21 +33,30 @@ const StyledButton = styled.button<ButtonStyleProps>`
             padding: 12px;
             width: 32px;
             height: 32px;
-            font-size: ${fontSize.t4[0]};
+            svg {
+              width: 16px;
+              height: 16px;
+            }
           `;
         case "large":
           return css`
             padding: 8px;
             width: 48px;
             height: 48px;
-            font-size: ${fontSize.t5[0]};
+            svg {
+              width: 24px;
+              height: 24px;
+            }
           `;
         default:
           return css`
             padding: 10px;
             width: 40px;
             height: 40px;
-            font-size: ${fontSize.t4[0]};
+            svg {
+              width: 20px;
+              height: 20px;
+            }
           `;
       }
     }
@@ -74,36 +90,38 @@ const StyledButton = styled.button<ButtonStyleProps>`
   ${({ variant = "primary", state = "default" }) => {
     const getBorderColor = () => {
       switch (variant) {
-        case "primary":
-          return state === "hovered"
-            ? color.blue["600"]
-            : state === "pressed"
-            ? color.blue["700"]
-            : color.blue["500"];
         case "secondary":
-          return state === "hovered"
-            ? color.gray["800"]
-            : state === "pressed"
-            ? color.gray["900"]
-            : color.gray["700"];
+          switch (state) {
+            case "focused":
+              return borderColor.light["color-border-focused"];
+            default:
+              return borderColor.light["color-border-primary"];
+          }
         case "brand":
-          return state === "hovered"
-            ? color.deeppurple["600"]
-            : state === "pressed"
-            ? color.deeppurple["700"]
-            : color.deeppurple["500"];
+          switch (state) {
+            case "focused":
+              return borderColor.light["color-border-brand"];
+            default:
+              return color.deeppurple["200"];
+          }
         case "positive":
-          return state === "hovered"
-            ? color.green["600"]
-            : state === "pressed"
-            ? color.green["700"]
-            : color.green["500"];
+          switch (state) {
+            case "hovered":
+              return color.green["400"];
+            case "pressed":
+              return color.green["300"];
+            case "focused":
+              return color.green["400"];
+            default:
+              return color.green["500"];
+          }
         case "negative":
-          return state === "hovered"
-            ? color.red["600"]
-            : state === "pressed"
-            ? color.red["700"]
-            : color.red["500"];
+          switch (state) {
+            case "focused":
+              return borderColor.light["color-border-negative"];
+            default:
+              return color.red["200"];
+          }
         default:
           return color.blue["500"];
       }
@@ -111,59 +129,68 @@ const StyledButton = styled.button<ButtonStyleProps>`
 
     const getTextColor = () => {
       switch (variant) {
-        case "primary":
-          return state === "hovered"
-            ? color.blue["600"]
-            : state === "pressed"
-            ? color.blue["700"]
-            : color.blue["500"];
         case "secondary":
-          return state === "hovered"
-            ? color.gray["800"]
-            : state === "pressed"
-            ? color.gray["900"]
-            : color.gray["700"];
+          return textColor.light["fg-neutral-strong"];
         case "brand":
-          return state === "hovered"
-            ? color.deeppurple["600"]
-            : state === "pressed"
-            ? color.deeppurple["700"]
-            : color.deeppurple["500"];
+          return brandColor.light["fg-brand-strong"];
         case "positive":
-          return state === "hovered"
-            ? color.green["600"]
-            : state === "pressed"
-            ? color.green["700"]
-            : color.green["500"];
+          return positiveColor.light["fg-positive-strong"];
         case "negative":
-          return state === "hovered"
-            ? color.red["600"]
-            : state === "pressed"
-            ? color.red["700"]
-            : color.red["500"];
+          return negativeColor.light["fg-negative-strong"];
         default:
           return color.blue["500"];
       }
     };
 
     const getBackgroundColor = () => {
-      if (state === "hovered") {
-        switch (variant) {
-          case "primary":
-            return `${color.blue["500"]}0A`;
-          case "secondary":
-            return `${color.gray["700"]}0A`;
-          case "brand":
-            return `${color.deeppurple["500"]}0A`;
-          case "positive":
-            return `${color.green["500"]}0A`;
-          case "negative":
-            return `${color.red["500"]}0A`;
-          default:
-            return `${color.blue["500"]}0A`;
-        }
+      switch (variant) {
+        case "secondary":
+          switch (state) {
+            case "hovered":
+              return `${color.gray["950"]}0D`; // 5% opacity
+            case "pressed":
+              return `${color.gray["950"]}14`; // 8% opacity
+            case "focused":
+              return `${color.gray["950"]}1F`; // 12% opacity
+            default:
+              return "transparent"; // 0% opacity
+          }
+        case "brand":
+          switch (state) {
+            case "hovered":
+              return `${color.deeppurple["800"]}0D`; // 5% opacity (bg-accent-deeppurple)
+            case "pressed":
+              return `${color.deeppurple["800"]}14`; // 8% opacity
+            case "focused":
+              return `${color.deeppurple["800"]}1F`; // 12% opacity
+            default:
+              return "transparent"; // 0% opacity
+          }
+        case "positive":
+          switch (state) {
+            case "hovered":
+              return `${positiveColor.light["bg-positive-primary-default"]}0D`; // 5% opacity (bg-accent-green)
+            case "pressed":
+              return `${positiveColor.light["bg-positive-primary-default"]}14`; // 8% opacity
+            case "focused":
+              return `${positiveColor.light["bg-positive-primary-default"]}1F`; // 12% opacity
+            default:
+              return "transparent"; // 0% opacity
+          }
+        case "negative":
+          switch (state) {
+            case "hovered":
+              return `${negativeColor.light["bg-negative-primary-default"]}0D`; // 5% opacity (bg-accent-red)
+            case "pressed":
+              return `${negativeColor.light["bg-negative-primary-default"]}14`; // 8% opacity
+            case "focused":
+              return `${negativeColor.light["bg-negative-primary-default"]}1F`; // 12% opacity
+            default:
+              return "transparent"; // 0% opacity
+          }
+        default:
+          return "transparent";
       }
-      return "transparent";
     };
 
     return css`
@@ -182,10 +209,11 @@ const StyledButton = styled.button<ButtonStyleProps>`
   ${({ disabled }) =>
     disabled &&
     css`
-      border-color: ${color.gray["300"]} !important;
-      color: ${color.gray["500"]} !important;
+      border-color: ${borderColor.light["color-border-primary"]} !important;
+      color: ${textColor.light["fg-neutral-disable"]} !important;
       cursor: not-allowed;
-      background-color: transparent !important;
+      background-color: ${color.gray["50"]} !important;
+      pointer-events: none;
     `}
 
   // 로딩 상태
@@ -193,7 +221,7 @@ const StyledButton = styled.button<ButtonStyleProps>`
     loading &&
     css`
       cursor: wait;
-      opacity: 0.7;
+      pointer-events: none;
     `}
 
   // 아이콘 전용 버튼
@@ -218,20 +246,75 @@ export const OutlineButton = ({
   onClick,
   className,
 }: ButtonProps) => {
+  const [interactionState, setInteractionState] = React.useState(state);
+
+  // state prop이 변경되면 interactionState도 업데이트
+  React.useEffect(() => {
+    setInteractionState(state);
+  }, [state]);
+
+  const handleMouseEnter = () => {
+    if (!disabled && !loading && state === "default") {
+      setInteractionState("hovered");
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!disabled && !loading) {
+      setInteractionState(state);
+    }
+  };
+
+  const handleMouseDown = () => {
+    if (!disabled && !loading && state === "default") {
+      setInteractionState("pressed");
+    }
+  };
+
+  const handleMouseUp = () => {
+    if (!disabled && !loading && state === "default") {
+      setInteractionState("hovered");
+    }
+  };
+
+  const handleFocus = () => {
+    if (!disabled && !loading && state === "default") {
+      setInteractionState("focused");
+    }
+  };
+
+  const handleBlur = () => {
+    if (!disabled && !loading) {
+      setInteractionState(state);
+    }
+  };
+
   return (
     <StyledButton
       variant={variant}
       size={size}
-      state={state}
+      state={state !== "default" ? state : interactionState}
       disabled={disabled}
       loading={loading}
       iconOnly={iconOnly}
       onClick={onClick}
       className={className}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
     >
-      {leadingIcon}
-      {!iconOnly && label}
-      {trailingIcon}
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          {leadingIcon}
+          {!iconOnly && label}
+          {trailingIcon}
+        </>
+      )}
     </StyledButton>
   );
 };

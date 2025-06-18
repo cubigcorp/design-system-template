@@ -7,6 +7,7 @@ import fontSize from "../../tokens/fontSize";
 import { borderColor } from "../../tokens/borderColor";
 import textColor from "../../tokens/textColor";
 import { Spinner } from "./Spinner";
+import React from "react";
 
 const StyledButton = styled.button<ButtonStyleProps>`
   display: inline-flex;
@@ -252,26 +253,70 @@ export const SolidButton = ({
   onClick,
   className,
 }: ButtonProps) => {
+  const [interactionState, setInteractionState] = React.useState(state);
+
+  // state prop이 변경되면 interactionState도 업데이트
+  React.useEffect(() => {
+    setInteractionState(state);
+  }, [state]);
+
+  const handleMouseEnter = () => {
+    if (!disabled && !loading && state === "default") {
+      setInteractionState("hovered");
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!disabled && !loading) {
+      setInteractionState(state);
+    }
+  };
+
+  const handleMouseDown = () => {
+    if (!disabled && !loading && state === "default") {
+      setInteractionState("pressed");
+    }
+  };
+
+  const handleMouseUp = () => {
+    if (!disabled && !loading && state === "default") {
+      setInteractionState("hovered");
+    }
+  };
+
+  const handleFocus = () => {
+    if (!disabled && !loading && state === "default") {
+      setInteractionState("focused");
+    }
+  };
+
+  const handleBlur = () => {
+    if (!disabled && !loading) {
+      setInteractionState(state);
+    }
+  };
+
   return (
     <StyledButton
       variant={variant}
       size={size}
-      state={state}
+      state={state !== "default" ? state : interactionState}
       disabled={disabled}
       loading={loading}
       iconOnly={iconOnly}
       onClick={onClick}
       className={className}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
     >
-      {loading ? (
-        <Spinner size={size} />
-      ) : (
-        <>
-          {leadingIcon}
-          {!iconOnly && label}
-          {trailingIcon}
-        </>
-      )}
+      {leadingIcon}
+      {!iconOnly && label}
+      {trailingIcon}
+      {loading && <Spinner />}
     </StyledButton>
   );
 };

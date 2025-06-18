@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 import { SolidButton } from "../components/Button/SolidButton";
 import { OutlineButton } from "../components/Button/OutlineButton";
 import { TextButton } from "../components/Button/TextButton";
-import { ButtonProps } from "../components/Button/types";
+import type { ButtonProps } from "../components/Button/types";
 
 // 메타데이터 정의
 const meta = {
@@ -11,6 +11,12 @@ const meta = {
   tags: ["autodocs"],
   parameters: {
     layout: "centered",
+    docs: {
+      description: {
+        component:
+          "state가 'default'일 때 마우스를 올리면(hover) 'hovered', 클릭하면(press) 'pressed', 포커스하면(focus) 'focused' 상태로 변경됩니다. state prop으로 특정 상태를 직접 지정할 수도 있습니다.",
+      },
+    },
   },
 } satisfies Meta<typeof SolidButton>;
 

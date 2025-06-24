@@ -105,7 +105,7 @@ const StyledButton = styled.button<ButtonStyleProps>`
             case "focused":
               return color.gray["200"];
             default:
-              return color.gray["25"];
+              return color.common["100"];
           }
         case "brand":
           switch (state) {

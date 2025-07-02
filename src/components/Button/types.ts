@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { SVGProps } from "react";
 
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonState = "default" | "hovered" | "pressed" | "focused";
@@ -18,8 +18,8 @@ export interface ButtonStyleProps {
 }
 
 export interface ButtonProps extends ButtonStyleProps {
-  leadingIcon?: ReactNode;
-  trailingIcon?: ReactNode;
+  leadingIcon?: React.ComponentType<SVGProps<SVGSVGElement>>;
+  trailingIcon?: React.ComponentType<SVGProps<SVGSVGElement>>;
   label: string;
   onClick?: () => void;
   className?: string;

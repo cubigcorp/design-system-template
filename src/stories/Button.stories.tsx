@@ -1,8 +1,27 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
+import React from "react";
 import { SolidButton } from "../components/Button/SolidButton";
 import { OutlineButton } from "../components/Button/OutlineButton";
 import { TextButton } from "../components/Button/TextButton";
 import type { ButtonProps } from "../components/Button/types";
+
+// 테스트용 SVG 아이콘 컴포넌트
+const RocketIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M4.5 16.5c-1.5 1.5-2 4.5-2 4.5s3-0.5 4.5-2c0.08-0.08 0.96-0.92 1.5-1.5" />
+    <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+    <path d="M9 12H4s0.55-3.03 2-4.5C6.62 6.96 9 7 9 7" />
+    <path d="M12 15v5s3.03-0.55 4.5-2c0.54-0.54 0.5-2.5 0.5-2.5" />
+  </svg>
+);
 
 // 메타데이터 정의
 const meta = {
@@ -38,7 +57,7 @@ export const SolidWithIcon: Story = {
   render: (args) => <SolidButton {...args} />,
   args: {
     ...Solid.args,
-    leadingIcon: <span>🚀</span>,
+    leadingIcon: RocketIcon,
   },
 };
 
@@ -79,7 +98,7 @@ export const OutlineWithIcon: Story = {
   render: (args) => <OutlineButton {...args} />,
   args: {
     ...Outline.args,
-    leadingIcon: <span>🚀</span>,
+    leadingIcon: RocketIcon,
   },
   argTypes: {
     ...Outline.argTypes,
@@ -129,7 +148,7 @@ export const TextWithIcon: Story = {
   render: (args) => <TextButton {...args} />,
   args: {
     ...Text.args,
-    leadingIcon: <span>🚀</span>,
+    leadingIcon: RocketIcon,
   },
   argTypes: {
     ...Text.argTypes,

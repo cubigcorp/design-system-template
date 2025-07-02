@@ -34,6 +34,11 @@ const StyledButton = styled.button<ButtonStyleProps>`
           height: 32px;
           font-size: ${fontSize.t4[0]};
           font-weight: ${fontWeight["500"]};
+
+          svg {
+            width: 16px;
+            height: 16px;
+          }
         `;
       case "large":
         return css`
@@ -41,6 +46,11 @@ const StyledButton = styled.button<ButtonStyleProps>`
           height: 48px;
           font-size: ${fontSize.t5[0]};
           font-weight: ${fontWeight["500"]};
+
+          svg {
+            width: 24px;
+            height: 24px;
+          }
         `;
       default:
         return css`
@@ -48,6 +58,11 @@ const StyledButton = styled.button<ButtonStyleProps>`
           height: 40px;
           font-size: ${fontSize.t5[0]};
           font-weight: ${fontWeight["500"]};
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
         `;
     }
   }}
@@ -266,9 +281,9 @@ export const OutlineButton = ({
         <Spinner />
       ) : (
         <>
-          {leadingIcon}
+          {leadingIcon && React.createElement(leadingIcon)}
           {label}
-          {trailingIcon}
+          {trailingIcon && React.createElement(trailingIcon)}
         </>
       )}
     </StyledButton>

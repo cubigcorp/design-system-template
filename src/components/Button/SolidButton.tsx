@@ -6,6 +6,7 @@ import fontWeight from "../../tokens/fontWeight";
 import fontSize from "../../tokens/fontSize";
 import { borderColor } from "../../tokens/borderColor";
 import textColor from "../../tokens/textColor";
+import { spacing } from "../../tokens/spacing";
 import { Spinner } from "./Spinner";
 import React from "react";
 
@@ -13,7 +14,7 @@ const StyledButton = styled.button<ButtonStyleProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: ${spacing.gap["gap-1"]};
   border: none;
   border-radius: ${radius["rounded-2"]};
   font-weight: ${fontWeight["500"]};

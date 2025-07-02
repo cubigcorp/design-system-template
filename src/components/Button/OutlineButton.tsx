@@ -7,6 +7,7 @@ import fontSize from "../../tokens/fontSize";
 import { Spinner } from "./Spinner";
 import React from "react";
 import { borderColor } from "../../tokens/borderColor";
+import { spacing } from "../../tokens/spacing";
 import textColor from "../../tokens/textColor";
 import brandColor from "../../tokens/brandColor";
 import positiveColor from "../../tokens/positiveColor";
@@ -17,7 +18,7 @@ const StyledButton = styled.button<ButtonStyleProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: ${spacing.gap["gap-1"]};
   background: transparent;
   border-radius: ${radius["rounded-2"]};
   font-weight: ${fontWeight["500"]};

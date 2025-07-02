@@ -26,42 +26,7 @@ const StyledButton = styled.button<ButtonStyleProps>`
   transition: all 0.2s ease-in-out;
 
   // 크기 변형
-  ${({ size = "medium", iconOnly = false }) => {
-    if (iconOnly) {
-      switch (size) {
-        case "small":
-          return css`
-            padding: 12px;
-            width: 32px;
-            height: 32px;
-            svg {
-              width: 16px;
-              height: 16px;
-            }
-          `;
-        case "large":
-          return css`
-            padding: 8px;
-            width: 48px;
-            height: 48px;
-            svg {
-              width: 24px;
-              height: 24px;
-            }
-          `;
-        default:
-          return css`
-            padding: 10px;
-            width: 40px;
-            height: 40px;
-            svg {
-              width: 20px;
-              height: 20px;
-            }
-          `;
-      }
-    }
-
+  ${({ size = "medium" }) => {
     switch (size) {
       case "small":
         return css`
@@ -202,14 +167,6 @@ const StyledButton = styled.button<ButtonStyleProps>`
       cursor: wait;
       pointer-events: none;
     `}
-
-  // 아이콘 전용 버튼
-  ${({ iconOnly, size = "medium" }) =>
-    iconOnly &&
-    css`
-      padding: ${size === "small" ? "8px" : size === "large" ? "12px" : "10px"};
-      width: ${size === "small" ? "32px" : size === "large" ? "48px" : "40px"};
-    `}
 `;
 
 export const TextButton = ({
@@ -218,7 +175,6 @@ export const TextButton = ({
   state = "default",
   disabled = false,
   loading = false,
-  iconOnly = false,
   leadingIcon,
   trailingIcon,
   label,
@@ -275,7 +231,6 @@ export const TextButton = ({
       state={state !== "default" ? state : interactionState}
       disabled={disabled}
       loading={loading}
-      iconOnly={iconOnly}
       onClick={onClick}
       className={className}
       onMouseEnter={handleMouseEnter}
@@ -290,7 +245,7 @@ export const TextButton = ({
       ) : (
         <>
           {leadingIcon}
-          {!iconOnly && label}
+          {label}
           {trailingIcon}
         </>
       )}

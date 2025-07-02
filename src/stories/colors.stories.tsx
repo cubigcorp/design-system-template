@@ -1855,7 +1855,7 @@ export const Negative: Story = {
               <div
                 className="w-4 h-4 rounded-full"
                 style={{
-                  backgroundColor: negativeColor.light["fg-negative"],
+                  backgroundColor: negativeColor.light["fg-negative-primary"],
                 }}
               />
               <span className="font-medium">color-fg-negative</span>
@@ -1922,7 +1922,7 @@ export const Negative: Story = {
               <div
                 className="w-4 h-4 rounded-full"
                 style={{
-                  backgroundColor: negativeColor.dark["fg-negative"],
+                  backgroundColor: negativeColor.dark["fg-negative-primary"],
                 }}
               />
               <span className="font-medium text-white">color-fg-negative</span>

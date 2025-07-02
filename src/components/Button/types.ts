@@ -15,7 +15,6 @@ export interface ButtonStyleProps {
   state?: ButtonState;
   disabled?: boolean;
   loading?: boolean;
-  iconOnly?: boolean;
 }
 
 export interface ButtonProps extends ButtonStyleProps {

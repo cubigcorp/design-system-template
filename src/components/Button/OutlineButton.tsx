@@ -206,6 +206,10 @@ const StyledButton = styled.button<ButtonStyleProps>`
     `}
 `;
 
+const TextWrapper = styled.span`
+  padding: 0 ${spacing.gap["gap-0.5"]};
+`;
+
 export const OutlineButton = ({
   variant = "primary",
   size = "medium",
@@ -282,7 +286,7 @@ export const OutlineButton = ({
       ) : (
         <>
           {leadingIcon && React.createElement(leadingIcon)}
-          {label}
+          <TextWrapper>{label}</TextWrapper>
           {trailingIcon && React.createElement(trailingIcon)}
         </>
       )}

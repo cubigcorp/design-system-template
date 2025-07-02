@@ -221,6 +221,10 @@ const StyledButton = styled.button<ButtonStyleProps>`
     `}
 `;
 
+const TextWrapper = styled.span`
+  padding: 0 ${spacing.gap["gap-0.5"]};
+`;
+
 export const SolidButton = ({
   variant = "primary",
   size = "medium",
@@ -297,7 +301,7 @@ export const SolidButton = ({
       ) : (
         <>
           {leadingIcon && React.createElement(leadingIcon)}
-          {label}
+          <TextWrapper>{label}</TextWrapper>
           {trailingIcon && React.createElement(trailingIcon)}
         </>
       )}

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/nextjs";
 import "../app/globals.css";
 import "../styles/fonts.css";
 import "../styles/display.css";

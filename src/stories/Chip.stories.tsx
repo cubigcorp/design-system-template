@@ -33,6 +33,18 @@ const meta = {
     text: {
       control: { type: "text" },
     },
+    radius: {
+      control: { type: "select" },
+      options: [
+        "rounded-1",
+        "rounded-1.5",
+        "rounded-2",
+        "rounded-3",
+        "rounded-4",
+        "rounded-5",
+        "rounded-full",
+      ],
+    },
   },
   args: {
     text: "텍스트",
@@ -399,6 +411,115 @@ export const AllStates: Story = {
       description: {
         story:
           "Chip의 모든 상태를 보여주는 예시 (Default, Hovered, Pressed, Focused, Disabled)",
+      },
+    },
+  },
+};
+
+export const RadiusVariations: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        gap: "16px",
+        alignItems: "center",
+        flexWrap: "wrap",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ fontSize: "12px", color: "#666" }}>rounded-1 (4px)</span>
+        <Chip radius="rounded-1" text="텍스트" />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ fontSize: "12px", color: "#666" }}>
+          rounded-1.5 (6px)
+        </span>
+        <Chip radius="rounded-1.5" text="텍스트" />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ fontSize: "12px", color: "#666" }}>rounded-2 (8px)</span>
+        <Chip radius="rounded-2" text="텍스트" />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ fontSize: "12px", color: "#666" }}>
+          rounded-3 (12px)
+        </span>
+        <Chip radius="rounded-3" text="텍스트" />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ fontSize: "12px", color: "#666" }}>
+          rounded-4 (16px)
+        </span>
+        <Chip radius="rounded-4" text="텍스트" />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ fontSize: "12px", color: "#666" }}>
+          rounded-5 (20px)
+        </span>
+        <Chip radius="rounded-5" text="텍스트" />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+          alignItems: "center",
+        }}
+      >
+        <span style={{ fontSize: "12px", color: "#666" }}>
+          rounded-full (9999px)
+        </span>
+        <Chip radius="rounded-full" text="텍스트" />
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Chip의 다양한 radius 값들을 보여주는 예시입니다. 기본값은 rounded-full입니다.",
       },
     },
   },

@@ -12,7 +12,7 @@ const StyledChip = styled.div<ChipStyleProps>`
   align-items: center;
   justify-content: center;
   gap: 4px;
-  border-radius: ${radius["rounded-2"]};
+  border-radius: ${({ radius: chipRadius }) => radius[chipRadius]};
   font-weight: ${fontWeight["500"]};
   white-space: nowrap;
   cursor: pointer;
@@ -93,13 +93,13 @@ const StyledChip = styled.div<ChipStyleProps>`
         switch (state) {
           case "hovered":
             return {
-              background: color.gray["100"],
+              background: color.gray["200"],
               text: textColor.light["fg-neutral-alternative"],
               border: "transparent",
             };
           case "pressed":
             return {
-              background: color.gray["200"],
+              background: color.gray["300"],
               text: textColor.light["fg-neutral-alternative"],
               border: "transparent",
             };
@@ -111,7 +111,7 @@ const StyledChip = styled.div<ChipStyleProps>`
             };
           default:
             return {
-              background: color.gray["50"],
+              background: color.gray["100"],
               text: textColor.light["fg-neutral-alternative"],
               border: "transparent",
             };
@@ -185,6 +185,7 @@ export const Chip = ({
   trailingIcon,
   onClick,
   className,
+  radius = "rounded-full",
 }: ChipProps) => {
   const [interactionState, setInteractionState] = React.useState(state);
 
@@ -235,6 +236,7 @@ export const Chip = ({
       state={state !== "default" ? state : interactionState}
       disabled={disabled}
       active={active}
+      radius={radius}
       className={className}
       onClick={onClick}
       onMouseEnter={handleMouseEnter}

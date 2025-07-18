@@ -19,35 +19,35 @@ const fontFamilies = {
 
 const typographyStyles = {
   display1: {
-    fontSize: fontSize.t13[0],
+    fontSize: fontSize.t13,
     letterSpacing: letterSpacing.lg,
     lineHeight: lineHeight.t13,
     weights: fontWeights,
     families: fontFamilies,
   },
   display2: {
-    fontSize: fontSize.t14[0],
+    fontSize: fontSize.t14,
     letterSpacing: letterSpacing.lg,
     lineHeight: lineHeight.t14,
     weights: fontWeights,
     families: fontFamilies,
   },
   display3: {
-    fontSize: fontSize.t15[0],
+    fontSize: fontSize.t15,
     letterSpacing: letterSpacing.lg,
     lineHeight: lineHeight.t15,
     weights: fontWeights,
     families: fontFamilies,
   },
   display4: {
-    fontSize: fontSize.t16[0],
+    fontSize: fontSize.t16,
     letterSpacing: letterSpacing.lg,
     lineHeight: lineHeight.t16,
     weights: fontWeights,
     families: fontFamilies,
   },
   display5: {
-    fontSize: fontSize.t17[0],
+    fontSize: fontSize.t17,
     letterSpacing: letterSpacing.lg,
     lineHeight: lineHeight.t17,
     weights: fontWeights,
@@ -55,28 +55,28 @@ const typographyStyles = {
   },
 
   title1: {
-    fontSize: fontSize.t9[0],
+    fontSize: fontSize.t9,
     letterSpacing: letterSpacing.md,
     lineHeight: lineHeight.t9,
     weights: fontWeights,
     families: fontFamilies,
   },
   title2: {
-    fontSize: fontSize.t10[0],
+    fontSize: fontSize.t10,
     letterSpacing: letterSpacing.lg,
     lineHeight: lineHeight.t10,
     weights: fontWeights,
     families: fontFamilies,
   },
   title3: {
-    fontSize: fontSize.t11[0],
+    fontSize: fontSize.t11,
     letterSpacing: letterSpacing.lg,
     lineHeight: lineHeight.t11,
     weights: fontWeights,
     families: fontFamilies,
   },
   title4: {
-    fontSize: fontSize.t12[0],
+    fontSize: fontSize.t12,
     letterSpacing: letterSpacing.lg,
     lineHeight: lineHeight.t12,
     weights: fontWeights,
@@ -84,21 +84,21 @@ const typographyStyles = {
   },
 
   heading1: {
-    fontSize: fontSize.t6[0],
+    fontSize: fontSize.t6,
     letterSpacing: letterSpacing.md,
     lineHeight: lineHeight.t6,
     weights: fontWeights,
     families: fontFamilies,
   },
   heading2: {
-    fontSize: fontSize.t7[0],
+    fontSize: fontSize.t7,
     letterSpacing: letterSpacing.md,
     lineHeight: lineHeight.t7,
     weights: fontWeights,
     families: fontFamilies,
   },
   heading3: {
-    fontSize: fontSize.t8[0],
+    fontSize: fontSize.t8,
     letterSpacing: letterSpacing.md,
     lineHeight: lineHeight.t8,
     weights: fontWeights,
@@ -106,21 +106,21 @@ const typographyStyles = {
   },
 
   body1: {
-    fontSize: fontSize.t3[0],
+    fontSize: fontSize.t3,
     letterSpacing: letterSpacing.md,
     lineHeight: lineHeight.t3,
     weights: fontWeights,
     families: fontFamilies,
   },
   body2: {
-    fontSize: fontSize.t4[0],
+    fontSize: fontSize.t4,
     letterSpacing: letterSpacing.md,
     lineHeight: lineHeight.t4,
     weights: fontWeights,
     families: fontFamilies,
   },
   body3: {
-    fontSize: fontSize.t5[0],
+    fontSize: fontSize.t5,
     letterSpacing: letterSpacing.md,
     lineHeight: lineHeight.t5,
     weights: fontWeights,
@@ -128,14 +128,14 @@ const typographyStyles = {
   },
 
   caption1: {
-    fontSize: fontSize.t1[0],
+    fontSize: fontSize.t1,
     letterSpacing: letterSpacing.md,
     lineHeight: lineHeight.t1,
     weights: fontWeights,
     families: fontFamilies,
   },
   caption2: {
-    fontSize: fontSize.t2[0],
+    fontSize: fontSize.t2,
     letterSpacing: letterSpacing.md,
     lineHeight: lineHeight.t2,
     weights: fontWeights,
@@ -164,7 +164,7 @@ const typography = (
       : style.families.sans;
 
   return `
-    font-size: ${style.fontSize};
+    font-size: ${style.fontSize[0]};
     font-weight: ${style.weights[fontWeight]};
     font-family: ${fontFamily};
     letter-spacing: ${style.letterSpacing};

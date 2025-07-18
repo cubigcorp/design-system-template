@@ -14,5 +14,13 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ["..\\public"],
+  // GitHub Pages를 위한 설정
+  viteFinal: async (config) => {
+    // GitHub Pages 환경에서는 base path 설정
+    if (process.env.NODE_ENV === "production") {
+      config.base = "/design-system-template/";
+    }
+    return config;
+  },
 };
 export default config;

@@ -12,5 +12,10 @@ export { default as fontWeight } from "./fontWeight";
 export { default as fontSize } from "./fontSize";
 export { default as lineHeight } from "./lineHeight";
 export { default as letterSpacing } from "./letterSpacing";
+export {
+  default as typography,
+  typographyCSS,
+  typography as createTypography,
+} from "./typography";
 export { radius } from "./radius";
 export { spacing } from "./spacing";

@@ -193,5 +193,5 @@ const typographyCSS = {
   caption2: typography("ko", "caption2"),
 } as const;
 
-export default typographyStyles;
-export { typographyCSS, typography };
+export default typography;
+export { typographyStyles, typographyCSS };

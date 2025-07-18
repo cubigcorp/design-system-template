@@ -14,8 +14,8 @@ export { default as lineHeight } from "./lineHeight";
 export { default as letterSpacing } from "./letterSpacing";
 export {
   default as typography,
+  typographyStyles,
   typographyCSS,
-  typography as createTypography,
 } from "./typography";
 export { radius } from "./radius";
 export { spacing } from "./spacing";

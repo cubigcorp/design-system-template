@@ -184,6 +184,7 @@ export const Badge = ({
   type = "outline",
   size = "medium",
   text,
+  children,
   leadingIcon,
   trailingIcon,
   className,
@@ -196,7 +197,7 @@ export const Badge = ({
       className={className}
     >
       {leadingIcon && <span className="icon">{leadingIcon}</span>}
-      <span>{text}</span>
+      <span>{children || text}</span>
       {trailingIcon && <span className="icon">{trailingIcon}</span>}
     </StyledBadge>
   );

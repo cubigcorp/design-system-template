@@ -181,6 +181,7 @@ export const Chip = ({
   disabled = false,
   active = false,
   text,
+  children,
   leadingIcon,
   trailingIcon,
   onClick,
@@ -247,21 +248,9 @@ export const Chip = ({
       onBlur={handleBlur}
       tabIndex={disabled ? -1 : 0}
     >
-      {leadingIcon && (
-        <span className="icon">
-          {React.isValidElement(leadingIcon)
-            ? leadingIcon
-            : String(leadingIcon)}
-        </span>
-      )}
-      <span>{text}</span>
-      {trailingIcon && (
-        <span className="icon">
-          {React.isValidElement(trailingIcon)
-            ? trailingIcon
-            : String(trailingIcon)}
-        </span>
-      )}
+      {leadingIcon && <span className="icon">{leadingIcon}</span>}
+      <span>{children || text}</span>
+      {trailingIcon && <span className="icon">{trailingIcon}</span>}
     </StyledChip>
   );
 };

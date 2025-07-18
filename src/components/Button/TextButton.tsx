@@ -190,7 +190,7 @@ const TextWrapper = styled.span`
 `;
 
 export const TextButton = ({
-  variant = "secondary",
+  variant = "primary",
   size = "medium",
   state = "default",
   disabled = false,
@@ -198,6 +198,7 @@ export const TextButton = ({
   leadingIcon,
   trailingIcon,
   label,
+  children,
   onClick,
   className,
 }: ButtonProps) => {
@@ -265,7 +266,7 @@ export const TextButton = ({
       ) : (
         <>
           {leadingIcon && React.createElement(leadingIcon)}
-          <TextWrapper>{label}</TextWrapper>
+          <TextWrapper>{children || label}</TextWrapper>
           {trailingIcon && React.createElement(trailingIcon)}
         </>
       )}

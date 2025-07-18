@@ -11,7 +11,8 @@ export interface BadgeProps {
   variant?: BadgeVariant;
   type?: BadgeType;
   size?: BadgeSize;
-  text: string;
+  text?: string;
+  children?: React.ReactNode;
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
   className?: string;

@@ -16,7 +16,8 @@ export interface ChipProps {
   state?: ChipState;
   disabled?: boolean;
   active?: boolean;
-  text: string;
+  text?: string;
+  children?: React.ReactNode;
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
   onClick?: () => void;

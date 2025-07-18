@@ -44,17 +44,16 @@ type Story = StoryObj<ButtonProps>;
 
 // Solid Button Stories
 export const Solid: Story = {
-  render: (args) => <SolidButton {...args} />,
+  render: (args) => <SolidButton {...args}>Button</SolidButton>,
   args: {
     variant: "primary",
     size: "medium",
     state: "default",
-    label: "Button",
   },
 };
 
 export const SolidWithIcon: Story = {
-  render: (args) => <SolidButton {...args} />,
+  render: (args) => <SolidButton {...args}>Button</SolidButton>,
   args: {
     ...Solid.args,
     leadingIcon: RocketIcon,
@@ -62,7 +61,7 @@ export const SolidWithIcon: Story = {
 };
 
 export const SolidDisabled: Story = {
-  render: (args) => <SolidButton {...args} />,
+  render: (args) => <SolidButton {...args}>Button</SolidButton>,
   args: {
     ...Solid.args,
     disabled: true,
@@ -70,7 +69,7 @@ export const SolidDisabled: Story = {
 };
 
 export const SolidLoading: Story = {
-  render: (args) => <SolidButton {...args} />,
+  render: (args) => <SolidButton {...args}>Button</SolidButton>,
   args: {
     ...Solid.args,
     loading: true,
@@ -79,12 +78,11 @@ export const SolidLoading: Story = {
 
 // Outline Button Stories
 export const Outline: Story = {
-  render: (args) => <OutlineButton {...args} />,
+  render: (args) => <OutlineButton {...args}>Button</OutlineButton>,
   args: {
     variant: "secondary",
     size: "medium",
     state: "default",
-    label: "Button",
   },
   argTypes: {
     variant: {
@@ -95,7 +93,7 @@ export const Outline: Story = {
 };
 
 export const OutlineWithIcon: Story = {
-  render: (args) => <OutlineButton {...args} />,
+  render: (args) => <OutlineButton {...args}>Button</OutlineButton>,
   args: {
     ...Outline.args,
     leadingIcon: RocketIcon,
@@ -106,7 +104,7 @@ export const OutlineWithIcon: Story = {
 };
 
 export const OutlineDisabled: Story = {
-  render: (args) => <OutlineButton {...args} />,
+  render: (args) => <OutlineButton {...args}>Button</OutlineButton>,
   args: {
     ...Outline.args,
     disabled: true,
@@ -117,7 +115,7 @@ export const OutlineDisabled: Story = {
 };
 
 export const OutlineLoading: Story = {
-  render: (args) => <OutlineButton {...args} />,
+  render: (args) => <OutlineButton {...args}>Button</OutlineButton>,
   args: {
     ...Outline.args,
     loading: true,
@@ -129,12 +127,11 @@ export const OutlineLoading: Story = {
 
 // Text Button Stories
 export const Text: Story = {
-  render: (args) => <TextButton {...args} />,
+  render: (args) => <TextButton {...args}>Button</TextButton>,
   args: {
     variant: "secondary",
     size: "medium",
     state: "default",
-    label: "Button",
   },
   argTypes: {
     variant: {
@@ -145,7 +142,7 @@ export const Text: Story = {
 };
 
 export const TextWithIcon: Story = {
-  render: (args) => <TextButton {...args} />,
+  render: (args) => <TextButton {...args}>Button</TextButton>,
   args: {
     ...Text.args,
     leadingIcon: RocketIcon,
@@ -156,7 +153,7 @@ export const TextWithIcon: Story = {
 };
 
 export const TextDisabled: Story = {
-  render: (args) => <TextButton {...args} />,
+  render: (args) => <TextButton {...args}>Button</TextButton>,
   args: {
     ...Text.args,
     disabled: true,
@@ -167,7 +164,7 @@ export const TextDisabled: Story = {
 };
 
 export const TextLoading: Story = {
-  render: (args) => <TextButton {...args} />,
+  render: (args) => <TextButton {...args}>Button</TextButton>,
   args: {
     ...Text.args,
     loading: true,

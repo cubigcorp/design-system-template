@@ -37,25 +37,26 @@ type Story = StoryObj<BadgeProps>;
 
 // 기본 Badge
 export const Default: Story = {
+  render: (args) => <Badge {...args}>텍스트</Badge>,
   args: {
     variant: "primary",
     type: "outline",
     size: "medium",
-    text: "텍스트",
   },
 };
 
 // Outline Type Stories
 export const Outline: Story = {
+  render: (args) => <Badge {...args}>텍스트</Badge>,
   args: {
     variant: "primary",
     type: "outline",
     size: "medium",
-    text: "텍스트",
   },
 };
 
 export const OutlineWithIcon: Story = {
+  render: (args) => <Badge {...args}>텍스트</Badge>,
   args: {
     ...Outline.args,
     leadingIcon: <span>🚀</span>,
@@ -64,15 +65,16 @@ export const OutlineWithIcon: Story = {
 
 // Solid Type Stories
 export const Solid: Story = {
+  render: (args) => <Badge {...args}>텍스트</Badge>,
   args: {
     variant: "primary",
     type: "solid",
     size: "medium",
-    text: "텍스트",
   },
 };
 
 export const SolidWithIcon: Story = {
+  render: (args) => <Badge {...args}>텍스트</Badge>,
   args: {
     ...Solid.args,
     leadingIcon: <span>🚀</span>,
@@ -81,15 +83,16 @@ export const SolidWithIcon: Story = {
 
 // Strong Type Stories
 export const Strong: Story = {
+  render: (args) => <Badge {...args}>텍스트</Badge>,
   args: {
     variant: "primary",
     type: "strong",
     size: "medium",
-    text: "텍스트",
   },
 };
 
 export const StrongWithIcon: Story = {
+  render: (args) => <Badge {...args}>텍스트</Badge>,
   args: {
     ...Strong.args,
     leadingIcon: <span>🚀</span>,
@@ -106,33 +109,63 @@ export const AllVariants: Story = {
       <div>
         <h3 className="text-lg font-semibold mb-4">Outline Type</h3>
         <div className="flex gap-4 flex-wrap">
-          <Badge variant="primary" type="outline" text="Primary" />
-          <Badge variant="secondary" type="outline" text="Secondary" />
-          <Badge variant="brand" type="outline" text="Brand" />
-          <Badge variant="positive" type="outline" text="Positive" />
-          <Badge variant="negative" type="outline" text="Negative" />
+          <Badge variant="primary" type="outline">
+            Primary
+          </Badge>
+          <Badge variant="secondary" type="outline">
+            Secondary
+          </Badge>
+          <Badge variant="brand" type="outline">
+            Brand
+          </Badge>
+          <Badge variant="positive" type="outline">
+            Positive
+          </Badge>
+          <Badge variant="negative" type="outline">
+            Negative
+          </Badge>
         </div>
       </div>
 
       <div>
         <h3 className="text-lg font-semibold mb-4">Solid Type</h3>
         <div className="flex gap-4 flex-wrap">
-          <Badge variant="primary" type="solid" text="Primary" />
-          <Badge variant="secondary" type="solid" text="Secondary" />
-          <Badge variant="brand" type="solid" text="Brand" />
-          <Badge variant="positive" type="solid" text="Positive" />
-          <Badge variant="negative" type="solid" text="Negative" />
+          <Badge variant="primary" type="solid">
+            Primary
+          </Badge>
+          <Badge variant="secondary" type="solid">
+            Secondary
+          </Badge>
+          <Badge variant="brand" type="solid">
+            Brand
+          </Badge>
+          <Badge variant="positive" type="solid">
+            Positive
+          </Badge>
+          <Badge variant="negative" type="solid">
+            Negative
+          </Badge>
         </div>
       </div>
 
       <div>
         <h3 className="text-lg font-semibold mb-4">Strong Type</h3>
         <div className="flex gap-4 flex-wrap">
-          <Badge variant="primary" type="strong" text="Primary" />
-          <Badge variant="secondary" type="strong" text="Secondary" />
-          <Badge variant="brand" type="strong" text="Brand" />
-          <Badge variant="positive" type="strong" text="Positive" />
-          <Badge variant="negative" type="strong" text="Negative" />
+          <Badge variant="primary" type="strong">
+            Primary
+          </Badge>
+          <Badge variant="secondary" type="strong">
+            Secondary
+          </Badge>
+          <Badge variant="brand" type="strong">
+            Brand
+          </Badge>
+          <Badge variant="positive" type="strong">
+            Positive
+          </Badge>
+          <Badge variant="negative" type="strong">
+            Negative
+          </Badge>
         </div>
       </div>
     </div>
@@ -149,27 +182,45 @@ export const AllSizes: Story = {
       <div>
         <h3 className="text-lg font-semibold mb-4">Small (20px)</h3>
         <div className="flex gap-4 items-center flex-wrap">
-          <Badge variant="primary" type="outline" size="small" text="텍스트" />
-          <Badge variant="primary" type="solid" size="small" text="텍스트" />
-          <Badge variant="primary" type="strong" size="small" text="텍스트" />
+          <Badge variant="primary" type="outline" size="small">
+            텍스트
+          </Badge>
+          <Badge variant="primary" type="solid" size="small">
+            텍스트
+          </Badge>
+          <Badge variant="primary" type="strong" size="small">
+            텍스트
+          </Badge>
         </div>
       </div>
 
       <div>
         <h3 className="text-lg font-semibold mb-4">Medium (24px)</h3>
         <div className="flex gap-4 items-center flex-wrap">
-          <Badge variant="primary" type="outline" size="medium" text="텍스트" />
-          <Badge variant="primary" type="solid" size="medium" text="텍스트" />
-          <Badge variant="primary" type="strong" size="medium" text="텍스트" />
+          <Badge variant="primary" type="outline" size="medium">
+            텍스트
+          </Badge>
+          <Badge variant="primary" type="solid" size="medium">
+            텍스트
+          </Badge>
+          <Badge variant="primary" type="strong" size="medium">
+            텍스트
+          </Badge>
         </div>
       </div>
 
       <div>
         <h3 className="text-lg font-semibold mb-4">Large (28px)</h3>
         <div className="flex gap-4 items-center flex-wrap">
-          <Badge variant="primary" type="outline" size="large" text="텍스트" />
-          <Badge variant="primary" type="solid" size="large" text="텍스트" />
-          <Badge variant="primary" type="strong" size="large" text="텍스트" />
+          <Badge variant="primary" type="outline" size="large">
+            텍스트
+          </Badge>
+          <Badge variant="primary" type="solid" size="large">
+            텍스트
+          </Badge>
+          <Badge variant="primary" type="strong" size="large">
+            텍스트
+          </Badge>
         </div>
       </div>
     </div>

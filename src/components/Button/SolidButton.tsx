@@ -234,6 +234,7 @@ export const SolidButton = ({
   leadingIcon,
   trailingIcon,
   label,
+  children,
   onClick,
   className,
 }: ButtonProps) => {
@@ -301,7 +302,7 @@ export const SolidButton = ({
       ) : (
         <>
           {leadingIcon && React.createElement(leadingIcon)}
-          <TextWrapper>{label}</TextWrapper>
+          <TextWrapper>{children || label}</TextWrapper>
           {trailingIcon && React.createElement(trailingIcon)}
         </>
       )}

@@ -30,9 +30,6 @@ const meta = {
     active: {
       control: { type: "boolean" },
     },
-    text: {
-      control: { type: "text" },
-    },
     radius: {
       control: { type: "select" },
       options: [
@@ -46,9 +43,6 @@ const meta = {
       ],
     },
   },
-  args: {
-    text: "텍스트",
-  },
 } satisfies Meta<typeof Chip>;
 
 export default meta;
@@ -56,16 +50,15 @@ type Story = StoryObj<ChipProps>;
 
 // 기본 Chip
 export const Default: Story = {
-  args: {
-    text: "기본 칩",
-  },
+  render: (args) => <Chip {...args}>기본 칩</Chip>,
+  args: {},
 };
 
 // Outline 타입
 export const Outline: Story = {
+  render: (args) => <Chip {...args}>Outline Chip</Chip>,
   args: {
     type: "outline",
-    text: "Outline Chip",
   },
   parameters: {
     docs: {
@@ -78,9 +71,9 @@ export const Outline: Story = {
 
 // Solid 타입
 export const Solid: Story = {
+  render: (args) => <Chip {...args}>Solid Chip</Chip>,
   args: {
     type: "solid",
-    text: "Solid Chip",
   },
   parameters: {
     docs: {
@@ -93,9 +86,9 @@ export const Solid: Story = {
 
 // Outline with Icon
 export const OutlineWithIcon: Story = {
+  render: (args) => <Chip {...args}>Outline with Icon</Chip>,
   args: {
     type: "outline",
-    text: "Outline with Icon",
     leadingIcon: "🏷️",
   },
   parameters: {
@@ -109,9 +102,9 @@ export const OutlineWithIcon: Story = {
 
 // Solid with Icon
 export const SolidWithIcon: Story = {
+  render: (args) => <Chip {...args}>Solid with Icon</Chip>,
   args: {
     type: "solid",
-    text: "Solid with Icon",
     leadingIcon: "🏷️",
   },
   parameters: {
@@ -127,8 +120,12 @@ export const SolidWithIcon: Story = {
 export const WithTrailingIcon: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
-      <Chip type="outline" text="Remove" trailingIcon="✕" />
-      <Chip type="solid" text="Close" trailingIcon="✕" />
+      <Chip type="outline" trailingIcon="✕">
+        Remove
+      </Chip>
+      <Chip type="solid" trailingIcon="✕">
+        Close
+      </Chip>
     </div>
   ),
   parameters: {
@@ -160,7 +157,7 @@ export const Sizes: Story = {
         }}
       >
         <span style={{ fontSize: "12px", color: "#666" }}>X-Small</span>
-        <Chip size="x-small" text="텍스트" />
+        <Chip size="x-small">텍스트</Chip>
       </div>
       <div
         style={{
@@ -171,7 +168,7 @@ export const Sizes: Story = {
         }}
       >
         <span style={{ fontSize: "12px", color: "#666" }}>Small</span>
-        <Chip size="small" text="텍스트" />
+        <Chip size="small">텍스트</Chip>
       </div>
       <div
         style={{
@@ -182,7 +179,7 @@ export const Sizes: Story = {
         }}
       >
         <span style={{ fontSize: "12px", color: "#666" }}>Medium</span>
-        <Chip size="medium" text="텍스트" />
+        <Chip size="medium">텍스트</Chip>
       </div>
       <div
         style={{
@@ -193,7 +190,7 @@ export const Sizes: Story = {
         }}
       >
         <span style={{ fontSize: "12px", color: "#666" }}>Large</span>
-        <Chip size="large" text="텍스트" />
+        <Chip size="large">텍스트</Chip>
       </div>
     </div>
   ),
@@ -220,7 +217,7 @@ export const ActiveState: Story = {
         }}
       >
         <span style={{ fontSize: "12px", color: "#666" }}>Normal</span>
-        <Chip text="텍스트" />
+        <Chip>텍스트</Chip>
       </div>
       <div
         style={{
@@ -231,7 +228,7 @@ export const ActiveState: Story = {
         }}
       >
         <span style={{ fontSize: "12px", color: "#666" }}>Active</span>
-        <Chip active text="텍스트" />
+        <Chip active>텍스트</Chip>
       </div>
     </div>
   ),
@@ -267,7 +264,7 @@ export const AllStates: Story = {
             }}
           >
             <span style={{ fontSize: "12px", color: "#666" }}>Default</span>
-            <Chip type="outline" text="텍스트" />
+            <Chip type="outline">텍스트</Chip>
           </div>
           <div
             style={{
@@ -278,7 +275,9 @@ export const AllStates: Story = {
             }}
           >
             <span style={{ fontSize: "12px", color: "#666" }}>Hovered</span>
-            <Chip type="outline" state="hovered" text="텍스트" />
+            <Chip type="outline" state="hovered">
+              텍스트
+            </Chip>
           </div>
           <div
             style={{
@@ -289,7 +288,9 @@ export const AllStates: Story = {
             }}
           >
             <span style={{ fontSize: "12px", color: "#666" }}>Pressed</span>
-            <Chip type="outline" state="pressed" text="텍스트" />
+            <Chip type="outline" state="pressed">
+              텍스트
+            </Chip>
           </div>
           <div
             style={{
@@ -300,7 +301,9 @@ export const AllStates: Story = {
             }}
           >
             <span style={{ fontSize: "12px", color: "#666" }}>Focused</span>
-            <Chip type="outline" state="focused" text="텍스트" />
+            <Chip type="outline" state="focused">
+              텍스트
+            </Chip>
           </div>
           <div
             style={{
@@ -311,7 +314,9 @@ export const AllStates: Story = {
             }}
           >
             <span style={{ fontSize: "12px", color: "#666" }}>Disabled</span>
-            <Chip type="outline" disabled text="텍스트" />
+            <Chip type="outline" disabled>
+              텍스트
+            </Chip>
           </div>
           <div
             style={{
@@ -322,7 +327,9 @@ export const AllStates: Story = {
             }}
           >
             <span style={{ fontSize: "12px", color: "#666" }}>Active</span>
-            <Chip type="outline" active text="텍스트" />
+            <Chip type="outline" active>
+              텍스트
+            </Chip>
           </div>
         </div>
       </div>
@@ -345,7 +352,7 @@ export const AllStates: Story = {
             }}
           >
             <span style={{ fontSize: "12px", color: "#666" }}>Default</span>
-            <Chip type="solid" text="텍스트" />
+            <Chip type="solid">텍스트</Chip>
           </div>
           <div
             style={{
@@ -356,7 +363,9 @@ export const AllStates: Story = {
             }}
           >
             <span style={{ fontSize: "12px", color: "#666" }}>Hovered</span>
-            <Chip type="solid" state="hovered" text="텍스트" />
+            <Chip type="solid" state="hovered">
+              텍스트
+            </Chip>
           </div>
           <div
             style={{
@@ -367,7 +376,9 @@ export const AllStates: Story = {
             }}
           >
             <span style={{ fontSize: "12px", color: "#666" }}>Pressed</span>
-            <Chip type="solid" state="pressed" text="텍스트" />
+            <Chip type="solid" state="pressed">
+              텍스트
+            </Chip>
           </div>
           <div
             style={{
@@ -378,7 +389,9 @@ export const AllStates: Story = {
             }}
           >
             <span style={{ fontSize: "12px", color: "#666" }}>Focused</span>
-            <Chip type="solid" state="focused" text="텍스트" />
+            <Chip type="solid" state="focused">
+              텍스트
+            </Chip>
           </div>
           <div
             style={{
@@ -389,7 +402,9 @@ export const AllStates: Story = {
             }}
           >
             <span style={{ fontSize: "12px", color: "#666" }}>Disabled</span>
-            <Chip type="solid" disabled text="텍스트" />
+            <Chip type="solid" disabled>
+              텍스트
+            </Chip>
           </div>
           <div
             style={{
@@ -400,7 +415,9 @@ export const AllStates: Story = {
             }}
           >
             <span style={{ fontSize: "12px", color: "#666" }}>Active</span>
-            <Chip type="solid" active text="텍스트" />
+            <Chip type="solid" active>
+              텍스트
+            </Chip>
           </div>
         </div>
       </div>
@@ -435,7 +452,7 @@ export const RadiusVariations: Story = {
         }}
       >
         <span style={{ fontSize: "12px", color: "#666" }}>rounded-1 (4px)</span>
-        <Chip radius="rounded-1" text="텍스트" />
+        <Chip radius="rounded-1">텍스트</Chip>
       </div>
       <div
         style={{
@@ -448,7 +465,7 @@ export const RadiusVariations: Story = {
         <span style={{ fontSize: "12px", color: "#666" }}>
           rounded-1.5 (6px)
         </span>
-        <Chip radius="rounded-1.5" text="텍스트" />
+        <Chip radius="rounded-1.5">텍스트</Chip>
       </div>
       <div
         style={{
@@ -459,7 +476,7 @@ export const RadiusVariations: Story = {
         }}
       >
         <span style={{ fontSize: "12px", color: "#666" }}>rounded-2 (8px)</span>
-        <Chip radius="rounded-2" text="텍스트" />
+        <Chip radius="rounded-2">텍스트</Chip>
       </div>
       <div
         style={{
@@ -472,7 +489,7 @@ export const RadiusVariations: Story = {
         <span style={{ fontSize: "12px", color: "#666" }}>
           rounded-3 (12px)
         </span>
-        <Chip radius="rounded-3" text="텍스트" />
+        <Chip radius="rounded-3">텍스트</Chip>
       </div>
       <div
         style={{
@@ -485,7 +502,7 @@ export const RadiusVariations: Story = {
         <span style={{ fontSize: "12px", color: "#666" }}>
           rounded-4 (16px)
         </span>
-        <Chip radius="rounded-4" text="텍스트" />
+        <Chip radius="rounded-4">텍스트</Chip>
       </div>
       <div
         style={{
@@ -498,7 +515,7 @@ export const RadiusVariations: Story = {
         <span style={{ fontSize: "12px", color: "#666" }}>
           rounded-5 (20px)
         </span>
-        <Chip radius="rounded-5" text="텍스트" />
+        <Chip radius="rounded-5">텍스트</Chip>
       </div>
       <div
         style={{
@@ -511,7 +528,7 @@ export const RadiusVariations: Story = {
         <span style={{ fontSize: "12px", color: "#666" }}>
           rounded-full (9999px)
         </span>
-        <Chip radius="rounded-full" text="텍스트" />
+        <Chip radius="rounded-full">텍스트</Chip>
       </div>
     </div>
   ),

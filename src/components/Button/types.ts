@@ -20,7 +20,8 @@ export interface ButtonStyleProps {
 export interface ButtonProps extends ButtonStyleProps {
   leadingIcon?: React.ComponentType<SVGProps<SVGSVGElement>>;
   trailingIcon?: React.ComponentType<SVGProps<SVGSVGElement>>;
-  label: string;
+  label?: string;
+  children?: React.ReactNode;
   onClick?: () => void;
   className?: string;
 }

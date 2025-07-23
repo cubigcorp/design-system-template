@@ -36,7 +36,9 @@ export interface IconButtonProps extends IconButtonStyleProps {
   className?: string;
 }
 
-const StyledIconButton = styled.button<IconButtonStyleProps>`
+const StyledIconButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => !["loading", "state"].includes(prop),
+})<IconButtonStyleProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;

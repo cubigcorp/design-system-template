@@ -13,7 +13,9 @@ import brandColor from "../../tokens/brandColor";
 import positiveColor from "../../tokens/positiveColor";
 import negativeColor from "../../tokens/negativeColor";
 
-const StyledButton = styled.button<ButtonStyleProps>`
+const StyledButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => !["loading", "state"].includes(prop),
+})<ButtonStyleProps>`
   // 기본 스타일
   display: inline-flex;
   align-items: center;

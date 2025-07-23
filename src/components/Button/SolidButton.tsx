@@ -10,7 +10,9 @@ import { spacing } from "../../tokens/spacing";
 import { Spinner } from "./Spinner";
 import React from "react";
 
-const StyledButton = styled.button<ButtonStyleProps>`
+const StyledButton = styled.button.withConfig({
+  shouldForwardProp: (prop) => !["loading", "state"].includes(prop),
+})<ButtonStyleProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;

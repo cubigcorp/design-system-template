@@ -22,7 +22,7 @@ const Description: React.FC<DescriptionProps> = ({
         return (
           <ErrorIcon>
             <img
-              src="/icons/Icon_error.svg"
+              src="./icons/Icon_error.svg"
               alt="Error"
               width="16"
               height="16"
@@ -33,7 +33,7 @@ const Description: React.FC<DescriptionProps> = ({
         return (
           <SuccessIcon>
             <img
-              src="/icons/Icon_circlecheck.svg"
+              src="./icons/Icon_circlecheck.svg"
               alt="Success"
               width="16"
               height="16"

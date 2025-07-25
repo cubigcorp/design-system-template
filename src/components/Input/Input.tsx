@@ -359,6 +359,24 @@ const StyledInput = styled.input<{
   &:disabled {
     cursor: not-allowed;
   }
+
+  &::placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]};
+    opacity: 1;
+  }
+
+  &::-webkit-input-placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]};
+  }
+
+  &::-moz-placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]};
+    opacity: 1;
+  }
+
+  &:-ms-input-placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]};
+  }
 `;
 
 const TrailingIcon = styled.button<{

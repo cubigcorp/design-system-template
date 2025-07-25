@@ -9,11 +9,7 @@ const StyledTypography = styled.div<{
 }>`
   ${({ $variant, $fontWeight = "medium", $fontFamily = "en" }) => {
     const style = typographyStyles[$variant];
-    const weight =
-      ($fontWeight === "medium" && $variant.includes("body")) ||
-      $variant.includes("caption")
-        ? "regular"
-        : $fontWeight;
+    const weight = $fontWeight; // 규칙 제거: 사용자가 지정한 weight 그대로 사용
 
     return `
       font-size: ${style.fontSize[0]};

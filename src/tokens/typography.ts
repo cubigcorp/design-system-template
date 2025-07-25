@@ -150,11 +150,7 @@ const typography = (
   weight: "regular" | "medium" | "semibold" | "bold" = "medium"
 ) => {
   const style = typographyStyles[variant];
-  const fontWeight =
-    weight === "medium" &&
-    (variant.includes("body") || variant.includes("caption"))
-      ? "regular"
-      : weight;
+  const fontWeight = weight; // 규칙 제거: 사용자가 지정한 weight 그대로 사용
 
   const fontFamily =
     family === "en"

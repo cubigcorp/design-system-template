@@ -5,6 +5,7 @@ import { negativeColor } from "../../tokens";
 import { positiveColor } from "../../tokens";
 import { typographyCSS } from "../../tokens";
 import { spacing } from "../../tokens";
+import { IconError, IconCircleCheck } from "../icons";
 import type { DescriptionProps } from "./types";
 
 const Description: React.FC<DescriptionProps> = ({
@@ -21,23 +22,13 @@ const Description: React.FC<DescriptionProps> = ({
       case "error":
         return (
           <ErrorIcon>
-            <img
-              src="./icons/Icon_error.svg"
-              alt="Error"
-              width="16"
-              height="16"
-            />
+            <IconError />
           </ErrorIcon>
         );
       case "success":
         return (
           <SuccessIcon>
-            <img
-              src="./icons/Icon_circlecheck.svg"
-              alt="Success"
-              width="16"
-              height="16"
-            />
+            <IconCircleCheck />
           </SuccessIcon>
         );
       default:

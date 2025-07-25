@@ -8,6 +8,7 @@ import { typographyCSS } from "../../tokens";
 import { color } from "../../tokens";
 import { negativeColor } from "../../tokens";
 import { positiveColor } from "../../tokens";
+import { IconCancel, IconError, IconCircleCheck } from "../icons";
 import { InputProps } from "./types";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -33,7 +34,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         // Disabled 상태에서는 Positive일 때만 아이콘 표시
         if (status === "positive") {
           return {
-            icon: "./icons/Icon_circlecheck.svg",
+            icon: "circlecheck",
             color: positiveColor.light["fg-positive-primary"],
           };
         }
@@ -45,7 +46,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         // Normal: Disable=False, Active=True, Focus=True일 때만 cancel 아이콘
         if (active && focused) {
           return {
-            icon: "./icons/Icon_cancel.svg",
+            icon: "cancel",
             color: textColor.light["fg-neutral-primary"],
           };
         }
@@ -57,14 +58,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         // Negative: Disable=False, Active=True, Focus=True일 때 cancel 아이콘
         if (active && focused) {
           return {
-            icon: "./icons/Icon_cancel.svg",
+            icon: "cancel",
             color: textColor.light["fg-neutral-primary"],
           };
         }
         // Negative: Disable=False, Active=False, Focus=False 또는 Disable=False, Active=False, Focus=True일 때 error 아이콘
         else if (!active) {
           return {
-            icon: "./icons/Icon_error.svg",
+            icon: "error",
             color: negativeColor.light["fg-negative-primary"],
           };
         }
@@ -76,14 +77,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         // Positive: Disable=False, Active=True, Focus=True일 때 cancel 아이콘
         if (active && focused) {
           return {
-            icon: "./icons/Icon_cancel.svg",
+            icon: "cancel",
             color: textColor.light["fg-neutral-primary"],
           };
         }
         // Positive: Disable=False, Active=False일 때 circlecheck 아이콘
         else if (!active) {
           return {
-            icon: "./icons/Icon_circlecheck.svg",
+            icon: "circlecheck",
             color: positiveColor.light["fg-positive-primary"],
           };
         }
@@ -94,7 +95,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       if (value && value.trim() !== "") {
         if (status === "normal") {
           return {
-            icon: "./icons/Icon_cancel.svg",
+            icon: "cancel",
             color: textColor.light["fg-neutral-primary"],
           };
         }
@@ -103,13 +104,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           if (active && focused) {
             // Negative: Active + Focus일 때 cancel 아이콘
             return {
-              icon: "./icons/Icon_cancel.svg",
+              icon: "cancel",
               color: textColor.light["fg-neutral-primary"],
             };
           } else if (!active) {
             // Negative: !Active일 때 error 아이콘
             return {
-              icon: "./icons/Icon_error.svg",
+              icon: "error",
               color: negativeColor.light["fg-negative-primary"],
             };
           }
@@ -119,13 +120,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           if (active && focused) {
             // Positive: Active + Focus일 때 cancel 아이콘
             return {
-              icon: "./icons/Icon_cancel.svg",
+              icon: "cancel",
               color: textColor.light["fg-neutral-primary"],
             };
           } else if (active) {
             // Positive: Active일 때 circlecheck 아이콘
             return {
-              icon: "./icons/Icon_circlecheck.svg",
+              icon: "circlecheck",
               color: positiveColor.light["fg-positive-primary"],
             };
           }
@@ -160,9 +161,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <TrailingIcon
             $size={size}
             $color={trailingIcon.color}
-            onMouseDown={(e: React.MouseEvent<HTMLButtonElement>) => {
-              e.preventDefault();
-              if (trailingIcon.icon.includes("cancel")) {
+            onClick={() => {
+              if (trailingIcon.icon === "cancel") {
                 // Cancel 아이콘 클릭 시 값 지우기
                 const clearEvent = {
                   target: { value: "" },
@@ -172,18 +172,27 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             }}
             type="button"
           >
-            <img
-              src={trailingIcon.icon}
-              alt={
-                trailingIcon.icon.includes("cancel")
-                  ? "Clear"
-                  : trailingIcon.icon.includes("error")
-                  ? "Error"
-                  : "Success"
-              }
-              width={size === "small" ? 16 : size === "large" ? 24 : 20}
-              height={size === "small" ? 16 : size === "large" ? 24 : 20}
-            />
+            {trailingIcon.icon === "cancel" && (
+              <IconCancel
+                width={size === "small" ? 16 : size === "large" ? 24 : 20}
+                height={size === "small" ? 16 : size === "large" ? 24 : 20}
+                color={trailingIcon.color}
+              />
+            )}
+            {trailingIcon.icon === "error" && (
+              <IconError
+                width={size === "small" ? 16 : size === "large" ? 24 : 20}
+                height={size === "small" ? 16 : size === "large" ? 24 : 20}
+                color={trailingIcon.color}
+              />
+            )}
+            {trailingIcon.icon === "circlecheck" && (
+              <IconCircleCheck
+                width={size === "small" ? 16 : size === "large" ? 24 : 20}
+                height={size === "small" ? 16 : size === "large" ? 24 : 20}
+                color={trailingIcon.color}
+              />
+            )}
           </TrailingIcon>
         )}
       </InputContainer>

@@ -6,6 +6,7 @@ export * from "./components/Label";
 export * from "./components/Description";
 export * from "./components/Input";
 export * from "./components/TextField";
+export * from "./components/icons";
 
 // Design Tokens
 export * from "./tokens";

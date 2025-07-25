@@ -16,7 +16,8 @@
   "files": [
     "dist",
     "src/styles",
-    "README.md"
+    "README.md",
+    "public/icons"
   ],
   "homepage": "https://cubigcorp.github.io/design-system-template/",
   "repository": {

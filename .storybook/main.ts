@@ -13,7 +13,7 @@ const config: StorybookConfig = {
     name: "@storybook/nextjs-vite",
     options: {},
   },
-  staticDirs: ["..\\public"],
+  staticDirs: ["../public"],
   // GitHub Pages를 위한 설정
   viteFinal: async (config) => {
     // GitHub Pages 환경에서는 base path 설정

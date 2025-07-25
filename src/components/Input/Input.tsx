@@ -33,7 +33,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         // Disabled 상태에서는 Positive일 때만 아이콘 표시
         if (status === "positive") {
           return {
-            icon: "/icons/Icon_circlecheck.svg",
+            icon: "./icons/Icon_circlecheck.svg",
             color: positiveColor.light["fg-positive-primary"],
           };
         }
@@ -45,7 +45,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         // Normal: Disable=False, Active=True, Focus=True일 때만 cancel 아이콘
         if (active && focused) {
           return {
-            icon: "/icons/Icon_cancel.svg",
+            icon: "./icons/Icon_cancel.svg",
             color: textColor.light["fg-neutral-primary"],
           };
         }
@@ -57,14 +57,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         // Negative: Disable=False, Active=True, Focus=True일 때 cancel 아이콘
         if (active && focused) {
           return {
-            icon: "/icons/Icon_cancel.svg",
+            icon: "./icons/Icon_cancel.svg",
             color: textColor.light["fg-neutral-primary"],
           };
         }
         // Negative: Disable=False, Active=False, Focus=False 또는 Disable=False, Active=False, Focus=True일 때 error 아이콘
         else if (!active) {
           return {
-            icon: "/icons/Icon_error.svg",
+            icon: "./icons/Icon_error.svg",
             color: negativeColor.light["fg-negative-primary"],
           };
         }
@@ -76,14 +76,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         // Positive: Disable=False, Active=True, Focus=True일 때 cancel 아이콘
         if (active && focused) {
           return {
-            icon: "/icons/Icon_cancel.svg",
+            icon: "./icons/Icon_cancel.svg",
             color: textColor.light["fg-neutral-primary"],
           };
         }
         // Positive: Disable=False, Active=False일 때 circlecheck 아이콘
         else if (!active) {
           return {
-            icon: "/icons/Icon_circlecheck.svg",
+            icon: "./icons/Icon_circlecheck.svg",
             color: positiveColor.light["fg-positive-primary"],
           };
         }
@@ -94,7 +94,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       if (value && value.trim() !== "") {
         if (status === "normal") {
           return {
-            icon: "/icons/Icon_cancel.svg",
+            icon: "./icons/Icon_cancel.svg",
             color: textColor.light["fg-neutral-primary"],
           };
         }
@@ -103,13 +103,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           if (active && focused) {
             // Negative: Active + Focus일 때 cancel 아이콘
             return {
-              icon: "/icons/Icon_cancel.svg",
+              icon: "./icons/Icon_cancel.svg",
               color: textColor.light["fg-neutral-primary"],
             };
           } else if (!active) {
             // Negative: !Active일 때 error 아이콘
             return {
-              icon: "/icons/Icon_error.svg",
+              icon: "./icons/Icon_error.svg",
               color: negativeColor.light["fg-negative-primary"],
             };
           }
@@ -119,13 +119,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           if (active && focused) {
             // Positive: Active + Focus일 때 cancel 아이콘
             return {
-              icon: "/icons/Icon_cancel.svg",
+              icon: "./icons/Icon_cancel.svg",
               color: textColor.light["fg-neutral-primary"],
             };
           } else if (active) {
             // Positive: Active일 때 circlecheck 아이콘
             return {
-              icon: "/icons/Icon_circlecheck.svg",
+              icon: "./icons/Icon_circlecheck.svg",
               color: positiveColor.light["fg-positive-primary"],
             };
           }
@@ -273,14 +273,14 @@ const StyledInput = styled.input<{
         // Normal: Disable=False, Active=False, Focus=True
         return `
           background-color: transparent;
-          color: ${textColor.light["fg-neutral-assistive"]};
+          color: ${textColor.light["fg-neutral-primary"]};
           border-color: ${borderColor.light["color-border-focused"]};
         `;
       } else {
         // Normal: Disable=False, Active=False, Focus=False
         return `
           background-color: transparent;
-          color: ${textColor.light["fg-neutral-assistive"]};
+          color: ${textColor.light["fg-neutral-primary"]};
           border-color: ${borderColor.light["color-border-primary"]};
         `;
       }
@@ -299,14 +299,14 @@ const StyledInput = styled.input<{
         // Negative: Disable=False, Active=False, Focus=True
         return `
           background-color: transparent;
-          color: ${textColor.light["fg-neutral-assistive"]};
+          color: ${textColor.light["fg-neutral-primary"]};
           border-color: ${color.red[500]};
         `;
       } else {
         // Negative: Disable=False, Active=False, Focus=False
         return `
           background-color: transparent;
-          color: ${textColor.light["fg-neutral-assistive"]};
+          color: ${textColor.light["fg-neutral-primary"]};
           border-color: ${borderColor.light["color-border-negative"]};
         `;
       }
@@ -332,7 +332,7 @@ const StyledInput = styled.input<{
         // Positive: Disable=False, Active=False, Focus=False (스펙에 없지만 기본값)
         return `
           background-color: transparent;
-          color: ${textColor.light["fg-neutral-assistive"]};
+          color: ${textColor.light["fg-neutral-primary"]};
           border-color: ${borderColor.light["color-border-primary"]};
         `;
       }
@@ -341,7 +341,7 @@ const StyledInput = styled.input<{
     // 기본값
     return `
       background-color: transparent;
-      color: ${textColor.light["fg-neutral-assistive"]};
+      color: ${textColor.light["fg-neutral-primary"]};
       border-color: ${borderColor.light["color-border-primary"]};
     `;
   }}

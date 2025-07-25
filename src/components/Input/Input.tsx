@@ -385,4 +385,4 @@ const TrailingIcon = styled.button<{
 
 Input.displayName = "Input";
 
-export default Input;
+export { Input };

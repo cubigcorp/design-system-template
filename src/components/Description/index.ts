@@ -1,2 +1,2 @@
-export { default } from "./Description";
+export { Description } from "./Description";
 export type { DescriptionProps } from "./types";

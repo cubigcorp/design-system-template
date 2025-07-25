@@ -91,4 +91,6 @@ const SuccessIcon = styled(IconBase)`
   color: ${positiveColor.light["fg-positive-primary"]};
 `;
 
-export default Description;
+Description.displayName = "Description";
+
+export { Description };

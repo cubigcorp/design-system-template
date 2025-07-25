@@ -62,4 +62,6 @@ const OptionalText = styled.span`
   margin-left: ${spacing.gap["gap-0.5"]};
 `;
 
-export default Label;
+Label.displayName = "Label";
+
+export { Label };

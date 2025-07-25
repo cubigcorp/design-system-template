@@ -1,8 +1,8 @@
 import React, { useState, forwardRef } from "react";
 import styled from "styled-components";
-import Label from "../Label";
-import Input from "../Input";
-import Description from "../Description";
+import { Label } from "../Label";
+import { Input } from "../Input";
+import { Description } from "../Description";
 import { TextFieldProps } from "./types";
 import { spacing } from "../../tokens";
 

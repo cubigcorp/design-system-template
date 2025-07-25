@@ -161,7 +161,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <TrailingIcon
             $size={size}
             $color={trailingIcon.color}
-            onClick={() => {
+            onMouseDown={(e: React.MouseEvent<HTMLButtonElement>) => {
+              e.preventDefault();
               if (trailingIcon.icon === "cancel") {
                 // Cancel 아이콘 클릭 시 값 지우기
                 const clearEvent = {

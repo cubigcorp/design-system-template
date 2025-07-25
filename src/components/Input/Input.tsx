@@ -361,21 +361,38 @@ const StyledInput = styled.input<{
   }
 
   &::placeholder {
-    color: ${textColor.light["fg-neutral-assistive"]};
-    opacity: 1;
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+    opacity: 1; /* Firefox에서 opacity 조정 */
   }
 
   &::-webkit-input-placeholder {
-    color: ${textColor.light["fg-neutral-assistive"]};
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
   }
 
   &::-moz-placeholder {
-    color: ${textColor.light["fg-neutral-assistive"]};
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
     opacity: 1;
   }
 
   &:-ms-input-placeholder {
-    color: ${textColor.light["fg-neutral-assistive"]};
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+  }
+
+  /* 포커스 상태에서도 placeholder 색상 유지 */
+  &:focus::placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+  }
+
+  &:focus::-webkit-input-placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+  }
+
+  &:focus::-moz-placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+  }
+
+  &:focus:-ms-input-placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
   }
 `;
 

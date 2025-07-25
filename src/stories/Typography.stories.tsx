@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import styled from "styled-components";
-import { typography } from "../tokens";
+import { typographyStyles } from "../tokens";
 
 const StyledTypography = styled.div<{
-  $variant: keyof typeof typography;
+  $variant: keyof typeof typographyStyles;
   $fontWeight?: "regular" | "medium" | "semibold" | "bold";
   $fontFamily?: "en" | "ko" | "sans";
 }>`
   ${({ $variant, $fontWeight = "medium", $fontFamily = "en" }) => {
-    const style = typography[$variant];
+    const style = typographyStyles[$variant];
     const weight =
       ($fontWeight === "medium" && $variant.includes("body")) ||
       $variant.includes("caption")
@@ -16,7 +16,7 @@ const StyledTypography = styled.div<{
         : $fontWeight;
 
     return `
-      font-size: ${style.fontSize};
+      font-size: ${style.fontSize[0]};
       font-weight: ${style.weights[weight]};
       font-family: ${
         $fontFamily === "en"
@@ -36,17 +36,20 @@ const Typography = ({
   children,
   fontWeight = "medium",
   fontFamily = "en",
+  className = "",
 }: {
-  variant: keyof typeof typography;
+  variant: keyof typeof typographyStyles;
   children: React.ReactNode;
   fontWeight?: "regular" | "medium" | "semibold" | "bold";
   fontFamily?: "en" | "ko" | "sans";
+  className?: string;
 }) => {
   return (
     <StyledTypography
       $variant={variant}
       $fontWeight={fontWeight}
       $fontFamily={fontFamily}
+      className={className}
     >
       {children}
     </StyledTypography>

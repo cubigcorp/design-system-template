@@ -288,4 +288,9 @@ export const Interactive: Story = {
     state: "unchecked",
     disabled: false,
   },
+  argTypes: {
+    state: {
+      control: false,
+    },
+  },
 };

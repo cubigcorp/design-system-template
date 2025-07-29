@@ -8,8 +8,8 @@ interface IconCheckProps {
 }
 
 export const IconCheck: React.FC<IconCheckProps> = ({
-  width = 16,
-  height = 16,
+  width = 14,
+  height = 14,
   color = "#0F0F10",
   className = "",
 }) => {

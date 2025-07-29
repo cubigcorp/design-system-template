@@ -5,14 +5,13 @@ import { textColor } from "../../tokens";
 import { borderColor } from "../../tokens";
 import { radius } from "../../tokens";
 import { spacing } from "../../tokens";
-import { IconCheck, IconRemove } from "../icons";
+import { IconCheck } from "../icons";
 import { CheckboxProps } from "./types";
 
 const Checkbox: React.FC<CheckboxProps> = ({
   variant = "secondary",
   state = "unchecked",
   disabled = false,
-  active = false,
   onChange,
   className = "",
   ...props
@@ -20,25 +19,13 @@ const Checkbox: React.FC<CheckboxProps> = ({
   const handleClick = () => {
     if (disabled) return;
 
-    // state에 따라 다음 상태로 변경
-    let nextState: boolean;
-    if (state === "indeterminate") {
-      nextState = true; // indeterminate → checked
-    } else if (state === "checked") {
-      nextState = false; // checked → unchecked
-    } else {
-      nextState = true; // unchecked → checked
-    }
-
+    const nextState = !(state === "checked");
     onChange?.(nextState);
   };
 
   const getIcon = () => {
     if (state === "checked") {
       return <IconCheck width={16} height={16} color="currentColor" />;
-    }
-    if (state === "indeterminate") {
-      return <IconRemove width={16} height={16} color="currentColor" />;
     }
     return null;
   };
@@ -48,7 +35,6 @@ const Checkbox: React.FC<CheckboxProps> = ({
       $variant={variant}
       $state={state}
       $disabled={disabled}
-      $active={active}
       onClick={handleClick}
       className={className}
       {...props}
@@ -60,9 +46,8 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
 const StyledCheckbox = styled.div<{
   $variant: "primary" | "secondary";
-  $state: "checked" | "unchecked" | "indeterminate";
+  $state: "checked" | "unchecked";
   $disabled: boolean;
-  $active: boolean;
 }>`
   width: 16px;
   height: 16px;
@@ -74,9 +59,7 @@ const StyledCheckbox = styled.div<{
   transition: all 0.2s ease;
   padding: ${spacing.gap["gap-0"]};
 
-  /* 색상 스타일 */
-  ${({ $variant, $state, $disabled, $active }) => {
-    // Disabled 상태
+  ${({ $variant, $state, $disabled }) => {
     if ($disabled) {
       return `
         background-color: ${color.gray[50]};
@@ -85,26 +68,8 @@ const StyledCheckbox = styled.div<{
       `;
     }
 
-    // Primary 상태 (checked일 때만)
-    if ($variant === "primary" && $state === "checked") {
-      if ($active) {
-        return `
-          background-color: ${color.gray[950]};
-          border: 1px solid ${color.gray[925]};
-          color: ${color.common[100]};
-        `;
-      } else {
-        return `
-          background-color: ${color.gray[950]};
-          border: 1px solid ${color.gray[925]};
-          color: ${color.common[100]};
-        `;
-      }
-    }
-
-    // Secondary 상태
-    if ($variant === "secondary") {
-      if ($active) {
+    if ($variant === "primary") {
+      if ($state === "checked") {
         return `
           background-color: ${color.gray[950]};
           border: 1px solid ${color.gray[925]};
@@ -119,7 +84,6 @@ const StyledCheckbox = styled.div<{
       }
     }
 
-    // 기본값
     return `
       background-color: ${color.common[100]};
       border: 1px solid ${borderColor.light["color-border-primary"]};
@@ -127,17 +91,8 @@ const StyledCheckbox = styled.div<{
     `;
   }}
 
-  &:hover {
-    ${({ $disabled }) =>
-      !$disabled &&
-      `
-      opacity: 0.8;
-    `}
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px ${color.blue[200]};
+  &:disabled {
+    cursor: not-allowed;
   }
 `;
 

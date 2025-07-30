@@ -171,7 +171,7 @@ const StyledInput = styled.input<{
 
   /* Size styles */
   ${({ $size }) => {
-    const iconGap = spacing.gap["gap-1"];
+    const iconGap = $size === "large" ? spacing.gap["gap-2.5"] : spacing.gap["gap-2"];
     const iconSize = $size === "small" ? 16 : $size === "large" ? 24 : 20;
     const rightPadding = iconSize + parseInt(iconGap) * 2; // 항상 아이콘 공간 확보
 
@@ -349,7 +349,7 @@ const TrailingIcon = styled.button<{
   $color: string;
 }>`
   position: absolute;
-  right: ${spacing.gap["gap-1"]};
+  right: ${({ $size }) => $size === "large" ? spacing.gap["gap-2.5"] : spacing.gap["gap-2"]};
   top: 50%;
   transform: translateY(-50%);
   width: ${({ $size }) =>

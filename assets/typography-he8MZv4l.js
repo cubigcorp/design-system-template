@@ -4,4 +4,4 @@ import{f as i}from"./fontSize-BFAJJ5Eh.js";import{f as n}from"./fontWeight-CRwBd
     font-family: ${g};
     letter-spacing: ${d.letterSpacing};
     line-height: ${d.lineHeight};
-  `},r={display1:x("ko","display1"),display2:x("ko","display2"),display3:x("ko","display3"),display4:x("ko","display4"),display5:x("ko","display5"),title1:x("ko","title1"),title2:x("ko","title2"),title3:x("ko","title3"),title4:x("ko","title4"),heading1:x("ko","heading1"),heading2:x("ko","heading2"),heading3:x("ko","heading3"),body1:x("ko","body1"),body2:x("ko","body2"),body3:x("ko","body3"),caption1:x("ko","caption1"),caption2:x("ko","caption2")};export{f as a,r as t};
+  `},r={display1:x("ko","display1"),display2:x("ko","display2"),display3:x("ko","display3"),display4:x("ko","display4"),display5:x("ko","display5"),title1:x("ko","title1"),title2:x("ko","title2"),title3:x("ko","title3"),title4:x("ko","title4"),heading1:x("ko","heading1"),heading2:x("ko","heading2"),heading3:x("ko","heading3"),body1:x("ko","body1"),body2:x("ko","body2"),body3:x("ko","body3"),caption1:x("ko","caption1"),caption2:x("ko","caption2")};export{x as a,f as b,r as t};

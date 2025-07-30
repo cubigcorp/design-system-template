@@ -1,4 +1,4 @@
-import{j as o}from"./jsx-runtime-DU5MMG0J.js";import{l as i,d as f}from"./styled-components.browser.esm-PYfggJBI.js";import{c as e}from"./color-CMFzNX_O.js";import{r as x}from"./radius-DaoU83SK.js";import{f as y}from"./fontWeight-CRwBdwgF.js";import{b as n,t}from"./borderColor-C1c8KEhD.js";import{b as c}from"./brandColor-OMV9mLOG.js";import{n as u,p as m}from"./negativeColor-vAhOVlFC.js";const h=f.div`
+import{j as o}from"./jsx-runtime-CkxAiKt7.js";import{l as i,d as f}from"./styled-components.browser.esm-FqZODMTr.js";import{c as e}from"./color-CMFzNX_O.js";import{r as x}from"./radius-DaoU83SK.js";import{f as y}from"./fontWeight-CRwBdwgF.js";import{b as n,t}from"./borderColor-C1c8KEhD.js";import{b as c}from"./brandColor-OMV9mLOG.js";import{n as u,p as m}from"./negativeColor-vAhOVlFC.js";const h=f.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -31,8 +31,8 @@ import{j as o}from"./jsx-runtime-DU5MMG0J.js";import{l as i,d as f}from"./styled
       color: ${a.text};
       border: 1px solid ${a.border};
     `}}
-`,v=({variant:r="primary",type:s="outline",size:l="medium",text:a,children:g,leadingIcon:d,trailingIcon:p,className:b})=>o.jsxs(h,{variant:r,type:s,size:l,className:b,children:[d&&o.jsx("span",{className:"icon",children:d}),o.jsx("span",{children:g||a}),p&&o.jsx("span",{className:"icon",children:p})]});v.__docgenInfo={description:"",methods:[],displayName:"Badge",props:{variant:{required:!1,tsType:{name:"union",raw:`| "primary"\r
-| "secondary"\r
-| "brand"\r
-| "positive"\r
+`,v=({variant:r="primary",type:s="outline",size:l="medium",text:a,children:g,leadingIcon:d,trailingIcon:p,className:b})=>o.jsxs(h,{variant:r,type:s,size:l,className:b,children:[d&&o.jsx("span",{className:"icon",children:d}),o.jsx("span",{children:g||a}),p&&o.jsx("span",{className:"icon",children:p})]});v.__docgenInfo={description:"",methods:[],displayName:"Badge",props:{variant:{required:!1,tsType:{name:"union",raw:`| "primary"
+| "secondary"
+| "brand"
+| "positive"
 | "negative"`,elements:[{name:"literal",value:'"primary"'},{name:"literal",value:'"secondary"'},{name:"literal",value:'"brand"'},{name:"literal",value:'"positive"'},{name:"literal",value:'"negative"'}]},description:"",defaultValue:{value:'"primary"',computed:!1}},type:{required:!1,tsType:{name:"union",raw:'"outline" | "solid" | "strong"',elements:[{name:"literal",value:'"outline"'},{name:"literal",value:'"solid"'},{name:"literal",value:'"strong"'}]},description:"",defaultValue:{value:'"outline"',computed:!1}},size:{required:!1,tsType:{name:"union",raw:'"small" | "medium" | "large"',elements:[{name:"literal",value:'"small"'},{name:"literal",value:'"medium"'},{name:"literal",value:'"large"'}]},description:"",defaultValue:{value:'"medium"',computed:!1}},text:{required:!1,tsType:{name:"string"},description:""},children:{required:!1,tsType:{name:"ReactReactNode",raw:"React.ReactNode"},description:""},leadingIcon:{required:!1,tsType:{name:"ReactReactNode",raw:"React.ReactNode"},description:""},trailingIcon:{required:!1,tsType:{name:"ReactReactNode",raw:"React.ReactNode"},description:""},className:{required:!1,tsType:{name:"string"},description:""}}};export{v as B};

@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
 import styled from "styled-components";
 import { textColor } from "../../tokens";
 import { borderColor } from "../../tokens";
@@ -8,7 +8,7 @@ import { typographyCSS } from "../../tokens";
 import { color } from "../../tokens";
 import { negativeColor } from "../../tokens";
 import { positiveColor } from "../../tokens";
-import { IconCancel, IconError, IconCircleCheck } from "../icons";
+import { IconError, IconCircleCheck, IconVisibilityOff, IconVisibilityOn } from "../icons";
 import { InputProps } from "./types";
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -21,6 +21,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       focused = false,
       placeholder,
       value,
+      type = "text",
       onChange,
       onFocus,
       onBlur,
@@ -29,7 +30,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
+    const [showPassword, setShowPassword] = useState(false);
     const getTrailingIcon = () => {
+      // Password 타입일 때는 값이 있을 때만 visibility 아이콘 표시
+      if (type === "password" && value && value.trim() !== "") {
+        return {
+          icon: showPassword ? "visibility-on" : "visibility-off",
+          color: textColor.light["fg-neutral-primary"],
+        };
+      }
+
       if (disabled) {
         // Disabled 상태에서는 Positive일 때만 아이콘 표시
         if (status === "positive") {
@@ -41,29 +51,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         return null;
       }
 
-      // Normal 상태
-      if (status === "normal") {
-        // Normal: Disable=False, Active=True, Focus=True일 때만 cancel 아이콘
-        if (active && focused) {
-          return {
-            icon: "cancel",
-            color: textColor.light["fg-neutral-primary"],
-          };
-        }
-        return null;
-      }
-
       // Negative 상태
       if (status === "negative") {
-        // Negative: Disable=False, Active=True, Focus=True일 때 cancel 아이콘
-        if (active && focused) {
-          return {
-            icon: "cancel",
-            color: textColor.light["fg-neutral-primary"],
-          };
-        }
         // Negative: Disable=False, Active=False, Focus=False 또는 Disable=False, Active=False, Focus=True일 때 error 아이콘
-        else if (!active) {
+        if (!active) {
           return {
             icon: "error",
             color: negativeColor.light["fg-negative-primary"],
@@ -74,63 +65,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
       // Positive 상태
       if (status === "positive") {
-        // Positive: Disable=False, Active=True, Focus=True일 때 cancel 아이콘
-        if (active && focused) {
-          return {
-            icon: "cancel",
-            color: textColor.light["fg-neutral-primary"],
-          };
-        }
         // Positive: Disable=False, Active=False일 때 circlecheck 아이콘
-        else if (!active) {
+        if (!active) {
           return {
             icon: "circlecheck",
             color: positiveColor.light["fg-positive-primary"],
           };
         }
         return null;
-      }
-
-      // 값이 있을 때 Cancel 아이콘 표시 (사용자 경험 개선) - 가장 마지막에 체크
-      if (value && value.trim() !== "") {
-        if (status === "normal") {
-          return {
-            icon: "cancel",
-            color: textColor.light["fg-neutral-primary"],
-          };
-        }
-
-        if (status === "negative") {
-          if (active && focused) {
-            // Negative: Active + Focus일 때 cancel 아이콘
-            return {
-              icon: "cancel",
-              color: textColor.light["fg-neutral-primary"],
-            };
-          } else if (!active) {
-            // Negative: !Active일 때 error 아이콘
-            return {
-              icon: "error",
-              color: negativeColor.light["fg-negative-primary"],
-            };
-          }
-        }
-
-        if (status === "positive") {
-          if (active && focused) {
-            // Positive: Active + Focus일 때 cancel 아이콘
-            return {
-              icon: "cancel",
-              color: textColor.light["fg-neutral-primary"],
-            };
-          } else if (active) {
-            // Positive: Active일 때 circlecheck 아이콘
-            return {
-              icon: "circlecheck",
-              color: positiveColor.light["fg-positive-primary"],
-            };
-          }
-        }
       }
 
       return null;
@@ -142,7 +84,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       <InputContainer>
         <StyledInput
           ref={ref}
-          type="text"
+          type={type === "password" ? (showPassword ? "text" : "password") : type}
           value={value}
           onChange={onChange}
           onFocus={onFocus}
@@ -163,23 +105,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             $color={trailingIcon.color}
             onMouseDown={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
-              if (trailingIcon.icon === "cancel") {
-                // Cancel 아이콘 클릭 시 값 지우기
-                const clearEvent = {
-                  target: { value: "" },
-                } as React.ChangeEvent<HTMLInputElement>;
-                onChange?.(clearEvent);
+              if (trailingIcon.icon === "visibility-on" || trailingIcon.icon === "visibility-off") {
+                // Password visibility 토글
+                setShowPassword(!showPassword);
               }
             }}
             type="button"
           >
-            {trailingIcon.icon === "cancel" && (
-              <IconCancel
-                width={size === "small" ? 16 : size === "large" ? 24 : 20}
-                height={size === "small" ? 16 : size === "large" ? 24 : 20}
-                color={trailingIcon.color}
-              />
-            )}
+
             {trailingIcon.icon === "error" && (
               <IconError
                 width={size === "small" ? 16 : size === "large" ? 24 : 20}
@@ -189,6 +122,20 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             )}
             {trailingIcon.icon === "circlecheck" && (
               <IconCircleCheck
+                width={size === "small" ? 16 : size === "large" ? 24 : 20}
+                height={size === "small" ? 16 : size === "large" ? 24 : 20}
+                color={trailingIcon.color}
+              />
+            )}
+            {trailingIcon.icon === "visibility-on" && (
+              <IconVisibilityOn
+                width={size === "small" ? 16 : size === "large" ? 24 : 20}
+                height={size === "small" ? 16 : size === "large" ? 24 : 20}
+                color={trailingIcon.color}
+              />
+            )}
+            {trailingIcon.icon === "visibility-off" && (
+              <IconVisibilityOff
                 width={size === "small" ? 16 : size === "large" ? 24 : 20}
                 height={size === "small" ? 16 : size === "large" ? 24 : 20}
                 color={trailingIcon.color}

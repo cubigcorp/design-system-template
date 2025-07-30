@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface InputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
   size?: "small" | "medium" | "large";
   status?: "normal" | "negative" | "positive";
   disabled?: boolean;
@@ -9,6 +9,7 @@ export interface InputProps
   focused?: boolean;
   placeholder?: string;
   value?: string;
+  type?: "text" | "password";
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;

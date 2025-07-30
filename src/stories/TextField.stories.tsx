@@ -46,6 +46,10 @@ const meta: Meta<typeof TextField> = {
     descriptionLeadingIcon: {
       control: { type: "boolean" },
     },
+    type: {
+      control: { type: "select" },
+      options: ["text", "password"],
+    },
   },
 };
 
@@ -153,45 +157,7 @@ export const WithoutDescription: Story = {
   },
 };
 
-// Cancel 아이콘 테스트용 스토리
-export const NormalWithCancel: Story = {
-  render: (args) => <TextFieldWithState {...args} />,
-  args: {
-    label: "주제",
-    value: "Normal 상태에서 Active + Focus",
-    description:
-      "Normal 상태에서 Active + Focus일 때 Cancel 아이콘이 표시됩니다.",
-    active: true,
-    focused: true,
-    status: "normal",
-  },
-};
 
-export const NormalWithoutCancel: Story = {
-  render: (args) => <TextFieldWithState {...args} />,
-  args: {
-    label: "주제",
-    value: "Normal 상태에서 Active + !Focus",
-    description:
-      "Normal 상태에서 Active + !Focus일 때는 아이콘이 표시되지 않습니다.",
-    active: true,
-    focused: false,
-    status: "normal",
-  },
-};
-
-export const NegativeWithCancel: Story = {
-  render: (args) => <TextFieldWithState {...args} />,
-  args: {
-    label: "주제",
-    value: "Negative 상태에서 Active + Focus",
-    description:
-      "Negative 상태에서 Active + Focus일 때 Cancel 아이콘이 표시됩니다.",
-    status: "negative",
-    active: true,
-    focused: true,
-  },
-};
 
 export const NegativeWithError: Story = {
   render: (args) => <TextFieldWithState {...args} />,
@@ -218,30 +184,7 @@ export const PositiveWithCheck: Story = {
   },
 };
 
-export const PositiveWithCheckNoFocus: Story = {
-  render: (args) => <TextFieldWithState {...args} />,
-  args: {
-    label: "주제",
-    value: "Positive 상태에서 !Active",
-    description: "Positive 상태에서 !Active일 때 Check 아이콘이 표시됩니다.",
-    status: "positive",
-    active: false,
-    focused: false,
-  },
-};
 
-export const PositiveWithCancel: Story = {
-  render: (args) => <TextFieldWithState {...args} />,
-  args: {
-    label: "주제",
-    value: "Positive 상태에서 Active + Focus (Cancel)",
-    description:
-      "Positive 상태에서 Active + Focus일 때 Cancel 아이콘이 표시됩니다.",
-    status: "positive",
-    active: true,
-    focused: true,
-  },
-};
 
 export const PositiveDisabled: Story = {
   render: (args) => <TextFieldWithState {...args} />,
@@ -251,5 +194,36 @@ export const PositiveDisabled: Story = {
     description: "Positive 상태에서 Disabled일 때도 Check 아이콘이 표시됩니다.",
     status: "positive",
     disabled: true,
+  },
+};
+
+export const Password: Story = {
+  render: (args) => <TextFieldWithState {...args} />,
+  args: {
+    label: "비밀번호",
+    type: "password",
+    placeholder: "비밀번호를 입력해 주세요.",
+    description: "비밀번호를 입력하면 visibility 아이콘이 나타납니다.",
+  },
+};
+
+export const PasswordWithValue: Story = {
+  render: (args) => <TextFieldWithState {...args} />,
+  args: {
+    label: "비밀번호",
+    type: "password",
+    value: "mypassword123",
+    placeholder: "비밀번호를 입력해 주세요.",
+    description: "값이 있을 때 visibility 아이콘이 표시됩니다.",
+  },
+};
+
+export const PasswordEmpty: Story = {
+  render: (args) => <TextFieldWithState {...args} />,
+  args: {
+    label: "비밀번호",
+    type: "password",
+    placeholder: "비밀번호를 입력해 주세요.",
+    description: "값이 없을 때는 아이콘이 표시되지 않습니다.",
   },
 };

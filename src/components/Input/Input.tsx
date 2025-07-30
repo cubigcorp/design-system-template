@@ -311,36 +311,76 @@ const StyledInput = styled.input<{
   &::placeholder {
     color: ${textColor.light["fg-neutral-assistive"]} !important;
     opacity: 1; /* Firefox에서 opacity 조정 */
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
   }
 
   &::-webkit-input-placeholder {
     color: ${textColor.light["fg-neutral-assistive"]} !important;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
   }
 
   &::-moz-placeholder {
     color: ${textColor.light["fg-neutral-assistive"]} !important;
     opacity: 1;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
   }
 
   &:-ms-input-placeholder {
     color: ${textColor.light["fg-neutral-assistive"]} !important;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
   }
 
   /* 포커스 상태에서도 placeholder 색상 유지 */
   &:focus::placeholder {
     color: ${textColor.light["fg-neutral-assistive"]} !important;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
   }
 
   &:focus::-webkit-input-placeholder {
     color: ${textColor.light["fg-neutral-assistive"]} !important;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
   }
 
   &:focus::-moz-placeholder {
     color: ${textColor.light["fg-neutral-assistive"]} !important;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
   }
 
   &:focus:-ms-input-placeholder {
     color: ${textColor.light["fg-neutral-assistive"]} !important;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
   }
 `;
 

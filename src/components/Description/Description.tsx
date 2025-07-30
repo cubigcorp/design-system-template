@@ -4,6 +4,7 @@ import { textColor } from "../../tokens";
 import { negativeColor } from "../../tokens";
 import { positiveColor } from "../../tokens";
 import { typographyCSS } from "../../tokens";
+import { typography } from "../../tokens";
 import { spacing } from "../../tokens";
 import { IconError, IconCircleCheck } from "../icons";
 import type { DescriptionProps } from "./types";
@@ -47,7 +48,7 @@ const Description: React.FC<DescriptionProps> = ({
 const StyledDescription = styled.div<{
   status: "default" | "error" | "success";
 }>`
-  ${typographyCSS.caption2}
+  ${typography("ko", "caption2", "regular")}
   height: 16px;
   display: flex;
   align-items: center;

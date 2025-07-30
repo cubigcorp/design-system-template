@@ -5,6 +5,7 @@ import { borderColor } from "../../tokens";
 import { radius } from "../../tokens";
 import { spacing } from "../../tokens";
 import { typographyCSS } from "../../tokens";
+import { typography } from "../../tokens";
 import { color } from "../../tokens";
 import { negativeColor } from "../../tokens";
 import { positiveColor } from "../../tokens";
@@ -178,21 +179,21 @@ const StyledInput = styled.input<{
       case "small":
         return `
           height: 32px;
-          ${typographyCSS.body2}
+          ${typography("ko", "body2", "regular")}
           padding: ${spacing.gap["gap-1"]} ${spacing.gap["gap-2"]};
           padding-right: ${rightPadding}px;
         `;
       case "large":
         return `
           height: 48px;
-          ${typographyCSS.body3}
+          ${typography("ko", "body3", "regular")}
           padding: ${spacing.gap["gap-3"]} ${spacing.gap["gap-2.5"]};
           padding-right: ${rightPadding}px;
         `;
       default: // medium
         return `
           height: 40px;
-          ${typographyCSS.body3}
+          ${typography("ko", "body3", "regular")}
           padding: ${spacing.gap["gap-2"]} ${spacing.gap["gap-2"]};
           padding-right: ${rightPadding}px;
         `;

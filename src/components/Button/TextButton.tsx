@@ -15,7 +15,7 @@ import { borderColor } from "../../tokens/borderColor";
 
 const StyledButton = styled.button.withConfig({
   shouldForwardProp: (prop) => !["loading", "state"].includes(prop),
-})<ButtonStyleProps>`
+}) <ButtonStyleProps>`
   // 기본 스타일
   display: inline-flex;
   align-items: center;
@@ -212,7 +212,7 @@ export const TextButton = ({
   }, [state]);
 
   const handleMouseEnter = () => {
-    if (!disabled && !loading && state === "default") {
+    if (!disabled && !loading) {
       setInteractionState("hovered");
     }
   };
@@ -224,19 +224,19 @@ export const TextButton = ({
   };
 
   const handleMouseDown = () => {
-    if (!disabled && !loading && state === "default") {
+    if (!disabled && !loading) {
       setInteractionState("pressed");
     }
   };
 
   const handleMouseUp = () => {
-    if (!disabled && !loading && state === "default") {
+    if (!disabled && !loading) {
       setInteractionState("hovered");
     }
   };
 
   const handleFocus = () => {
-    if (!disabled && !loading && state === "default") {
+    if (!disabled && !loading) {
       setInteractionState("focused");
     }
   };

@@ -41,3 +41,7 @@ export type { TextFieldProps } from "./TextField/types";
 // Select
 export { Select } from "./Select";
 export type { SelectProps, SelectOption } from "./Select/types";
+
+// Dropdown
+export { Dropdown } from "./Dropdown";
+export type { DropdownProps, DropdownOption } from "./Dropdown/types";

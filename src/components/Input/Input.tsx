@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import { textColor } from "../../tokens";
 import { borderColor } from "../../tokens";
@@ -32,6 +32,22 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const [showPassword, setShowPassword] = useState(false);
+    const [internalFocused, setInternalFocused] = useState(focused);
+
+    // focused prop이 변경되면 내부 상태 업데이트
+    useEffect(() => {
+      setInternalFocused(focused);
+    }, [focused]);
+
+    const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
+      setInternalFocused(true);
+      onFocus?.(event);
+    };
+
+    const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+      setInternalFocused(false);
+      onBlur?.(event);
+    };
     const getTrailingIcon = () => {
       // Password 타입일 때는 값이 있을 때만 visibility 아이콘 표시
       if (type === "password" && value && value.trim() !== "") {
@@ -88,8 +104,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           type={type === "password" ? (showPassword ? "text" : "password") : type}
           value={value}
           onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           placeholder={placeholder}
           disabled={disabled}
           className={className}
@@ -97,7 +113,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           $status={status}
           $disabled={disabled}
           $active={active}
-          $focused={focused}
+          $focused={internalFocused}
           {...props}
         />
         {trailingIcon && (
@@ -163,7 +179,7 @@ const StyledInput = styled.input<{
   $focused: boolean;
 }>`
   width: 100%;
-  border: 1px solid;
+  border: ${({ $focused }) => $focused ? "1.8px solid" : "1px solid"};
   border-radius: ${radius["rounded-2"]};
   outline: none;
   box-sizing: border-box;

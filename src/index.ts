@@ -6,6 +6,8 @@ export * from "./components/Label";
 export * from "./components/Description";
 export * from "./components/Input";
 export * from "./components/TextField";
+export * from "./components/Select";
+export * from "./components/Dropdown";
 export * from "./components/Checkbox";
 export * from "./components/icons";
 

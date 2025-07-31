@@ -37,3 +37,7 @@ export type { InputProps } from "./Input/types";
 // TextField
 export { TextField } from "./TextField";
 export type { TextFieldProps } from "./TextField/types";
+
+// Select
+export { Select } from "./Select";
+export type { SelectProps, SelectOption } from "./Select/types";

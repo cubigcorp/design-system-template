@@ -16,8 +16,8 @@ export interface DropdownProps {
     label?: string;
     labelType?: "default" | "required" | "optional";
     description?: string;
-    descriptionStatus?: "default" | "error" | "success";
     descriptionLeadingIcon?: boolean;
+    status?: "default" | "negative" | "positive";
     onChange?: (value: string) => void;
     onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
     onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;

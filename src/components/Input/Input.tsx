@@ -16,7 +16,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       size = "medium",
-      status = "normal",
+      status = "default",
       disabled = false,
       active = false,
       focused = false,
@@ -173,7 +173,7 @@ const InputContainer = styled.div`
 
 const StyledInput = styled.input<{
   $size: "small" | "medium" | "large";
-  $status: "normal" | "negative" | "positive";
+  $status: "default" | "negative" | "positive";
   $disabled: boolean;
   $active: boolean;
   $focused: boolean;
@@ -228,7 +228,7 @@ const StyledInput = styled.input<{
     }
 
     // Normal 상태
-    if ($status === "normal") {
+    if ($status === "default") {
       if ($active && $focused) {
         // Normal: Disable=False, Active=True, Focus=True
         return `

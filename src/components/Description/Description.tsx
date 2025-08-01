@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { textColor } from "../../tokens";
 import { negativeColor } from "../../tokens";
 import { positiveColor } from "../../tokens";
-import { typographyCSS } from "../../tokens";
 import { typography } from "../../tokens";
 import { spacing } from "../../tokens";
 import { IconError, IconCircleCheck } from "../icons";
@@ -20,13 +19,13 @@ const Description: React.FC<DescriptionProps> = ({
     if (!leadingIcon) return null;
 
     switch (status) {
-      case "error":
+      case "negative":
         return (
           <ErrorIcon>
             <IconError />
           </ErrorIcon>
         );
-      case "success":
+      case "positive":
         return (
           <SuccessIcon>
             <IconCircleCheck />
@@ -46,7 +45,7 @@ const Description: React.FC<DescriptionProps> = ({
 };
 
 const StyledDescription = styled.div<{
-  status: "default" | "error" | "success";
+  status: "default" | "negative" | "positive";
 }>`
   ${typography("ko", "caption2", "regular")}
   height: 16px;
@@ -55,9 +54,9 @@ const StyledDescription = styled.div<{
   margin-top: ${spacing.gap["gap-1"]};
   color: ${({ status }) => {
     switch (status) {
-      case "error":
+      case "negative":
         return negativeColor.light["fg-negative-primary"];
-      case "success":
+      case "positive":
         return positiveColor.light["fg-positive-primary"];
       default:
         return textColor.light["fg-neutral-assistive"];

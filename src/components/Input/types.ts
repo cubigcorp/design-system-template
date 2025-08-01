@@ -3,7 +3,7 @@ import React from "react";
 export interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "type"> {
   size?: "small" | "medium" | "large";
-  status?: "normal" | "negative" | "positive";
+  status?: "default" | "negative" | "positive";
   disabled?: boolean;
   active?: boolean;
   focused?: boolean;

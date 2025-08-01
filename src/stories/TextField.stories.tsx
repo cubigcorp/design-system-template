@@ -36,10 +36,7 @@ const meta: Meta<typeof TextField> = {
       control: { type: "select" },
       options: ["default", "required", "optional"],
     },
-    descriptionStatus: {
-      control: { type: "select" },
-      options: ["default", "error", "success"],
-    },
+
     disabled: {
       control: { type: "boolean" },
     },
@@ -92,7 +89,6 @@ export const WithError: Story = {
     labelType: "required",
     placeholder: "텍스트를 입력해 주세요.",
     description: "올바르지 않은 입력입니다.",
-    descriptionStatus: "error",
     descriptionLeadingIcon: true,
     status: "negative",
   },
@@ -105,7 +101,6 @@ export const WithSuccess: Story = {
     labelType: "required",
     placeholder: "텍스트를 입력해 주세요.",
     description: "입력이 완료되었습니다.",
-    descriptionStatus: "success",
     descriptionLeadingIcon: true,
     status: "positive",
   },

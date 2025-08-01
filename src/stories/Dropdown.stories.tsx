@@ -53,10 +53,7 @@ const meta: Meta<typeof Dropdown> = {
         description: {
             control: { type: "text" },
         },
-        descriptionStatus: {
-            control: { type: "select" },
-            options: ["default", "error", "success"],
-        },
+
         descriptionLeadingIcon: {
             control: { type: "boolean" },
         },
@@ -178,7 +175,7 @@ export const ErrorDescription: Story = {
         label: "선택 항목",
         placeholder: "선택해주세요.",
         description: "옵션을 선택해주세요.",
-        descriptionStatus: "error",
+        status: "negative",
         options: sampleOptions,
     },
 };
@@ -190,7 +187,7 @@ export const SuccessDescription: Story = {
         placeholder: "선택해주세요.",
         value: "option2",
         description: "옵션이 성공적으로 선택되었습니다.",
-        descriptionStatus: "success",
+        status: "positive",
         options: sampleOptions,
     },
 }; 

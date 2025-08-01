@@ -11,7 +11,7 @@ const meta: Meta<typeof Description> = {
   argTypes: {
     status: {
       control: { type: "select" },
-      options: ["default", "error", "success"],
+      options: ["default", "negative", "positive"],
     },
     leadingIcon: {
       control: { type: "boolean" },
@@ -33,7 +33,7 @@ export const Default: Story = {
 export const Error: Story = {
   args: {
     children: "올바르지 않은 입력입니다.",
-    status: "error",
+    status: "negative",
     leadingIcon: true,
   },
 };
@@ -41,7 +41,7 @@ export const Error: Story = {
 export const Success: Story = {
   args: {
     children: "입력이 완료되었습니다.",
-    status: "success",
+    status: "positive",
     leadingIcon: true,
   },
 };

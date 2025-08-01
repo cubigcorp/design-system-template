@@ -12,10 +12,9 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       label,
       labelType = "default",
       description,
-      descriptionStatus = "default",
       descriptionLeadingIcon = false,
       size = "medium",
-      status = "normal",
+      status = "default",
       disabled = false,
       placeholder,
       value,
@@ -65,7 +64,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
         {description && (
           <Description
-            status={descriptionStatus}
+            status={status}
             leadingIcon={descriptionLeadingIcon}
           >
             {description}

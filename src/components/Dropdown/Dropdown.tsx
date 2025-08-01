@@ -22,8 +22,8 @@ const Dropdown: React.FC<DropdownProps> = ({
     label,
     labelType = "default",
     description,
-    descriptionStatus = "default",
     descriptionLeadingIcon = false,
+    status = "default",
     onChange,
     onFocus,
     onBlur,
@@ -122,7 +122,7 @@ const Dropdown: React.FC<DropdownProps> = ({
             </DropdownTrigger>
             {description && !isOpen && (
                 <Description
-                    status={descriptionStatus}
+                    status={status}
                     leadingIcon={descriptionLeadingIcon}
                 >
                     {description}

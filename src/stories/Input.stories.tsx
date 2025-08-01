@@ -53,7 +53,7 @@ const meta: Meta<typeof Input> = {
     },
     status: {
       control: { type: "select" },
-      options: ["normal", "negative", "positive"],
+      options: ["default", "negative", "positive"],
     },
     disabled: {
       control: { type: "boolean" },
@@ -82,7 +82,7 @@ export const Default: Story = {
   args: {
     placeholder: "텍스트를 입력해 주세요.",
     size: "medium",
-    status: "normal",
+    status: "default",
   },
 };
 
@@ -155,7 +155,7 @@ export const NormalDefault: Story = {
   render: (args) => <InputWithState {...args} />,
   args: {
     value: "Normal: !Active, !Focus",
-    status: "normal",
+    status: "default",
     active: false,
     focused: false,
   },
@@ -165,7 +165,7 @@ export const NormalActive: Story = {
   render: (args) => <InputWithState {...args} />,
   args: {
     value: "Normal: Active, !Focus",
-    status: "normal",
+    status: "default",
     active: true,
     focused: false,
   },
@@ -175,7 +175,7 @@ export const NormalFocused: Story = {
   render: (args) => <InputWithState {...args} />,
   args: {
     value: "Normal: !Active, Focus",
-    status: "normal",
+    status: "default",
     active: false,
     focused: true,
   },
@@ -185,7 +185,7 @@ export const NormalActiveFocused: Story = {
   render: (args) => <InputWithState {...args} />,
   args: {
     value: "Normal: Active, Focus",
-    status: "normal",
+    status: "default",
     active: true,
     focused: true,
   },
@@ -195,7 +195,7 @@ export const NormalDisabled: Story = {
   render: (args) => <InputWithState {...args} />,
   args: {
     value: "Normal: Disabled",
-    status: "normal",
+    status: "default",
     disabled: true,
   },
 };
@@ -266,7 +266,7 @@ export const NormalWithCancel: Story = {
     value: "Normal 상태에서 Active + Focus",
     active: true,
     focused: true,
-    status: "normal",
+    status: "default",
   },
 };
 
@@ -276,7 +276,7 @@ export const NormalWithoutCancel: Story = {
     value: "Normal 상태에서 Active + !Focus",
     active: true,
     focused: false,
-    status: "normal",
+    status: "default",
   },
 };
 

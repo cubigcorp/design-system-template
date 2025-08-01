@@ -77,8 +77,8 @@ const colorValues: Record<string, string> = {
   "orange-950": "#441306",
 
   // Yellow
-  "yellow-50": "#f7fee7",
-  "yellow-100": "#ecfcca",
+  "yellow-50": "#fefce8",
+  "yellow-100": "#fef9c2",
   "yellow-200": "#fff085",
   "yellow-300": "#ffdf20",
   "yellow-400": "#fdc700",
@@ -608,14 +608,14 @@ export const GrayScale: Story = {
   ),
 };
 
-// Text Colors
-export const Text: Story = {
+// Foreground Colors
+export const Foreground: Story = {
   parameters: {
     controls: { disable: true },
   },
   render: () => (
     <div className="space-y-8">
-      <h2 className="text-2xl font-bold mb-4">Text</h2>
+      <h2 className="text-2xl font-bold mb-4">Foreground</h2>
       <div className="text-sm text-gray-600 mb-6">
         텍스트의 계층 구조와 가독성을 고려해 정의된 색상입니다. 본문, 제목,
         비활성 텍스트 등 다양한 정보 밀도에 따라 사용됩니다.

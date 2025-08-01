@@ -19,7 +19,7 @@ const meta = {
   argTypes: {
     variant: {
       control: { type: "radio" },
-      options: ["primary", "secondary", "brand", "positive", "negative"],
+      options: ["primary", "secondary", "brand", "positive", "negative", "info", "cautionary"],
     },
     type: {
       control: { type: "radio" },
@@ -124,6 +124,12 @@ export const AllVariants: Story = {
           <Badge variant="negative" type="outline">
             Negative
           </Badge>
+          <Badge variant="info" type="outline">
+            Info
+          </Badge>
+          <Badge variant="cautionary" type="outline">
+            Cautionary
+          </Badge>
         </div>
       </div>
 
@@ -144,6 +150,12 @@ export const AllVariants: Story = {
           </Badge>
           <Badge variant="negative" type="solid">
             Negative
+          </Badge>
+          <Badge variant="info" type="solid">
+            Info
+          </Badge>
+          <Badge variant="cautionary" type="solid">
+            Cautionary
           </Badge>
         </div>
       </div>
@@ -166,6 +178,12 @@ export const AllVariants: Story = {
           <Badge variant="negative" type="strong">
             Negative
           </Badge>
+          <Badge variant="info" type="strong">
+            Info
+          </Badge>
+          <Badge variant="cautionary" type="strong">
+            Cautionary
+          </Badge>
         </div>
       </div>
     </div>
@@ -173,6 +191,116 @@ export const AllVariants: Story = {
 };
 
 // All Sizes Showcase
+// Info Variant Stories
+export const InfoVariant: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Info - Outline</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="info" type="outline" size="small">
+            Info
+          </Badge>
+          <Badge variant="info" type="outline" size="medium">
+            Info
+          </Badge>
+          <Badge variant="info" type="outline" size="large">
+            Info
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Info - Solid</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="info" type="solid" size="small">
+            Info
+          </Badge>
+          <Badge variant="info" type="solid" size="medium">
+            Info
+          </Badge>
+          <Badge variant="info" type="solid" size="large">
+            Info
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Info - Strong</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="info" type="strong" size="small">
+            Info
+          </Badge>
+          <Badge variant="info" type="strong" size="medium">
+            Info
+          </Badge>
+          <Badge variant="info" type="strong" size="large">
+            Info
+          </Badge>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+// Cautionary Variant Stories
+export const CautionaryVariant: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Cautionary - Outline</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="cautionary" type="outline" size="small">
+            Cautionary
+          </Badge>
+          <Badge variant="cautionary" type="outline" size="medium">
+            Cautionary
+          </Badge>
+          <Badge variant="cautionary" type="outline" size="large">
+            Cautionary
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Cautionary - Solid</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="cautionary" type="solid" size="small">
+            Cautionary
+          </Badge>
+          <Badge variant="cautionary" type="solid" size="medium">
+            Cautionary
+          </Badge>
+          <Badge variant="cautionary" type="solid" size="large">
+            Cautionary
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Cautionary - Strong</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="cautionary" type="strong" size="small">
+            Cautionary
+          </Badge>
+          <Badge variant="cautionary" type="strong" size="medium">
+            Cautionary
+          </Badge>
+          <Badge variant="cautionary" type="strong" size="large">
+            Cautionary
+          </Badge>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
 export const AllSizes: Story = {
   parameters: {
     controls: { disable: true },

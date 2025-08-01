@@ -3,7 +3,9 @@ export type BadgeVariant =
   | "secondary"
   | "brand"
   | "positive"
-  | "negative";
+  | "negative"
+  | "info"
+  | "cautionary";
 export type BadgeType = "outline" | "solid" | "strong";
 export type BadgeSize = "small" | "medium" | "large";
 

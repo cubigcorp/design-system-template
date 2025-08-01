@@ -8,6 +8,8 @@ import textColor from "../../tokens/textColor";
 import brandColor from "../../tokens/brandColor";
 import positiveColor from "../../tokens/positiveColor";
 import negativeColor from "../../tokens/negativeColor";
+import infoColor from "../../tokens/infoColor";
+import cautioniaryColor from "../../tokens/cautioniaryColor";
 import { borderColor } from "../../tokens/borderColor";
 
 const StyledBadge = styled.div<BadgeStyleProps>`
@@ -82,6 +84,18 @@ const StyledBadge = styled.div<BadgeStyleProps>`
                 text: negativeColor.light["fg-negative-primary"],
                 border: "transparent",
               };
+            case "info":
+              return {
+                background: color.blue["50"],
+                text: infoColor.light["fg-info-primary"],
+                border: "transparent",
+              };
+            case "cautionary":
+              return {
+                background: color.yellow["50"],
+                text: cautioniaryColor.light["fg-cautionary-primary"],
+                border: "transparent",
+              };
             default:
               return {
                 background: color.gray["50"],
@@ -118,6 +132,18 @@ const StyledBadge = styled.div<BadgeStyleProps>`
             case "negative":
               return {
                 background: color.red["600"],
+                text: color.common["100"], // common-white
+                border: "transparent",
+              };
+            case "info":
+              return {
+                background: color.blue["600"],
+                text: color.common["100"], // common-white
+                border: "transparent",
+              };
+            case "cautionary":
+              return {
+                background: cautioniaryColor.light["bg-cautionary-primary-default"],
                 text: color.common["100"], // common-white
                 border: "transparent",
               };
@@ -159,6 +185,18 @@ const StyledBadge = styled.div<BadgeStyleProps>`
                 background: "transparent",
                 text: negativeColor.light["fg-negative-primary"],
                 border: color.red["500"],
+              };
+            case "info":
+              return {
+                background: "transparent",
+                text: infoColor.light["fg-info-primary"],
+                border: color.blue["500"],
+              };
+            case "cautionary":
+              return {
+                background: "transparent",
+                text: cautioniaryColor.light["fg-cautionary-primary"],
+                border: color.yellow["400"],
               };
             default:
               return {

@@ -251,7 +251,7 @@ export const TextButton = ({
     <StyledButton
       variant={variant}
       size={size}
-      state={state !== "default" ? state : interactionState}
+      state={interactionState}
       disabled={disabled}
       loading={loading}
       onClick={onClick}

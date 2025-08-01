@@ -227,31 +227,31 @@ const StyledInput = styled.input<{
       `;
     }
 
-    // Normal 상태
+    // Default 상태
     if ($status === "default") {
       if ($active && $focused) {
-        // Normal: Disable=False, Active=True, Focus=True
+        // Default: Disable=False, Active=True, Focus=True
         return `
           background-color: transparent;
           color: ${textColor.light["fg-neutral-primary"]};
           border-color: ${borderColor.light["color-border-focused"]};
         `;
       } else if ($active && !$focused) {
-        // Normal: Disable=False, Active=True, Focus=False
+        // Default: Disable=False, Active=True, Focus=False
         return `
           background-color: transparent;
           color: ${textColor.light["fg-neutral-primary"]};
           border-color: ${borderColor.light["color-border-primary"]};
         `;
       } else if (!$active && $focused) {
-        // Normal: Disable=False, Active=False, Focus=True
+        // Default: Disable=False, Active=False, Focus=True
         return `
           background-color: transparent;
           color: ${textColor.light["fg-neutral-primary"]};
           border-color: ${borderColor.light["color-border-focused"]};
         `;
       } else {
-        // Normal: Disable=False, Active=False, Focus=False
+        // Default: Disable=False, Active=False, Focus=False
         return `
           background-color: transparent;
           color: ${textColor.light["fg-neutral-primary"]};

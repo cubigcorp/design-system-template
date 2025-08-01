@@ -30,7 +30,7 @@ const meta: Meta<typeof TextField> = {
     },
     status: {
       control: { type: "select" },
-      options: ["normal", "negative", "positive"],
+      options: ["default", "negative", "positive"],
     },
     labelType: {
       control: { type: "select" },

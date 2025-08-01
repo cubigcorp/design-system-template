@@ -151,50 +151,50 @@ export const Positive: Story = {
 };
 
 // Color 스펙 테스트용 스토리들 - 상태 관리 필요
-export const NormalDefault: Story = {
+export const DefaultDefault: Story = {
   render: (args) => <InputWithState {...args} />,
   args: {
-    value: "Normal: !Active, !Focus",
+    value: "Default: !Active, !Focus",
     status: "default",
     active: false,
     focused: false,
   },
 };
 
-export const NormalActive: Story = {
+export const DefaultActive: Story = {
   render: (args) => <InputWithState {...args} />,
   args: {
-    value: "Normal: Active, !Focus",
+    value: "Default: Active, !Focus",
     status: "default",
     active: true,
     focused: false,
   },
 };
 
-export const NormalFocused: Story = {
+export const DefaultFocused: Story = {
   render: (args) => <InputWithState {...args} />,
   args: {
-    value: "Normal: !Active, Focus",
+    value: "Default: !Active, Focus",
     status: "default",
     active: false,
     focused: true,
   },
 };
 
-export const NormalActiveFocused: Story = {
+export const DefaultActiveFocused: Story = {
   render: (args) => <InputWithState {...args} />,
   args: {
-    value: "Normal: Active, Focus",
+    value: "Default: Active, Focus",
     status: "default",
     active: true,
     focused: true,
   },
 };
 
-export const NormalDisabled: Story = {
+export const DefaultDisabled: Story = {
   render: (args) => <InputWithState {...args} />,
   args: {
-    value: "Normal: Disabled",
+    value: "Default: Disabled",
     status: "default",
     disabled: true,
   },
@@ -260,20 +260,20 @@ export const PositiveDisabled: Story = {
 };
 
 // Cancel 아이콘 테스트용 스토리 - 상태 관리 필요
-export const NormalWithCancel: Story = {
+export const DefaultWithCancel: Story = {
   render: (args) => <InputWithState {...args} />,
   args: {
-    value: "Normal 상태에서 Active + Focus",
+    value: "Default 상태에서 Active + Focus",
     active: true,
     focused: true,
     status: "default",
   },
 };
 
-export const NormalWithoutCancel: Story = {
+export const DefaultWithoutCancel: Story = {
   render: (args) => <InputWithState {...args} />,
   args: {
-    value: "Normal 상태에서 Active + !Focus",
+    value: "Default 상태에서 Active + !Focus",
     active: true,
     focused: false,
     status: "default",

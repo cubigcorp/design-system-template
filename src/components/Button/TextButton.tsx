@@ -98,40 +98,40 @@ const StyledButton = styled.button.withConfig({
             case "focused":
               return `${color.gray["950"]}1F`; // 12% opacity
             default:
-              return "transparent"; // 0% opacity
+              return `${color.gray["950"]}00`; // 0% opacity
           }
         case "brand":
           switch (state) {
             case "hovered":
-              return `${color.deeppurple["800"]}0D`; // 5% opacity
+              return `${color.deeppurple["600"]}0D`; // 5% opacity
             case "pressed":
-              return `${color.deeppurple["800"]}14`; // 8% opacity
+              return `${color.deeppurple["600"]}14`; // 8% opacity
             case "focused":
-              return `${color.deeppurple["800"]}1F`; // 12% opacity
+              return `${color.deeppurple["600"]}1F`; // 12% opacity
             default:
-              return "transparent"; // 0% opacity
+              return `${color.deeppurple["600"]}00`; // 0% opacity
           }
         case "positive":
           switch (state) {
             case "hovered":
-              return `${positiveColor.light["bg-positive-primary-default"]}0D`; // 5% opacity
+              return `${color.green["600"]}0D`; // 5% opacity
             case "pressed":
-              return `${positiveColor.light["bg-positive-primary-default"]}14`; // 8% opacity
+              return `${color.green["600"]}14`; // 8% opacity
             case "focused":
-              return `${positiveColor.light["bg-positive-primary-default"]}1F`; // 12% opacity
+              return `${color.green["600"]}1F`; // 12% opacity
             default:
-              return "transparent"; // 0% opacity
+              return `${color.green["600"]}00`; // 0% opacity
           }
         case "negative":
           switch (state) {
             case "hovered":
-              return `${negativeColor.light["bg-negative-primary-default"]}0D`; // 5% opacity
+              return `${color.red["600"]}0D`; // 5% opacity
             case "pressed":
-              return `${negativeColor.light["bg-negative-primary-default"]}14`; // 8% opacity
+              return `${color.red["600"]}14`; // 8% opacity
             case "focused":
-              return `${negativeColor.light["bg-negative-primary-default"]}1F`; // 12% opacity
+              return `${color.red["600"]}1F`; // 12% opacity
             default:
-              return "transparent"; // 0% opacity
+              return `${color.red["600"]}00`; // 0% opacity
           }
         default:
           return "transparent";

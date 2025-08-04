@@ -33,7 +33,7 @@ const StyledMenu = styled.div`
     z-index: 1000;
     margin-top: 4px;
     width: 100% !important;
-    max-height: 200px;
+    max-height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
   }

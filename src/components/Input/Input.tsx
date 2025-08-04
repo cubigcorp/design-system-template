@@ -114,7 +114,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           $disabled={disabled}
           $active={active}
           $focused={internalFocused}
-          {...props}
+          {...(Object.fromEntries(
+            Object.entries(props).filter(([key]) =>
+              !['active', 'focused', 'status', 'size'].includes(key)
+            )
+          ))}
         />
         {trailingIcon && (
           <TrailingIcon
@@ -184,6 +188,7 @@ const StyledInput = styled.input<{
   outline: none;
   box-sizing: border-box;
   position: relative;
+  transition: all 0.2s ease-in-out;
 
   /* Size styles */
   ${({ $size }) => {

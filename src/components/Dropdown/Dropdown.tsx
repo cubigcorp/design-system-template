@@ -135,7 +135,7 @@ const Dropdown: React.FC<DropdownProps> = ({
                         <DropdownOptionItem
                             key={option.value}
                             onClick={() => handleOptionClick(option)}
-                            isSelected={option.value === value}
+                            $isSelected={option.value === value}
                         >
                             {option.label}
                         </DropdownOptionItem>
@@ -295,14 +295,14 @@ const DropdownList = styled.div<{ size: "small" | "medium" | "large" }>`
   margin-top: 4px;
 `;
 
-const DropdownOptionItem = styled.div<{ isSelected: boolean }>`
+const DropdownOptionItem = styled.div<{ $isSelected: boolean }>`
   padding: ${spacing.gap["gap-2"]};
   cursor: pointer;
   ${typography("ko", "body3", "regular")}
-  color: ${({ isSelected }) =>
-        isSelected ? textColor.light["fg-neutral-primary"] : textColor.light["fg-neutral-alternative"]};
-  background-color: ${({ isSelected }) =>
-        isSelected ? color.gray["50"] : "transparent"};
+    color: ${({ $isSelected }) =>
+        $isSelected ? textColor.light["fg-neutral-primary"] : textColor.light["fg-neutral-alternative"]};
+  background-color: ${({ $isSelected }) =>
+        $isSelected ? color.gray["50"] : "transparent"};
 
   &:hover {
     background-color: ${color.gray["50"]};

@@ -212,7 +212,7 @@ export const TextButton = ({
   }, [state]);
 
   const handleMouseEnter = () => {
-    if (!disabled && !loading) {
+    if (!disabled && !loading && state === "default") {
       setInteractionState("hovered");
     }
   };
@@ -224,19 +224,19 @@ export const TextButton = ({
   };
 
   const handleMouseDown = () => {
-    if (!disabled && !loading) {
+    if (!disabled && !loading && state === "default") {
       setInteractionState("pressed");
     }
   };
 
   const handleMouseUp = () => {
-    if (!disabled && !loading) {
+    if (!disabled && !loading && state === "default") {
       setInteractionState("hovered");
     }
   };
 
   const handleFocus = () => {
-    if (!disabled && !loading) {
+    if (!disabled && !loading && state === "default") {
       setInteractionState("focused");
     }
   };
@@ -251,7 +251,7 @@ export const TextButton = ({
     <StyledButton
       variant={variant}
       size={size}
-      state={interactionState}
+      state={state !== "default" ? state : interactionState}
       disabled={disabled}
       loading={loading}
       onClick={onClick}

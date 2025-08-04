@@ -4,6 +4,8 @@ import { DropdownProps, DropdownOption } from "./types";
 import { IconArrowDown, IconArrowUp } from "../icons";
 import { Label } from "../Label";
 import { Description } from "../Description";
+import { Menu } from "../Menu";
+import { Cell } from "../Cell";
 import { textColor } from "../../tokens";
 import { borderColor } from "../../tokens";
 import { radius } from "../../tokens";
@@ -90,7 +92,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     };
 
     return (
-        <DropdownContainer ref={dropdownRef} className={className}>
+        <DropdownContainer ref={dropdownRef} className={`dropdown-container ${className}`}>
             {label && <Label type={labelType}>{label}</Label>}
             <DropdownTrigger
                 size={size}
@@ -130,17 +132,16 @@ const Dropdown: React.FC<DropdownProps> = ({
             )}
 
             {isOpen && (
-                <DropdownList size={size}>
+                <Menu>
                     {options.map((option) => (
-                        <DropdownOptionItem
+                        <Cell
                             key={option.value}
+                            text={option.label}
+                            active={option.value === value}
                             onClick={() => handleOptionClick(option)}
-                            $isSelected={option.value === value}
-                        >
-                            {option.label}
-                        </DropdownOptionItem>
+                        />
                     ))}
-                </DropdownList>
+                </Menu>
             )}
         </DropdownContainer>
     );
@@ -280,42 +281,7 @@ const DropdownIcon = styled.div<{ size: "small" | "medium" | "large" }>`
   pointer-events: none;
 `;
 
-const DropdownList = styled.div<{ size: "small" | "medium" | "large" }>`
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: ${color.common["100"]};
-  border: 1px solid ${borderColor.light["color-border-primary"]};
-  border-radius: ${radius["rounded-2"]};
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  z-index: 1000;
-  max-height: 200px;
-  overflow-y: auto;
-  margin-top: 4px;
-`;
 
-const DropdownOptionItem = styled.div<{ $isSelected: boolean }>`
-  padding: ${spacing.gap["gap-2"]};
-  cursor: pointer;
-  ${typography("ko", "body3", "regular")}
-    color: ${({ $isSelected }) =>
-        $isSelected ? textColor.light["fg-neutral-primary"] : textColor.light["fg-neutral-alternative"]};
-  background-color: ${({ $isSelected }) =>
-        $isSelected ? color.gray["50"] : "transparent"};
-
-  &:hover {
-    background-color: ${color.gray["50"]};
-  }
-
-  &:first-child {
-    border-radius: ${radius["rounded-2"]} ${radius["rounded-2"]} 0 0;
-  }
-
-  &:last-child {
-    border-radius: 0 0 ${radius["rounded-2"]} ${radius["rounded-2"]};
-  }
-`;
 
 Dropdown.displayName = "Dropdown";
 

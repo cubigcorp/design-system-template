@@ -6,11 +6,13 @@ import type { DropdownProps, DropdownOption } from "../components/Dropdown/types
 const DropdownWithState = (props: DropdownProps) => {
     const [value, setValue] = useState(props.value || "");
     return (
-        <Dropdown
-            {...props}
-            value={value}
-            onChange={(newValue) => setValue(newValue)}
-        />
+        <div style={{ width: "200px" }}>
+            <Dropdown
+                {...props}
+                value={value}
+                onChange={(newValue) => setValue(newValue)}
+            />
+        </div>
     );
 };
 
@@ -20,6 +22,11 @@ const sampleOptions: DropdownOption[] = [
     { value: "option3", label: "옵션 3" },
     { value: "option4", label: "옵션 4" },
     { value: "option5", label: "옵션 5" },
+    { value: "option6", label: "옵션 6" },
+    { value: "option7", label: "옵션 7" },
+    { value: "option8", label: "옵션 8" },
+    { value: "option9", label: "옵션 9" },
+    { value: "option10", label: "옵션 10" },
 ];
 
 const meta: Meta<typeof Dropdown> = {
@@ -53,7 +60,6 @@ const meta: Meta<typeof Dropdown> = {
         description: {
             control: { type: "text" },
         },
-
         descriptionLeadingIcon: {
             control: { type: "boolean" },
         },

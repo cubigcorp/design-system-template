@@ -45,3 +45,11 @@ export type { SelectProps, SelectOption } from "./Select/types";
 // Dropdown
 export { Dropdown } from "./Dropdown";
 export type { DropdownProps, DropdownOption } from "./Dropdown/types";
+
+// Menu
+export { Menu } from "./Menu";
+export type { MenuProps } from "./Menu/types";
+
+// Cell
+export { Cell } from "./Cell";
+export type { CellProps } from "./Cell/types";

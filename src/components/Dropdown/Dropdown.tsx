@@ -104,10 +104,10 @@ const Dropdown: React.FC<DropdownProps> = ({
         >
             {label && <Label type={labelType}>{label}</Label>}
             <DropdownTrigger
-                size={size}
-                disabled={disabled}
-                active={internalActive}
-                focused={internalFocused}
+                $size={size}
+                $disabled={disabled}
+                $active={internalActive}
+                $focused={internalFocused}
                 onClick={handleToggle}
                 type="button"
                 data-active={internalActive ? "true" : "false"}
@@ -165,10 +165,10 @@ const DropdownContainer = styled.div`
 `;
 
 const DropdownTrigger = styled.button<{
-    size: "small" | "medium" | "large";
-    disabled: boolean;
-    active: boolean;
-    focused: boolean;
+    $size: "small" | "medium" | "large";
+    $disabled: boolean;
+    $active: boolean;
+    $focused: boolean;
 }>`
   width: 100%;
   border: 1px solid;
@@ -183,12 +183,12 @@ const DropdownTrigger = styled.button<{
   transition: all 0.2s ease-in-out;
 
   /* Size styles */
-  ${({ size }) => {
-        const iconGap = size === "large" ? spacing.gap["gap-2.5"] : spacing.gap["gap-2"];
-        const iconSize = size === "small" ? 16 : size === "large" ? 24 : 20;
+  ${({ $size }) => {
+        const iconGap = $size === "large" ? spacing.gap["gap-2.5"] : spacing.gap["gap-2"];
+        const iconSize = $size === "small" ? 16 : $size === "large" ? 24 : 20;
         const rightPadding = iconSize + parseInt(iconGap) * 2;
 
-        switch (size) {
+        switch ($size) {
             case "small":
                 return `
           height: 32px;
@@ -214,9 +214,9 @@ const DropdownTrigger = styled.button<{
     }}
 
   /* Color styles based on status, disabled, active, focused */
-  ${({ disabled, active, focused }) => {
+  ${({ $disabled, $active, $focused }) => {
         // Disabled 상태
-        if (disabled) {
+        if ($disabled) {
             return `
         background-color: ${color.gray["50"]};
         color: ${textColor.light["fg-neutral-disable"]};
@@ -226,7 +226,7 @@ const DropdownTrigger = styled.button<{
         }
 
         // Active & Focused 상태
-        if (active && focused) {
+        if ($active && $focused) {
             return `
         background-color: ${color.gray["50"]};
         color: ${textColor.light["fg-neutral-primary"]};
@@ -235,7 +235,7 @@ const DropdownTrigger = styled.button<{
         }
 
         // Active 상태
-        if (active) {
+        if ($active) {
             return `
         background-color: ${color.common["100"]};
         color: ${textColor.light["fg-neutral-primary"]};
@@ -244,7 +244,7 @@ const DropdownTrigger = styled.button<{
         }
 
         // Focused 상태
-        if (focused) {
+        if ($focused) {
             return `
         background-color: ${color.gray["50"]};
         color: ${textColor.light["fg-neutral-alternative"]};

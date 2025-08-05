@@ -30,6 +30,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     onFocus,
     onBlur,
     className = "",
+    ...props
 }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [internalActive, setInternalActive] = useState(active);
@@ -92,7 +93,15 @@ const Dropdown: React.FC<DropdownProps> = ({
     };
 
     return (
-        <DropdownContainer ref={dropdownRef} className={`dropdown-container ${className}`}>
+        <DropdownContainer
+            ref={dropdownRef}
+            className={`dropdown-container ${className}`}
+            {...(Object.fromEntries(
+                Object.entries(props).filter(([key]) =>
+                    !['active', 'focused', 'size', 'disabled'].includes(key)
+                )
+            ))}
+        >
             {label && <Label type={labelType}>{label}</Label>}
             <DropdownTrigger
                 size={size}

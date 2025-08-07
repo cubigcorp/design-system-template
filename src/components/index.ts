@@ -53,3 +53,7 @@ export type { MenuProps } from "./Menu/types";
 // Cell
 export { Cell } from "./Cell";
 export type { CellProps } from "./Cell/types";
+
+// Toast
+export { Toast } from "./Toast";
+export type { ToastProps, ToastVariant, ToastPlacement } from "./Toast/types";

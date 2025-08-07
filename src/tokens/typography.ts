@@ -156,15 +156,25 @@ const typography = (
     family === "en"
       ? style.families.en
       : family === "ko"
-      ? style.families.ko
-      : style.families.sans;
+        ? style.families.ko
+        : style.families.sans;
 
   return `
     font-size: ${style.fontSize[0]};
     font-weight: ${style.weights[fontWeight]};
     font-family: ${fontFamily};
     letter-spacing: ${style.letterSpacing};
-    line-height: ${style.lineHeight};
+    line-height: ${style.lineHeight[0]};
+    
+    @media (max-width: 768px) {
+      font-size: ${style.fontSize[1]["@media (max-width: 768px)"][0]};
+      line-height: ${style.lineHeight[1]["@media (max-width: 768px)"][0]};
+    }
+    
+    @media (max-width: 375px) {
+      font-size: ${style.fontSize[1]["@media (max-width: 375px)"][0]};
+      line-height: ${style.lineHeight[1]["@media (max-width: 375px)"][0]};
+    }
   `;
 };
 

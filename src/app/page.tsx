@@ -1,9 +1,59 @@
 // src/app/page.tsx
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { Toast } from "../components";
 
 export default function Page() {
+  const [showToast, setShowToast] = useState(false);
+  const [toastVariant, setToastVariant] = useState<"default" | "positive" | "negative" | "cautionary">("positive");
+
+  const handleShowToast = (variant: "default" | "positive" | "negative" | "cautionary") => {
+    setToastVariant(variant);
+    setShowToast(true);
+
+    // 3초 후 자동으로 닫기 (애니메이션 시간 고려)
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
+  };
+
+  const handleCloseToast = () => {
+    // Toast 컴포넌트의 내부 애니메이션 로직을 사용하도록 비워둠
+  };
+
   return (
     <main className="min-h-screen p-8 bg-gray-50 space-y-12">
+      {/* Toast Test Section */}
+      <section className="space-y-4">
+        <h2 className="title2 mb-6">Toast Component Test</h2>
+        <div className="flex gap-4 flex-wrap">
+          <button
+            onClick={() => handleShowToast("positive")}
+            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          >
+            Positive Toast
+          </button>
+          <button
+            onClick={() => handleShowToast("negative")}
+            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+          >
+            Negative Toast
+          </button>
+          <button
+            onClick={() => handleShowToast("cautionary")}
+            className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
+          >
+            Cautionary Toast
+          </button>
+          <button
+            onClick={() => handleShowToast("default")}
+            className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+          >
+            Default Toast
+          </button>
+        </div>
+      </section>
+
       {/* Display Tokens */}
       <section>
         <h1 className="display1 mb-2">Display1 - Ultimate Data Security</h1>
@@ -173,6 +223,26 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      {/* Toast Component */}
+      {showToast && (
+        <Toast
+          variant={toastVariant}
+          placement="bottom-center"
+          showDivider={true}
+          description={
+            toastVariant === "positive" ? "1 저장 완료, 0 실패" :
+              toastVariant === "negative" ? "오류 코드: NET_001" :
+                toastVariant === "cautionary" ? "계속하시겠습니까?" :
+                  "더 자세한 내용은 설정에서 확인하세요."
+          }
+        >
+          {toastVariant === "positive" && "저장이 완료되었습니다.\n변경한 내용이 정상적으로 반영되었어요."}
+          {toastVariant === "negative" && "저장에 실패했습니다.\n네트워크 연결을 확인해주세요."}
+          {toastVariant === "cautionary" && "주의가 필요합니다.\n이 작업은 되돌릴 수 없습니다."}
+          {toastVariant === "default" && "정보가 업데이트되었습니다.\n새로운 기능을 확인해보세요."}
+        </Toast>
+      )}
     </main>
   );
 }

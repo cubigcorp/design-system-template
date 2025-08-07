@@ -9,7 +9,10 @@ export default function Page() {
 
   const handleShowToast = (variant: "default" | "positive" | "negative" | "cautionary") => {
     setToastVariant(variant);
-    setShowToast(true);
+    setShowToast(false);
+    setTimeout(() => {
+      setShowToast(true);
+    }, 10);
   };
 
   const handleCloseToast = () => {

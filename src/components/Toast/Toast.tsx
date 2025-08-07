@@ -13,7 +13,7 @@ import { IconCircleCheck, IconError, IconClose, IconInfo, IconWarning } from "..
 const fadeInSlideUp = keyframes`
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -28,7 +28,7 @@ const fadeOutSlideUp = keyframes`
   }
   to {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(40px);
   }
 `;
 
@@ -69,7 +69,7 @@ const Toast: React.FC<ToastProps> = ({
         // 퇴장 애니메이션 완료 후 onClose 호출
         setTimeout(() => {
             onClose?.();
-        }, 300);
+        }, 500);
     };
 
     const getLeadingIcon = () => {
@@ -201,16 +201,16 @@ const StyledToast = styled.div<{
   ${({ $isVisible, $isExiting }) => {
         if ($isExiting) {
             return css`
-          animation: ${fadeOutSlideUp} 0.3s ease-in-out forwards;
+          animation: ${fadeOutSlideUp} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         `;
         } else if ($isVisible) {
             return css`
-          animation: ${fadeInSlideUp} 0.3s ease-in-out forwards;
+          animation: ${fadeInSlideUp} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         `;
         } else {
             return css`
           opacity: 0;
-          transform: translateY(12px);
+          transform: translateY(40px);
         `;
         }
     }}

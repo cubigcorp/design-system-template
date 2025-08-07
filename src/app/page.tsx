@@ -243,7 +243,9 @@ export default function Page() {
         zIndex: 9999,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
+        height: 'auto',
+        maxHeight: 'none'
       }}>
         {toasts.slice(-3).map((toast, index) => (
           <Toast

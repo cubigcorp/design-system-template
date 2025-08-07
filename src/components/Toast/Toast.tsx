@@ -153,49 +153,6 @@ const StyledToast = styled.div<{
   box-sizing: border-box;
   margin-bottom: 16px; /* Toast들 사이의 간격 */
 
-  /* Placement positioning */
-  ${({ $placement, $offset }) => {
-        switch ($placement) {
-            case "top-left":
-                return `
-          top: ${$offset}px;
-          left: ${$offset}px;
-        `;
-            case "top-center":
-                return `
-          top: ${$offset}px;
-          left: 50%;
-          transform: translateX(-50%);
-        `;
-            case "top-right":
-                return `
-          top: ${$offset}px;
-          right: ${$offset}px;
-        `;
-            case "bottom-left":
-                return `
-          bottom: ${$offset}px;
-          left: ${$offset}px;
-        `;
-            case "bottom-center":
-                return `
-          bottom: ${$offset}px;
-          left: 50%;
-          transform: translateX(-50%);
-        `;
-            case "bottom-right":
-                return `
-          bottom: ${$offset}px;
-          right: ${$offset}px;
-        `;
-            default:
-                return `
-          top: ${$offset}px;
-          right: ${$offset}px;
-        `;
-        }
-    }}
-
   /* 애니메이션 상태에 따른 스타일 */
   ${({ $isVisible, $isExiting }) => {
         if ($isExiting) {

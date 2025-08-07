@@ -4,19 +4,32 @@ import React, { useState } from "react";
 import { Toast } from "../components";
 
 export default function Page() {
-  const [showToast, setShowToast] = useState(false);
-  const [toastVariant, setToastVariant] = useState<"default" | "positive" | "negative" | "cautionary">("positive");
+  const [toasts, setToasts] = useState<Array<{
+    id: string;
+    variant: "default" | "positive" | "negative" | "cautionary";
+    children: string;
+    description: string;
+  }>>([]);
 
   const handleShowToast = (variant: "default" | "positive" | "negative" | "cautionary") => {
-    setToastVariant(variant);
-    setShowToast(false);
-    setTimeout(() => {
-      setShowToast(true);
-    }, 10);
+    const newToast = {
+      id: Date.now().toString(),
+      variant,
+      children: variant === "positive" ? "저장이 완료되었습니다.\n변경한 내용이 정상적으로 반영되었어요." :
+        variant === "negative" ? "저장에 실패했습니다.\n네트워크 연결을 확인해주세요." :
+          variant === "cautionary" ? "주의가 필요합니다.\n이 작업은 되돌릴 수 없습니다." :
+            "정보가 업데이트되었습니다.\n새로운 기능을 확인해보세요.",
+      description: variant === "positive" ? "1 저장 완료, 0 실패" :
+        variant === "negative" ? "오류 코드: NET_001" :
+          variant === "cautionary" ? "계속하시겠습니까?" :
+            "더 자세한 내용은 설정에서 확인하세요."
+    };
+
+    setToasts(prev => [...prev, newToast]);
   };
 
-  const handleCloseToast = () => {
-    setShowToast(false);
+  const handleCloseToast = (id: string) => {
+    setToasts(prev => prev.filter(toast => toast.id !== id));
   };
 
   return (
@@ -223,27 +236,29 @@ export default function Page() {
       </section>
 
       {/* Toast Component */}
-      {showToast && (
-        <Toast
-          variant={toastVariant}
-          placement="bottom-center"
-          showDivider={true}
-          autoClose={true}
-          autoCloseDelay={3000}
-          onClose={handleCloseToast}
-          description={
-            toastVariant === "positive" ? "1 저장 완료, 0 실패" :
-              toastVariant === "negative" ? "오류 코드: NET_001" :
-                toastVariant === "cautionary" ? "계속하시겠습니까?" :
-                  "더 자세한 내용은 설정에서 확인하세요."
-          }
-        >
-          {toastVariant === "positive" && "저장이 완료되었습니다.\n변경한 내용이 정상적으로 반영되었어요."}
-          {toastVariant === "negative" && "저장에 실패했습니다.\n네트워크 연결을 확인해주세요."}
-          {toastVariant === "cautionary" && "주의가 필요합니다.\n이 작업은 되돌릴 수 없습니다."}
-          {toastVariant === "default" && "정보가 업데이트되었습니다.\n새로운 기능을 확인해보세요."}
-        </Toast>
-      )}
+      <div style={{
+        position: 'fixed',
+        bottom: '40px',
+        right: '40px',
+        zIndex: 9999,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'flex-end'
+      }}>
+        {toasts.slice(-3).map((toast, index) => (
+          <Toast
+            key={toast.id}
+            variant={toast.variant}
+            showDivider={true}
+            autoClose={true}
+            autoCloseDelay={3000}
+            onClose={() => handleCloseToast(toast.id)}
+            description={toast.description}
+          >
+            {toast.children}
+          </Toast>
+        ))}
+      </div>
     </main>
   );
 }

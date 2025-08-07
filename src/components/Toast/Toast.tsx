@@ -36,7 +36,7 @@ const Toast: React.FC<ToastProps> = ({
     children,
     description,
     variant = "default",
-    placement = "top-right",
+    placement = "bottom-right",
     offset = 40,
     onClose,
     showLeadingIcon = true,
@@ -142,8 +142,6 @@ const StyledToast = styled.div<{
     $isVisible: boolean;
     $isExiting: boolean;
 }>`
-  position: fixed;
-  z-index: 9999;
   display: flex;
   align-items: center;
   padding: ${spacing.gap["gap-3"]} ${spacing.gap["gap-2"]};
@@ -153,6 +151,7 @@ const StyledToast = styled.div<{
   max-width: 400px;
   min-width: 300px;
   box-sizing: border-box;
+  margin-bottom: 16px; /* Toast들 사이의 간격 */
 
   /* Placement positioning */
   ${({ $placement, $offset }) => {

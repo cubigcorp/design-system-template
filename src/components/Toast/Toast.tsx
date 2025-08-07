@@ -43,6 +43,8 @@ const Toast: React.FC<ToastProps> = ({
     showTrailingIcon = true,
     showDivider = false,
     className = "",
+    autoClose = false,
+    autoCloseDelay = 3000,
     ...props
 }) => {
     const [isVisible, setIsVisible] = useState(false);
@@ -51,7 +53,16 @@ const Toast: React.FC<ToastProps> = ({
     useEffect(() => {
         // 진입 애니메이션
         setIsVisible(true);
-    }, []);
+
+        // 자동 닫기 설정
+        if (autoClose) {
+            const timer = setTimeout(() => {
+                setIsExiting(true);
+            }, autoCloseDelay);
+
+            return () => clearTimeout(timer);
+        }
+    }, [autoClose, autoCloseDelay]);
 
     const handleClose = () => {
         setIsExiting(true);

@@ -14,4 +14,6 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "
     showTrailingIcon?: boolean;
     showDivider?: boolean;
     className?: string;
+    autoClose?: boolean;
+    autoCloseDelay?: number;
 } 

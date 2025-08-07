@@ -10,15 +10,10 @@ export default function Page() {
   const handleShowToast = (variant: "default" | "positive" | "negative" | "cautionary") => {
     setToastVariant(variant);
     setShowToast(true);
-
-    // 3초 후 자동으로 닫기 (애니메이션 시간 고려)
-    setTimeout(() => {
-      setShowToast(false);
-    }, 3000);
   };
 
   const handleCloseToast = () => {
-    // Toast 컴포넌트의 내부 애니메이션 로직을 사용하도록 비워둠
+    setShowToast(false);
   };
 
   return (
@@ -230,6 +225,9 @@ export default function Page() {
           variant={toastVariant}
           placement="bottom-center"
           showDivider={true}
+          autoClose={true}
+          autoCloseDelay={3000}
+          onClose={handleCloseToast}
           description={
             toastVariant === "positive" ? "1 저장 완료, 0 실패" :
               toastVariant === "negative" ? "오류 코드: NET_001" :

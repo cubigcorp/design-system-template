@@ -46,6 +46,7 @@ const Toast: React.FC<ToastProps> = ({
   autoClose = false,
   autoCloseDelay = 3000,
   index = 0,
+  disablePositioning = false,
   ...props
 }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -116,6 +117,7 @@ const Toast: React.FC<ToastProps> = ({
       $isVisible={isVisible}
       $isExiting={isExiting}
       $index={computedIndex}
+      $disablePositioning={disablePositioning}
       className={className}
       {...(Object.fromEntries(
         Object.entries(props).filter(([key]) =>
@@ -158,6 +160,7 @@ const StyledToast = styled.div<{
   $isVisible: boolean;
   $isExiting: boolean;
   $index?: number;
+  $disablePositioning?: boolean;
 }>`
   display: flex;
   align-items: center;
@@ -168,49 +171,52 @@ const StyledToast = styled.div<{
   max-width: 400px;
   min-width: 300px;
   box-sizing: border-box;
-  margin-bottom: 16px; /* Toast들 사이의 간격 */
-  position: fixed;
-  z-index: ${({ $index = 0 }) => 9999 + $index};
+  
+  /* ToastSystem에서 사용할 때는 position을 비활성화 */
+  ${({ $disablePositioning, $index = 0, $placement, $offset }) => !$disablePositioning && css`
+    position: fixed;
+    z-index: ${9999 + $index};
 
-  /* placement에 따른 위치 설정 */
-  ${({ $placement, $offset, $index = 0 }) => {
-    const stackedOffset = $offset + ($index * (ESTIMATED_TOAST_HEIGHT_PX + STACK_GAP_PX));
-    switch ($placement) {
-      case "top-left":
-        return css`
-          top: ${stackedOffset}px;
-          left: ${$offset}px;
-        `;
-      case "top-center":
-        return css`
-          top: ${stackedOffset}px;
-          left: 50%;
-          transform: translateX(-50%);
-        `;
-      case "top-right":
-        return css`
-          top: ${stackedOffset}px;
-          right: ${$offset}px;
-        `;
-      case "bottom-left":
-        return css`
-          bottom: ${stackedOffset}px;
-          left: ${$offset}px;
-        `;
-      case "bottom-center":
-        return css`
-          bottom: ${stackedOffset}px;
-          left: 50%;
-          transform: translateX(-50%);
-        `;
-      case "bottom-right":
-      default:
-        return css`
-          bottom: ${stackedOffset}px;
-          right: ${$offset}px;
-        `;
-    }
-  }}
+    /* placement에 따른 위치 설정 */
+    ${() => {
+      const stackedOffset = $offset + ($index * (ESTIMATED_TOAST_HEIGHT_PX + STACK_GAP_PX));
+      switch ($placement) {
+        case "top-left":
+          return css`
+            top: ${stackedOffset}px;
+            left: ${$offset}px;
+          `;
+        case "top-center":
+          return css`
+            top: ${stackedOffset}px;
+            left: 50%;
+            transform: translateX(-50%);
+          `;
+        case "top-right":
+          return css`
+            top: ${stackedOffset}px;
+            right: ${$offset}px;
+          `;
+        case "bottom-left":
+          return css`
+            bottom: ${stackedOffset}px;
+            left: ${$offset}px;
+          `;
+        case "bottom-center":
+          return css`
+            bottom: ${stackedOffset}px;
+            left: 50%;
+            transform: translateX(-50%);
+          `;
+        case "bottom-right":
+        default:
+          return css`
+            bottom: ${stackedOffset}px;
+            right: ${$offset}px;
+          `;
+      }
+    }}
+  `}
 
   /* 애니메이션 상태에 따른 스타일 */
   ${({ $isVisible, $isExiting, $placement }) => {

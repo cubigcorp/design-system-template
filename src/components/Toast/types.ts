@@ -17,4 +17,5 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "
     autoClose?: boolean;
     autoCloseDelay?: number;
     index?: number;
+    disablePositioning?: boolean;
 } 

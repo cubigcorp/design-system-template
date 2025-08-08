@@ -18,7 +18,6 @@ const SpinnerWrapper = styled.div<{ size?: "small" | "medium" | "large" }>`
   border-top-color: transparent;
   border-radius: 50%;
   animation: ${spin} 0.8s linear infinite;
-  display: inline-block;
 `;
 
 interface SpinnerProps {

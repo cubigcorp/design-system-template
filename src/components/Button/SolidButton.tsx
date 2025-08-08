@@ -12,7 +12,7 @@ import React from "react";
 
 const StyledButton = styled.button.withConfig({
   shouldForwardProp: (prop) => !["loading", "state"].includes(prop),
-})<ButtonStyleProps>`
+}) <ButtonStyleProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -191,8 +191,8 @@ const StyledButton = styled.button.withConfig({
       &:focus {
         outline: none;
         border-color: ${variant === "secondary"
-          ? borderColor.light["color-border-focused"]
-          : getBorderColor()};
+        ? borderColor.light["color-border-focused"]
+        : getBorderColor()};
       }
     `;
   }}
@@ -299,15 +299,28 @@ export const SolidButton = ({
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
-      {loading ? (
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        opacity: loading ? 0 : 1,
+        transition: 'opacity 0.2s ease'
+      }}>
+        {leadingIcon && React.createElement(leadingIcon)}
+        <TextWrapper>{children || label}</TextWrapper>
+        {trailingIcon && React.createElement(trailingIcon)}
+      </div>
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        opacity: loading ? 1 : 0,
+        transition: 'opacity 0.2s ease'
+      }}>
         <Spinner />
-      ) : (
-        <>
-          {leadingIcon && React.createElement(leadingIcon)}
-          <TextWrapper>{children || label}</TextWrapper>
-          {trailingIcon && React.createElement(trailingIcon)}
-        </>
-      )}
+      </div>
     </StyledButton>
   );
 };

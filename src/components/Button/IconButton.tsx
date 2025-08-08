@@ -38,7 +38,7 @@ export interface IconButtonProps extends IconButtonStyleProps {
 
 const StyledIconButton = styled.button.withConfig({
   shouldForwardProp: (prop) => !["loading", "state"].includes(prop),
-})<IconButtonStyleProps>`
+}) <IconButtonStyleProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -246,8 +246,8 @@ const StyledIconButton = styled.button.withConfig({
         &:focus {
           outline: none;
           border-color: ${variant === "secondary"
-            ? borderColor.light["color-border-focused"]
-            : getBorderColor()};
+          ? borderColor.light["color-border-focused"]
+          : getBorderColor()};
         }
       `;
     } else {
@@ -377,19 +377,19 @@ const StyledIconButton = styled.button.withConfig({
       ${type === "solid"
         ? css`
             background-color: ${variant === "primary"
-              ? color.gray["900"]
-              : color.gray["50"]} !important;
+            ? color.gray["900"]
+            : color.gray["50"]} !important;
             border-color: ${variant === "primary"
-              ? color.gray["800"]
-              : borderColor.light["color-border-primary"]} !important;
+            ? color.gray["800"]
+            : borderColor.light["color-border-primary"]} !important;
             color: ${variant === "primary"
-              ? textColor.light["fg-neutral-alternative"]
-              : textColor.light["fg-neutral-disable"]} !important;
+            ? textColor.light["fg-neutral-alternative"]
+            : textColor.light["fg-neutral-disable"]} !important;
           `
         : css`
             border-color: ${borderColor.light[
-              "color-border-primary"
-            ]} !important;
+          "color-border-primary"
+          ]} !important;
             color: ${textColor.light["fg-neutral-disable"]} !important;
             background-color: ${color.gray["50"]} !important;
           `}
@@ -477,7 +477,26 @@ export const IconButton = ({
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
-      {loading ? <Spinner /> : React.createElement(icon)}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        opacity: loading ? 0 : 1,
+        transition: 'opacity 0.2s ease'
+      }}>
+        {React.createElement(icon)}
+      </div>
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        opacity: loading ? 1 : 0,
+        transition: 'opacity 0.2s ease'
+      }}>
+        <Spinner />
+      </div>
     </StyledIconButton>
   );
 };

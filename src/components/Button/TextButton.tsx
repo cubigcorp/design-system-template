@@ -263,15 +263,28 @@ export const TextButton = ({
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
-      {loading ? (
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        opacity: loading ? 0 : 1,
+        transition: 'opacity 0.2s ease'
+      }}>
+        {leadingIcon && React.createElement(leadingIcon)}
+        <TextWrapper>{children || label}</TextWrapper>
+        {trailingIcon && React.createElement(trailingIcon)}
+      </div>
+      <div style={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        opacity: loading ? 1 : 0,
+        transition: 'opacity 0.2s ease'
+      }}>
         <Spinner />
-      ) : (
-        <>
-          {leadingIcon && React.createElement(leadingIcon)}
-          <TextWrapper>{children || label}</TextWrapper>
-          {trailingIcon && React.createElement(trailingIcon)}
-        </>
-      )}
+      </div>
     </StyledButton>
   );
 };

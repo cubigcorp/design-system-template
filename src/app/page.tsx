@@ -13,7 +13,7 @@ export default function Page() {
 
   const handleShowToast = (variant: "default" | "positive" | "negative" | "cautionary") => {
     const newToast = {
-      id: Date.now().toString(),
+      id: `${Date.now()}-${Math.random()}`,
       variant,
       children: variant === "positive" ? "저장이 완료되었습니다.\n변경한 내용이 정상적으로 반영되었어요." :
         variant === "negative" ? "저장에 실패했습니다.\n네트워크 연결을 확인해주세요." :
@@ -243,13 +243,12 @@ export default function Page() {
         zIndex: 9999,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-end',
-        height: 'auto',
-        maxHeight: 'none'
+        alignItems: 'flex-end'
       }}>
-        {toasts.slice(-3).map((toast) => (
+        {toasts.slice(-3).reverse().map((toast, index) => (
           <Toast
             key={toast.id}
+            index={index}
             variant={toast.variant}
             showDivider={true}
             autoClose={true}

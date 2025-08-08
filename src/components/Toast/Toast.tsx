@@ -45,10 +45,21 @@ const Toast: React.FC<ToastProps> = ({
   className = "",
   autoClose = false,
   autoCloseDelay = 3000,
+  index = 0,
   ...props
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
+
+  // index가 전달되지 않으면 모듈 전역 카운터로 자동 스택
+  const computedIndex = typeof index === 'number' ? index : __activeToastCount;
+
+  useEffect(() => {
+    __activeToastCount += 1;
+    return () => {
+      __activeToastCount = Math.max(0, __activeToastCount - 1);
+    };
+  }, []);
 
   useEffect(() => {
     // 진입 애니메이션
@@ -104,6 +115,7 @@ const Toast: React.FC<ToastProps> = ({
       $offset={offset}
       $isVisible={isVisible}
       $isExiting={isExiting}
+      $index={computedIndex}
       className={className}
       {...(Object.fromEntries(
         Object.entries(props).filter(([key]) =>
@@ -135,12 +147,17 @@ const Toast: React.FC<ToastProps> = ({
   );
 };
 
+const STACK_GAP_PX = 16; // 토스트 간 간격
+const ESTIMATED_TOAST_HEIGHT_PX = 80; // 토스트 대략적 높이
+let __activeToastCount = 0; // 모듈 전역: 현재 화면에 있는 토스트 수
+
 const StyledToast = styled.div<{
   $variant: ToastVariant;
   $placement: ToastPlacement;
   $offset: number;
   $isVisible: boolean;
   $isExiting: boolean;
+  $index?: number;
 }>`
   display: flex;
   align-items: center;
@@ -153,42 +170,43 @@ const StyledToast = styled.div<{
   box-sizing: border-box;
   margin-bottom: 16px; /* Toast들 사이의 간격 */
   position: fixed;
-  z-index: 9999;
+  z-index: ${({ $index = 0 }) => 9999 + $index};
 
   /* placement에 따른 위치 설정 */
-  ${({ $placement, $offset }) => {
+  ${({ $placement, $offset, $index = 0 }) => {
+    const stackedOffset = $offset + ($index * (ESTIMATED_TOAST_HEIGHT_PX + STACK_GAP_PX));
     switch ($placement) {
       case "top-left":
         return css`
-          top: ${$offset}px;
+          top: ${stackedOffset}px;
           left: ${$offset}px;
         `;
       case "top-center":
         return css`
-          top: ${$offset}px;
+          top: ${stackedOffset}px;
           left: 50%;
           transform: translateX(-50%);
         `;
       case "top-right":
         return css`
-          top: ${$offset}px;
+          top: ${stackedOffset}px;
           right: ${$offset}px;
         `;
       case "bottom-left":
         return css`
-          bottom: ${$offset}px;
+          bottom: ${stackedOffset}px;
           left: ${$offset}px;
         `;
       case "bottom-center":
         return css`
-          bottom: ${$offset}px;
+          bottom: ${stackedOffset}px;
           left: 50%;
           transform: translateX(-50%);
         `;
       case "bottom-right":
       default:
         return css`
-          bottom: ${$offset}px;
+          bottom: ${stackedOffset}px;
           right: ${$offset}px;
         `;
     }

@@ -247,7 +247,7 @@ export default function Page() {
         height: 'auto',
         maxHeight: 'none'
       }}>
-        {toasts.slice(-3).map((toast, index) => (
+        {toasts.slice(-3).map((toast) => (
           <Toast
             key={toast.id}
             variant={toast.variant}

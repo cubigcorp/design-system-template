@@ -22,6 +22,7 @@ const StyledButton = styled.button.withConfig({
   font-weight: ${fontWeight["500"]};
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  position: relative;
 
   ${({ size = "medium" }) => {
     switch (size) {

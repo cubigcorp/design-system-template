@@ -45,6 +45,7 @@ const StyledIconButton = styled.button.withConfig({
   border-radius: ${radius["rounded-2"]};
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  position: relative;
 
   ${({ size = "medium" }) => {
     switch (size) {

@@ -33,114 +33,114 @@ const fadeOutSlideUp = keyframes`
 `;
 
 const Toast: React.FC<ToastProps> = ({
-    children,
-    description,
-    variant = "default",
-    placement = "bottom-right",
-    offset = 40,
-    onClose,
-    showLeadingIcon = true,
-    showTrailingIcon = true,
-    showDivider = false,
-    className = "",
-    autoClose = false,
-    autoCloseDelay = 3000,
-    ...props
+  children,
+  description,
+  variant = "default",
+  placement = "bottom-right",
+  offset = 40,
+  onClose,
+  showLeadingIcon = true,
+  showTrailingIcon = true,
+  showDivider = false,
+  className = "",
+  autoClose = false,
+  autoCloseDelay = 3000,
+  ...props
 }) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const [isExiting, setIsExiting] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isExiting, setIsExiting] = useState(false);
 
-    useEffect(() => {
-        // 진입 애니메이션
-        setIsVisible(true);
+  useEffect(() => {
+    // 진입 애니메이션
+    setIsVisible(true);
 
-        // 자동 닫기 설정
-        if (autoClose) {
-            const timer = setTimeout(() => {
-                setIsExiting(true);
-            }, autoCloseDelay);
-
-            return () => clearTimeout(timer);
-        }
-    }, [autoClose, autoCloseDelay]);
-
-    const handleClose = () => {
+    // 자동 닫기 설정
+    if (autoClose) {
+      const timer = setTimeout(() => {
         setIsExiting(true);
-        // 퇴장 애니메이션 완료 후 onClose 호출
-        setTimeout(() => {
-            onClose?.();
-        }, 500);
-    };
+      }, autoCloseDelay);
 
-    const getLeadingIcon = () => {
-        if (!showLeadingIcon) return null;
+      return () => clearTimeout(timer);
+    }
+  }, [autoClose, autoCloseDelay]);
 
-        switch (variant) {
-            case "positive":
-                return <IconCircleCheck width={20} height={20} color="currentColor" />;
-            case "negative":
-                return <IconError width={20} height={20} color="currentColor" />;
-            case "cautionary":
-                return <IconWarning width={20} height={20} color="currentColor" />;
-            case "default":
-            default:
-                return <IconInfo width={20} height={20} color="currentColor" />;
-        }
-    };
+  const handleClose = () => {
+    setIsExiting(true);
+    // 퇴장 애니메이션 완료 후 onClose 호출
+    setTimeout(() => {
+      onClose?.();
+    }, 500);
+  };
 
-    const getTrailingIcon = () => {
-        if (!showTrailingIcon) return null;
-        return (
-            <CloseButton onClick={handleClose}>
-                <IconClose width={16} height={16} color="currentColor" />
-            </CloseButton>
-        );
-    };
+  const getLeadingIcon = () => {
+    if (!showLeadingIcon) return null;
 
+    switch (variant) {
+      case "positive":
+        return <IconCircleCheck width={20} height={20} color="currentColor" />;
+      case "negative":
+        return <IconError width={20} height={20} color="currentColor" />;
+      case "cautionary":
+        return <IconWarning width={20} height={20} color="currentColor" />;
+      case "default":
+      default:
+        return <IconInfo width={20} height={20} color="currentColor" />;
+    }
+  };
+
+  const getTrailingIcon = () => {
+    if (!showTrailingIcon) return null;
     return (
-        <StyledToast
-            $variant={variant}
-            $placement={placement}
-            $offset={offset}
-            $isVisible={isVisible}
-            $isExiting={isExiting}
-            className={className}
-            {...(Object.fromEntries(
-                Object.entries(props).filter(([key]) =>
-                    !['variant', 'placement', 'offset'].includes(key)
-                )
-            ))}
-        >
-            {showLeadingIcon && (
-                <LeadingIconWrapper $variant={variant}>
-                    <IconContainer>
-                        {getLeadingIcon()}
-                    </IconContainer>
-                </LeadingIconWrapper>
-            )}
-
-            <ContentWrapper>
-                <div>{children}</div>
-                {description && <div>{description}</div>}
-            </ContentWrapper>
-
-            {showDivider && <Divider $variant={variant} />}
-
-            {showTrailingIcon && (
-                <IconContainer>
-                    {getTrailingIcon()}
-                </IconContainer>
-            )}
-        </StyledToast>
+      <CloseButton onClick={handleClose}>
+        <IconClose width={16} height={16} color="currentColor" />
+      </CloseButton>
     );
+  };
+
+  return (
+    <StyledToast
+      $variant={variant}
+      $placement={placement}
+      $offset={offset}
+      $isVisible={isVisible}
+      $isExiting={isExiting}
+      className={className}
+      {...(Object.fromEntries(
+        Object.entries(props).filter(([key]) =>
+          !['variant', 'placement', 'offset'].includes(key)
+        )
+      ))}
+    >
+      {showLeadingIcon && (
+        <LeadingIconWrapper $variant={variant}>
+          <IconContainer>
+            {getLeadingIcon()}
+          </IconContainer>
+        </LeadingIconWrapper>
+      )}
+
+      <ContentWrapper>
+        <div>{children}</div>
+        {description && <div>{description}</div>}
+      </ContentWrapper>
+
+      {showDivider && <Divider $variant={variant} />}
+
+      {showTrailingIcon && (
+        <IconContainer>
+          {getTrailingIcon()}
+        </IconContainer>
+      )}
+    </StyledToast>
+  );
 };
 
 const StyledToast = styled.div<{
-    $variant: ToastVariant;
-    $placement: ToastPlacement;
-    $offset: number;
-    $isVisible: boolean;
-    $isExiting: boolean;
+  $variant: ToastVariant;
+  $placement: ToastPlacement;
+  $offset: number;
+  $isVisible: boolean;
+  $isExiting: boolean;
 }>`
   display: flex;
   align-items: center;
@@ -152,24 +152,67 @@ const StyledToast = styled.div<{
   min-width: 300px;
   box-sizing: border-box;
   margin-bottom: 16px; /* Toast들 사이의 간격 */
+  position: fixed;
+  z-index: 9999;
+
+  /* placement에 따른 위치 설정 */
+  ${({ $placement, $offset }) => {
+    switch ($placement) {
+      case "top-left":
+        return css`
+          top: ${$offset}px;
+          left: ${$offset}px;
+        `;
+      case "top-center":
+        return css`
+          top: ${$offset}px;
+          left: 50%;
+          transform: translateX(-50%);
+        `;
+      case "top-right":
+        return css`
+          top: ${$offset}px;
+          right: ${$offset}px;
+        `;
+      case "bottom-left":
+        return css`
+          bottom: ${$offset}px;
+          left: ${$offset}px;
+        `;
+      case "bottom-center":
+        return css`
+          bottom: ${$offset}px;
+          left: 50%;
+          transform: translateX(-50%);
+        `;
+      case "bottom-right":
+      default:
+        return css`
+          bottom: ${$offset}px;
+          right: ${$offset}px;
+        `;
+    }
+  }}
 
   /* 애니메이션 상태에 따른 스타일 */
-  ${({ $isVisible, $isExiting }) => {
-        if ($isExiting) {
-            return css`
+  ${({ $isVisible, $isExiting, $placement }) => {
+    if ($isExiting) {
+      return css`
           animation: ${fadeOutSlideUp} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         `;
-        } else if ($isVisible) {
-            return css`
+    } else if ($isVisible) {
+      return css`
           animation: ${fadeInSlideUp} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         `;
-        } else {
-            return css`
+    } else {
+      return css`
           opacity: 0;
-          transform: translateY(40px);
+          transform: ${$placement === "top-center" || $placement === "bottom-center"
+          ? "translateX(-50%) translateY(40px)"
+          : "translateY(40px)"};
         `;
-        }
-    }}
+    }
+  }}
 `;
 
 const IconContainer = styled.div`
@@ -186,18 +229,18 @@ const LeadingIconWrapper = styled.div<{ $variant: ToastVariant }>`
   flex-shrink: 0;
   margin-right: ${spacing.gap["gap-1"]};
     color: ${({ $variant }) => {
-        switch ($variant) {
-            case "positive":
-                return color.green["500"];
-            case "negative":
-                return color.red["500"];
-            case "cautionary":
-                return color.yellow["500"];
-            case "default":
-            default:
-                return color.common["100"];
-        }
-    }};
+    switch ($variant) {
+      case "positive":
+        return color.green["500"];
+      case "negative":
+        return color.red["500"];
+      case "cautionary":
+        return color.yellow["500"];
+      case "default":
+      default:
+        return color.common["100"];
+    }
+  }};
 `;
 
 const ContentWrapper = styled.div`

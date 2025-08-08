@@ -345,4 +345,91 @@ const KoreanCaption = styled.span`
 
 - [GitHub Repository](https://github.com/cubigcorp/design-system-template)
 - [Storybook 문서](https://cubigcorp.github.io/design-system-template/)
+
+# Design System Usage Guide
+
+## Toast 컴포넌트 사용법
+
+### 기본 사용법
+
+Toast 컴포넌트는 자체적으로 positioning을 처리하므로, 별도의 컨테이너 없이 직접 사용할 수 있습니다.
+
+```tsx
+import { Toast } from '@cubig/design-system';
+
+// 기본 사용법
+<Toast variant="positive" placement="bottom-right">
+  요청하신 인증번호를 재발송하였습니다.
+</Toast>
+
+// 자동 닫기 기능
+<Toast 
+  variant="positive" 
+  placement="bottom-right"
+  autoClose={true}
+  autoCloseDelay={3000}
+  onClose={() => console.log('Toast closed')}
+>
+  저장이 완료되었습니다.
+</Toast>
+```
+
+### 위치 옵션
+
+- `top-left`: 왼쪽 상단
+- `top-center`: 상단 중앙
+- `top-right`: 오른쪽 상단
+- `bottom-left`: 왼쪽 하단
+- `bottom-center`: 하단 중앙
+- `bottom-right`: 오른쪽 하단 (기본값)
+
+### 변형 옵션
+
+- `default`: 기본 (회색 아이콘)
+- `positive`: 성공 (초록색 체크 아이콘)
+- `negative`: 오류 (빨간색 에러 아이콘)
+- `cautionary`: 경고 (노란색 경고 아이콘)
+
+### 고급 사용법
+
+```tsx
+// 설명과 구분선 포함
+<Toast 
+  variant="positive"
+  placement="bottom-right"
+  description="1 저장 완료, 0 실패"
+  showDivider={true}
+  onClose={() => setShowToast(false)}
+>
+  저장이 완료되었습니다.
+  변경한 내용이 정상적으로 반영되었어요.
+</Toast>
+
+// 아이콘 없이 사용
+<Toast 
+  variant="default"
+  placement="bottom-right"
+  showLeadingIcon={false}
+  showTrailingIcon={false}
+>
+  아이콘 없는 토스트 메시지입니다.
+</Toast>
+```
+
+### 주의사항
+
+1. **Positioning**: Toast는 `position: fixed`로 설정되어 있어 viewport 기준으로 위치가 결정됩니다.
+2. **Z-index**: 기본적으로 `z-index: 9999`가 설정되어 있어 대부분의 요소 위에 표시됩니다.
+3. **Offset**: `offset` prop으로 화면 가장자리로부터의 거리를 조정할 수 있습니다 (기본값: 40px).
+
+### 잘못된 사용법
+
+```tsx
+// ❌ 이렇게 하면 Toast가 보이지 않을 수 있습니다
+<div style={{ position: 'relative' }}>
+  <Toast variant="positive">메시지</Toast>
+</div>
+
+// ✅ 올바른 사용법
+<Toast variant="positive" placement="bottom-right">메시지</Toast>
 ```

@@ -14,15 +14,16 @@ import positiveColor from "../../tokens/positiveColor";
 import negativeColor from "../../tokens/negativeColor";
 
 const StyledButton = styled.button.withConfig({
-  shouldForwardProp: (prop) => !["loading", "state"].includes(prop),
-}) <ButtonStyleProps>`
+  shouldForwardProp: (prop) =>
+    !["loading", "state", "radiusKey"].includes(prop),
+})<ButtonStyleProps>`
   // 기본 스타일
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: ${spacing.gap["gap-1"]};
   background: transparent;
-  border-radius: ${radius["rounded-2"]};
+  border-radius: ${({ radiusKey = "rounded-2" }) => radius[radiusKey]};
   font-weight: ${fontWeight["500"]};
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -285,26 +286,30 @@ export const OutlineButton = ({
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: '100%',
-        opacity: loading ? 0 : 1,
-        transition: 'opacity 0.2s ease'
-      }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+          opacity: loading ? 0 : 1,
+          transition: "opacity 0.2s ease",
+        }}
+      >
         {leadingIcon && React.createElement(leadingIcon)}
         <TextWrapper>{children || label}</TextWrapper>
         {trailingIcon && React.createElement(trailingIcon)}
       </div>
-      <div style={{
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        opacity: loading ? 1 : 0,
-        transition: 'opacity 0.2s ease'
-      }}>
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          opacity: loading ? 1 : 0,
+          transition: "opacity 0.2s ease",
+        }}
+      >
         <Spinner />
       </div>
     </StyledButton>

@@ -15,6 +15,7 @@ export interface ButtonStyleProps {
   state?: ButtonState;
   disabled?: boolean;
   loading?: boolean;
+  radiusKey?: keyof typeof import("../../tokens/radius").radius;
 }
 
 export interface ButtonProps extends ButtonStyleProps {

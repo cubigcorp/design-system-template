@@ -226,6 +226,7 @@ export const OutlineButton = ({
   children,
   onClick,
   className,
+  radiusKey,
 }: ButtonProps) => {
   const [interactionState, setInteractionState] = React.useState(state);
 
@@ -277,6 +278,7 @@ export const OutlineButton = ({
       state={state !== "default" ? state : interactionState}
       disabled={disabled}
       loading={loading}
+      radiusKey={radiusKey}
       onClick={onClick}
       className={className}
       onMouseEnter={handleMouseEnter}

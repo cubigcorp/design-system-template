@@ -420,6 +420,7 @@ export const IconButton = ({
   icon,
   onClick,
   className,
+  radiusKey,
 }: IconButtonProps) => {
   const [interactionState, setInteractionState] = React.useState(state);
 
@@ -472,6 +473,7 @@ export const IconButton = ({
       state={state !== "default" ? state : interactionState}
       disabled={disabled}
       loading={loading}
+      radiusKey={radiusKey}
       onClick={onClick}
       className={className}
       onMouseEnter={handleMouseEnter}

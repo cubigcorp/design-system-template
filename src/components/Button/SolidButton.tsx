@@ -241,6 +241,7 @@ export const SolidButton = ({
   children,
   onClick,
   className,
+  radiusKey,
 }: ButtonProps) => {
   const [interactionState, setInteractionState] = React.useState(state);
 
@@ -292,6 +293,7 @@ export const SolidButton = ({
       state={state !== "default" ? state : interactionState}
       disabled={disabled}
       loading={loading}
+      radiusKey={radiusKey}
       onClick={onClick}
       className={className}
       onMouseEnter={handleMouseEnter}

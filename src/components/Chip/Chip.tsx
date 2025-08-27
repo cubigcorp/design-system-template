@@ -17,7 +17,6 @@ const StyledChip = styled.div.withConfig({
   justify-content: center;
   gap: 4px;
   border-radius: ${({ radius: chipRadius }) => radius[chipRadius]};
-  font-family: ${fontFamily.sans};
   font-weight: ${fontWeight["500"]};
   white-space: nowrap;
   cursor: pointer;

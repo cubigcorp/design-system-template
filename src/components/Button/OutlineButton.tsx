@@ -222,6 +222,7 @@ const StyledButton = styled.button.withConfig({
 
 const TextWrapper = styled.span`
   padding: 0 ${spacing.gap["gap-0.5"]};
+  font-family: inherit;
 `;
 
 export const OutlineButton = ({

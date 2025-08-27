@@ -14,7 +14,7 @@ import { useEffectiveLang } from "../../i18n/LanguageContext";
 
 const StyledButton = styled.button.withConfig({
   shouldForwardProp: (prop) =>
-    !["loading", "state", "radiusKey", "lang"].includes(prop),
+    !["loading", "state", "radiusKey"].includes(prop),
 })<ButtonStyleProps>`
   display: inline-flex;
   align-items: center;
@@ -22,7 +22,6 @@ const StyledButton = styled.button.withConfig({
   gap: ${spacing.gap["gap-1"]};
   border: none;
   border-radius: ${({ radiusKey = "rounded-2" }) => radius[radiusKey]};
-  font-family: ${fontFamily.sans};
   font-weight: ${fontWeight["500"]};
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -238,6 +237,7 @@ const StyledButton = styled.button.withConfig({
 
 const TextWrapper = styled.span`
   padding: 0 ${spacing.gap["gap-0.5"]};
+  font-family: inherit;
 `;
 
 export const SolidButton = ({

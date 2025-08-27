@@ -49,7 +49,6 @@ const StyledIconButton = styled.button.withConfig({
   align-items: center;
   justify-content: center;
   border-radius: ${({ radiusKey = "rounded-2" }) => radius[radiusKey]};
-  font-family: ${fontFamily.sans};
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   position: relative;

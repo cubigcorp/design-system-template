@@ -52,13 +52,14 @@ const StyledIconButton = styled.button.withConfig({
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   position: relative;
-
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
-
+  font-family: inherit;
+  &:lang(en),
   &[lang="en"] {
     font-family: ${fontFamily.en};
+  }
+  &:lang(ko),
+  &[lang="ko"] {
+    font-family: ${fontFamily.ko};
   }
 
   ${({ size = "medium" }) => {

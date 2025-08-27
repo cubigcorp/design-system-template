@@ -4,19 +4,32 @@ import { ChipProps, ChipStyleProps } from "./types";
 import color from "../../tokens/color";
 import { radius } from "../../tokens/radius";
 import fontWeight from "../../tokens/fontWeight";
+import fontFamily from "../../tokens/fontFamily";
+import { useEffectiveLang } from "../../i18n/LanguageContext";
 import textColor from "../../tokens/textColor";
 import { borderColor } from "../../tokens/borderColor";
 
-const StyledChip = styled.div<ChipStyleProps>`
+const StyledChip = styled.div.withConfig({
+  shouldForwardProp: (prop) => !["lang"].includes(prop),
+})<ChipStyleProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
   border-radius: ${({ radius: chipRadius }) => radius[chipRadius]};
+  font-family: ${fontFamily.sans};
   font-weight: ${fontWeight["500"]};
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+
+  &[lang="ko"] {
+    font-family: var(--font-family-ko);
+  }
+
+  &[lang="en"] {
+    font-family: var(--font-family-en);
+  }
 
   ${({ size = "medium" }) => {
     switch (size) {
@@ -24,7 +37,7 @@ const StyledChip = styled.div<ChipStyleProps>`
         return css`
           padding: 4px 6px;
           height: 24px;
-          font-size: 14px; // Body2-medium
+          font-size: 14px;
           line-height: 20px;
           font-weight: ${fontWeight["500"]};
         `;
@@ -32,7 +45,7 @@ const StyledChip = styled.div<ChipStyleProps>`
         return css`
           padding: 6px 8px;
           height: 32px;
-          font-size: 14px; // Body2-medium
+          font-size: 14px;
           line-height: 20px;
           font-weight: ${fontWeight["500"]};
         `;
@@ -40,15 +53,15 @@ const StyledChip = styled.div<ChipStyleProps>`
         return css`
           padding: 8px 12px;
           height: 40px;
-          font-size: 16px; // Body3-medium
+          font-size: 16px;
           line-height: 24px;
           font-weight: ${fontWeight["500"]};
         `;
-      default: // medium
+      default:
         return css`
           padding: 8px 12px;
           height: 36px;
-          font-size: 14px; // Body2-medium
+          font-size: 14px;
           line-height: 20px;
           font-weight: ${fontWeight["500"]};
         `;
@@ -82,7 +95,7 @@ const StyledChip = styled.div<ChipStyleProps>`
           };
         } else {
           return {
-            background: color.gray["950"] + "1F", // 12% opacity
+            background: color.gray["950"] + "1F",
             text: textColor.light["fg-neutral-alternative"],
             border: borderColor.light["color-border-focused"],
           };
@@ -117,29 +130,28 @@ const StyledChip = styled.div<ChipStyleProps>`
             };
         }
       } else {
-        // Outline type
         switch (state) {
           case "hovered":
             return {
-              background: color.gray["950"] + "0D", // 5% opacity
+              background: color.gray["950"] + "0D",
               text: textColor.light["fg-neutral-alternative"],
               border: borderColor.light["color-border-primary"],
             };
           case "pressed":
             return {
-              background: color.gray["950"] + "14", // 8% opacity
+              background: color.gray["950"] + "14",
               text: textColor.light["fg-neutral-alternative"],
               border: borderColor.light["color-border-primary"],
             };
           case "focused":
             return {
-              background: color.gray["950"] + "1F", // 12% opacity
+              background: color.gray["950"] + "1F",
               text: textColor.light["fg-neutral-alternative"],
               border: borderColor.light["color-border-focused"],
             };
           default:
             return {
-              background: "transparent", // 0% opacity
+              background: "transparent",
               text: textColor.light["fg-neutral-alternative"],
               border: borderColor.light["color-border-primary"],
             };
@@ -187,8 +199,10 @@ export const Chip = ({
   onClick,
   className,
   radius = "rounded-full",
+  lang,
 }: ChipProps) => {
   const [interactionState, setInteractionState] = React.useState(state);
+  const effectiveLang = useEffectiveLang(lang);
 
   React.useEffect(() => {
     setInteractionState(state);
@@ -247,6 +261,7 @@ export const Chip = ({
       onFocus={handleFocus}
       onBlur={handleBlur}
       tabIndex={disabled ? -1 : 0}
+      lang={effectiveLang}
     >
       {leadingIcon && <span className="icon">{leadingIcon}</span>}
       <span>{children || text}</span>

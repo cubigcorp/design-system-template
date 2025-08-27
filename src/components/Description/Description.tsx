@@ -7,14 +7,17 @@ import { typography } from "../../tokens";
 import { spacing } from "../../tokens";
 import { IconError, IconCircleCheck } from "../icons";
 import type { DescriptionProps } from "./types";
+import { useEffectiveLang } from "../../i18n/LanguageContext";
 
-const Description: React.FC<DescriptionProps> = ({
+const Description: React.FC<DescriptionProps & { lang?: "ko" | "en" }> = ({
   children,
   status = "default",
   leadingIcon = false,
   className = "",
+  lang,
   ...props
 }) => {
+  const effectiveLang = useEffectiveLang(lang);
   const getIcon = () => {
     if (!leadingIcon) return null;
 
@@ -37,7 +40,13 @@ const Description: React.FC<DescriptionProps> = ({
   };
 
   return (
-    <StyledDescription status={status} className={className} {...props}>
+    <StyledDescription
+      status={status}
+      $lang={effectiveLang}
+      lang={effectiveLang}
+      className={className}
+      {...props}
+    >
       {getIcon()}
       <span>{children}</span>
     </StyledDescription>
@@ -46,8 +55,9 @@ const Description: React.FC<DescriptionProps> = ({
 
 const StyledDescription = styled.div<{
   status: "default" | "negative" | "positive";
+  $lang: "ko" | "en";
 }>`
-  ${typography("ko", "caption2", "regular")}
+  ${({ $lang }) => typography($lang, "caption2", "regular")}
   height: 16px;
   display: flex;
   align-items: center;

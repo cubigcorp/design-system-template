@@ -23,6 +23,7 @@ export interface ChipProps {
   onClick?: () => void;
   className?: string;
   radius?: ChipRadius;
+  lang?: "ko" | "en";
 }
 
 export interface ChipStyleProps {

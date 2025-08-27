@@ -7,7 +7,13 @@ import { radius } from "../../tokens/radius";
 import color from "../../tokens/color";
 import textColor from "../../tokens/textColor";
 import { typography } from "../../tokens";
-import { IconCircleCheck, IconError, IconClose, IconInfo, IconWarning } from "../icons";
+import {
+  IconCircleCheck,
+  IconError,
+  IconClose,
+  IconInfo,
+  IconWarning,
+} from "../icons";
 
 // 애니메이션 키프레임 정의
 const fadeInSlideUp = keyframes`
@@ -32,7 +38,9 @@ const fadeOutSlideUp = keyframes`
   }
 `;
 
-const Toast: React.FC<ToastProps> = ({
+import { useEffectiveLang } from "../../i18n/LanguageContext";
+
+const Toast: React.FC<ToastProps & { lang?: "ko" | "en" }> = ({
   children,
   description,
   variant = "default",
@@ -47,13 +55,14 @@ const Toast: React.FC<ToastProps> = ({
   autoCloseDelay = 3000,
   index = 0,
   disablePositioning = false,
+  lang,
   ...props
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
 
   // index가 전달되지 않으면 모듈 전역 카운터로 자동 스택
-  const computedIndex = typeof index === 'number' ? index : __activeToastCount;
+  const computedIndex = typeof index === "number" ? index : __activeToastCount;
 
   useEffect(() => {
     __activeToastCount += 1;
@@ -83,6 +92,8 @@ const Toast: React.FC<ToastProps> = ({
       onClose?.();
     }, 500);
   };
+
+  const effectiveLang = useEffectiveLang(lang);
 
   const getLeadingIcon = () => {
     if (!showLeadingIcon) return null;
@@ -119,32 +130,26 @@ const Toast: React.FC<ToastProps> = ({
       $index={computedIndex}
       $disablePositioning={disablePositioning}
       className={className}
-      {...(Object.fromEntries(
-        Object.entries(props).filter(([key]) =>
-          !['variant', 'placement', 'offset'].includes(key)
+      {...Object.fromEntries(
+        Object.entries(props).filter(
+          ([key]) => !["variant", "placement", "offset"].includes(key)
         )
-      ))}
+      )}
     >
       {showLeadingIcon && (
         <LeadingIconWrapper $variant={variant}>
-          <IconContainer>
-            {getLeadingIcon()}
-          </IconContainer>
+          <IconContainer>{getLeadingIcon()}</IconContainer>
         </LeadingIconWrapper>
       )}
 
-      <ContentWrapper>
+      <ContentWrapper $lang={effectiveLang} lang={effectiveLang}>
         <div>{children}</div>
         {description && <div>{description}</div>}
       </ContentWrapper>
 
       {showDivider && <Divider $variant={variant} />}
 
-      {showTrailingIcon && (
-        <IconContainer>
-          {getTrailingIcon()}
-        </IconContainer>
-      )}
+      {showTrailingIcon && <IconContainer>{getTrailingIcon()}</IconContainer>}
     </StyledToast>
   );
 };
@@ -171,70 +176,76 @@ const StyledToast = styled.div<{
   max-width: 400px;
   min-width: 300px;
   box-sizing: border-box;
-  
-  /* ToastSystem에서 사용할 때는 position을 비활성화 */
-  ${({ $disablePositioning, $index = 0, $placement, $offset }) => !$disablePositioning && css`
-    position: fixed;
-    z-index: ${9999 + $index};
 
-    /* placement에 따른 위치 설정 */
-    ${() => {
-      const stackedOffset = $offset + ($index * (ESTIMATED_TOAST_HEIGHT_PX + STACK_GAP_PX));
-      switch ($placement) {
-        case "top-left":
-          return css`
-            top: ${stackedOffset}px;
-            left: ${$offset}px;
-          `;
-        case "top-center":
-          return css`
-            top: ${stackedOffset}px;
-            left: 50%;
-            transform: translateX(-50%);
-          `;
-        case "top-right":
-          return css`
-            top: ${stackedOffset}px;
-            right: ${$offset}px;
-          `;
-        case "bottom-left":
-          return css`
-            bottom: ${stackedOffset}px;
-            left: ${$offset}px;
-          `;
-        case "bottom-center":
-          return css`
-            bottom: ${stackedOffset}px;
-            left: 50%;
-            transform: translateX(-50%);
-          `;
-        case "bottom-right":
-        default:
-          return css`
-            bottom: ${stackedOffset}px;
-            right: ${$offset}px;
-          `;
-      }
-    }}
-  `}
+  /* ToastSystem에서 사용할 때는 position을 비활성화 */
+  ${({ $disablePositioning, $index = 0, $placement, $offset }) =>
+    !$disablePositioning &&
+    css`
+      position: fixed;
+      z-index: ${9999 + $index};
+
+      /* placement에 따른 위치 설정 */
+      ${() => {
+        const stackedOffset =
+          $offset + $index * (ESTIMATED_TOAST_HEIGHT_PX + STACK_GAP_PX);
+        switch ($placement) {
+          case "top-left":
+            return css`
+              top: ${stackedOffset}px;
+              left: ${$offset}px;
+            `;
+          case "top-center":
+            return css`
+              top: ${stackedOffset}px;
+              left: 50%;
+              transform: translateX(-50%);
+            `;
+          case "top-right":
+            return css`
+              top: ${stackedOffset}px;
+              right: ${$offset}px;
+            `;
+          case "bottom-left":
+            return css`
+              bottom: ${stackedOffset}px;
+              left: ${$offset}px;
+            `;
+          case "bottom-center":
+            return css`
+              bottom: ${stackedOffset}px;
+              left: 50%;
+              transform: translateX(-50%);
+            `;
+          case "bottom-right":
+          default:
+            return css`
+              bottom: ${stackedOffset}px;
+              right: ${$offset}px;
+            `;
+        }
+      }}
+    `}
 
   /* 애니메이션 상태에 따른 스타일 */
   ${({ $isVisible, $isExiting, $placement }) => {
     if ($isExiting) {
       return css`
-          animation: ${fadeOutSlideUp} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        `;
+        animation: ${fadeOutSlideUp} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          forwards;
+      `;
     } else if ($isVisible) {
       return css`
-          animation: ${fadeInSlideUp} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        `;
+        animation: ${fadeInSlideUp} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+          forwards;
+      `;
     } else {
       return css`
-          opacity: 0;
-          transform: ${$placement === "top-center" || $placement === "bottom-center"
+        opacity: 0;
+        transform: ${$placement === "top-center" ||
+        $placement === "bottom-center"
           ? "translateX(-50%) translateY(40px)"
           : "translateY(40px)"};
-        `;
+      `;
     }
   }}
 `;
@@ -252,7 +263,7 @@ const LeadingIconWrapper = styled.div<{ $variant: ToastVariant }>`
   justify-content: center;
   flex-shrink: 0;
   margin-right: ${spacing.gap["gap-1"]};
-    color: ${({ $variant }) => {
+  color: ${({ $variant }) => {
     switch ($variant) {
       case "positive":
         return color.green["500"];
@@ -267,7 +278,7 @@ const LeadingIconWrapper = styled.div<{ $variant: ToastVariant }>`
   }};
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div<{ $lang: "ko" | "en" }>`
   display: flex;
   flex-direction: column;
   gap: ${spacing.gap["gap-1"]};
@@ -277,7 +288,7 @@ const ContentWrapper = styled.div`
 
   /* Typography for children (main text - 2줄까지) */
   > *:first-child {
-    ${typography("ko", "body2", "medium")}
+    ${({ $lang }) => typography($lang, "body2", "medium")}
     color: ${color.common["100"]};
     white-space: pre-wrap;
     display: -webkit-box;
@@ -288,7 +299,7 @@ const ContentWrapper = styled.div`
   }
 
   > *:nth-child(2) {
-    ${typography("ko", "caption2", "regular")}
+    ${({ $lang }) => typography($lang, "caption2", "regular")}
     color: ${color.gray["800"]};
     white-space: nowrap;
     overflow: hidden;
@@ -324,4 +335,4 @@ const CloseButton = styled.button`
 
 Toast.displayName = "Toast";
 
-export { Toast }; 
+export { Toast };

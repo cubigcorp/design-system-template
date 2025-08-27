@@ -12,6 +12,7 @@ import textColor from "../../tokens/textColor";
 import brandColor from "../../tokens/brandColor";
 import positiveColor from "../../tokens/positiveColor";
 import negativeColor from "../../tokens/negativeColor";
+import { useEffectiveLang } from "../../i18n/LanguageContext";
 
 const StyledButton = styled.button.withConfig({
   shouldForwardProp: (prop) =>
@@ -227,8 +228,10 @@ export const OutlineButton = ({
   onClick,
   className,
   radiusKey,
+  lang,
 }: ButtonProps) => {
   const [interactionState, setInteractionState] = React.useState(state);
+  const effectiveLang = useEffectiveLang(lang);
 
   // state prop이 변경되면 interactionState도 업데이트
   React.useEffect(() => {
@@ -281,6 +284,7 @@ export const OutlineButton = ({
       radiusKey={radiusKey}
       onClick={onClick}
       className={className}
+      lang={effectiveLang}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMouseDown={handleMouseDown}

@@ -7,82 +7,76 @@ import { typography } from "../../tokens";
 import color from "../../tokens/color";
 import textColor from "../../tokens/textColor";
 import { IconCheck } from "../icons";
+import { useEffectiveLang } from "../../i18n/LanguageContext";
 
-const Cell: React.FC<CellProps> = ({
-    disable = false,
-    active = false,
-    leadingIcon: LeadingIcon,
-    text,
-    description,
-    trailingIcon: TrailingIcon,
-    onClick,
-    className,
+const Cell: React.FC<CellProps & { lang?: "ko" | "en" }> = ({
+  disable = false,
+  active = false,
+  leadingIcon: LeadingIcon,
+  text,
+  description,
+  trailingIcon: TrailingIcon,
+  onClick,
+  className,
+  lang,
 }) => {
-    const getForegroundColor = () => {
-        if (disable) {
-            return textColor.light["fg-neutral-disable"];
-        }
-        return textColor.light["fg-neutral-primary"];
-    };
+  const effectiveLang = useEffectiveLang(lang);
+  const getForegroundColor = () => {
+    if (disable) {
+      return textColor.light["fg-neutral-disable"];
+    }
+    return textColor.light["fg-neutral-primary"];
+  };
 
-    const getDescriptionColor = () => {
-        if (disable) {
-            return textColor.light["fg-neutral-disable"];
-        }
-        return textColor.light["fg-neutral-alternative"];
-    };
+  const getDescriptionColor = () => {
+    if (disable) {
+      return textColor.light["fg-neutral-disable"];
+    }
+    return textColor.light["fg-neutral-alternative"];
+  };
 
-    const shouldShowTrailingIcon = () => {
-        return active && !disable;
-    };
+  const shouldShowTrailingIcon = () => {
+    return active && !disable;
+  };
 
-    return (
-        <StyledCell
-            disable={disable}
-            active={active}
-            data-disable={disable}
-            onClick={disable ? undefined : onClick}
-            className={className}
-        >
-            {LeadingIcon && (
-                <LeadingIconWrapper>
-                    <LeadingIcon
-                        width={16}
-                        height={16}
-                        color={getForegroundColor()}
-                    />
-                </LeadingIconWrapper>
-            )}
+  return (
+    <StyledCell
+      disable={disable}
+      active={active}
+      data-disable={disable}
+      onClick={disable ? undefined : onClick}
+      className={className}
+      lang={effectiveLang}
+    >
+      {LeadingIcon && (
+        <LeadingIconWrapper>
+          <LeadingIcon width={16} height={16} color={getForegroundColor()} />
+        </LeadingIconWrapper>
+      )}
 
-            <ContentWrapper>
-                {text && <Text>{text}</Text>}
-                {description && <Description>{description}</Description>}
-            </ContentWrapper>
+      <ContentWrapper>
+        {text && <Text $lang={effectiveLang}>{text}</Text>}
+        {description && (
+          <Description $lang={effectiveLang}>{description}</Description>
+        )}
+      </ContentWrapper>
 
-            {shouldShowTrailingIcon() && (
-                <TrailingIconWrapper>
-                    {TrailingIcon ? (
-                        <TrailingIcon
-                            width={16}
-                            height={16}
-                            color={getForegroundColor()}
-                        />
-                    ) : (
-                        <IconCheck
-                            width={16}
-                            height={16}
-                            color={getForegroundColor()}
-                        />
-                    )}
-                </TrailingIconWrapper>
-            )}
-        </StyledCell>
-    );
+      {shouldShowTrailingIcon() && (
+        <TrailingIconWrapper>
+          {TrailingIcon ? (
+            <TrailingIcon width={16} height={16} color={getForegroundColor()} />
+          ) : (
+            <IconCheck width={16} height={16} color={getForegroundColor()} />
+          )}
+        </TrailingIconWrapper>
+      )}
+    </StyledCell>
+  );
 };
 
 const StyledCell = styled.div<{
-    disable: boolean;
-    active: boolean;
+  disable: boolean;
+  active: boolean;
 }>`
   display: flex;
   align-items: center;
@@ -113,13 +107,13 @@ const ContentWrapper = styled.div`
   min-width: 0;
 `;
 
-const Text = styled.div`
-  ${typography("ko", "body2", "regular")}
+const Text = styled.div<{ $lang?: "ko" | "en" }>`
+  ${({ $lang = "ko" }) => typography($lang, "body2", "regular")}
   color: inherit;
 `;
 
-const Description = styled.div`
-  ${typography("ko", "caption2", "regular")}
+const Description = styled.div<{ $lang?: "ko" | "en" }>`
+  ${({ $lang = "ko" }) => typography($lang, "caption2", "regular")}
   color: ${textColor.light["fg-neutral-alternative"]};
 `;
 
@@ -132,4 +126,4 @@ const TrailingIconWrapper = styled.div`
 
 Cell.displayName = "Cell";
 
-export { Cell }; 
+export { Cell };

@@ -5,6 +5,7 @@ import { Input } from "../Input";
 import { Description } from "../Description";
 import { TextFieldProps } from "./types";
 import { spacing } from "../../tokens";
+import { useEffectiveLang } from "../../i18n/LanguageContext";
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
@@ -23,12 +24,14 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onFocus,
       onBlur,
       className = "",
+      lang,
       ...props
     },
     ref
   ) => {
     const [isFocused, setIsFocused] = useState(false);
     const [isActive, setIsActive] = useState(false);
+    const effectiveLang = useEffectiveLang(lang);
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
       setIsFocused(true);
@@ -44,7 +47,11 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
     return (
       <Container className={className}>
-        {label && <Label type={labelType}>{label}</Label>}
+        {label && (
+          <Label type={labelType} lang={effectiveLang}>
+            {label}
+          </Label>
+        )}
 
         <Input
           ref={ref}
@@ -59,6 +66,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           onChange={onChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          lang={effectiveLang}
           {...props}
         />
 
@@ -66,6 +74,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           <Description
             status={status}
             leadingIcon={descriptionLeadingIcon}
+            lang={effectiveLang}
           >
             {description}
           </Description>

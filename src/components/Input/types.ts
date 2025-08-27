@@ -14,4 +14,5 @@ export interface InputProps
   onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   className?: string;
+  lang?: "ko" | "en";
 }

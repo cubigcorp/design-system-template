@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { SVGProps } from "react";
 import color from "../../tokens/color";
 import { radius } from "../../tokens/radius";
+import fontFamily from "../../tokens/fontFamily";
 import { spacing } from "../../tokens/spacing";
 import { borderColor } from "../../tokens/borderColor";
 import textColor from "../../tokens/textColor";
@@ -10,6 +11,7 @@ import positiveColor from "../../tokens/positiveColor";
 import negativeColor from "../../tokens/negativeColor";
 import { Spinner } from "./Spinner";
 import React from "react";
+import { useEffectiveLang } from "../../i18n/LanguageContext";
 
 export type IconButtonSize = "small" | "medium" | "large";
 export type IconButtonState = "default" | "hovered" | "pressed" | "focused";
@@ -36,6 +38,7 @@ export interface IconButtonProps extends IconButtonStyleProps {
   icon: React.ComponentType<SVGProps<SVGSVGElement>>;
   onClick?: () => void;
   className?: string;
+  lang?: "ko" | "en";
 }
 
 const StyledIconButton = styled.button.withConfig({
@@ -46,9 +49,18 @@ const StyledIconButton = styled.button.withConfig({
   align-items: center;
   justify-content: center;
   border-radius: ${({ radiusKey = "rounded-2" }) => radius[radiusKey]};
+  font-family: ${fontFamily.sans};
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   position: relative;
+
+  &[lang="ko"] {
+    font-family: var(--font-family-ko);
+  }
+
+  &[lang="en"] {
+    font-family: var(--font-family-en);
+  }
 
   ${({ size = "medium" }) => {
     switch (size) {
@@ -411,7 +423,6 @@ const StyledIconButton = styled.button.withConfig({
 `;
 
 export const IconButton = ({
-  type = "solid",
   variant = "primary",
   size = "medium",
   state = "default",
@@ -421,10 +432,11 @@ export const IconButton = ({
   onClick,
   className,
   radiusKey,
+  lang,
 }: IconButtonProps) => {
   const [interactionState, setInteractionState] = React.useState(state);
+  const effectiveLang = useEffectiveLang(lang);
 
-  // state prop이 변경되면 interactionState도 업데이트
   React.useEffect(() => {
     setInteractionState(state);
   }, [state]);
@@ -467,13 +479,13 @@ export const IconButton = ({
 
   return (
     <StyledIconButton
-      type={type}
       variant={variant}
       size={size}
       state={state !== "default" ? state : interactionState}
       disabled={disabled}
       loading={loading}
       radiusKey={radiusKey}
+      lang={effectiveLang}
       onClick={onClick}
       className={className}
       onMouseEnter={handleMouseEnter}
@@ -493,7 +505,7 @@ export const IconButton = ({
           transition: "opacity 0.2s ease",
         }}
       >
-        {React.createElement(icon)}
+        {icon && React.createElement(icon)}
       </div>
       <div
         style={{

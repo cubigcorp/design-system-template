@@ -12,148 +12,160 @@ import { radius } from "../../tokens";
 import { spacing } from "../../tokens";
 import { typography } from "../../tokens";
 import { color } from "../../tokens";
+import { useEffectiveLang } from "../../i18n/LanguageContext";
 
-const Dropdown: React.FC<DropdownProps> = ({
-    size = "medium",
-    disabled = false,
-    active = false,
-    focused = false,
-    placeholder = "선택해주세요.",
-    value,
-    options = [],
-    label,
-    labelType = "default",
-    description,
-    descriptionLeadingIcon = false,
-    status = "default",
-    onChange,
-    onFocus,
-    onBlur,
-    className = "",
-    ...props
+const Dropdown: React.FC<DropdownProps & { lang?: "ko" | "en" }> = ({
+  size = "medium",
+  disabled = false,
+  active = false,
+  focused = false,
+  placeholder = "선택해주세요.",
+  value,
+  options = [],
+  label,
+  labelType = "default",
+  description,
+  descriptionLeadingIcon = false,
+  status = "default",
+  onChange,
+  onFocus,
+  onBlur,
+  className = "",
+  lang,
+  ...props
 }) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [internalActive, setInternalActive] = useState(active);
-    const [internalFocused, setInternalFocused] = useState(focused);
-    const dropdownRef = useRef<HTMLDivElement>(null);
+  const effectiveLang = useEffectiveLang(lang);
+  const [isOpen, setIsOpen] = useState(false);
+  const [internalActive, setInternalActive] = useState(active);
+  const [internalFocused, setInternalFocused] = useState(focused);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-    // 외부 클릭 시 드롭다운 닫기
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                setIsOpen(false);
-                setInternalFocused(false);
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
-
-    // props 변경 시 내부 상태 업데이트
-    useEffect(() => {
-        setInternalActive(active);
-    }, [active]);
-
-    useEffect(() => {
-        setInternalFocused(focused);
-    }, [focused]);
-
-    const selectedOption = options.find(option => option.value === value);
-
-    const handleToggle = () => {
-        if (!disabled) {
-            setIsOpen(!isOpen);
-            if (!isOpen) {
-                setInternalFocused(true);
-                setInternalActive(true);
-                onFocus?.({} as React.FocusEvent<HTMLButtonElement>);
-            } else {
-                setInternalFocused(false);
-                setInternalActive(false);
-                onBlur?.({} as React.FocusEvent<HTMLButtonElement>);
-            }
-        }
-    };
-
-    const handleOptionClick = (option: DropdownOption) => {
-        onChange?.(option.value);
+  // 외부 클릭 시 드롭다운 닫기
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
         setInternalFocused(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // props 변경 시 내부 상태 업데이트
+  useEffect(() => {
+    setInternalActive(active);
+  }, [active]);
+
+  useEffect(() => {
+    setInternalFocused(focused);
+  }, [focused]);
+
+  const selectedOption = options.find((option) => option.value === value);
+
+  const handleToggle = () => {
+    if (!disabled) {
+      setIsOpen(!isOpen);
+      if (!isOpen) {
+        setInternalFocused(true);
+        setInternalActive(true);
+        onFocus?.({} as React.FocusEvent<HTMLButtonElement>);
+      } else {
+        setInternalFocused(false);
+        setInternalActive(false);
         onBlur?.({} as React.FocusEvent<HTMLButtonElement>);
-    };
+      }
+    }
+  };
 
-    const getIconColor = () => {
-        if (disabled) {
-            return textColor.light["fg-neutral-alternative"];
-        }
-        return textColor.light["fg-neutral-primary"];
-    };
+  const handleOptionClick = (option: DropdownOption) => {
+    onChange?.(option.value);
+    setIsOpen(false);
+    setInternalFocused(false);
+    onBlur?.({} as React.FocusEvent<HTMLButtonElement>);
+  };
 
-    return (
-        <DropdownContainer
-            ref={dropdownRef}
-            className={`dropdown-container ${className}`}
-            {...(Object.fromEntries(
-                Object.entries(props).filter(([key]) =>
-                    !['active', 'focused', 'size', 'disabled'].includes(key)
-                )
-            ))}
+  const getIconColor = () => {
+    if (disabled) {
+      return textColor.light["fg-neutral-alternative"];
+    }
+    return textColor.light["fg-neutral-primary"];
+  };
+
+  return (
+    <DropdownContainer
+      ref={dropdownRef}
+      className={`dropdown-container ${className}`}
+      {...Object.fromEntries(
+        Object.entries(props).filter(
+          ([key]) => !["active", "focused", "size", "disabled"].includes(key)
+        )
+      )}
+    >
+      {label && (
+        <Label type={labelType} lang={effectiveLang}>
+          {label}
+        </Label>
+      )}
+      <DropdownTrigger
+        $size={size}
+        $disabled={disabled}
+        $active={internalActive}
+        $focused={internalFocused}
+        lang={effectiveLang}
+        onClick={handleToggle}
+        type="button"
+        data-active={internalActive ? "true" : "false"}
+      >
+        <DropdownValue>
+          {selectedOption ? selectedOption.label : placeholder}
+        </DropdownValue>
+        <DropdownIcon size={size}>
+          {isOpen ? (
+            <IconArrowUp
+              width={size === "small" ? 16 : size === "large" ? 24 : 20}
+              height={size === "small" ? 16 : size === "large" ? 24 : 20}
+              color={getIconColor()}
+            />
+          ) : (
+            <IconArrowDown
+              width={size === "small" ? 16 : size === "large" ? 24 : 20}
+              height={size === "small" ? 16 : size === "large" ? 24 : 20}
+              color={getIconColor()}
+            />
+          )}
+        </DropdownIcon>
+      </DropdownTrigger>
+      {description && !isOpen && (
+        <Description
+          status={status}
+          leadingIcon={descriptionLeadingIcon}
+          lang={effectiveLang}
         >
-            {label && <Label type={labelType}>{label}</Label>}
-            <DropdownTrigger
-                $size={size}
-                $disabled={disabled}
-                $active={internalActive}
-                $focused={internalFocused}
-                onClick={handleToggle}
-                type="button"
-                data-active={internalActive ? "true" : "false"}
-            >
-                <DropdownValue>
-                    {selectedOption ? selectedOption.label : placeholder}
-                </DropdownValue>
-                <DropdownIcon size={size}>
-                    {isOpen ? (
-                        <IconArrowUp
-                            width={size === "small" ? 16 : size === "large" ? 24 : 20}
-                            height={size === "small" ? 16 : size === "large" ? 24 : 20}
-                            color={getIconColor()}
-                        />
-                    ) : (
-                        <IconArrowDown
-                            width={size === "small" ? 16 : size === "large" ? 24 : 20}
-                            height={size === "small" ? 16 : size === "large" ? 24 : 20}
-                            color={getIconColor()}
-                        />
-                    )}
-                </DropdownIcon>
-            </DropdownTrigger>
-            {description && !isOpen && (
-                <Description
-                    status={status}
-                    leadingIcon={descriptionLeadingIcon}
-                >
-                    {description}
-                </Description>
-            )}
+          {description}
+        </Description>
+      )}
 
-            {isOpen && (
-                <Menu>
-                    {options.map((option) => (
-                        <Cell
-                            key={option.value}
-                            text={option.label}
-                            active={option.value === value}
-                            onClick={() => handleOptionClick(option)}
-                        />
-                    ))}
-                </Menu>
-            )}
-        </DropdownContainer>
-    );
+      {isOpen && (
+        <Menu>
+          {options.map((option) => (
+            <Cell
+              key={option.value}
+              text={option.label}
+              active={option.value === value}
+              onClick={() => handleOptionClick(option)}
+            />
+          ))}
+        </Menu>
+      )}
+    </DropdownContainer>
+  );
 };
 
 const DropdownContainer = styled.div`
@@ -165,10 +177,11 @@ const DropdownContainer = styled.div`
 `;
 
 const DropdownTrigger = styled.button<{
-    $size: "small" | "medium" | "large";
-    $disabled: boolean;
-    $active: boolean;
-    $focused: boolean;
+  $size: "small" | "medium" | "large";
+  $disabled: boolean;
+  $active: boolean;
+  $focused: boolean;
+  lang?: "ko" | "en";
 }>`
   width: 100%;
   border: 1px solid;
@@ -183,82 +196,83 @@ const DropdownTrigger = styled.button<{
   transition: all 0.2s ease-in-out;
 
   /* Size styles */
-  ${({ $size }) => {
-        const iconGap = $size === "large" ? spacing.gap["gap-2.5"] : spacing.gap["gap-2"];
-        const iconSize = $size === "small" ? 16 : $size === "large" ? 24 : 20;
-        const rightPadding = iconSize + parseInt(iconGap) * 2;
+  ${({ $size, lang = "ko" }) => {
+    const iconGap =
+      $size === "large" ? spacing.gap["gap-2.5"] : spacing.gap["gap-2"];
+    const iconSize = $size === "small" ? 16 : $size === "large" ? 24 : 20;
+    const rightPadding = iconSize + parseInt(iconGap) * 2;
 
-        switch ($size) {
-            case "small":
-                return `
+    switch ($size) {
+      case "small":
+        return `
           height: 32px;
-          ${typography("ko", "body2", "regular")}
+          ${typography(lang, "body2", "regular")}
           padding: ${spacing.gap["gap-1"]} ${spacing.gap["gap-2"]};
           padding-right: ${rightPadding}px;
         `;
-            case "large":
-                return `
+      case "large":
+        return `
           height: 48px;
-          ${typography("ko", "body3", "regular")}
+          ${typography(lang, "body3", "regular")}
           padding: ${spacing.gap["gap-3"]} ${spacing.gap["gap-2.5"]};
           padding-right: ${rightPadding}px;
         `;
-            default: // medium
-                return `
+      default: // medium
+        return `
           height: 40px;
-          ${typography("ko", "body3", "regular")}
+          ${typography(lang, "body3", "regular")}
           padding: ${spacing.gap["gap-2"]} ${spacing.gap["gap-2"]};
           padding-right: ${rightPadding}px;
         `;
-        }
-    }}
+    }
+  }}
 
   /* Color styles based on status, disabled, active, focused */
   ${({ $disabled, $active, $focused }) => {
-        // Disabled 상태
-        if ($disabled) {
-            return `
+    // Disabled 상태
+    if ($disabled) {
+      return `
         background-color: ${color.gray["50"]};
         color: ${textColor.light["fg-neutral-disable"]};
         border-color: ${borderColor.light["color-border-primary"]};
         cursor: not-allowed;
       `;
-        }
+    }
 
-        // Active & Focused 상태
-        if ($active && $focused) {
-            return `
+    // Active & Focused 상태
+    if ($active && $focused) {
+      return `
         background-color: ${color.gray["50"]};
         color: ${textColor.light["fg-neutral-primary"]};
         border-color: ${borderColor.light["color-border-focused"]};
       `;
-        }
+    }
 
-        // Active 상태
-        if ($active) {
-            return `
+    // Active 상태
+    if ($active) {
+      return `
         background-color: ${color.common["100"]};
         color: ${textColor.light["fg-neutral-primary"]};
         border-color: ${borderColor.light["color-border-primary"]};
       `;
-        }
+    }
 
-        // Focused 상태
-        if ($focused) {
-            return `
+    // Focused 상태
+    if ($focused) {
+      return `
         background-color: ${color.gray["50"]};
         color: ${textColor.light["fg-neutral-alternative"]};
         border-color: ${borderColor.light["color-border-focused"]};
       `;
-        }
+    }
 
-        // Default 상태
-        return `
+    // Default 상태
+    return `
       background-color: ${color.common["100"]};
       color: ${textColor.light["fg-neutral-alternative"]};
       border-color: ${borderColor.light["color-border-primary"]};
     `;
-    }}
+  }}
 
   &:hover:not(:disabled):not([data-active="true"]) {
     background-color: ${color.gray["50"]};
@@ -281,7 +295,7 @@ const DropdownValue = styled.span`
 const DropdownIcon = styled.div<{ size: "small" | "medium" | "large" }>`
   position: absolute;
   right: ${({ size }) =>
-        size === "large" ? spacing.gap["gap-2.5"] : spacing.gap["gap-2"]};
+    size === "large" ? spacing.gap["gap-2.5"] : spacing.gap["gap-2"]};
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -290,8 +304,6 @@ const DropdownIcon = styled.div<{ size: "small" | "medium" | "large" }>`
   pointer-events: none;
 `;
 
-
-
 Dropdown.displayName = "Dropdown";
 
-export { Dropdown }; 
+export { Dropdown };

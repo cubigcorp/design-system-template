@@ -25,4 +25,5 @@ export interface ButtonProps extends ButtonStyleProps {
   children?: React.ReactNode;
   onClick?: () => void;
   className?: string;
+  lang?: "ko" | "en";
 }

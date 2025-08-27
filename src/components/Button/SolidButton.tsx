@@ -4,15 +4,17 @@ import color from "../../tokens/color";
 import { radius } from "../../tokens/radius";
 import fontWeight from "../../tokens/fontWeight";
 import fontSize from "../../tokens/fontSize";
+import fontFamily from "../../tokens/fontFamily";
 import { borderColor } from "../../tokens/borderColor";
 import textColor from "../../tokens/textColor";
 import { spacing } from "../../tokens/spacing";
 import { Spinner } from "./Spinner";
 import React from "react";
+import { useEffectiveLang } from "../../i18n/LanguageContext";
 
 const StyledButton = styled.button.withConfig({
   shouldForwardProp: (prop) =>
-    !["loading", "state", "radiusKey"].includes(prop),
+    !["loading", "state", "radiusKey", "lang"].includes(prop),
 })<ButtonStyleProps>`
   display: inline-flex;
   align-items: center;
@@ -20,10 +22,19 @@ const StyledButton = styled.button.withConfig({
   gap: ${spacing.gap["gap-1"]};
   border: none;
   border-radius: ${({ radiusKey = "rounded-2" }) => radius[radiusKey]};
+  font-family: ${fontFamily.sans};
   font-weight: ${fontWeight["500"]};
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   position: relative;
+
+  &[lang="ko"] {
+    font-family: var(--font-family-ko);
+  }
+
+  &[lang="en"] {
+    font-family: var(--font-family-en);
+  }
 
   ${({ size = "medium" }) => {
     switch (size) {
@@ -242,10 +253,11 @@ export const SolidButton = ({
   onClick,
   className,
   radiusKey,
+  lang,
 }: ButtonProps) => {
   const [interactionState, setInteractionState] = React.useState(state);
+  const effectiveLang = useEffectiveLang(lang);
 
-  // state prop이 변경되면 interactionState도 업데이트
   React.useEffect(() => {
     setInteractionState(state);
   }, [state]);
@@ -294,6 +306,7 @@ export const SolidButton = ({
       disabled={disabled}
       loading={loading}
       radiusKey={radiusKey}
+      lang={effectiveLang}
       onClick={onClick}
       className={className}
       onMouseEnter={handleMouseEnter}

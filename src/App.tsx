@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import styled from "styled-components";
 import {
   SolidButton,
   OutlineButton,
@@ -9,242 +10,304 @@ import {
   color,
   spacing,
   fontSize,
-} from "@cubig/design-system";
+  LanguageProvider,
+  typography,
+} from ".";
 
 function App() {
+  const [lang, setLang] = React.useState<"ko" | "en">("ko");
+  const [showToast, setShowToast] = React.useState(false);
+
+  React.useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = lang;
+    }
+  }, [lang]);
+
   return (
-    <div className="App" style={{ padding: spacing.lg }}>
-      <header style={{ marginBottom: spacing.xl }}>
-        <h1
-          style={{
-            fontSize: fontSize.heading.large,
-            color: color.primary?.[900] || "#1a1a1a",
-            marginBottom: spacing.md,
-          }}
-        >
-          🎨 Cubig Design System 테스트
-        </h1>
-        <p
-          style={{
-            fontSize: fontSize.body.medium,
-            color: color.gray?.[600] || "#666666",
-          }}
-        >
-          npm 패키지로 설치된 디자인 시스템 컴포넌트들을 테스트해보세요!
-        </p>
-      </header>
-
-      <main>
-        {/* Button 섹션 */}
-        <section style={{ marginBottom: spacing.xl }}>
-          <h2
+    <LanguageProvider value={lang}>
+      <div className="App" style={{ padding: 24 }}>
+        <header style={{ marginBottom: 32 }}>
+          <h1
             style={{
-              fontSize: fontSize.heading.medium,
-              marginBottom: spacing.md,
-              color: color.gray?.[800] || "#333333",
+              fontSize: 28,
+              color: "#1a1a1a",
+              marginBottom: 16,
             }}
           >
-            Button 컴포넌트
-          </h2>
-          <div
+            🎨 Cubig Design System 테스트
+          </h1>
+          <p
             style={{
-              display: "flex",
-              gap: spacing.md,
-              flexWrap: "wrap",
-              alignItems: "center",
+              fontSize: 16,
+              color: "#666666",
             }}
           >
-            <SolidButton variant="primary" size="small">
-              Small Primary
-            </SolidButton>
-            <SolidButton variant="primary" size="medium">
-              Medium Primary
-            </SolidButton>
-            <SolidButton variant="primary" size="large">
-              Large Primary
-            </SolidButton>
-            <OutlineButton variant="secondary" size="medium">
-              Outline Button
-            </OutlineButton>
-            <TextButton size="medium">Text Button</TextButton>
+            npm 패키지로 설치된 디자인 시스템 컴포넌트들을 테스트해보세요!
+          </p>
+          {/* Lang Toggle */}
+          <div style={{ display: "flex", gap: 8 }}>
+            <button onClick={() => setLang("ko")}>Set lang = ko</button>
+            <button onClick={() => setLang("en")}>Set lang = en</button>
           </div>
-        </section>
+        </header>
 
-        {/* Badge 섹션 */}
-        <section style={{ marginBottom: spacing.xl }}>
-          <h2
-            style={{
-              fontSize: fontSize.heading.medium,
-              marginBottom: spacing.md,
-              color: color.gray?.[800] || "#333333",
-            }}
-          >
-            Badge 컴포넌트
-          </h2>
-          <div
-            style={{
-              display: "flex",
-              gap: spacing.md,
-              flexWrap: "wrap",
-              alignItems: "center",
-            }}
-          >
-            <Badge type="positive" size="small">
-              성공
-            </Badge>
-            <Badge type="negative" size="medium">
-              오류
-            </Badge>
-            <Badge type="cautionary" size="large">
-              경고
-            </Badge>
-            <Badge type="info" size="medium">
-              정보
-            </Badge>
-          </div>
-        </section>
-
-        {/* Chip 섹션 */}
-        <section style={{ marginBottom: spacing.xl }}>
-          <h2
-            style={{
-              fontSize: fontSize.heading.medium,
-              marginBottom: spacing.md,
-              color: color.gray?.[800] || "#333333",
-            }}
-          >
-            Chip 컴포넌트
-          </h2>
-          <div
-            style={{
-              display: "flex",
-              gap: spacing.md,
-              flexWrap: "wrap",
-              alignItems: "center",
-            }}
-          >
-            <Chip type="default" size="small" state="default">
-              기본 칩
-            </Chip>
-            <Chip type="selected" size="medium" state="active">
-              선택된 칩
-            </Chip>
-            <Chip type="default" size="large" state="disabled">
-              비활성 칩
-            </Chip>
-          </div>
-        </section>
-
-        {/* 디자인 토큰 테스트 */}
-        <section style={{ marginBottom: spacing.xl }}>
-          <h2
-            style={{
-              fontSize: fontSize.heading.medium,
-              marginBottom: spacing.md,
-              color: color.gray?.[800] || "#333333",
-            }}
-          >
-            디자인 토큰 테스트
-          </h2>
-          <div
-            style={{
-              padding: spacing.lg,
-              backgroundColor: color.primary?.[50] || "#f8f9fa",
-              borderRadius: "8px",
-              border: `1px solid ${color.primary?.[200] || "#e9ecef"}`,
-            }}
-          >
-            <p
+        <main>
+          {/* Button 섹션 */}
+          <section style={{ marginBottom: 32 }}>
+            <h2
               style={{
-                fontSize: fontSize.body.medium,
-                color: color.primary?.[900] || "#1a1a1a",
-                marginBottom: spacing.sm,
+                fontSize: 20,
+                marginBottom: 16,
+                color: "#333333",
               }}
             >
-              ✅ 색상 토큰 적용됨
-            </p>
-            <p
-              style={{
-                fontSize: fontSize.body.small,
-                color: color.gray?.[600] || "#666666",
-              }}
-            >
-              ✅ 간격 토큰 적용됨 (padding: {spacing.lg})
-            </p>
-          </div>
-        </section>
-
-        {/* 조합 예제 */}
-        <section>
-          <h2
-            style={{
-              fontSize: fontSize.heading.medium,
-              marginBottom: spacing.md,
-              color: color.gray?.[800] || "#333333",
-            }}
-          >
-            컴포넌트 조합 예제
-          </h2>
-          <div
-            style={{
-              padding: spacing.lg,
-              backgroundColor: color.gray?.[50] || "#f8f9fa",
-              borderRadius: "12px",
-              border: `1px solid ${color.gray?.[200] || "#e9ecef"}`,
-            }}
-          >
+              Button 컴포넌트
+            </h2>
             <div
               style={{
                 display: "flex",
-                justifyContent: "space-between",
+                gap: 16,
+                flexWrap: "wrap",
                 alignItems: "center",
-                marginBottom: spacing.md,
               }}
             >
-              <h3
-                style={{
-                  fontSize: fontSize.heading.small,
-                  color: color.gray?.[800] || "#333333",
-                  margin: 0,
-                }}
-              >
-                상품 카드 예제
-              </h3>
-              <Badge type="positive" size="small">
-                재고 있음
+              <SolidButton variant="primary" size="small">
+                Small Primary
+              </SolidButton>
+              <SolidButton variant="primary" size="medium">
+                Medium Primary
+              </SolidButton>
+              <SolidButton variant="primary" size="large">
+                Large Primary
+              </SolidButton>
+              <OutlineButton variant="secondary" size="medium">
+                Outline Button
+              </OutlineButton>
+              <TextButton size="medium">Text Button</TextButton>
+              {/* lang 테스트 (Provider 상속 vs 개별 오버라이드) */}
+              <OutlineButton>Inherit ({lang})</OutlineButton>
+              <OutlineButton lang="ko">Override ko</OutlineButton>
+              <OutlineButton lang="en">Override en</OutlineButton>
+            </div>
+          </section>
+
+          {/* Typography 섹션 (html lang 및 Provider 반응 확인) */}
+          <section style={{ marginBottom: 32 }}>
+            <h2
+              style={{
+                fontSize: 20,
+                marginBottom: 16,
+                color: "#333333",
+              }}
+            >
+              Typography (Display/Title/Heading/Body)
+            </h2>
+            <div style={{ display: "grid", gap: 8 }}>
+              <TypoDisplay $lang={lang}>Display Sample ({lang})</TypoDisplay>
+              <TypoTitle $lang={lang}>Title Sample</TypoTitle>
+              <TypoHeading $lang={lang}>Heading Sample</TypoHeading>
+              <TypoBody $lang={lang}>
+                Body sample text with current language font.
+              </TypoBody>
+              <div style={{ display: "flex", gap: 8 }}>
+                <TypoBody $lang="ko">Override KO</TypoBody>
+                <TypoBody $lang="en">Override EN</TypoBody>
+              </div>
+            </div>
+          </section>
+
+          {/* Badge 섹션 */}
+          <section style={{ marginBottom: 32 }}>
+            <h2
+              style={{
+                fontSize: 20,
+                marginBottom: 16,
+                color: "#333333",
+              }}
+            >
+              Badge 컴포넌트
+            </h2>
+            <div
+              style={{
+                display: "flex",
+                gap: 16,
+                flexWrap: "wrap",
+                alignItems: "center",
+              }}
+            >
+              <Badge variant="positive" type="solid" size="small">
+                성공
+              </Badge>
+              <Badge variant="negative" type="solid" size="medium">
+                오류
+              </Badge>
+              <Badge variant="cautionary" type="solid" size="large">
+                경고
+              </Badge>
+              <Badge variant="info" type="solid" size="medium">
+                정보
               </Badge>
             </div>
+          </section>
 
-            <div style={{ marginBottom: spacing.md }}>
-              <Chip type="default" size="small" state="default">
-                카테고리
-              </Chip>
-              <span style={{ marginLeft: spacing.sm }}>
-                <Chip type="selected" size="small" state="active">
-                  선택됨
-                </Chip>
-              </span>
-            </div>
-
+          {/* Chip 섹션 */}
+          <section style={{ marginBottom: 32 }}>
+            <h2
+              style={{
+                fontSize: 20,
+                marginBottom: 16,
+                color: "#333333",
+              }}
+            >
+              Chip 컴포넌트
+            </h2>
             <div
               style={{
                 display: "flex",
-                gap: spacing.sm,
-                justifyContent: "flex-end",
+                gap: 16,
+                flexWrap: "wrap",
+                alignItems: "center",
               }}
             >
-              <OutlineButton variant="secondary" size="medium">
-                위시리스트
-              </OutlineButton>
-              <SolidButton variant="primary" size="medium">
-                구매하기
+              {/* 기존 샘플 유지 + 언어 테스트 샘플 추가 */}
+              <Chip type="outline" size="small" state="default">
+                기본 칩(상속 {lang})
+              </Chip>
+              <Chip type="solid" size="medium" state="focused" lang="ko">
+                칩 ko override
+              </Chip>
+              <Chip type="outline" size="large" state="hovered" lang="en">
+                Chip en override
+              </Chip>
+            </div>
+          </section>
+
+          {/* 조합 예제 */}
+          <section>
+            <h2
+              style={{
+                fontSize: 20,
+                marginBottom: 16,
+                color: "#333333",
+              }}
+            >
+              컴포넌트 조합 예제
+            </h2>
+            <div
+              style={{
+                padding: 24,
+                backgroundColor: "#f8f9fa",
+                borderRadius: "12px",
+                border: `1px solid #e9ecef`,
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginBottom: 16,
+                }}
+              >
+                <h3
+                  style={{
+                    fontSize: 18,
+                    color: "#333333",
+                    margin: 0,
+                  }}
+                >
+                  상품 카드 예제
+                </h3>
+                <Badge variant="positive" type="solid" size="small">
+                  재고 있음
+                </Badge>
+              </div>
+
+              <div style={{ marginBottom: 16 }}>
+                <Chip type="outline" size="small" state="default">
+                  카테고리
+                </Chip>
+                <span style={{ marginLeft: 8 }}>
+                  <Chip type="solid" size="small" active>
+                    선택됨
+                  </Chip>
+                </span>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  gap: 8,
+                  justifyContent: "flex-end",
+                }}
+              >
+                <OutlineButton variant="secondary" size="medium">
+                  위시리스트
+                </OutlineButton>
+                <SolidButton variant="primary" size="medium">
+                  구매하기
+                </SolidButton>
+              </div>
+            </div>
+          </section>
+
+          {/* Toast 간단 테스트 */}
+          <section style={{ marginTop: 24 }}>
+            <div style={{ display: "flex", gap: 8 }}>
+              <SolidButton onClick={() => setShowToast(true)}>
+                토스트 보기
               </SolidButton>
             </div>
-          </div>
-        </section>
-      </main>
-    </div>
+            {showToast && (
+              <div style={{ marginTop: 12 }}>
+                <div
+                  style={{
+                    padding: 12,
+                    background: "#111",
+                    color: "#fff",
+                    borderRadius: 8,
+                    width: 320,
+                  }}
+                >
+                  <div style={{ fontSize: 16, marginBottom: 4 }}>
+                    토스트 샘플 ({lang})
+                  </div>
+                  <div style={{ fontSize: 12, opacity: 0.8 }}>
+                    언어 토글로 폰트 비교
+                  </div>
+                  <div style={{ marginTop: 8 }}>
+                    <OutlineButton
+                      size="small"
+                      onClick={() => setShowToast(false)}
+                    >
+                      닫기
+                    </OutlineButton>
+                  </div>
+                </div>
+              </div>
+            )}
+          </section>
+        </main>
+      </div>
+    </LanguageProvider>
   );
 }
+
+const TypoDisplay = styled.div<{ $lang: "ko" | "en" }>`
+  ${({ $lang }) => typography($lang, "display3", "bold")}
+`;
+
+const TypoTitle = styled.div<{ $lang: "ko" | "en" }>`
+  ${({ $lang }) => typography($lang, "title2", "semibold")}
+`;
+
+const TypoHeading = styled.div<{ $lang: "ko" | "en" }>`
+  ${({ $lang }) => typography($lang, "heading2", "medium")}
+`;
+
+const TypoBody = styled.div<{ $lang: "ko" | "en" }>`
+  ${({ $lang }) => typography($lang, "body2", "regular")}
+`;
 
 export default App;

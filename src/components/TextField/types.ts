@@ -7,4 +7,5 @@ export interface TextFieldProps extends InputProps {
   descriptionLeadingIcon?: boolean;
   type?: "text" | "password";
   className?: string;
+  lang?: "ko" | "en";
 }

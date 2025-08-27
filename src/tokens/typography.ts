@@ -4,6 +4,12 @@ import fontFamily from "./fontFamily";
 import letterSpacing from "./letterSpacing";
 import lineHeight from "./lineHeight";
 
+function detectDocumentLang(): "ko" | "en" {
+  if (typeof document === "undefined") return "ko";
+  const docLang = document.documentElement.lang?.toLowerCase();
+  return docLang === "en" ? "en" : "ko";
+}
+
 const fontWeights = {
   regular: fontWeight[400],
   medium: fontWeight[500],
@@ -143,21 +149,22 @@ const typographyStyles = {
   },
 } as const;
 
-// 간단한 사용을 위한 CSS 문자열 생성 함수들
+// 간단한 사용을 위한 CSS 문자열 생성 함수들 (기본값: document.lang)
 const typography = (
-  family: "en" | "ko" | "sans" = "ko",
+  family: "en" | "ko" | "sans" | undefined = undefined,
   variant: keyof typeof typographyStyles,
   weight: "regular" | "medium" | "semibold" | "bold" = "medium"
 ) => {
   const style = typographyStyles[variant];
   const fontWeight = weight; // 규칙 제거: 사용자가 지정한 weight 그대로 사용
 
+  const resolvedFamily = family ?? detectDocumentLang();
   const fontFamily =
-    family === "en"
+    resolvedFamily === "en"
       ? style.families.en
-      : family === "ko"
-        ? style.families.ko
-        : style.families.sans;
+      : resolvedFamily === "ko"
+      ? style.families.ko
+      : style.families.sans;
 
   return `
     font-size: ${style.fontSize[0]};
@@ -178,26 +185,60 @@ const typography = (
   `;
 };
 
-// 각 스타일별로 간단한 CSS 문자열 제공 (기본값: ko, medium)
+// 각 스타일별로 간단한 CSS 문자열 제공 (동적: document.lang 기준)
 const typographyCSS = {
-  display1: typography("ko", "display1"),
-  display2: typography("ko", "display2"),
-  display3: typography("ko", "display3"),
-  display4: typography("ko", "display4"),
-  display5: typography("ko", "display5"),
-  title1: typography("ko", "title1"),
-  title2: typography("ko", "title2"),
-  title3: typography("ko", "title3"),
-  title4: typography("ko", "title4"),
-  heading1: typography("ko", "heading1"),
-  heading2: typography("ko", "heading2"),
-  heading3: typography("ko", "heading3"),
-  body1: typography("ko", "body1"),
-  body2: typography("ko", "body2"),
-  body3: typography("ko", "body3"),
-  caption1: typography("ko", "caption1"),
-  caption2: typography("ko", "caption2"),
-} as const;
+  get display1() {
+    return typography(undefined, "display1");
+  },
+  get display2() {
+    return typography(undefined, "display2");
+  },
+  get display3() {
+    return typography(undefined, "display3");
+  },
+  get display4() {
+    return typography(undefined, "display4");
+  },
+  get display5() {
+    return typography(undefined, "display5");
+  },
+  get title1() {
+    return typography(undefined, "title1");
+  },
+  get title2() {
+    return typography(undefined, "title2");
+  },
+  get title3() {
+    return typography(undefined, "title3");
+  },
+  get title4() {
+    return typography(undefined, "title4");
+  },
+  get heading1() {
+    return typography(undefined, "heading1");
+  },
+  get heading2() {
+    return typography(undefined, "heading2");
+  },
+  get heading3() {
+    return typography(undefined, "heading3");
+  },
+  get body1() {
+    return typography(undefined, "body1");
+  },
+  get body2() {
+    return typography(undefined, "body2");
+  },
+  get body3() {
+    return typography(undefined, "body3");
+  },
+  get caption1() {
+    return typography(undefined, "caption1");
+  },
+  get caption2() {
+    return typography(undefined, "caption2");
+  },
+};
 
 export default typography;
 export { typographyStyles, typographyCSS };

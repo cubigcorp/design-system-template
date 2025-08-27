@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { ButtonProps, ButtonStyleProps } from "./types";
+import { useEffectiveLang } from "../../i18n/LanguageContext";
 import color from "../../tokens/color";
 import { radius } from "../../tokens/radius";
 import fontWeight from "../../tokens/fontWeight";
@@ -206,8 +207,10 @@ export const TextButton = ({
   onClick,
   className,
   radiusKey,
+  lang,
 }: ButtonProps) => {
   const [interactionState, setInteractionState] = React.useState(state);
+  const effectiveLang = useEffectiveLang(lang);
 
   // state prop이 변경되면 interactionState도 업데이트
   React.useEffect(() => {
@@ -260,6 +263,7 @@ export const TextButton = ({
       radiusKey={radiusKey}
       onClick={onClick}
       className={className}
+      lang={effectiveLang}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMouseDown={handleMouseDown}

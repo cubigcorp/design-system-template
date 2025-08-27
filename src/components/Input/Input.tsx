@@ -8,6 +8,7 @@ import { typography } from "../../tokens";
 import { color } from "../../tokens";
 import { negativeColor } from "../../tokens";
 import { positiveColor } from "../../tokens";
+import fontFamily from "../../tokens/fontFamily";
 import {
   IconError,
   IconCircleCheck,
@@ -214,11 +215,11 @@ const StyledInput = styled.input<{
   transition: all 0.2s ease-in-out;
 
   &[lang="ko"] {
-    font-family: var(--font-family-ko);
+    font-family: ${fontFamily.ko};
   }
 
   &[lang="en"] {
-    font-family: var(--font-family-en);
+    font-family: ${fontFamily.en};
   }
 
   ${({ $size, $lang = "ko" }) => {

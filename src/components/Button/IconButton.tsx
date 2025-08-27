@@ -55,11 +55,11 @@ const StyledIconButton = styled.button.withConfig({
   position: relative;
 
   &[lang="ko"] {
-    font-family: var(--font-family-ko);
+    font-family: ${fontFamily.ko};
   }
 
   &[lang="en"] {
-    font-family: var(--font-family-en);
+    font-family: ${fontFamily.en};
   }
 
   ${({ size = "medium" }) => {

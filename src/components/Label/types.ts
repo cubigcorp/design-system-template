@@ -5,4 +5,5 @@ export interface LabelProps
   children: React.ReactNode;
   type?: "default" | "required" | "optional";
   className?: string;
+  lang?: "ko" | "en";
 }

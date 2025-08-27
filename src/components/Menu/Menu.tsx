@@ -4,13 +4,14 @@ import { MenuProps } from "./types";
 import { spacing } from "../../tokens/spacing";
 import { shadow } from "../../tokens/shadow";
 import color from "../../tokens/color";
+import fontFamily from "../../tokens/fontFamily";
 
 const Menu: React.FC<MenuProps> = ({ children, className, ...props }) => {
-    return (
-        <StyledMenu className={className} {...props}>
-            {children}
-        </StyledMenu>
-    );
+  return (
+    <StyledMenu className={className} {...props}>
+      {children}
+    </StyledMenu>
+  );
 };
 
 const StyledMenu = styled.div`
@@ -23,6 +24,14 @@ const StyledMenu = styled.div`
   border-radius: 8px;
   box-sizing: border-box;
   width: 300px;
+
+  &[lang="ko"] {
+    font-family: ${fontFamily.ko};
+  }
+
+  &[lang="en"] {
+    font-family: ${fontFamily.en};
+  }
 
   /* Dropdown 스타일 - Dropdown 컴포넌트 내부에서 사용될 때 */
   .dropdown-container & {
@@ -65,4 +74,4 @@ const StyledMenu = styled.div`
 
 Menu.displayName = "Menu";
 
-export { Menu }; 
+export { Menu };

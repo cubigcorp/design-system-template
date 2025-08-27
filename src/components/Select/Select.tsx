@@ -7,6 +7,7 @@ import { borderColor } from "../../tokens";
 import { radius } from "../../tokens";
 import { spacing } from "../../tokens";
 import { typography } from "../../tokens";
+import fontFamily from "../../tokens/fontFamily";
 import { color } from "../../tokens";
 import { useEffectiveLang } from "../../i18n/LanguageContext";
 
@@ -162,11 +163,11 @@ const SelectTrigger = styled.button<{
   transition: all 0.2s ease-in-out;
 
   &[lang="ko"] {
-    font-family: var(--font-family-ko);
+    font-family: ${fontFamily.ko};
   }
 
   &[lang="en"] {
-    font-family: var(--font-family-en);
+    font-family: ${fontFamily.en};
   }
 
   ${({ size, lang = "ko" }) => {

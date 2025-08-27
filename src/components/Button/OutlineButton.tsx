@@ -13,6 +13,7 @@ import brandColor from "../../tokens/brandColor";
 import positiveColor from "../../tokens/positiveColor";
 import negativeColor from "../../tokens/negativeColor";
 import { useEffectiveLang } from "../../i18n/LanguageContext";
+import fontFamily from "../../tokens/fontFamily";
 
 const StyledButton = styled.button.withConfig({
   shouldForwardProp: (prop) =>
@@ -29,6 +30,14 @@ const StyledButton = styled.button.withConfig({
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   position: relative;
+
+  &[lang="ko"] {
+    font-family: ${fontFamily.ko};
+  }
+
+  &[lang="en"] {
+    font-family: ${fontFamily.en};
+  }
 
   // 크기 변형
   ${({ size = "medium" }) => {

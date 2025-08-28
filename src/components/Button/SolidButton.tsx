@@ -10,7 +10,6 @@ import textColor from "../../tokens/textColor";
 import { spacing } from "../../tokens/spacing";
 import { Spinner } from "./Spinner";
 import React from "react";
-import { useEffectiveLang } from "../../i18n/LanguageContext";
 
 const StyledButton = styled.button.withConfig({
   shouldForwardProp: (prop) =>
@@ -257,7 +256,6 @@ export const SolidButton = ({
   lang,
 }: ButtonProps) => {
   const [interactionState, setInteractionState] = React.useState(state);
-  const effectiveLang = useEffectiveLang(lang);
 
   React.useEffect(() => {
     setInteractionState(state);
@@ -307,7 +305,7 @@ export const SolidButton = ({
       disabled={disabled}
       loading={loading}
       radiusKey={radiusKey}
-      lang={effectiveLang}
+      lang={lang}
       onClick={onClick}
       className={className}
       onMouseEnter={handleMouseEnter}

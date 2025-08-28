@@ -11,7 +11,6 @@ import positiveColor from "../../tokens/positiveColor";
 import negativeColor from "../../tokens/negativeColor";
 import { Spinner } from "./Spinner";
 import React from "react";
-import { useEffectiveLang } from "../../i18n/LanguageContext";
 
 export type IconButtonSize = "small" | "medium" | "large";
 export type IconButtonState = "default" | "hovered" | "pressed" | "focused";
@@ -435,7 +434,6 @@ export const IconButton = ({
   lang,
 }: IconButtonProps) => {
   const [interactionState, setInteractionState] = React.useState(state);
-  const effectiveLang = useEffectiveLang(lang);
 
   React.useEffect(() => {
     setInteractionState(state);
@@ -485,7 +483,7 @@ export const IconButton = ({
       disabled={disabled}
       loading={loading}
       radiusKey={radiusKey}
-      lang={effectiveLang}
+      lang={lang}
       onClick={onClick}
       className={className}
       onMouseEnter={handleMouseEnter}

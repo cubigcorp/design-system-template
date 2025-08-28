@@ -13,7 +13,7 @@ const StyledChip = styled.div.withConfig({
 })<ChipStyleProps>`
   display: inline-flex;
   align-items: center;
-  justify-content: center;'
+  justify-content: center;
   gap: 4px;
   border-radius: ${({ radius: chipRadius }) => radius[chipRadius]};
   font-weight: ${fontWeight["500"]};
@@ -21,9 +21,14 @@ const StyledChip = styled.div.withConfig({
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
-  
-  &:lang(ko), &[lang="ko"] { font-family: ${fontFamily.ko}; }
-  &:lang(en), &[lang="en"] { font-family: ${fontFamily.en}; }
+  &:lang(ko),
+  &[lang="ko"] {
+    font-family: ${fontFamily.ko};
+  }
+  &:lang(en),
+  &[lang="en"] {
+    font-family: ${fontFamily.en};
+  }
 
   ${({ size = "medium" }) => {
     switch (size) {

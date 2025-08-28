@@ -12,7 +12,6 @@ import { radius } from "../../tokens";
 import { spacing } from "../../tokens";
 import { typography } from "../../tokens";
 import { color } from "../../tokens";
-import { useEffectiveLang } from "../../i18n/LanguageContext";
 
 const Dropdown: React.FC<DropdownProps & { lang?: "ko" | "en" }> = ({
   size = "medium",
@@ -34,7 +33,7 @@ const Dropdown: React.FC<DropdownProps & { lang?: "ko" | "en" }> = ({
   lang,
   ...props
 }) => {
-  const effectiveLang = useEffectiveLang(lang);
+  const effectiveLang = lang;
   const [isOpen, setIsOpen] = useState(false);
   const [internalActive, setInternalActive] = useState(active);
   const [internalFocused, setInternalFocused] = useState(focused);

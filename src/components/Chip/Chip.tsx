@@ -5,7 +5,6 @@ import color from "../../tokens/color";
 import { radius } from "../../tokens/radius";
 import fontWeight from "../../tokens/fontWeight";
 import fontFamily from "../../tokens/fontFamily";
-import { useEffectiveLang } from "../../i18n/LanguageContext";
 import textColor from "../../tokens/textColor";
 import { borderColor } from "../../tokens/borderColor";
 
@@ -14,7 +13,7 @@ const StyledChip = styled.div.withConfig({
 })<ChipStyleProps>`
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center;'
   gap: 4px;
   border-radius: ${({ radius: chipRadius }) => radius[chipRadius]};
   font-weight: ${fontWeight["500"]};
@@ -22,13 +21,9 @@ const StyledChip = styled.div.withConfig({
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
-
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
+  
+  &:lang(ko), &[lang="ko"] { font-family: ${fontFamily.ko}; }
+  &:lang(en), &[lang="en"] { font-family: ${fontFamily.en}; }
 
   ${({ size = "medium" }) => {
     switch (size) {
@@ -201,7 +196,6 @@ export const Chip = ({
   lang,
 }: ChipProps) => {
   const [interactionState, setInteractionState] = React.useState(state);
-  const effectiveLang = useEffectiveLang(lang);
 
   React.useEffect(() => {
     setInteractionState(state);
@@ -260,7 +254,7 @@ export const Chip = ({
       onFocus={handleFocus}
       onBlur={handleBlur}
       tabIndex={disabled ? -1 : 0}
-      lang={effectiveLang}
+      lang={lang}
     >
       {leadingIcon && <span className="icon">{leadingIcon}</span>}
       <span>{children || text}</span>

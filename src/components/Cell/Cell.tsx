@@ -7,7 +7,7 @@ import { typography } from "../../tokens";
 import color from "../../tokens/color";
 import textColor from "../../tokens/textColor";
 import { IconCheck } from "../icons";
-import { useEffectiveLang } from "../../i18n/LanguageContext";
+import fontFamily from "../../tokens/fontFamily";
 
 const Cell: React.FC<CellProps & { lang?: "ko" | "en" }> = ({
   disable = false,
@@ -20,7 +20,7 @@ const Cell: React.FC<CellProps & { lang?: "ko" | "en" }> = ({
   className,
   lang,
 }) => {
-  const effectiveLang = useEffectiveLang(lang);
+  const effectiveLang = lang;
   const getForegroundColor = () => {
     if (disable) {
       return textColor.light["fg-neutral-disable"];
@@ -46,7 +46,7 @@ const Cell: React.FC<CellProps & { lang?: "ko" | "en" }> = ({
       data-disable={disable}
       onClick={disable ? undefined : onClick}
       className={className}
-      lang={effectiveLang}
+      lang={lang}
     >
       {LeadingIcon && (
         <LeadingIconWrapper>
@@ -55,10 +55,8 @@ const Cell: React.FC<CellProps & { lang?: "ko" | "en" }> = ({
       )}
 
       <ContentWrapper>
-        {text && <Text $lang={effectiveLang}>{text}</Text>}
-        {description && (
-          <Description $lang={effectiveLang}>{description}</Description>
-        )}
+        {text && <Text>{text}</Text>}
+        {description && <Description>{description}</Description>}
       </ContentWrapper>
 
       {shouldShowTrailingIcon() && (
@@ -107,13 +105,31 @@ const ContentWrapper = styled.div`
   min-width: 0;
 `;
 
-const Text = styled.div<{ $lang?: "ko" | "en" }>`
-  ${({ $lang = "ko" }) => typography($lang, "body2", "regular")}
+const Text = styled.div`
+  ${typography(undefined, "body2", "regular")}
+  font-family: inherit;
+  &:lang(en),
+  &[lang="en"] {
+    font-family: ${fontFamily.en};
+  }
+  &:lang(ko),
+  &[lang="ko"] {
+    font-family: ${fontFamily.ko};
+  }
   color: inherit;
 `;
 
-const Description = styled.div<{ $lang?: "ko" | "en" }>`
-  ${({ $lang = "ko" }) => typography($lang, "caption2", "regular")}
+const Description = styled.div`
+  ${typography(undefined, "caption2", "regular")}
+  font-family: inherit;
+  &:lang(en),
+  &[lang="en"] {
+    font-family: ${fontFamily.en};
+  }
+  &:lang(ko),
+  &[lang="ko"] {
+    font-family: ${fontFamily.ko};
+  }
   color: ${textColor.light["fg-neutral-alternative"]};
 `;
 

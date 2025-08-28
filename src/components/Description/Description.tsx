@@ -7,7 +7,7 @@ import { typography } from "../../tokens";
 import { spacing } from "../../tokens";
 import { IconError, IconCircleCheck } from "../icons";
 import type { DescriptionProps } from "./types";
-import { useEffectiveLang } from "../../i18n/LanguageContext";
+import fontFamily from "../../tokens/fontFamily";
 
 const Description: React.FC<DescriptionProps & { lang?: "ko" | "en" }> = ({
   children,
@@ -17,7 +17,7 @@ const Description: React.FC<DescriptionProps & { lang?: "ko" | "en" }> = ({
   lang,
   ...props
 }) => {
-  const effectiveLang = useEffectiveLang(lang);
+  const effectiveLang = lang;
   const getIcon = () => {
     if (!leadingIcon) return null;
 
@@ -42,7 +42,6 @@ const Description: React.FC<DescriptionProps & { lang?: "ko" | "en" }> = ({
   return (
     <StyledDescription
       status={status}
-      $lang={effectiveLang}
       lang={effectiveLang}
       className={className}
       {...props}
@@ -55,9 +54,16 @@ const Description: React.FC<DescriptionProps & { lang?: "ko" | "en" }> = ({
 
 const StyledDescription = styled.div<{
   status: "default" | "negative" | "positive";
-  $lang: "ko" | "en";
 }>`
-  ${({ $lang }) => typography($lang, "caption2", "regular")}
+  ${typography(undefined, "caption2", "regular")}
+  &:lang(en),
+  &[lang="en"] {
+    font-family: ${fontFamily.en};
+  }
+  &:lang(ko),
+  &[lang="ko"] {
+    font-family: ${fontFamily.ko};
+  }
   height: 16px;
   display: flex;
   align-items: center;

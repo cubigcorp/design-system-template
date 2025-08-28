@@ -29,7 +29,7 @@ const StyledButton = styled.button.withConfig({
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   position: relative;
-  font-family: inherit;
+
   &:lang(en),
   &[lang="en"] {
     font-family: ${fontFamily.en};
@@ -222,7 +222,6 @@ const StyledButton = styled.button.withConfig({
 
 const TextWrapper = styled.span`
   padding: 0 ${spacing.gap["gap-0.5"]};
-  font-family: inherit;
 `;
 
 export const OutlineButton = ({

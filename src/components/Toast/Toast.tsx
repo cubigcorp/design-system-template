@@ -38,8 +38,6 @@ const fadeOutSlideUp = keyframes`
   }
 `;
 
-import { useEffectiveLang } from "../../i18n/LanguageContext";
-
 const Toast: React.FC<ToastProps & { lang?: "ko" | "en" }> = ({
   children,
   description,
@@ -93,8 +91,6 @@ const Toast: React.FC<ToastProps & { lang?: "ko" | "en" }> = ({
     }, 500);
   };
 
-  const effectiveLang = useEffectiveLang(lang);
-
   const getLeadingIcon = () => {
     if (!showLeadingIcon) return null;
 
@@ -142,7 +138,7 @@ const Toast: React.FC<ToastProps & { lang?: "ko" | "en" }> = ({
         </LeadingIconWrapper>
       )}
 
-      <ContentWrapper $lang={effectiveLang} lang={effectiveLang}>
+      <ContentWrapper lang={lang}>
         <div>{children}</div>
         {description && <div>{description}</div>}
       </ContentWrapper>
@@ -278,7 +274,7 @@ const LeadingIconWrapper = styled.div<{ $variant: ToastVariant }>`
   }};
 `;
 
-const ContentWrapper = styled.div<{ $lang: "ko" | "en" }>`
+const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing.gap["gap-1"]};
@@ -288,7 +284,7 @@ const ContentWrapper = styled.div<{ $lang: "ko" | "en" }>`
 
   /* Typography for children (main text - 2줄까지) */
   > *:first-child {
-    ${({ $lang }) => typography($lang, "body2", "medium")}
+    ${typography(undefined, "body2", "medium")}
     color: ${color.common["100"]};
     white-space: pre-wrap;
     display: -webkit-box;
@@ -299,7 +295,7 @@ const ContentWrapper = styled.div<{ $lang: "ko" | "en" }>`
   }
 
   > *:nth-child(2) {
-    ${({ $lang }) => typography($lang, "caption2", "regular")}
+    ${typography(undefined, "caption2", "regular")}
     color: ${color.gray["800"]};
     white-space: nowrap;
     overflow: hidden;

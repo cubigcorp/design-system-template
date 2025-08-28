@@ -214,10 +214,11 @@ const StyledInput = styled.input<{
       : textColor.light["fg-neutral-strong"]};
   transition: all 0.2s ease-in-out;
 
+  &:lang(ko),
   &[lang="ko"] {
     font-family: ${fontFamily.ko};
   }
-
+  &:lang(en),
   &[lang="en"] {
     font-family: ${fontFamily.en};
   }

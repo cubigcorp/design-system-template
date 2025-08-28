@@ -24,6 +24,3 @@ export const cssFiles = {
   heading: "./styles/heading.css",
   title: "./styles/title.css",
 };
-
-// i18n utilities
-export * from "./i18n/LanguageContext";

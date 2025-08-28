@@ -5,7 +5,6 @@ import { Input } from "../Input";
 import { Description } from "../Description";
 import { TextFieldProps } from "./types";
 import { spacing } from "../../tokens";
-import { useEffectiveLang } from "../../i18n/LanguageContext";
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   (
@@ -31,7 +30,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
   ) => {
     const [isFocused, setIsFocused] = useState(false);
     const [isActive, setIsActive] = useState(false);
-    const effectiveLang = useEffectiveLang(lang);
+    const effectiveLang = lang;
 
     const handleFocus = (event: React.FocusEvent<HTMLInputElement>) => {
       setIsFocused(true);

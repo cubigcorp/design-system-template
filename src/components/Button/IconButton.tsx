@@ -51,7 +51,7 @@ const StyledIconButton = styled.button.withConfig({
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   position: relative;
-  font-family: inherit;
+
   &:lang(en),
   &[lang="en"] {
     font-family: ${fontFamily.en};

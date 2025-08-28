@@ -9,7 +9,6 @@ import { spacing } from "../../tokens";
 import { typography } from "../../tokens";
 import fontFamily from "../../tokens/fontFamily";
 import { color } from "../../tokens";
-import { useEffectiveLang } from "../../i18n/LanguageContext";
 
 const Select: React.FC<SelectProps & { lang?: "ko" | "en" }> = ({
   size = "medium",
@@ -25,7 +24,7 @@ const Select: React.FC<SelectProps & { lang?: "ko" | "en" }> = ({
   className = "",
   lang,
 }) => {
-  const effectiveLang = useEffectiveLang(lang);
+  const effectiveLang = lang;
   const [isOpen, setIsOpen] = useState(false);
   const [internalActive, setInternalActive] = useState(active);
   const [internalFocused, setInternalFocused] = useState(focused);
@@ -162,10 +161,11 @@ const SelectTrigger = styled.button<{
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
+  &:lang(ko),
   &[lang="ko"] {
     font-family: ${fontFamily.ko};
   }
-
+  &:lang(en),
   &[lang="en"] {
     font-family: ${fontFamily.en};
   }

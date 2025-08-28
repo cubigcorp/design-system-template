@@ -5,7 +5,7 @@ import { color } from "../../tokens";
 import { typography } from "../../tokens";
 import { spacing } from "../../tokens";
 import { LabelProps } from "./types";
-import { useEffectiveLang } from "../../i18n/LanguageContext";
+import fontFamily from "../../tokens/fontFamily";
 
 const Label: React.FC<LabelProps & { lang?: "ko" | "en" }> = ({
   children,
@@ -14,7 +14,7 @@ const Label: React.FC<LabelProps & { lang?: "ko" | "en" }> = ({
   lang,
   ...props
 }) => {
-  const effectiveLang = useEffectiveLang(lang);
+  const effectiveLang = lang;
   const getLabelContent = () => {
     switch (type) {
       case "required":
@@ -39,7 +39,6 @@ const Label: React.FC<LabelProps & { lang?: "ko" | "en" }> = ({
   return (
     <StyledLabel
       $type={type}
-      $lang={effectiveLang}
       lang={effectiveLang}
       className={className}
       {...props}
@@ -51,23 +50,30 @@ const Label: React.FC<LabelProps & { lang?: "ko" | "en" }> = ({
 
 const StyledLabel = styled.label<{
   $type: "default" | "required" | "optional";
-  $lang: "ko" | "en";
 }>`
-  ${({ $lang }) => typography($lang, "body2", "medium")}
+  ${typography(undefined, "body2", "medium")}
+  &:lang(en),
+  &[lang="en"] {
+    font-family: ${fontFamily.en};
+  }
+  &:lang(ko),
+  &[lang="ko"] {
+    font-family: ${fontFamily.ko};
+  }
   height: 20px;
   display: flex;
   align-items: center;
   color: ${textColor.light["fg-neutral-strong"]};
 `;
 
-const RequiredIndicator = styled.span<{ $lang?: "ko" | "en" }>`
-  ${({ $lang = "ko" }) => typography($lang, "caption2", "regular")}
+const RequiredIndicator = styled.span`
+  ${typography(undefined, "caption2", "regular")}
   color: ${color.red[500]};
   margin-left: ${spacing.gap["gap-0.5"]};
 `;
 
-const OptionalText = styled.span<{ $lang?: "ko" | "en" }>`
-  ${({ $lang = "ko" }) => typography($lang, "body2", "regular")}
+const OptionalText = styled.span`
+  ${typography(undefined, "body2", "regular")}
   color: ${textColor.light["fg-neutral-alternative"]};
   margin-left: ${spacing.gap["gap-0.5"]};
 `;

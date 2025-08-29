@@ -4,11 +4,12 @@ import { textColor } from "../../tokens";
 import { borderColor } from "../../tokens";
 import { radius } from "../../tokens";
 import { spacing } from "../../tokens";
+import { typographyCSS } from "../../tokens";
 import { typography } from "../../tokens";
+import fontFamily from "../../tokens/fontFamily";
 import { color } from "../../tokens";
 import { negativeColor } from "../../tokens";
 import { positiveColor } from "../../tokens";
-import fontFamily from "../../tokens/fontFamily";
 import {
   IconError,
   IconCircleCheck,
@@ -32,7 +33,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       onFocus,
       onBlur,
       className = "",
-      lang = "ko",
+      lang,
       ...props
     },
     ref
@@ -103,6 +104,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     const trailingIcon = getTrailingIcon();
 
+    const effectiveLang = lang;
+
     return (
       <InputContainer>
         <StyledInput
@@ -122,11 +125,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           $disabled={disabled}
           $active={active}
           $focused={internalFocused}
-          lang={lang}
+          lang={effectiveLang}
           {...Object.fromEntries(
             Object.entries(props).filter(
-              ([key]) =>
-                !["active", "focused", "status", "size", "lang"].includes(key)
+              ([key]) => !["active", "focused", "status", "size"].includes(key)
             )
           )}
         />
@@ -193,25 +195,14 @@ const StyledInput = styled.input<{
   $disabled: boolean;
   $active: boolean;
   $focused: boolean;
-  $lang?: "ko" | "en";
+  lang?: "ko" | "en";
 }>`
   width: 100%;
-  border: 1px solid
-    ${({ $status, $focused }) => {
-      if ($focused) return borderColor.light["color-border-focused"];
-      if ($status === "negative")
-        return borderColor.light["color-border-negative"];
-      if ($status === "positive")
-        return borderColor.light["color-border-positive"];
-      return borderColor.light["color-border-primary"];
-    }};
+  border: ${({ $focused }) => ($focused ? "1.8px solid" : "1px solid")};
   border-radius: ${radius["rounded-2"]};
-  background-color: ${({ $disabled }) =>
-    $disabled ? color.gray["50"] : color.common["100"]};
-  color: ${({ $disabled }) =>
-    $disabled
-      ? textColor.light["fg-neutral-disable"]
-      : textColor.light["fg-neutral-strong"]};
+  outline: none;
+  box-sizing: border-box;
+  position: relative;
   transition: all 0.2s ease-in-out;
 
   &:lang(ko),
@@ -223,53 +214,219 @@ const StyledInput = styled.input<{
     font-family: ${fontFamily.en};
   }
 
-  ${({ $size, $lang = "ko" }) => {
+  /* Size styles */
+  ${({ $size, lang = "ko" }) => {
     const iconGap =
       $size === "large" ? spacing.gap["gap-2.5"] : spacing.gap["gap-2"];
     const iconSize = $size === "small" ? 16 : $size === "large" ? 24 : 20;
-    const rightPadding = iconSize + parseInt(iconGap) * 2;
+    const rightPadding = iconSize + parseInt(iconGap) * 2; // 항상 아이콘 공간 확보
 
     switch ($size) {
       case "small":
         return `
           height: 32px;
-          ${typography($lang, "body2", "regular")}
+          ${typography(lang, "body2", "regular")}
           padding: ${spacing.gap["gap-1"]} ${spacing.gap["gap-2"]};
           padding-right: ${rightPadding}px;
         `;
       case "large":
         return `
           height: 48px;
-          ${typography($lang, "body3", "regular")}
+          ${typography(lang, "body3", "regular")}
           padding: ${spacing.gap["gap-3"]} ${spacing.gap["gap-2.5"]};
           padding-right: ${rightPadding}px;
         `;
-      default:
+      default: // medium
         return `
           height: 40px;
-          ${typography($lang, "body3", "regular")}
+          ${typography(lang, "body3", "regular")}
           padding: ${spacing.gap["gap-2"]} ${spacing.gap["gap-2"]};
           padding-right: ${rightPadding}px;
         `;
     }
   }}
 
-  &:focus {
-    outline: none;
-    border-color: ${borderColor.light["color-border-focused"]};
-    box-shadow: 0 0 0 2px ${color.blue["100"]};
-  }
+  /* Color styles based on status, disabled, active, focused */
+  ${({ $status, $disabled, $active, $focused }) => {
+    // Disabled 상태들
+    if ($disabled) {
+      return `
+        background-color: ${color.gray["50"]};
+        color: ${textColor.light["fg-neutral-disable"]};
+        border-color: ${borderColor.light["color-border-primary"]};
+      `;
+    }
 
-  &:hover:not(:disabled) {
-    border-color: ${borderColor.light["color-border-alternative"]};
-  }
+    // Default 상태
+    if ($status === "default") {
+      if ($active && $focused) {
+        // Default: Disable=False, Active=True, Focus=True
+        return `
+          background-color: transparent;
+          color: ${textColor.light["fg-neutral-primary"]};
+          border-color: ${borderColor.light["color-border-focused"]};
+        `;
+      } else if ($active && !$focused) {
+        // Default: Disable=False, Active=True, Focus=False
+        return `
+          background-color: transparent;
+          color: ${textColor.light["fg-neutral-primary"]};
+          border-color: ${borderColor.light["color-border-primary"]};
+        `;
+      } else if (!$active && $focused) {
+        // Default: Disable=False, Active=False, Focus=True
+        return `
+          background-color: transparent;
+          color: ${textColor.light["fg-neutral-primary"]};
+          border-color: ${borderColor.light["color-border-focused"]};
+        `;
+      } else {
+        // Default: Disable=False, Active=False, Focus=False
+        return `
+          background-color: transparent;
+          color: ${textColor.light["fg-neutral-primary"]};
+          border-color: ${borderColor.light["color-border-primary"]};
+        `;
+      }
+    }
+
+    // Negative 상태
+    if ($status === "negative") {
+      if ($active && $focused) {
+        // Negative: Disable=False, Active=True, Focus=True
+        return `
+          background-color: transparent;
+          color: ${textColor.light["fg-neutral-primary"]};
+          border-color: ${color.red[500]};
+        `;
+      } else if (!$active && $focused) {
+        // Negative: Disable=False, Active=False, Focus=True
+        return `
+          background-color: transparent;
+          color: ${textColor.light["fg-neutral-primary"]};
+          border-color: ${color.red[500]};
+        `;
+      } else {
+        // Negative: Disable=False, Active=False, Focus=False
+        return `
+          background-color: transparent;
+          color: ${textColor.light["fg-neutral-primary"]};
+          border-color: ${borderColor.light["color-border-negative"]};
+        `;
+      }
+    }
+
+    // Positive 상태
+    if ($status === "positive") {
+      if ($active && $focused) {
+        // Positive: Disable=False, Active=True, Focus=True
+        return `
+          background-color: transparent;
+          color: ${textColor.light["fg-neutral-primary"]};
+          border-color: ${borderColor.light["color-border-focused"]};
+        `;
+      } else if ($active && !$focused) {
+        // Positive: Disable=False, Active=True, Focus=False
+        return `
+          background-color: transparent;
+          color: ${textColor.light["fg-neutral-primary"]};
+          border-color: ${borderColor.light["color-border-primary"]};
+        `;
+      } else {
+        // Positive: Disable=False, Active=False, Focus=False (스펙에 없지만 기본값)
+        return `
+          background-color: transparent;
+          color: ${textColor.light["fg-neutral-primary"]};
+          border-color: ${borderColor.light["color-border-primary"]};
+        `;
+      }
+    }
+
+    // 기본값
+    return `
+      background-color: transparent;
+      color: ${textColor.light["fg-neutral-primary"]};
+      border-color: ${borderColor.light["color-border-primary"]};
+    `;
+  }}
 
   &:disabled {
     cursor: not-allowed;
   }
 
   &::placeholder {
-    color: ${textColor.light["fg-neutral-assistive"]};
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+    opacity: 1; /* Firefox에서 opacity 조정 */
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+
+  &::-webkit-input-placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+
+  &::-moz-placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+    opacity: 1;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+
+  &:-ms-input-placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+
+  /* 포커스 상태에서도 placeholder 색상 유지 */
+  &:focus::placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+
+  &:focus::-webkit-input-placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+
+  &:focus::-moz-placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+  }
+
+  &:focus:-ms-input-placeholder {
+    color: ${textColor.light["fg-neutral-assistive"]} !important;
+    font-weight: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
   }
 `;
 

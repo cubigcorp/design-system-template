@@ -67,7 +67,7 @@ const StyledDescription = styled.div<{
   height: 16px;
   display: flex;
   align-items: center;
-  margin-top: ${spacing.gap["gap-1"]};
+
   color: ${({ status }) => {
     switch (status) {
       case "negative":

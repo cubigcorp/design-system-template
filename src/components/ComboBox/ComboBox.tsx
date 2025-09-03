@@ -322,7 +322,6 @@ const ComboBoxMenuWrapper = styled.div`
   left: 0;
   right: 0;
   z-index: 1000;
-  margin-top: 4px;
 
   & > div {
     width: 100% !important;

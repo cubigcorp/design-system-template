@@ -6,6 +6,7 @@ export interface DropdownOption {
 }
 
 export interface DropdownProps {
+  type?: "selector" | "combobox";
   size?: "small" | "medium" | "large";
   disabled?: boolean;
   active?: boolean;
@@ -19,8 +20,12 @@ export interface DropdownProps {
   descriptionLeadingIcon?: boolean;
   status?: "default" | "negative" | "positive";
   onChange?: (value: string) => void;
-  onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
-  onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  onFocus?: (
+    event: React.FocusEvent<HTMLButtonElement | HTMLInputElement>
+  ) => void;
+  onBlur?: (
+    event: React.FocusEvent<HTMLButtonElement | HTMLInputElement>
+  ) => void;
   className?: string;
   style?: React.CSSProperties;
 }

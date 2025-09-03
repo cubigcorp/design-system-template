@@ -4,9 +4,11 @@ import { DropdownProps } from "./types";
 import { Label } from "../Label";
 import { Description } from "../Description";
 import { Selector } from "../Selector";
+import { ComboBox } from "../ComboBox";
 import { spacing } from "../../tokens";
 
 const Dropdown: React.FC<DropdownProps & { lang?: "ko" | "en" }> = ({
+  type = "selector",
   size = "medium",
   disabled = false,
   active = false,
@@ -45,19 +47,35 @@ const Dropdown: React.FC<DropdownProps & { lang?: "ko" | "en" }> = ({
         </Label>
       )}
 
-      <Selector
-        size={size}
-        disabled={disabled}
-        active={active}
-        focused={focused}
-        placeholder={placeholder}
-        value={value}
-        options={options}
-        onChange={onChange}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        lang={effectiveLang}
-      />
+      {type === "combobox" ? (
+        <ComboBox
+          size={size}
+          disabled={disabled}
+          active={active}
+          focused={focused}
+          placeholder={placeholder}
+          value={value}
+          options={options}
+          onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          lang={effectiveLang}
+        />
+      ) : (
+        <Selector
+          size={size}
+          disabled={disabled}
+          active={active}
+          focused={focused}
+          placeholder={placeholder}
+          value={value}
+          options={options}
+          onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          lang={effectiveLang}
+        />
+      )}
 
       {description && (
         <Description

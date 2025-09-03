@@ -1,21 +1,20 @@
-import React from "react";
-
-export interface SelectOption {
+export interface ComboBoxOption {
   value: string;
   label: string;
 }
 
-export interface SelectProps {
+export interface ComboBoxProps {
   size?: "small" | "medium" | "large";
   disabled?: boolean;
   active?: boolean;
   focused?: boolean;
   placeholder?: string;
   value?: string;
-  options?: SelectOption[];
+  options?: ComboBoxOption[];
   onChange?: (value: string) => void;
-  onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;
-  onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   className?: string;
+  style?: React.CSSProperties;
   lang?: "ko" | "en";
 }

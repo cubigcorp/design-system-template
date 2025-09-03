@@ -38,9 +38,13 @@ export type { InputProps } from "./Input/types";
 export { TextField } from "./TextField";
 export type { TextFieldProps } from "./TextField/types";
 
-// Select
-export { Select } from "./Select";
-export type { SelectProps, SelectOption } from "./Select/types";
+// Selector
+export { Selector } from "./Selector";
+export type { SelectorProps, SelectorOption } from "./Selector/types";
+
+// ComboBox
+export { ComboBox } from "./ComboBox";
+export type { ComboBoxProps, ComboBoxOption } from "./ComboBox/types";
 
 // Dropdown
 export { Dropdown } from "./Dropdown";

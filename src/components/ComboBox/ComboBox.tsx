@@ -197,7 +197,7 @@ const ComboBoxInputWrapper = styled.div<{
   ${({ $disabled, $active, $focused }) => {
     if ($disabled) {
       return `
-        background-color: ${color.gray["50"]};
+        background-color: ${color.common["100"]};
         border-color: ${borderColor.light["color-border-primary"]};
         cursor: not-allowed;
       `;
@@ -205,7 +205,7 @@ const ComboBoxInputWrapper = styled.div<{
 
     if ($active && $focused) {
       return `
-        background-color: ${color.gray["50"]};
+        background-color: ${color.common["100"]};
         border-color: ${borderColor.light["color-border-focused"]};
       `;
     }
@@ -219,7 +219,7 @@ const ComboBoxInputWrapper = styled.div<{
 
     if ($focused) {
       return `
-        background-color: ${color.gray["50"]};
+        background-color: ${color.common["100"]};
         border-color: ${borderColor.light["color-border-focused"]};
       `;
     }
@@ -231,7 +231,7 @@ const ComboBoxInputWrapper = styled.div<{
   }}
 
   &:hover:not([data-disabled="true"]) {
-    background-color: ${color.gray["50"]};
+    background-color: ${color.common["100"]};
     border-color: ${color.gray["300"]};
   }
 `;

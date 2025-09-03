@@ -158,6 +158,7 @@ const SelectorMenuWrapper = styled.div`
   left: 0;
   right: 0;
   z-index: 1000;
+  margin-top: ${spacing.gap["gap-1"]};
 
   /* Menu 컴포넌트의 width를 부모에 맞추기 */
   & > div {

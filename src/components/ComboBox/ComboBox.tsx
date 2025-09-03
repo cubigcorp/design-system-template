@@ -30,6 +30,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [internalFocused, setInternalFocused] = useState(focused);
   const [inputValue, setInputValue] = useState(value || "");
+  const [showAllOptions, setShowAllOptions] = useState(false);
   const comboBoxRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -55,15 +56,23 @@ const ComboBox: React.FC<ComboBoxProps> = ({
   }, [focused]);
 
   useEffect(() => {
-    setInputValue(value || "");
-  }, [value]);
+    if (value) {
+      const selectedOption = options.find((option) => option.value === value);
+      setInputValue(selectedOption ? selectedOption.label : value);
+    } else {
+      setInputValue("");
+    }
+  }, [value, options]);
 
   const handleIconClick = () => {
     if (!disabled) {
       setIsOpen(!isOpen);
       if (!isOpen) {
         setInternalFocused(true);
+        setShowAllOptions(true);
         inputRef.current?.focus();
+      } else {
+        setShowAllOptions(false);
       }
     }
   };
@@ -72,7 +81,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
     const newValue = event.target.value;
     setInputValue(newValue);
     onChange?.(newValue);
-
+    setShowAllOptions(false);
     if (!isOpen) {
       setIsOpen(true);
     }
@@ -81,6 +90,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
   const handleInputFocus = (event: React.FocusEvent<HTMLInputElement>) => {
     setInternalFocused(true);
     setIsOpen(true);
+    setShowAllOptions(true);
     onFocus?.(event);
   };
 
@@ -94,7 +104,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
     onChange?.(option.value);
     setIsOpen(false);
     setInternalFocused(false);
-    inputRef.current?.blur();
+    setShowAllOptions(false);
   };
 
   const getIconColor = () => {
@@ -104,9 +114,11 @@ const ComboBox: React.FC<ComboBoxProps> = ({
     return textColor.light["fg-neutral-primary"];
   };
 
-  const filteredOptions = options.filter((option) =>
-    option.label.toLowerCase().includes(inputValue.toLowerCase())
-  );
+  const filteredOptions = showAllOptions
+    ? options
+    : options.filter((option) =>
+        option.label.toLowerCase().includes(inputValue.toLowerCase())
+      );
 
   return (
     <ComboBoxContainer
@@ -153,7 +165,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
         </ComboBoxIcon>
       </ComboBoxInputWrapper>
 
-      {isOpen && (filteredOptions.length > 0 || inputValue === "") && (
+      {isOpen && filteredOptions.length > 0 && (
         <ComboBoxMenuWrapper>
           <Menu>
             {filteredOptions.map((option) => (
@@ -229,11 +241,6 @@ const ComboBoxInputWrapper = styled.div<{
       border-color: ${borderColor.light["color-border-primary"]};
     `;
   }}
-
-  &:hover:not([data-disabled="true"]) {
-    background-color: ${color.common["100"]};
-    border-color: ${color.gray["300"]};
-  }
 `;
 
 const ComboBoxInput = styled.input<{
@@ -322,6 +329,7 @@ const ComboBoxMenuWrapper = styled.div`
   left: 0;
   right: 0;
   z-index: 1000;
+  margin-top: ${spacing.gap["gap-1"]};
 
   & > div {
     width: 100% !important;

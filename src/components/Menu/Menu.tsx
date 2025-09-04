@@ -33,21 +33,18 @@ const StyledMenu = styled.div`
     font-family: ${fontFamily.en};
   }
 
-  /* Dropdown 스타일 - Dropdown 컴포넌트 내부에서 사용될 때 */
   .dropdown-container & {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     z-index: 1000;
-    margin-top: 4px;
     width: 100% !important;
     max-height: 400px;
     overflow-y: auto;
     overflow-x: hidden;
   }
 
-  /* 스크롤바 스타일링 */
   &::-webkit-scrollbar {
     width: 6px;
   }

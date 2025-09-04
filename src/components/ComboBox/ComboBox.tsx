@@ -140,6 +140,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
           $disabled={disabled}
           $active={active}
           $focused={internalFocused}
+          $hasValue={!!inputValue}
           lang={lang}
           value={inputValue}
           placeholder={placeholder}
@@ -248,6 +249,7 @@ const ComboBoxInput = styled.input<{
   $disabled: boolean;
   $active: boolean;
   $focused: boolean;
+  $hasValue: boolean;
   lang?: "ko" | "en";
 }>`
   width: 100%;
@@ -287,7 +289,7 @@ const ComboBoxInput = styled.input<{
     }
   }}
 
-  ${({ $disabled, $active, $focused }) => {
+  ${({ $disabled, $active, $focused, $hasValue }) => {
     if ($disabled) {
       return `
         color: ${textColor.light["fg-neutral-disable"]};
@@ -301,7 +303,7 @@ const ComboBoxInput = styled.input<{
       `;
     }
 
-    if ($active) {
+    if ($active || $hasValue) {
       return `
         color: ${textColor.light["fg-neutral-primary"]};
       `;
@@ -325,11 +327,10 @@ const ComboBoxInput = styled.input<{
 
 const ComboBoxMenuWrapper = styled.div`
   position: absolute;
-  top: 100%;
+  top: calc(100% + ${spacing.gap["gap-1"]});
   left: 0;
   right: 0;
   z-index: 1000;
-  margin-top: ${spacing.gap["gap-1"]};
 
   & > div {
     width: 100% !important;

@@ -30,7 +30,8 @@ const ComboBox: React.FC<ComboBoxProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [internalFocused, setInternalFocused] = useState(focused);
   const [inputValue, setInputValue] = useState(value || "");
-  const [showAllOptions, setShowAllOptions] = useState(false);
+  const [showAllOptions, setShowAllOptions] = useState(true);
+  const [selectedValue, setSelectedValue] = useState(value || "");
   const comboBoxRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -42,6 +43,16 @@ const ComboBox: React.FC<ComboBoxProps> = ({
       ) {
         setIsOpen(false);
         setInternalFocused(false);
+        setShowAllOptions(false);
+
+        if (selectedValue) {
+          const selectedOption = options.find(
+            (option) => option.value === selectedValue
+          );
+          setInputValue(selectedOption ? selectedOption.label : "");
+        } else {
+          setInputValue("");
+        }
       }
     };
 
@@ -49,7 +60,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [selectedValue, options]);
 
   useEffect(() => {
     setInternalFocused(focused);
@@ -59,8 +70,10 @@ const ComboBox: React.FC<ComboBoxProps> = ({
     if (value) {
       const selectedOption = options.find((option) => option.value === value);
       setInputValue(selectedOption ? selectedOption.label : value);
+      setSelectedValue(value);
     } else {
       setInputValue("");
+      setSelectedValue("");
     }
   }, [value, options]);
 
@@ -80,7 +93,6 @@ const ComboBox: React.FC<ComboBoxProps> = ({
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
     setInputValue(newValue);
-    onChange?.(newValue);
     setShowAllOptions(false);
     if (!isOpen) {
       setIsOpen(true);
@@ -101,10 +113,10 @@ const ComboBox: React.FC<ComboBoxProps> = ({
 
   const handleOptionClick = (option: ComboBoxOption) => {
     setInputValue(option.label);
+    setSelectedValue(option.value);
     onChange?.(option.value);
     setIsOpen(false);
     setInternalFocused(false);
-    setShowAllOptions(false);
   };
 
   const getIconColor = () => {
@@ -173,7 +185,7 @@ const ComboBox: React.FC<ComboBoxProps> = ({
               <Cell
                 key={option.value}
                 text={option.label}
-                active={option.value === value}
+                active={option.value === selectedValue}
                 onClick={() => handleOptionClick(option)}
               />
             ))}

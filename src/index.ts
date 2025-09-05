@@ -2,6 +2,7 @@
 export * from "./components/Button";
 export * from "./components/Badge";
 export * from "./components/Chip";
+export * from "./components/Switch";
 export * from "./components/Label";
 export * from "./components/Description";
 export * from "./components/Input";

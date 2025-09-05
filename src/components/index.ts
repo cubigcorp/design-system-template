@@ -22,6 +22,10 @@ export type {
 export { Chip } from "./Chip";
 export type { ChipProps, ChipType, ChipSize, ChipState } from "./Chip/types";
 
+// Switch
+export { Switch } from "./Switch";
+export type { SwitchProps } from "./Switch/types";
+
 // Label
 export { Label } from "./Label";
 export type { LabelProps } from "./Label/types";

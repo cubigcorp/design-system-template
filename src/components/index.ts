@@ -42,6 +42,10 @@ export type { InputProps } from "./Input/types";
 export { TextField } from "./TextField";
 export type { TextFieldProps } from "./TextField/types";
 
+// Searchfield
+export { Searchfield } from "./Searchfield";
+export type { SearchfieldProps } from "./Searchfield/types";
+
 // Selector
 export { Selector } from "./Selector";
 export type { SelectorProps, SelectorOption } from "./Selector/types";

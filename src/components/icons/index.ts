@@ -9,3 +9,4 @@ export { IconArrowUp } from "./IconArrowUp";
 export { IconInfo } from "./IconInfo";
 export { IconWarning } from "./IconWarning";
 export { IconClose } from "./IconClose";
+export { IconSearch } from "./IconSearch";

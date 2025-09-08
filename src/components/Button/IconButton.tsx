@@ -42,7 +42,7 @@ export interface IconButtonProps extends IconButtonStyleProps {
 
 const StyledIconButton = styled.button.withConfig({
   shouldForwardProp: (prop) =>
-    !["loading", "state", "radiusKey"].includes(prop),
+    !["loading", "state", "radiusKey", "type"].includes(prop),
 })<IconButtonStyleProps>`
   display: inline-flex;
   align-items: center;
@@ -422,6 +422,7 @@ const StyledIconButton = styled.button.withConfig({
 `;
 
 export const IconButton = ({
+  type = "solid",
   variant = "primary",
   size = "medium",
   state = "default",
@@ -477,6 +478,7 @@ export const IconButton = ({
 
   return (
     <StyledIconButton
+      type={type}
       variant={variant}
       size={size}
       state={state !== "default" ? state : interactionState}

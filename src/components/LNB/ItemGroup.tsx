@@ -36,7 +36,7 @@ const Wrapper = styled.div`
 
 const Title = styled.div`
   ${typography(undefined, "body2", "regular")}
-  color: ${textColor.light["fg-neutral-assistive"]};
+  color: ${textColor.light["fg-neutral-alternative"]};
   &:lang(en),
   &[lang="en"] {
     font-family: ${fontFamily.en};

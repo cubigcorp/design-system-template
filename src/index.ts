@@ -13,6 +13,8 @@ export * from "./components/Dropdown";
 export * from "./components/Checkbox";
 export * from "./components/Toast";
 export * from "./components/icons";
+export * from "./components/LNB";
+export * from "./components/Divider";
 
 // Design Tokens
 export * from "./tokens";

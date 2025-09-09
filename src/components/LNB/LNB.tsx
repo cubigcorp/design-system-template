@@ -46,6 +46,7 @@ const Container = styled.nav`
   flex-direction: column;
   gap: 0;
   padding: ${spacing.gap["gap-4"]};
+  height: 100%;
 `;
 
 const Bottom = styled.div`

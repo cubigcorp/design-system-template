@@ -69,3 +69,6 @@ export type { CellProps } from "./Cell/types";
 // Toast
 export { Toast, ToastSystem, toast } from "./Toast";
 export type { ToastProps, ToastVariant, ToastPlacement } from "./Toast/types";
+
+// Divider
+export { Divider } from "./Divider";

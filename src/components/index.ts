@@ -70,5 +70,10 @@ export type { CellProps } from "./Cell/types";
 export { Toast, ToastSystem, toast } from "./Toast";
 export type { ToastProps, ToastVariant, ToastPlacement } from "./Toast/types";
 
+// LNB
+export { LNB } from "./LNB";
+export { LNBItem } from "./LNB";
+export { LNBItemGroup } from "./LNB";
+
 // Divider
 export { Divider } from "./Divider";

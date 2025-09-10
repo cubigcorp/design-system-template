@@ -62,7 +62,7 @@ const StyledBadge = styled.div<BadgeStyleProps>`
               };
             case "secondary":
               return {
-                background: color.gray["50"],
+                background: color.gray["100"],
                 text: textColor.light["fg-neutral-alternative"],
                 border: "transparent",
               };
@@ -143,7 +143,8 @@ const StyledBadge = styled.div<BadgeStyleProps>`
               };
             case "cautionary":
               return {
-                background: cautioniaryColor.light["bg-cautionary-primary-default"],
+                background:
+                  cautioniaryColor.light["bg-cautionary-primary-default"],
                 text: color.common["100"], // common-white
                 border: "transparent",
               };

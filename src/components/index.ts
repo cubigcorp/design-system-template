@@ -77,3 +77,7 @@ export { LNBItemGroup } from "./LNB";
 
 // Divider
 export { Divider } from "./Divider";
+
+// RadioButton
+export { RadioButton } from "./RadioButton";
+export type { RadioButtonProps, RadioButtonState } from "./RadioButton/types";

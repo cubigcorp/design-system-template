@@ -4,7 +4,6 @@ import { Modal, ModalProps } from "../components/Modal";
 
 const ModalWithState = ({
   size = "medium",
-  open = false,
   onClose,
   title = "제목",
   showCloseButton = true,
@@ -131,74 +130,58 @@ export const AllSizes: Story = {
   },
   render: () => (
     <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-      <ModalWithState
-        size="x-small"
-        title="X-Small Modal"
-        children={
-          <div
-            style={{
-              padding: "20px",
-              backgroundColor: "#f0f8ff",
-              borderRadius: "8px",
-              textAlign: "center",
-              color: "#666",
-            }}
-          >
-            X-Small 크기
-          </div>
-        }
-      />
-      <ModalWithState
-        size="small"
-        title="Small Modal"
-        children={
-          <div
-            style={{
-              padding: "20px",
-              backgroundColor: "#f0f8ff",
-              borderRadius: "8px",
-              textAlign: "center",
-              color: "#666",
-            }}
-          >
-            Small 크기
-          </div>
-        }
-      />
-      <ModalWithState
-        size="medium"
-        title="Medium Modal"
-        children={
-          <div
-            style={{
-              padding: "20px",
-              backgroundColor: "#f0f8ff",
-              borderRadius: "8px",
-              textAlign: "center",
-              color: "#666",
-            }}
-          >
-            Medium 크기
-          </div>
-        }
-      />
-      <ModalWithState
-        size="large"
-        title="Large Modal"
-        children={
-          <div
-            style={{
-              padding: "20px",
-              backgroundColor: "#f0f8ff",
-              borderRadius: "8px",
-              textAlign: "center",
-              color: "#666",
-            }}
-          >
-            Large 크기
-          </div>
-        }
-      />
+      <ModalWithState size="x-small" title="X-Small Modal">
+        <div
+          style={{
+            padding: "20px",
+            backgroundColor: "#f0f8ff",
+            borderRadius: "8px",
+            textAlign: "center",
+            color: "#666",
+          }}
+        >
+          X-Small 크기
+        </div>
+      </ModalWithState>
+      <ModalWithState size="small" title="Small Modal">
+        <div
+          style={{
+            padding: "20px",
+            backgroundColor: "#f0f8ff",
+            borderRadius: "8px",
+            textAlign: "center",
+            color: "#666",
+          }}
+        >
+          Small 크기
+        </div>
+      </ModalWithState>
+      <ModalWithState size="medium" title="Medium Modal">
+        <div
+          style={{
+            padding: "20px",
+            backgroundColor: "#f0f8ff",
+            borderRadius: "8px",
+            textAlign: "center",
+            color: "#666",
+          }}
+        >
+          Medium 크기
+        </div>
+      </ModalWithState>
+      <ModalWithState size="large" title="Large Modal">
+        <div
+          style={{
+            padding: "20px",
+            backgroundColor: "#f0f8ff",
+            borderRadius: "8px",
+            textAlign: "center",
+            color: "#666",
+          }}
+        >
+          Large 크기
+        </div>
+      </ModalWithState>
     </div>
   ),
 };

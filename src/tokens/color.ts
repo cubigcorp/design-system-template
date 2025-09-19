@@ -2,7 +2,7 @@ const color = {
   common: {
     "0": "#000000",
     "100": "#ffffff",
-    dimmer: "#17171980",
+    dimmer: "#17171929",
   },
   gray: {
     "25": "#fbfbfb",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
   color,
@@ -24,7 +24,28 @@ const Modal: React.FC<ModalProps> = ({
   style,
   ...props
 }) => {
-  if (!open) return null;
+  const [isVisible, setIsVisible] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    if (open) {
+      setShouldRender(true);
+      // 약간의 지연 후 애니메이션 시작
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 10);
+      return () => clearTimeout(timer);
+    } else {
+      setIsVisible(false);
+      // 애니메이션 완료 후 DOM에서 제거
+      const timer = setTimeout(() => {
+        setShouldRender(false);
+      }, 200); // transition 시간과 동일
+      return () => clearTimeout(timer);
+    }
+  }, [open]);
+
+  if (!shouldRender) return null;
 
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -37,9 +58,10 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <Overlay onClick={handleOverlayClick}>
+    <Overlay $isVisible={isVisible} onClick={handleOverlayClick}>
       <ModalContainer
         $size={size}
+        $isVisible={isVisible}
         className={className}
         style={style}
         {...props}
@@ -66,7 +88,7 @@ const Modal: React.FC<ModalProps> = ({
   );
 };
 
-const Overlay = styled.div`
+const Overlay = styled.div<{ $isVisible: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -77,10 +99,13 @@ const Overlay = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
+  transition: opacity 0.2s ease-in-out;
 `;
 
 const ModalContainer = styled.div<{
   $size: "x-small" | "small" | "medium" | "large";
+  $isVisible: boolean;
 }>`
   background-color: ${layerColor.light["bg-layer-floating"]};
   border: 1px solid ${borderColor.light["color-border-primary"]};
@@ -90,6 +115,8 @@ const ModalContainer = styled.div<{
   flex-direction: column;
   max-height: 90vh;
   overflow: hidden;
+  transform: ${({ $isVisible }) => ($isVisible ? "scale(1)" : "scale(0.95)")};
+  transition: transform 0.2s ease-in-out;
 
   ${({ $size }) => {
     switch ($size) {

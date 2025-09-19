@@ -12,7 +12,7 @@ const ModalWithState = ({
   children,
   ...props
 }: ModalProps) => {
-  const [isOpen, setIsOpen] = useState(open);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClose = () => {
     setIsOpen(false);

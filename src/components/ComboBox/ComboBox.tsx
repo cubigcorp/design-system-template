@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import styled from "styled-components";
 import { ComboBoxProps, ComboBoxOption } from "./types";
 import { IconArrowDown, IconArrowUp } from "../icons";
@@ -32,6 +33,11 @@ const ComboBox: React.FC<ComboBoxProps> = ({
   const [inputValue, setInputValue] = useState(value || "");
   const [showAllOptions, setShowAllOptions] = useState(true);
   const [selectedValue, setSelectedValue] = useState(value || "");
+  const [menuPosition, setMenuPosition] = useState({
+    top: 0,
+    left: 0,
+    width: 0,
+  });
   const comboBoxRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -65,6 +71,31 @@ const ComboBox: React.FC<ComboBoxProps> = ({
   useEffect(() => {
     setInternalFocused(focused);
   }, [focused]);
+
+  useEffect(() => {
+    if (isOpen && comboBoxRef.current) {
+      const updatePosition = () => {
+        if (comboBoxRef.current) {
+          const rect = comboBoxRef.current.getBoundingClientRect();
+          setMenuPosition({
+            top: rect.bottom + window.scrollY,
+            left: rect.left + window.scrollX,
+            width: rect.width,
+          });
+        }
+      };
+
+      updatePosition();
+
+      window.addEventListener("scroll", updatePosition, true);
+      window.addEventListener("resize", updatePosition);
+
+      return () => {
+        window.removeEventListener("scroll", updatePosition, true);
+        window.removeEventListener("resize", updatePosition);
+      };
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     if (value) {
@@ -178,20 +209,27 @@ const ComboBox: React.FC<ComboBoxProps> = ({
         </ComboBoxIcon>
       </ComboBoxInputWrapper>
 
-      {isOpen && filteredOptions.length > 0 && (
-        <ComboBoxMenuWrapper>
-          <Menu>
-            {filteredOptions.map((option) => (
-              <Cell
-                key={option.value}
-                text={option.label}
-                active={option.value === selectedValue}
-                onClick={() => handleOptionClick(option)}
-              />
-            ))}
-          </Menu>
-        </ComboBoxMenuWrapper>
-      )}
+      {isOpen &&
+        filteredOptions.length > 0 &&
+        createPortal(
+          <PortalMenuWrapper
+            $top={menuPosition.top}
+            $left={menuPosition.left}
+            $width={menuPosition.width}
+          >
+            <Menu>
+              {filteredOptions.map((option) => (
+                <Cell
+                  key={option.value}
+                  text={option.label}
+                  active={option.value === selectedValue}
+                  onClick={() => handleOptionClick(option)}
+                />
+              ))}
+            </Menu>
+          </PortalMenuWrapper>,
+          document.body
+        )}
     </ComboBoxContainer>
   );
 };
@@ -343,6 +381,25 @@ const ComboBoxMenuWrapper = styled.div`
   left: 0;
   right: 0;
   z-index: 1000;
+
+  & > div {
+    width: 100% !important;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+`;
+
+const PortalMenuWrapper = styled.div<{
+  $top: number;
+  $left: number;
+  $width: number;
+}>`
+  position: absolute;
+  top: ${({ $top }) => $top}px;
+  left: ${({ $left }) => $left}px;
+  width: ${({ $width }) => $width}px;
+  z-index: 9999;
 
   & > div {
     width: 100% !important;

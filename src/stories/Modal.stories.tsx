@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs";
 import { useState } from "react";
 import { Modal, ModalProps } from "../components/Modal";
 import { SolidButton, OutlineButton } from "../components/Button";
+import { Dropdown } from "../components/Dropdown";
 
 const ModalWithState = ({
   size = "medium",
@@ -484,6 +485,141 @@ export const MultipleActionButtons: Story = {
         여러 개의 액션 버튼 예시입니다.
         <br />
         삭제, 임시저장, 취소, 저장 버튼이 있습니다.
+      </div>
+    ),
+  },
+};
+
+export const ModalWithDropdown: Story = {
+  render: (args) => <ModalWithState {...args} />,
+  args: {
+    size: "large",
+    open: false,
+    title: "드롭다운 테스트 모달",
+    showCloseButton: true,
+    actions: (
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          justifyContent: "flex-end",
+          width: "100%",
+        }}
+      >
+        <OutlineButton variant="secondary">취소</OutlineButton>
+        <SolidButton variant="primary">저장</SolidButton>
+      </div>
+    ),
+    children: (
+      <div style={{ padding: "20px" }}>
+        <h3 style={{ margin: "0 0 16px 0", color: "#333" }}>
+          모달 안에서 드롭다운 테스트
+        </h3>
+        <p style={{ margin: "0 0 20px 0", color: "#666" }}>
+          아래 드롭다운들이 모달 위에 정상적으로 표시되는지 확인해보세요.
+        </p>
+
+        <div style={{ marginBottom: "20px" }}>
+          <Dropdown
+            type="selector"
+            label="일반 드롭다운"
+            placeholder="옵션을 선택하세요"
+            options={[
+              { label: "옵션 1", value: "option1" },
+              { label: "옵션 2", value: "option2" },
+              { label: "옵션 3", value: "option3" },
+              { label: "옵션 4", value: "option4" },
+              { label: "옵션 5", value: "option5" },
+            ]}
+          />
+        </div>
+
+        <div style={{ marginBottom: "20px" }}>
+          <Dropdown
+            type="combobox"
+            label="검색 가능한 드롭다운"
+            placeholder="검색하거나 선택하세요"
+            options={[
+              { label: "Apple", value: "apple" },
+              { label: "Banana", value: "banana" },
+              { label: "Cherry", value: "cherry" },
+              { label: "Date", value: "date" },
+              { label: "Elderberry", value: "elderberry" },
+              { label: "Fig", value: "fig" },
+              { label: "Grape", value: "grape" },
+              { label: "Honeydew", value: "honeydew" },
+            ]}
+          />
+        </div>
+
+        <div style={{ marginBottom: "20px" }}>
+          <Dropdown
+            type="selector"
+            label="비활성화된 드롭다운"
+            placeholder="비활성화됨"
+            disabled={true}
+            options={[
+              { label: "옵션 1", value: "option1" },
+              { label: "옵션 2", value: "option2" },
+            ]}
+          />
+        </div>
+
+        <div
+          style={{
+            padding: "16px",
+            backgroundColor: "#f8f9fa",
+            borderRadius: "8px",
+            border: "1px solid #e9ecef",
+          }}
+        >
+          <strong>테스트 포인트:</strong>
+          <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
+            <li>드롭다운 메뉴가 모달 위에 표시되는지</li>
+            <li>드롭다운 메뉴가 모달 경계를 벗어나지 않는지</li>
+            <li>검색 기능이 정상 작동하는지</li>
+            <li>스크롤이 필요한 경우 정상 작동하는지</li>
+          </ul>
+        </div>
+      </div>
+    ),
+  },
+};
+
+export const SimpleModalWithDropdown: Story = {
+  render: (args) => <ModalWithState {...args} />,
+  args: {
+    size: "medium",
+    open: false,
+    title: "드롭다운 테스트",
+    showCloseButton: true,
+    actions: (
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          justifyContent: "flex-end",
+          width: "100%",
+        }}
+      >
+        <OutlineButton variant="secondary">취소</OutlineButton>
+        <SolidButton variant="primary">확인</SolidButton>
+      </div>
+    ),
+    children: (
+      <div style={{ padding: "20px" }}>
+        <Dropdown
+          type="selector"
+          label="옵션 선택"
+          placeholder="선택하세요"
+          options={[
+            { label: "옵션 1", value: "option1" },
+            { label: "옵션 2", value: "option2" },
+            { label: "옵션 3", value: "option3" },
+            { label: "옵션 4", value: "option4" },
+            { label: "옵션 5", value: "option5" },
+          ]}
+        />
       </div>
     ),
   },

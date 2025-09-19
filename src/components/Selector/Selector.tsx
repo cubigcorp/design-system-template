@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import styled from "styled-components";
 import { SelectorProps, SelectorOption } from "./types";
 import { IconArrowDown, IconArrowUp } from "../icons";
@@ -30,6 +31,11 @@ const Selector: React.FC<SelectorProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [internalActive, setInternalActive] = useState(active);
   const [internalFocused, setInternalFocused] = useState(focused);
+  const [menuPosition, setMenuPosition] = useState({
+    top: 0,
+    left: 0,
+    width: 0,
+  });
   const selectorRef = useRef<HTMLDivElement>(null);
 
   // 외부 클릭 시 드롭다운 닫기
@@ -58,6 +64,31 @@ const Selector: React.FC<SelectorProps> = ({
   useEffect(() => {
     setInternalFocused(focused);
   }, [focused]);
+
+  useEffect(() => {
+    if (isOpen && selectorRef.current) {
+      const updatePosition = () => {
+        if (selectorRef.current) {
+          const rect = selectorRef.current.getBoundingClientRect();
+          setMenuPosition({
+            top: rect.bottom + window.scrollY,
+            left: rect.left + window.scrollX,
+            width: rect.width,
+          });
+        }
+      };
+
+      updatePosition();
+
+      window.addEventListener("scroll", updatePosition, true);
+      window.addEventListener("resize", updatePosition);
+
+      return () => {
+        window.removeEventListener("scroll", updatePosition, true);
+        window.removeEventListener("resize", updatePosition);
+      };
+    }
+  }, [isOpen]);
 
   const selectedOption = options.find((option) => option.value === value);
 
@@ -127,20 +158,26 @@ const Selector: React.FC<SelectorProps> = ({
         </SelectorIcon>
       </SelectorTrigger>
 
-      {isOpen && (
-        <SelectorMenuWrapper>
-          <Menu>
-            {options.map((option) => (
-              <Cell
-                key={option.value}
-                text={option.label}
-                active={option.value === value}
-                onClick={() => handleOptionClick(option)}
-              />
-            ))}
-          </Menu>
-        </SelectorMenuWrapper>
-      )}
+      {isOpen &&
+        createPortal(
+          <PortalMenuWrapper
+            $top={menuPosition.top}
+            $left={menuPosition.left}
+            $width={menuPosition.width}
+          >
+            <Menu>
+              {options.map((option) => (
+                <Cell
+                  key={option.value}
+                  text={option.label}
+                  active={option.value === value}
+                  onClick={() => handleOptionClick(option)}
+                />
+              ))}
+            </Menu>
+          </PortalMenuWrapper>,
+          document.body
+        )}
     </SelectorContainer>
   );
 };
@@ -161,6 +198,25 @@ const SelectorMenuWrapper = styled.div`
   margin-top: ${spacing.gap["gap-1"]};
 
   /* Menu 컴포넌트의 width를 부모에 맞추기 */
+  & > div {
+    width: 100% !important;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+`;
+
+const PortalMenuWrapper = styled.div<{
+  $top: number;
+  $left: number;
+  $width: number;
+}>`
+  position: absolute;
+  top: ${({ $top }) => $top}px;
+  left: ${({ $left }) => $left}px;
+  width: ${({ $width }) => $width}px;
+  z-index: 9999;
+
   & > div {
     width: 100% !important;
     max-height: 400px;

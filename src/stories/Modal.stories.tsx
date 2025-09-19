@@ -1,17 +1,19 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
 import { useState } from "react";
 import { Modal, ModalProps } from "../components/Modal";
+import { SolidButton, OutlineButton } from "../components/Button";
 
 const ModalWithState = ({
   size = "medium",
+  open = false,
   onClose,
   title = "제목",
   showCloseButton = true,
-  showActionArea = true,
   children,
+  actions,
   ...props
 }: ModalProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(open);
 
   const handleClose = () => {
     setIsOpen(false);
@@ -44,7 +46,7 @@ const ModalWithState = ({
         onClose={handleClose}
         title={title}
         showCloseButton={showCloseButton}
-        showActionArea={showActionArea}
+        actions={actions}
         {...props}
       >
         {children}
@@ -73,7 +75,7 @@ const meta: Meta<typeof Modal> = {
       description: "모달의 크기를 선택합니다.",
     },
     open: {
-      control: "boolean",
+      control: false,
       description: "모달의 열림/닫힘 상태를 설정합니다.",
     },
     title: {
@@ -83,10 +85,6 @@ const meta: Meta<typeof Modal> = {
     showCloseButton: {
       control: "boolean",
       description: "닫기 버튼 표시 여부를 설정합니다.",
-    },
-    showActionArea: {
-      control: "boolean",
-      description: "액션 영역(취소/확인 버튼) 표시 여부를 설정합니다.",
     },
     onClose: {
       action: "closed",
@@ -105,7 +103,19 @@ export const Default: Story = {
     open: false,
     title: "제목",
     showCloseButton: true,
-    showActionArea: true,
+    actions: (
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          justifyContent: "flex-end",
+          width: "100%",
+        }}
+      >
+        <OutlineButton variant="secondary">취소</OutlineButton>
+        <SolidButton variant="primary">확인</SolidButton>
+      </div>
+    ),
     children: (
       <div
         style={{
@@ -193,7 +203,6 @@ export const WithoutActionArea: Story = {
     open: false,
     title: "액션 영역 없는 모달",
     showCloseButton: true,
-    showActionArea: false,
     children: (
       <div
         style={{
@@ -212,6 +221,30 @@ export const WithoutActionArea: Story = {
   },
 };
 
+export const ActionAreaWithoutActions: Story = {
+  render: (args) => <ModalWithState {...args} />,
+  args: {
+    size: "medium",
+    open: false,
+    title: "액션 영역 있지만 버튼 없음",
+    showCloseButton: true,
+    // actions 없음 - 액션 영역이 나타나지 않음
+    children: (
+      <div
+        style={{
+          padding: "20px",
+          backgroundColor: "#f0f8ff",
+          borderRadius: "8px",
+          textAlign: "center",
+          color: "#666",
+        }}
+      >
+        actions가 없어서 액션 영역이 나타나지 않습니다.
+      </div>
+    ),
+  },
+};
+
 export const WithoutCloseButton: Story = {
   render: (args) => <ModalWithState {...args} />,
   args: {
@@ -219,7 +252,6 @@ export const WithoutCloseButton: Story = {
     open: false,
     title: "닫기 버튼 없는 모달",
     showCloseButton: false,
-    showActionArea: true,
     children: (
       <div
         style={{
@@ -232,7 +264,7 @@ export const WithoutCloseButton: Story = {
       >
         닫기 버튼이 없는 모달입니다.
         <br />
-        취소 버튼이나 배경 클릭으로 닫을 수 있습니다.
+        배경 클릭으로 닫을 수 있습니다.
       </div>
     ),
   },
@@ -245,7 +277,6 @@ export const CustomContent: Story = {
     open: false,
     title: "커스텀 콘텐츠",
     showCloseButton: true,
-    showActionArea: true,
     children: (
       <div>
         <h3 style={{ margin: "0 0 16px 0", color: "#333" }}>상세 정보</h3>
@@ -270,6 +301,189 @@ export const CustomContent: Story = {
         >
           <strong>주의사항:</strong> 모달은 중요한 정보를 전달할 때 사용하세요.
         </div>
+      </div>
+    ),
+  },
+};
+
+export const LeftAlignedActions: Story = {
+  render: (args) => <ModalWithState {...args} />,
+  args: {
+    size: "medium",
+    open: false,
+    title: "왼쪽 정렬 액션",
+    showCloseButton: true,
+    actions: (
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          justifyContent: "flex-start",
+          width: "100%",
+        }}
+      >
+        <SolidButton variant="negative">삭제</SolidButton>
+        <OutlineButton variant="secondary">취소</OutlineButton>
+      </div>
+    ),
+    children: (
+      <div
+        style={{
+          padding: "20px",
+          backgroundColor: "#f0f8ff",
+          borderRadius: "8px",
+          textAlign: "center",
+          color: "#666",
+        }}
+      >
+        왼쪽 정렬된 액션 버튼들입니다.
+      </div>
+    ),
+  },
+};
+
+export const CenterAlignedActions: Story = {
+  render: (args) => <ModalWithState {...args} />,
+  args: {
+    size: "medium",
+    open: false,
+    title: "중앙 정렬 액션",
+    showCloseButton: true,
+    actions: (
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        <OutlineButton variant="secondary">취소</OutlineButton>
+        <SolidButton variant="primary">확인</SolidButton>
+      </div>
+    ),
+    children: (
+      <div
+        style={{
+          padding: "20px",
+          backgroundColor: "#f0f8ff",
+          borderRadius: "8px",
+          textAlign: "center",
+          color: "#666",
+        }}
+      >
+        중앙 정렬된 액션 버튼들입니다.
+      </div>
+    ),
+  },
+};
+
+export const RightAlignedActions: Story = {
+  render: (args) => <ModalWithState {...args} />,
+  args: {
+    size: "medium",
+    open: false,
+    title: "오른쪽 정렬 액션",
+    showCloseButton: true,
+    actions: (
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          justifyContent: "flex-end",
+          width: "100%",
+        }}
+      >
+        <OutlineButton variant="secondary">취소</OutlineButton>
+        <SolidButton variant="primary">확인</SolidButton>
+      </div>
+    ),
+    children: (
+      <div
+        style={{
+          padding: "20px",
+          backgroundColor: "#f0f8ff",
+          borderRadius: "8px",
+          textAlign: "center",
+          color: "#666",
+        }}
+      >
+        오른쪽 정렬된 액션 버튼들입니다.
+      </div>
+    ),
+  },
+};
+
+export const SingleActionButton: Story = {
+  render: (args) => <ModalWithState {...args} />,
+  args: {
+    size: "medium",
+    open: false,
+    title: "단일 액션 버튼",
+    showCloseButton: true,
+    actions: (
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          justifyContent: "flex-end",
+          width: "100%",
+        }}
+      >
+        <SolidButton variant="positive">완료</SolidButton>
+      </div>
+    ),
+    children: (
+      <div
+        style={{
+          padding: "20px",
+          backgroundColor: "#f0f8ff",
+          borderRadius: "8px",
+          textAlign: "center",
+          color: "#666",
+        }}
+      >
+        단일 액션 버튼 예시입니다.
+      </div>
+    ),
+  },
+};
+
+export const MultipleActionButtons: Story = {
+  render: (args) => <ModalWithState {...args} />,
+  args: {
+    size: "large",
+    open: false,
+    title: "다중 액션 버튼",
+    showCloseButton: true,
+    actions: (
+      <div
+        style={{
+          display: "flex",
+          gap: "8px",
+          justifyContent: "flex-end",
+          width: "100%",
+        }}
+      >
+        <SolidButton variant="negative">삭제</SolidButton>
+        <OutlineButton variant="brand">임시저장</OutlineButton>
+        <OutlineButton variant="secondary">취소</OutlineButton>
+        <SolidButton variant="primary">저장</SolidButton>
+      </div>
+    ),
+    children: (
+      <div
+        style={{
+          padding: "20px",
+          backgroundColor: "#f0f8ff",
+          borderRadius: "8px",
+          textAlign: "center",
+          color: "#666",
+        }}
+      >
+        여러 개의 액션 버튼 예시입니다.
+        <br />
+        삭제, 임시저장, 취소, 저장 버튼이 있습니다.
       </div>
     ),
   },

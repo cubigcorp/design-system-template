@@ -9,7 +9,7 @@ export interface ModalProps
   onClose?: () => void;
   title?: string;
   showCloseButton?: boolean;
-  showActionArea?: boolean;
+  actions?: ReactNode;
   children?: ReactNode;
   style?: React.CSSProperties;
 }

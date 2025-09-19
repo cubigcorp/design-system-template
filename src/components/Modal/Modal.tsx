@@ -18,8 +18,8 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
   title = "제목",
   showCloseButton = true,
-  showActionArea = true,
   children,
+  actions,
   className = "",
   style,
   ...props
@@ -77,12 +77,7 @@ const Modal: React.FC<ModalProps> = ({
 
         <Content>{children}</Content>
 
-        {showActionArea && (
-          <ActionArea>
-            <CancelButton onClick={handleCloseClick}>취소</CancelButton>
-            <ConfirmButton>확인</ConfirmButton>
-          </ActionArea>
-        )}
+        {actions && <ActionArea>{actions}</ActionArea>}
       </ModalContainer>
     </Overlay>
   );
@@ -186,7 +181,6 @@ const ActionArea = styled.div`
   padding: ${spacing.gap["gap-3"]} ${spacing.gap["gap-6"]}
     ${spacing.gap["gap-6"]} ${spacing.gap["gap-6"]};
   display: flex;
-  justify-content: flex-end;
   gap: ${spacing.gap["gap-2"]};
 `;
 

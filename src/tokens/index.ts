@@ -19,3 +19,4 @@ export {
 } from "./typography";
 export { radius } from "./radius";
 export { spacing } from "./spacing";
+export { shadow } from "./shadow";

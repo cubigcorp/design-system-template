@@ -81,3 +81,7 @@ export { Divider } from "./Divider";
 // RadioButton
 export { RadioButton } from "./RadioButton";
 export type { RadioButtonProps, RadioButtonState } from "./RadioButton/types";
+
+// Modal
+export { Modal } from "./Modal";
+export type { ModalProps, ModalSize } from "./Modal/types";

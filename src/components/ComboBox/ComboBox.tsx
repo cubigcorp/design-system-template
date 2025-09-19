@@ -40,13 +40,15 @@ const ComboBox: React.FC<ComboBoxProps> = ({
   });
   const comboBoxRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const portalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        comboBoxRef.current &&
-        !comboBoxRef.current.contains(event.target as Node)
-      ) {
+      const target = event.target as Node;
+
+      if (portalRef.current && portalRef.current.contains(target)) return;
+
+      if (comboBoxRef.current && !comboBoxRef.current.contains(target)) {
         setIsOpen(false);
         setInternalFocused(false);
         setShowAllOptions(false);
@@ -213,6 +215,11 @@ const ComboBox: React.FC<ComboBoxProps> = ({
         filteredOptions.length > 0 &&
         createPortal(
           <PortalMenuWrapper
+            ref={portalRef}
+            onMouseDown={(e) => e.stopPropagation()}
+            onMouseDownCapture={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
+            data-portal-menu
             $top={menuPosition.top}
             $left={menuPosition.left}
             $width={menuPosition.width}
@@ -223,7 +230,10 @@ const ComboBox: React.FC<ComboBoxProps> = ({
                   key={option.value}
                   text={option.label}
                   active={option.value === selectedValue}
-                  onClick={() => handleOptionClick(option)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleOptionClick(option);
+                  }}
                 />
               ))}
             </Menu>
@@ -390,7 +400,7 @@ const ComboBoxMenuWrapper = styled.div`
   }
 `;
 
-const PortalMenuWrapper = styled.div<{
+const PortalMenuWrapperBase = styled.div<{
   $top: number;
   $left: number;
   $width: number;
@@ -408,6 +418,11 @@ const PortalMenuWrapper = styled.div<{
     overflow-x: hidden;
   }
 `;
+
+const PortalMenuWrapper = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<typeof PortalMenuWrapperBase>
+>((props, ref) => <PortalMenuWrapperBase ref={ref} {...props} />);
 
 const ComboBoxIcon = styled.div<{ size: "small" | "medium" | "large" }>`
   position: absolute;

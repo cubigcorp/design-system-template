@@ -587,7 +587,30 @@ export const ModalWithDropdown: Story = {
 };
 
 export const SimpleModalWithDropdown: Story = {
-  render: (args) => <ModalWithState {...args} />,
+  render: (args) => {
+    const [dropdownValue, setDropdownValue] = useState("");
+
+    return (
+      <ModalWithState {...args}>
+        <div style={{ padding: "20px" }}>
+          <Dropdown
+            type="selector"
+            label="옵션 선택"
+            placeholder="선택하세요"
+            value={dropdownValue}
+            onChange={setDropdownValue}
+            options={[
+              { label: "옵션 1", value: "option1" },
+              { label: "옵션 2", value: "option2" },
+              { label: "옵션 3", value: "option3" },
+              { label: "옵션 4", value: "option4" },
+              { label: "옵션 5", value: "option5" },
+            ]}
+          />
+        </div>
+      </ModalWithState>
+    );
+  },
   args: {
     size: "medium",
     open: false,
@@ -604,22 +627,6 @@ export const SimpleModalWithDropdown: Story = {
       >
         <OutlineButton variant="secondary">취소</OutlineButton>
         <SolidButton variant="primary">확인</SolidButton>
-      </div>
-    ),
-    children: (
-      <div style={{ padding: "20px" }}>
-        <Dropdown
-          type="selector"
-          label="옵션 선택"
-          placeholder="선택하세요"
-          options={[
-            { label: "옵션 1", value: "option1" },
-            { label: "옵션 2", value: "option2" },
-            { label: "옵션 3", value: "option3" },
-            { label: "옵션 4", value: "option4" },
-            { label: "옵션 5", value: "option5" },
-          ]}
-        />
       </div>
     ),
   },

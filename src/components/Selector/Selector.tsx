@@ -37,14 +37,16 @@ const Selector: React.FC<SelectorProps> = ({
     width: 0,
   });
   const selectorRef = useRef<HTMLDivElement>(null);
+  const portalRef = useRef<HTMLDivElement>(null);
 
   // 외부 클릭 시 드롭다운 닫기
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        selectorRef.current &&
-        !selectorRef.current.contains(event.target as Node)
-      ) {
+      const target = event.target as Node;
+
+      if (portalRef.current && portalRef.current.contains(target)) return;
+
+      if (selectorRef.current && !selectorRef.current.contains(target)) {
         setIsOpen(false);
         setInternalFocused(false);
       }
@@ -161,6 +163,11 @@ const Selector: React.FC<SelectorProps> = ({
       {isOpen &&
         createPortal(
           <PortalMenuWrapper
+            ref={portalRef}
+            onMouseDown={(e) => e.stopPropagation()}
+            onMouseDownCapture={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
+            data-portal-menu
             $top={menuPosition.top}
             $left={menuPosition.left}
             $width={menuPosition.width}
@@ -171,7 +178,10 @@ const Selector: React.FC<SelectorProps> = ({
                   key={option.value}
                   text={option.label}
                   active={option.value === value}
-                  onClick={() => handleOptionClick(option)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleOptionClick(option);
+                  }}
                 />
               ))}
             </Menu>
@@ -206,7 +216,7 @@ const SelectorMenuWrapper = styled.div`
   }
 `;
 
-const PortalMenuWrapper = styled.div<{
+const PortalMenuWrapperBase = styled.div<{
   $top: number;
   $left: number;
   $width: number;
@@ -224,6 +234,11 @@ const PortalMenuWrapper = styled.div<{
     overflow-x: hidden;
   }
 `;
+
+const PortalMenuWrapper = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentProps<typeof PortalMenuWrapperBase>
+>((props, ref) => <PortalMenuWrapperBase ref={ref} {...props} />);
 
 const SelectorTrigger = styled.button<{
   $size: "small" | "medium" | "large";

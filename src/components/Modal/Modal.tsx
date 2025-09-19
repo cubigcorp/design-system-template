@@ -48,6 +48,15 @@ const Modal: React.FC<ModalProps> = ({
   if (!shouldRender) return null;
 
   const handleOverlayClick = (e: React.MouseEvent) => {
+    const target = e.target as Element;
+
+    // Portal 드롭다운 메뉴 내부 클릭은 모달을 닫지 않음
+    if (target.closest("[data-portal-menu]")) {
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+
     if (e.target === e.currentTarget) {
       onClose?.();
     }
@@ -109,7 +118,7 @@ const ModalContainer = styled.div<{
   display: flex;
   flex-direction: column;
   max-height: 90vh;
-  overflow: hidden;
+  overflow: visible;
   transform: ${({ $isVisible }) => ($isVisible ? "scale(1)" : "scale(0.95)")};
   transition: transform 0.2s ease-in-out;
 
@@ -174,7 +183,7 @@ const CloseButton = styled.button`
 const Content = styled.div`
   padding: ${spacing.gap["gap-3"]} ${spacing.gap["gap-6"]};
   flex: 1;
-  overflow-y: auto;
+  overflow: visible;
 `;
 
 const ActionArea = styled.div`

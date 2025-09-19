@@ -44,7 +44,7 @@ const Cell: React.FC<CellProps & { lang?: "ko" | "en" }> = ({
       disable={disable}
       active={active}
       data-disable={disable}
-      onClick={disable ? undefined : onClick}
+      onClick={disable ? undefined : (e) => onClick?.(e)}
       className={className}
       lang={lang}
     >

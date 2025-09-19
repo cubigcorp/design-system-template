@@ -7,6 +7,6 @@ export interface CellProps {
     text?: string;
     description?: string;
     trailingIcon?: React.ComponentType<{ width?: number; height?: number; color?: string }>;
-    onClick?: () => void;
+    onClick?: (e: React.MouseEvent) => void;
     className?: string;
 } 

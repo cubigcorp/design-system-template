@@ -1,0 +1,291 @@
+import{j as e}from"./jsx-runtime-BK5MheKj.js";import{B as a}from"./Badge-C1-HvRNR.js";import"./iframe-BwNeAgc5.js";import"./styled-components.browser.esm-Bhk2HcmV.js";import"./color-8lQV87gD.js";import"./radius-DaoU83SK.js";import"./fontWeight-CRwBdwgF.js";import"./textColor-BwO3V5pH.js";import"./brandColor-Ua45buRE.js";import"./negativeColor-DbIBussv.js";import"./cautioniaryColor-Dwoy29eC.js";import"./borderColor-CxrOUVvi.js";const se={title:"Components/Badge",component:a,tags:["autodocs"],parameters:{layout:"centered",docs:{description:{component:"Badge는 상태, 카테고리, 라벨 등을 표시하는 작은 컴포넌트입니다. Outline, Solid, Strong 세 가지 타입을 지원합니다."}}},argTypes:{variant:{control:{type:"radio"},options:["primary","secondary","brand","positive","negative","info","cautionary"]},type:{control:{type:"radio"},options:["outline","solid","strong"]},size:{control:{type:"radio"},options:["small","medium","large"]}}},t={render:n=>e.jsx(a,{...n,children:"텍스트"}),args:{variant:"primary",type:"outline",size:"medium"}},r={render:n=>e.jsx(a,{...n,children:"텍스트"}),args:{variant:"primary",type:"outline",size:"medium"}},d={render:n=>e.jsx(a,{...n,children:"텍스트"}),args:{...r.args,leadingIcon:e.jsx("span",{children:"🚀"})}},i={render:n=>e.jsx(a,{...n,children:"텍스트"}),args:{variant:"primary",type:"solid",size:"medium"}},o={render:n=>e.jsx(a,{...n,children:"텍스트"}),args:{...i.args,leadingIcon:e.jsx("span",{children:"🚀"})}},s={render:n=>e.jsx(a,{...n,children:"텍스트"}),args:{variant:"primary",type:"strong",size:"medium"}},l={render:n=>e.jsx(a,{...n,children:"텍스트"}),args:{...s.args,leadingIcon:e.jsx("span",{children:"🚀"})}},c={parameters:{controls:{disable:!0}},render:()=>e.jsxs("div",{className:"space-y-8",children:[e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-semibold mb-4",children:"Outline Type"}),e.jsxs("div",{className:"flex gap-4 flex-wrap",children:[e.jsx(a,{variant:"primary",type:"outline",children:"Primary"}),e.jsx(a,{variant:"secondary",type:"outline",children:"Secondary"}),e.jsx(a,{variant:"brand",type:"outline",children:"Brand"}),e.jsx(a,{variant:"positive",type:"outline",children:"Positive"}),e.jsx(a,{variant:"negative",type:"outline",children:"Negative"}),e.jsx(a,{variant:"info",type:"outline",children:"Info"}),e.jsx(a,{variant:"cautionary",type:"outline",children:"Cautionary"})]})]}),e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-semibold mb-4",children:"Solid Type"}),e.jsxs("div",{className:"flex gap-4 flex-wrap",children:[e.jsx(a,{variant:"primary",type:"solid",children:"Primary"}),e.jsx(a,{variant:"secondary",type:"solid",children:"Secondary"}),e.jsx(a,{variant:"brand",type:"solid",children:"Brand"}),e.jsx(a,{variant:"positive",type:"solid",children:"Positive"}),e.jsx(a,{variant:"negative",type:"solid",children:"Negative"}),e.jsx(a,{variant:"info",type:"solid",children:"Info"}),e.jsx(a,{variant:"cautionary",type:"solid",children:"Cautionary"})]})]}),e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-semibold mb-4",children:"Strong Type"}),e.jsxs("div",{className:"flex gap-4 flex-wrap",children:[e.jsx(a,{variant:"primary",type:"strong",children:"Primary"}),e.jsx(a,{variant:"secondary",type:"strong",children:"Secondary"}),e.jsx(a,{variant:"brand",type:"strong",children:"Brand"}),e.jsx(a,{variant:"positive",type:"strong",children:"Positive"}),e.jsx(a,{variant:"negative",type:"strong",children:"Negative"}),e.jsx(a,{variant:"info",type:"strong",children:"Info"}),e.jsx(a,{variant:"cautionary",type:"strong",children:"Cautionary"})]})]})]})},p={parameters:{controls:{disable:!0}},render:()=>e.jsxs("div",{className:"space-y-6",children:[e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-semibold mb-4",children:"Info - Outline"}),e.jsxs("div",{className:"flex gap-4 flex-wrap",children:[e.jsx(a,{variant:"info",type:"outline",size:"small",children:"Info"}),e.jsx(a,{variant:"info",type:"outline",size:"medium",children:"Info"}),e.jsx(a,{variant:"info",type:"outline",size:"large",children:"Info"})]})]}),e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-semibold mb-4",children:"Info - Solid"}),e.jsxs("div",{className:"flex gap-4 flex-wrap",children:[e.jsx(a,{variant:"info",type:"solid",size:"small",children:"Info"}),e.jsx(a,{variant:"info",type:"solid",size:"medium",children:"Info"}),e.jsx(a,{variant:"info",type:"solid",size:"large",children:"Info"})]})]}),e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-semibold mb-4",children:"Info - Strong"}),e.jsxs("div",{className:"flex gap-4 flex-wrap",children:[e.jsx(a,{variant:"info",type:"strong",size:"small",children:"Info"}),e.jsx(a,{variant:"info",type:"strong",size:"medium",children:"Info"}),e.jsx(a,{variant:"info",type:"strong",size:"large",children:"Info"})]})]})]})},m={parameters:{controls:{disable:!0}},render:()=>e.jsxs("div",{className:"space-y-6",children:[e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-semibold mb-4",children:"Cautionary - Outline"}),e.jsxs("div",{className:"flex gap-4 flex-wrap",children:[e.jsx(a,{variant:"cautionary",type:"outline",size:"small",children:"Cautionary"}),e.jsx(a,{variant:"cautionary",type:"outline",size:"medium",children:"Cautionary"}),e.jsx(a,{variant:"cautionary",type:"outline",size:"large",children:"Cautionary"})]})]}),e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-semibold mb-4",children:"Cautionary - Solid"}),e.jsxs("div",{className:"flex gap-4 flex-wrap",children:[e.jsx(a,{variant:"cautionary",type:"solid",size:"small",children:"Cautionary"}),e.jsx(a,{variant:"cautionary",type:"solid",size:"medium",children:"Cautionary"}),e.jsx(a,{variant:"cautionary",type:"solid",size:"large",children:"Cautionary"})]})]}),e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-semibold mb-4",children:"Cautionary - Strong"}),e.jsxs("div",{className:"flex gap-4 flex-wrap",children:[e.jsx(a,{variant:"cautionary",type:"strong",size:"small",children:"Cautionary"}),e.jsx(a,{variant:"cautionary",type:"strong",size:"medium",children:"Cautionary"}),e.jsx(a,{variant:"cautionary",type:"strong",size:"large",children:"Cautionary"})]})]})]})},g={parameters:{controls:{disable:!0}},render:()=>e.jsxs("div",{className:"space-y-6",children:[e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-semibold mb-4",children:"Small (20px)"}),e.jsxs("div",{className:"flex gap-4 items-center flex-wrap",children:[e.jsx(a,{variant:"primary",type:"outline",size:"small",children:"텍스트"}),e.jsx(a,{variant:"primary",type:"solid",size:"small",children:"텍스트"}),e.jsx(a,{variant:"primary",type:"strong",size:"small",children:"텍스트"})]})]}),e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-semibold mb-4",children:"Medium (24px)"}),e.jsxs("div",{className:"flex gap-4 items-center flex-wrap",children:[e.jsx(a,{variant:"primary",type:"outline",size:"medium",children:"텍스트"}),e.jsx(a,{variant:"primary",type:"solid",size:"medium",children:"텍스트"}),e.jsx(a,{variant:"primary",type:"strong",size:"medium",children:"텍스트"})]})]}),e.jsxs("div",{children:[e.jsx("h3",{className:"text-lg font-semibold mb-4",children:"Large (28px)"}),e.jsxs("div",{className:"flex gap-4 items-center flex-wrap",children:[e.jsx(a,{variant:"primary",type:"outline",size:"large",children:"텍스트"}),e.jsx(a,{variant:"primary",type:"solid",size:"large",children:"텍스트"}),e.jsx(a,{variant:"primary",type:"strong",size:"large",children:"텍스트"})]})]})]})};var y,v,u;t.parameters={...t.parameters,docs:{...(y=t.parameters)==null?void 0:y.docs,source:{originalSource:`{
+  render: args => <Badge {...args}>텍스트</Badge>,
+  args: {
+    variant: "primary",
+    type: "outline",
+    size: "medium"
+  }
+}`,...(u=(v=t.parameters)==null?void 0:v.docs)==null?void 0:u.source}}};var x,h,f;r.parameters={...r.parameters,docs:{...(x=r.parameters)==null?void 0:x.docs,source:{originalSource:`{
+  render: args => <Badge {...args}>텍스트</Badge>,
+  args: {
+    variant: "primary",
+    type: "outline",
+    size: "medium"
+  }
+}`,...(f=(h=r.parameters)==null?void 0:h.docs)==null?void 0:f.source}}};var B,j,z;d.parameters={...d.parameters,docs:{...(B=d.parameters)==null?void 0:B.docs,source:{originalSource:`{
+  render: args => <Badge {...args}>텍스트</Badge>,
+  args: {
+    ...Outline.args,
+    leadingIcon: <span>🚀</span>
+  }
+}`,...(z=(j=d.parameters)==null?void 0:j.docs)==null?void 0:z.source}}};var b,N,S;i.parameters={...i.parameters,docs:{...(b=i.parameters)==null?void 0:b.docs,source:{originalSource:`{
+  render: args => <Badge {...args}>텍스트</Badge>,
+  args: {
+    variant: "primary",
+    type: "solid",
+    size: "medium"
+  }
+}`,...(S=(N=i.parameters)==null?void 0:N.docs)==null?void 0:S.source}}};var I,C,w;o.parameters={...o.parameters,docs:{...(I=o.parameters)==null?void 0:I.docs,source:{originalSource:`{
+  render: args => <Badge {...args}>텍스트</Badge>,
+  args: {
+    ...Solid.args,
+    leadingIcon: <span>🚀</span>
+  }
+}`,...(w=(C=o.parameters)==null?void 0:C.docs)==null?void 0:w.source}}};var O,P,T;s.parameters={...s.parameters,docs:{...(O=s.parameters)==null?void 0:O.docs,source:{originalSource:`{
+  render: args => <Badge {...args}>텍스트</Badge>,
+  args: {
+    variant: "primary",
+    type: "strong",
+    size: "medium"
+  }
+}`,...(T=(P=s.parameters)==null?void 0:P.docs)==null?void 0:T.source}}};var V,W,A;l.parameters={...l.parameters,docs:{...(V=l.parameters)==null?void 0:V.docs,source:{originalSource:`{
+  render: args => <Badge {...args}>텍스트</Badge>,
+  args: {
+    ...Strong.args,
+    leadingIcon: <span>🚀</span>
+  }
+}`,...(A=(W=l.parameters)==null?void 0:W.docs)==null?void 0:A.source}}};var D,E,L;c.parameters={...c.parameters,docs:{...(D=c.parameters)==null?void 0:D.docs,source:{originalSource:`{
+  parameters: {
+    controls: {
+      disable: true
+    }
+  },
+  render: () => <div className="space-y-8">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Outline Type</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="primary" type="outline">
+            Primary
+          </Badge>
+          <Badge variant="secondary" type="outline">
+            Secondary
+          </Badge>
+          <Badge variant="brand" type="outline">
+            Brand
+          </Badge>
+          <Badge variant="positive" type="outline">
+            Positive
+          </Badge>
+          <Badge variant="negative" type="outline">
+            Negative
+          </Badge>
+          <Badge variant="info" type="outline">
+            Info
+          </Badge>
+          <Badge variant="cautionary" type="outline">
+            Cautionary
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Solid Type</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="primary" type="solid">
+            Primary
+          </Badge>
+          <Badge variant="secondary" type="solid">
+            Secondary
+          </Badge>
+          <Badge variant="brand" type="solid">
+            Brand
+          </Badge>
+          <Badge variant="positive" type="solid">
+            Positive
+          </Badge>
+          <Badge variant="negative" type="solid">
+            Negative
+          </Badge>
+          <Badge variant="info" type="solid">
+            Info
+          </Badge>
+          <Badge variant="cautionary" type="solid">
+            Cautionary
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Strong Type</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="primary" type="strong">
+            Primary
+          </Badge>
+          <Badge variant="secondary" type="strong">
+            Secondary
+          </Badge>
+          <Badge variant="brand" type="strong">
+            Brand
+          </Badge>
+          <Badge variant="positive" type="strong">
+            Positive
+          </Badge>
+          <Badge variant="negative" type="strong">
+            Negative
+          </Badge>
+          <Badge variant="info" type="strong">
+            Info
+          </Badge>
+          <Badge variant="cautionary" type="strong">
+            Cautionary
+          </Badge>
+        </div>
+      </div>
+    </div>
+}`,...(L=(E=c.parameters)==null?void 0:E.docs)==null?void 0:L.source}}};var M,_,R;p.parameters={...p.parameters,docs:{...(M=p.parameters)==null?void 0:M.docs,source:{originalSource:`{
+  parameters: {
+    controls: {
+      disable: true
+    }
+  },
+  render: () => <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Info - Outline</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="info" type="outline" size="small">
+            Info
+          </Badge>
+          <Badge variant="info" type="outline" size="medium">
+            Info
+          </Badge>
+          <Badge variant="info" type="outline" size="large">
+            Info
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Info - Solid</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="info" type="solid" size="small">
+            Info
+          </Badge>
+          <Badge variant="info" type="solid" size="medium">
+            Info
+          </Badge>
+          <Badge variant="info" type="solid" size="large">
+            Info
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Info - Strong</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="info" type="strong" size="small">
+            Info
+          </Badge>
+          <Badge variant="info" type="strong" size="medium">
+            Info
+          </Badge>
+          <Badge variant="info" type="strong" size="large">
+            Info
+          </Badge>
+        </div>
+      </div>
+    </div>
+}`,...(R=(_=p.parameters)==null?void 0:_.docs)==null?void 0:R.source}}};var k,q,F;m.parameters={...m.parameters,docs:{...(k=m.parameters)==null?void 0:k.docs,source:{originalSource:`{
+  parameters: {
+    controls: {
+      disable: true
+    }
+  },
+  render: () => <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Cautionary - Outline</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="cautionary" type="outline" size="small">
+            Cautionary
+          </Badge>
+          <Badge variant="cautionary" type="outline" size="medium">
+            Cautionary
+          </Badge>
+          <Badge variant="cautionary" type="outline" size="large">
+            Cautionary
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Cautionary - Solid</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="cautionary" type="solid" size="small">
+            Cautionary
+          </Badge>
+          <Badge variant="cautionary" type="solid" size="medium">
+            Cautionary
+          </Badge>
+          <Badge variant="cautionary" type="solid" size="large">
+            Cautionary
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Cautionary - Strong</h3>
+        <div className="flex gap-4 flex-wrap">
+          <Badge variant="cautionary" type="strong" size="small">
+            Cautionary
+          </Badge>
+          <Badge variant="cautionary" type="strong" size="medium">
+            Cautionary
+          </Badge>
+          <Badge variant="cautionary" type="strong" size="large">
+            Cautionary
+          </Badge>
+        </div>
+      </div>
+    </div>
+}`,...(F=(q=m.parameters)==null?void 0:q.docs)==null?void 0:F.source}}};var G,H,J;g.parameters={...g.parameters,docs:{...(G=g.parameters)==null?void 0:G.docs,source:{originalSource:`{
+  parameters: {
+    controls: {
+      disable: true
+    }
+  },
+  render: () => <div className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Small (20px)</h3>
+        <div className="flex gap-4 items-center flex-wrap">
+          <Badge variant="primary" type="outline" size="small">
+            텍스트
+          </Badge>
+          <Badge variant="primary" type="solid" size="small">
+            텍스트
+          </Badge>
+          <Badge variant="primary" type="strong" size="small">
+            텍스트
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Medium (24px)</h3>
+        <div className="flex gap-4 items-center flex-wrap">
+          <Badge variant="primary" type="outline" size="medium">
+            텍스트
+          </Badge>
+          <Badge variant="primary" type="solid" size="medium">
+            텍스트
+          </Badge>
+          <Badge variant="primary" type="strong" size="medium">
+            텍스트
+          </Badge>
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-lg font-semibold mb-4">Large (28px)</h3>
+        <div className="flex gap-4 items-center flex-wrap">
+          <Badge variant="primary" type="outline" size="large">
+            텍스트
+          </Badge>
+          <Badge variant="primary" type="solid" size="large">
+            텍스트
+          </Badge>
+          <Badge variant="primary" type="strong" size="large">
+            텍스트
+          </Badge>
+        </div>
+      </div>
+    </div>
+}`,...(J=(H=g.parameters)==null?void 0:H.docs)==null?void 0:J.source}}};const te=["Default","Outline","OutlineWithIcon","Solid","SolidWithIcon","Strong","StrongWithIcon","AllVariants","InfoVariant","CautionaryVariant","AllSizes"];export{g as AllSizes,c as AllVariants,m as CautionaryVariant,t as Default,p as InfoVariant,r as Outline,d as OutlineWithIcon,i as Solid,o as SolidWithIcon,s as Strong,l as StrongWithIcon,te as __namedExportsOrder,se as default};

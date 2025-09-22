@@ -110,14 +110,14 @@ const StyledIconButton = styled.button.withConfig({
         if (disabled) {
           switch (variant) {
             case "primary":
-              return color.gray["900"];
+              return color.gray["700"];
             case "secondary":
             case "brand":
             case "positive":
             case "negative":
               return color.gray["50"];
             default:
-              return color.gray["900"];
+              return color.gray["700"];
           }
         }
 
@@ -226,14 +226,14 @@ const StyledIconButton = styled.button.withConfig({
         if (disabled) {
           switch (variant) {
             case "primary":
-              return textColor.light["fg-neutral-alternative"];
+              return color.gray["500"];
             case "secondary":
             case "brand":
             case "positive":
             case "negative":
               return textColor.light["fg-neutral-disable"];
             default:
-              return textColor.light["fg-neutral-alternative"];
+              return color.gray["500"];
           }
         }
 
@@ -392,13 +392,13 @@ const StyledIconButton = styled.button.withConfig({
       ${type === "solid"
         ? css`
             background-color: ${variant === "primary"
-              ? color.gray["900"]
+              ? color.gray["700"]
               : color.gray["50"]} !important;
             border-color: ${variant === "primary"
-              ? color.gray["800"]
+              ? color.gray["600"]
               : borderColor.light["color-border-primary"]} !important;
             color: ${variant === "primary"
-              ? textColor.light["fg-neutral-alternative"]
+              ? color.gray["500"]
               : textColor.light["fg-neutral-disable"]} !important;
           `
         : css`

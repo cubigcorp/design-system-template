@@ -214,13 +214,13 @@ const StyledButton = styled.button.withConfig({
     disabled &&
     css`
       background-color: ${variant === "primary"
-        ? color.gray["900"]
+        ? color.gray["700"]
         : color.gray["50"]} !important;
       border-color: ${variant === "primary"
-        ? color.gray["800"]
+        ? color.gray["600"]
         : borderColor.light["color-border-primary"]} !important;
       color: ${variant === "primary"
-        ? textColor.light["fg-neutral-alternative"]
+        ? color.gray["500"]
         : textColor.light["fg-neutral-disable"]} !important;
       pointer-events: none;
       cursor: not-allowed;

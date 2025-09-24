@@ -7,7 +7,12 @@ import lineHeight from "./lineHeight";
 function detectDocumentLang(): "ko" | "en" {
   if (typeof document === "undefined") return "ko";
   const docLang = document.documentElement.lang?.toLowerCase();
-  return docLang === "en" ? "en" : "ko";
+
+  return docLang?.startsWith("en") ? "en" : "ko";
+}
+
+export function getCurrentLang(): "ko" | "en" {
+  return detectDocumentLang();
 }
 
 const fontWeights = {
@@ -158,20 +163,48 @@ const typography = (
   const style = typographyStyles[variant];
   const fontWeight = weight; // 규칙 제거: 사용자가 지정한 weight 그대로 사용
 
-  const resolvedFamily = family ?? detectDocumentLang();
-  const fontFamily =
-    resolvedFamily === "en"
-      ? style.families.en
-      : resolvedFamily === "ko"
-      ? style.families.ko
-      : style.families.sans;
+  if (family !== undefined) {
+    const fontFamily =
+      family === "en"
+        ? style.families.en
+        : family === "ko"
+        ? style.families.ko
+        : style.families.sans;
+
+    return `
+      font-size: ${style.fontSize[0]};
+      font-weight: ${style.weights[fontWeight]};
+      font-family: ${fontFamily};
+      letter-spacing: ${style.letterSpacing};
+      line-height: ${style.lineHeight[0]};
+      
+      @media (max-width: 768px) {
+        font-size: ${style.fontSize[1]["@media (max-width: 768px)"][0]};
+        line-height: ${style.lineHeight[1]["@media (max-width: 768px)"][0]};
+      }
+      
+      @media (max-width: 375px) {
+        font-size: ${style.fontSize[1]["@media (max-width: 375px)"][0]};
+        line-height: ${style.lineHeight[1]["@media (max-width: 375px)"][0]};
+      }
+    `;
+  }
 
   return `
     font-size: ${style.fontSize[0]};
     font-weight: ${style.weights[fontWeight]};
-    font-family: ${fontFamily};
     letter-spacing: ${style.letterSpacing};
     line-height: ${style.lineHeight[0]};
+    
+
+    &:lang(en),
+    &[lang="en"] {
+      font-family: ${style.families.en};
+    }
+    &:lang(ko),
+    &[lang="ko"] {
+      font-family: ${style.families.ko};
+    }
     
     @media (max-width: 768px) {
       font-size: ${style.fontSize[1]["@media (max-width: 768px)"][0]};
@@ -186,6 +219,7 @@ const typography = (
 };
 
 // 각 스타일별로 간단한 CSS 문자열 제공 (동적: document.lang 기준)
+
 const typographyCSS = {
   get display1() {
     return typography(undefined, "display1");

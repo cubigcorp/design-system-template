@@ -88,4 +88,11 @@ export type { ModalProps, ModalSize } from "./Modal/types";
 
 // SegmentedControl
 export { SegmentedControl, SegmentItem } from "./SegmentedControl";
-export type { SegmentedControlProps, SegmentItemProps } from "./SegmentedControl/types";
+export type {
+  SegmentedControlProps,
+  SegmentItemProps,
+} from "./SegmentedControl/types";
+
+// Avatar
+export { Avatar } from "./Avatar";
+export type { AvatarProps, AvatarType, AvatarSize } from "./Avatar/types";

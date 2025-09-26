@@ -18,6 +18,7 @@ export * from "./components/Divider";
 export * from "./components/RadioButton";
 export * from "./components/Modal";
 export * from "./components/SegmentedControl";
+export * from "./components/Avatar";
 
 // Design Tokens
 export * from "./tokens";

@@ -73,7 +73,7 @@ export const SegmentedControl = ({
             key: index,
             active: currentValue === index,
             onClick: () => handleItemClick(index),
-          });
+          } as any);
         }
         return child;
       })}

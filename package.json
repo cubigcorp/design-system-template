@@ -1,6 +1,6 @@
 {
   "name": "@cubig/design-system",
-  "version": "0.18.3",
+  "version": "0.18.4",
   "description": "A comprehensive design system built with React, TypeScript, and styled-components. Includes Label, Description, Input, TextField, Checkbox components with dynamic trailing icons and responsive design tokens.",
   "keywords": [
     "design-system",

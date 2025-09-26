@@ -36,15 +36,18 @@ const StyledSegmentItem = styled.button.withConfig({
 
     if ($active) {
       return css`
-        background-color: ${color.common["100"]};
+        background-color: transparent;
         color: ${textColor.light["fg-neutral-primary"]};
-        box-shadow: ${shadow.light["shadow-xs"]};
+        position: relative;
+        z-index: 1;
       `;
     }
 
     return css`
-      background-color: ${color.gray["50"]};
+      background-color: transparent;
       color: ${textColor.light["fg-neutral-alternative"]};
+      position: relative;
+      z-index: 1;
     `;
   }}
 

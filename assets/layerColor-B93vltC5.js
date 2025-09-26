@@ -1,1 +1,0 @@
-import{c as a}from"./color-BKBaEAUu.js";const l={light:{"bg-layer-basement":a.gray[50],"bg-layer-default":a.common[100],"bg-layer-fill":a.gray[25],"bg-layer-floating":a.common[100],"bg-overlay":a.common.dimmer},dark:{"bg-layer-basement":a.gray[990],"bg-layer-default":a.gray[975],"bg-layer-fill":a.gray[950],"bg-layer-floating":a.gray[975],"bg-overlay":a.common.dimmer}};export{l};

@@ -9,7 +9,8 @@ import textColor from "../../tokens/textColor";
 import { borderColor } from "../../tokens/borderColor";
 
 const StyledChip = styled.div.withConfig({
-  shouldForwardProp: (prop) => !["lang"].includes(prop),
+  shouldForwardProp: (prop) =>
+    !["lang", "active", "state", "type", "radius"].includes(prop),
 })<ChipStyleProps>`
   display: inline-flex;
   align-items: center;

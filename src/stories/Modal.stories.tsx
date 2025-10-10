@@ -6,6 +6,7 @@ import { Dropdown } from "../components/Dropdown";
 
 const ModalWithState = ({
   size = "medium",
+  position = "center",
   open = false,
   onClose,
   title = "제목",
@@ -43,6 +44,7 @@ const ModalWithState = ({
 
       <Modal
         size={size}
+        position={position}
         open={isOpen}
         onClose={handleClose}
         title={title}
@@ -74,6 +76,21 @@ const meta: Meta<typeof Modal> = {
       control: "select",
       options: ["x-small", "small", "medium", "large"],
       description: "모달의 크기를 선택합니다.",
+    },
+    position: {
+      control: "select",
+      options: [
+        "top-left",
+        "top-center",
+        "top-right",
+        "center-left",
+        "center",
+        "center-right",
+        "bottom-left",
+        "bottom-center",
+        "bottom-right",
+      ],
+      description: "모달의 위치를 선택합니다.",
     },
     open: {
       control: false,
@@ -630,4 +647,48 @@ export const SimpleModalWithDropdown: Story = {
       </div>
     ),
   },
+};
+
+export const AllPositions: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: "16px",
+        padding: "20px",
+      }}
+    >
+      <ModalWithState position="top-left" title="상단 좌">
+        <div style={{ padding: "20px", textAlign: "center" }}>상단 좌측</div>
+      </ModalWithState>
+      <ModalWithState position="top-center" title="상단 중앙">
+        <div style={{ padding: "20px", textAlign: "center" }}>상단 중앙</div>
+      </ModalWithState>
+      <ModalWithState position="top-right" title="상단 우">
+        <div style={{ padding: "20px", textAlign: "center" }}>상단 우측</div>
+      </ModalWithState>
+      <ModalWithState position="center-left" title="중앙 좌">
+        <div style={{ padding: "20px", textAlign: "center" }}>중앙 좌측</div>
+      </ModalWithState>
+      <ModalWithState position="center" title="정중앙">
+        <div style={{ padding: "20px", textAlign: "center" }}>정중앙</div>
+      </ModalWithState>
+      <ModalWithState position="center-right" title="중앙 우">
+        <div style={{ padding: "20px", textAlign: "center" }}>중앙 우측</div>
+      </ModalWithState>
+      <ModalWithState position="bottom-left" title="하단 좌">
+        <div style={{ padding: "20px", textAlign: "center" }}>하단 좌측</div>
+      </ModalWithState>
+      <ModalWithState position="bottom-center" title="하단 중앙">
+        <div style={{ padding: "20px", textAlign: "center" }}>하단 중앙</div>
+      </ModalWithState>
+      <ModalWithState position="bottom-right" title="하단 우">
+        <div style={{ padding: "20px", textAlign: "center" }}>하단 우측</div>
+      </ModalWithState>
+    </div>
+  ),
 };

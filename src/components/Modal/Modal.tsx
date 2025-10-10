@@ -14,6 +14,7 @@ import { ModalProps } from "./types";
 
 const Modal: React.FC<ModalProps> = ({
   size = "medium",
+  position = "center",
   open = false,
   onClose,
   title = "제목",
@@ -67,7 +68,11 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   return (
-    <Overlay $isVisible={isVisible} onClick={handleOverlayClick}>
+    <Overlay
+      $isVisible={isVisible}
+      $position={position}
+      onClick={handleOverlayClick}
+    >
       <ModalContainer
         $size={size}
         $isVisible={isVisible}
@@ -92,7 +97,7 @@ const Modal: React.FC<ModalProps> = ({
   );
 };
 
-const Overlay = styled.div<{ $isVisible: boolean }>`
+const Overlay = styled.div<{ $isVisible: boolean; $position: string }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -100,11 +105,31 @@ const Overlay = styled.div<{ $isVisible: boolean }>`
   bottom: 0;
   background-color: ${layerColor.light["bg-overlay"]};
   display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 1000;
   opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0)};
   transition: opacity 0.2s ease-in-out;
+  padding: 40px;
+
+  ${({ $position }) => {
+    // Vertical alignment
+    const alignItems = $position.startsWith("top-")
+      ? "flex-start"
+      : $position.startsWith("bottom-")
+      ? "flex-end"
+      : "center";
+
+    // Horizontal alignment
+    const justifyContent = $position.endsWith("-left")
+      ? "flex-start"
+      : $position.endsWith("-right")
+      ? "flex-end"
+      : "center";
+
+    return `
+      align-items: ${alignItems};
+      justify-content: ${justifyContent};
+    `;
+  }}
 `;
 
 const ModalContainer = styled.div<{

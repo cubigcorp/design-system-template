@@ -84,7 +84,7 @@ export type { RadioButtonProps, RadioButtonState } from "./RadioButton/types";
 
 // Modal
 export { Modal } from "./Modal";
-export type { ModalProps, ModalSize } from "./Modal/types";
+export type { ModalProps, ModalSize, ModalPosition } from "./Modal/types";
 
 // SegmentedControl
 export { SegmentedControl, SegmentItem } from "./SegmentedControl";

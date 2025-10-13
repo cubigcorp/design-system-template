@@ -99,6 +99,57 @@ export const ManyItems: Story = {
   args: {
     defaultValue: 0,
   },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "최대 8개까지의 탭을 지원합니다. 이 예제는 정확히 8개의 탭을 보여줍니다.",
+      },
+    },
+  },
+};
+
+export const TooManyItems: Story = {
+  render: (args) => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <Tab {...args}>
+        <TabItem>전체</TabItem>
+        <TabItem>진행중</TabItem>
+        <TabItem>완료</TabItem>
+        <TabItem>보류</TabItem>
+        <TabItem>취소</TabItem>
+        <TabItem>대기</TabItem>
+        <TabItem>검토</TabItem>
+        <TabItem>승인</TabItem>
+        <TabItem>추가1</TabItem>
+        <TabItem>추가2</TabItem>
+      </Tab>
+      <div
+        style={{
+          padding: "12px",
+          backgroundColor: "#e7f3ff",
+          border: "1px solid #b3d9ff",
+          borderRadius: "4px",
+          fontSize: "14px",
+          color: "#0066cc",
+        }}
+      >
+        ✅ 10개의 탭을 제공했지만 스펙에 따라 8개만 표시됩니다. 콘솔에서 경고
+        메시지를 확인하세요.
+      </div>
+    </div>
+  ),
+  args: {
+    defaultValue: 0,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "10개의 탭을 제공했지만 스펙에 따라 8개만 표시됩니다. 개발자 콘솔에서 경고 메시지를 확인하세요.",
+      },
+    },
+  },
 };
 
 export const WithDisabled: Story = {

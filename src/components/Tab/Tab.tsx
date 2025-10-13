@@ -54,13 +54,21 @@ export const Tab = ({
 
   const childrenArray = React.Children.toArray(children);
 
+  const limitedChildren = childrenArray.slice(0, 8);
+
+  if (childrenArray.length > 8) {
+    console.warn(
+      `Tab: 최대 8개 이하의 탭만 허용됩니다. ${childrenArray.length}개 중 8개만 표시됩니다. 8개 이상 항목이 필요한 경우 드롭다운(Select) 컴포넌트 사용을 고려하세요.`
+    );
+  }
+
   return (
     <StyledTab className={className} {...props}>
       <SelectionIndicator
         $activeIndex={currentValue}
-        $totalItems={childrenArray.length}
+        $totalItems={limitedChildren.length}
       />
-      {childrenArray.map((child, index) => {
+      {limitedChildren.map((child, index) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
             key: index,

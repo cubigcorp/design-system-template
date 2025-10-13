@@ -19,6 +19,7 @@ export * from "./components/RadioButton";
 export * from "./components/Modal";
 export * from "./components/SegmentedControl";
 export * from "./components/Avatar";
+export * from "./components/Tab";
 
 // Design Tokens
 export * from "./tokens";

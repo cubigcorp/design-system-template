@@ -1,0 +1,247 @@
+import type { Meta, StoryObj } from "@storybook/nextjs";
+import React from "react";
+import { Tab, TabItem } from "../components/Tab";
+import type { TabProps } from "../components/Tab/types";
+
+const meta = {
+  title: "Components/Tab",
+  component: Tab,
+  tags: ["autodocs"],
+  parameters: {
+    layout: "centered",
+    docs: {
+      description: {
+        component:
+          "탭(Tab)은 여러 개의 탭 아이템(Tab Item)과 연결된 콘텐츠 영역으로 구성된 컴포넌트입니다. 사용자는 탭 아이템을 선택하여 해당하는 콘텐츠로 빠르게 전환할 수 있으며, 화면 내 다양한 정보나 기능을 효율적으로 구분하고 탐색할 수 있습니다.",
+      },
+      canvas: {
+        sourceState: "shown",
+      },
+    },
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
+    },
+  },
+  argTypes: {
+    defaultValue: {
+      control: { type: "number", min: 0, max: 7 },
+      description: "초기 선택될 탭의 인덱스입니다.",
+    },
+    value: {
+      control: { type: "number", min: 0, max: 7 },
+      description: "현재 선택된 탭의 인덱스입니다 (controlled).",
+    },
+    onChange: {
+      action: "changed",
+      description: "탭이 변경될 때 호출되는 콜백 함수입니다.",
+    },
+    style: {
+      control: { type: "object" },
+      description: "인라인 스타일을 적용합니다.",
+    },
+    className: {
+      control: { type: "text" },
+      description: "CSS 클래스명을 적용합니다.",
+    },
+    children: {
+      control: false,
+      description: "TabItem 컴포넌트들입니다.",
+    },
+  },
+} satisfies Meta<typeof Tab>;
+
+export default meta;
+type Story = StoryObj<TabProps>;
+
+export const Default: Story = {
+  render: (args) => (
+    <Tab {...args}>
+      <TabItem>탭 1</TabItem>
+      <TabItem>탭 2</TabItem>
+      <TabItem>탭 3</TabItem>
+    </Tab>
+  ),
+  args: {
+    defaultValue: 0,
+    style: {},
+    className: "",
+  },
+};
+
+export const TwoItems: Story = {
+  render: (args) => (
+    <Tab {...args}>
+      <TabItem>홈</TabItem>
+      <TabItem>설정</TabItem>
+    </Tab>
+  ),
+  args: {
+    defaultValue: 0,
+  },
+};
+
+export const ManyItems: Story = {
+  render: (args) => (
+    <Tab {...args}>
+      <TabItem>전체</TabItem>
+      <TabItem>진행중</TabItem>
+      <TabItem>완료</TabItem>
+      <TabItem>보류</TabItem>
+      <TabItem>취소</TabItem>
+      <TabItem>대기</TabItem>
+      <TabItem>검토</TabItem>
+      <TabItem>승인</TabItem>
+    </Tab>
+  ),
+  args: {
+    defaultValue: 0,
+  },
+};
+
+export const WithDisabled: Story = {
+  render: (args) => (
+    <Tab {...args}>
+      <TabItem>활성</TabItem>
+      <TabItem disabled>비활성</TabItem>
+      <TabItem>활성</TabItem>
+    </Tab>
+  ),
+  args: {
+    defaultValue: 0,
+  },
+};
+
+export const Controlled: Story = {
+  render: (args) => {
+    const [value, setValue] = React.useState(1);
+    return (
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        <Tab {...args} value={value} onChange={setValue}>
+          <TabItem>첫 번째</TabItem>
+          <TabItem>두 번째</TabItem>
+          <TabItem>세 번째</TabItem>
+        </Tab>
+        <div
+          style={{
+            padding: "16px",
+            backgroundColor: "#f5f5f5",
+            borderRadius: "8px",
+          }}
+        >
+          현재 선택된 탭: {value + 1}
+        </div>
+      </div>
+    );
+  },
+  args: {},
+};
+
+export const Interactive: Story = {
+  render: (args) => (
+    <Tab {...args}>
+      <TabItem>홈</TabItem>
+      <TabItem>설정</TabItem>
+      <TabItem>프로필</TabItem>
+    </Tab>
+  ),
+  args: {
+    defaultValue: 0,
+    style: {
+      backgroundColor: "#f8f9fa",
+      padding: "8px",
+      borderRadius: "8px",
+    },
+    className: "",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Controls 패널에서 스타일과 클래스를 실시간으로 조정할 수 있습니다.",
+      },
+    },
+  },
+};
+
+export const Styling: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
+      <div>
+        <h4>기본 스타일링</h4>
+        <Tab
+          style={{
+            backgroundColor: "#f8f9fa",
+            padding: "8px",
+            borderRadius: "8px",
+          }}
+        >
+          <TabItem>홈</TabItem>
+          <TabItem>설정</TabItem>
+          <TabItem>프로필</TabItem>
+        </Tab>
+      </div>
+
+      <div>
+        <h4>커스텀 색상</h4>
+        <Tab style={{ borderBottom: "2px solid #007bff" }}>
+          <TabItem style={{ color: "#007bff" }}>홈</TabItem>
+          <TabItem style={{ color: "#007bff" }}>설정</TabItem>
+          <TabItem style={{ color: "#007bff" }}>프로필</TabItem>
+        </Tab>
+      </div>
+
+      <div>
+        <h4>마진과 패딩</h4>
+        <Tab style={{ margin: "20px 0", padding: "0 20px" }}>
+          <TabItem>탭 1</TabItem>
+          <TabItem>탭 2</TabItem>
+          <TabItem>탭 3</TabItem>
+        </Tab>
+      </div>
+
+      <div>
+        <h4>반응형 스타일링</h4>
+        <Tab
+          style={{
+            width: "100%",
+            maxWidth: "600px",
+            backgroundColor: "#fff",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+          }}
+        >
+          <TabItem>전체</TabItem>
+          <TabItem>진행중</TabItem>
+          <TabItem>완료</TabItem>
+          <TabItem>보류</TabItem>
+        </Tab>
+      </div>
+
+      <div>
+        <h4>클래스 기반 스타일링</h4>
+        <style>{`
+          .custom-tab {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 8px;
+            border-bottom: none;
+          }
+          .custom-tab-item {
+            color: white !important;
+            font-weight: 600;
+          }
+        `}</style>
+        <Tab className="custom-tab">
+          <TabItem className="custom-tab-item">프리미엄</TabItem>
+          <TabItem className="custom-tab-item">기본</TabItem>
+          <TabItem className="custom-tab-item">무료</TabItem>
+        </Tab>
+      </div>
+    </div>
+  ),
+  parameters: {
+    controls: { disable: true },
+  },
+};

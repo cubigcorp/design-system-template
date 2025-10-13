@@ -20,6 +20,7 @@ export * from "./components/Modal";
 export * from "./components/SegmentedControl";
 export * from "./components/Avatar";
 export * from "./components/Tab";
+export * from "./components/ChipTabs";
 
 // Design Tokens
 export * from "./tokens";

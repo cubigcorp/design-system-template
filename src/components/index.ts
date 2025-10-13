@@ -100,3 +100,7 @@ export type { AvatarProps, AvatarType, AvatarSize } from "./Avatar/types";
 // Tab
 export { Tab, TabItem } from "./Tab";
 export type { TabProps, TabItemProps } from "./Tab/types";
+
+// ChipTabs
+export { ChipTabs } from "./ChipTabs";
+export type { ChipTabsProps } from "./ChipTabs/types";

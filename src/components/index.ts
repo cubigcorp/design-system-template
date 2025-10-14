@@ -82,6 +82,10 @@ export { Divider } from "./Divider";
 export { RadioButton } from "./RadioButton";
 export type { RadioButtonProps, RadioButtonState } from "./RadioButton/types";
 
+// Checkbox
+export { Checkbox } from "./Checkbox";
+export type { CheckboxProps, CheckboxState } from "./Checkbox/types";
+
 // Modal
 export { Modal } from "./Modal";
 export type { ModalProps, ModalSize, ModalPosition } from "./Modal/types";
@@ -104,3 +108,7 @@ export type { TabProps, TabItemProps } from "./Tab/types";
 // ChipTabs
 export { ChipTabs } from "./ChipTabs";
 export type { ChipTabsProps } from "./ChipTabs/types";
+
+// Popover
+export { Popover } from "./Popover";
+export type { PopoverProps, PopoverDirection } from "./Popover/types";

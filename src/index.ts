@@ -21,7 +21,7 @@ export * from "./components/SegmentedControl";
 export * from "./components/Avatar";
 export * from "./components/Tab";
 export * from "./components/ChipTabs";
-
+export * from "./components/Popover";
 // Design Tokens
 export * from "./tokens";
 

@@ -147,10 +147,9 @@ export const Popover = ({
   hotkey,
   children,
   className,
-  lang,
 }: PopoverProps) => {
   return (
-    <StyledPopover className={className} lang={lang}>
+    <StyledPopover className={className}>
       <StyledText>{children || text}</StyledText>
       {hotkey && <StyledHotkey>{hotkey}</StyledHotkey>}
       <StyledPointer $direction={direction} />

@@ -37,10 +37,6 @@ const meta = {
     hotkey: {
       control: { type: "text" },
     },
-    lang: {
-      control: { type: "radio" },
-      options: ["ko", "en"],
-    },
   },
 } satisfies Meta<typeof Popover>;
 
@@ -56,7 +52,6 @@ export const Default: Story = {
   args: {
     direction: "BottomCenter",
     text: "Guide text",
-    lang: "ko",
   },
 };
 
@@ -70,7 +65,6 @@ export const WithHotkey: Story = {
     direction: "BottomCenter",
     text: "선택 항목 A",
     hotkey: "⌘A",
-    lang: "ko",
   },
 };
 
@@ -83,7 +77,6 @@ export const TopCenter: Story = {
   args: {
     direction: "TopCenter",
     text: "Guide text",
-    lang: "ko",
   },
 };
 
@@ -96,7 +89,6 @@ export const TopRight: Story = {
   args: {
     direction: "TopRight",
     text: "Guide text",
-    lang: "ko",
   },
 };
 
@@ -109,7 +101,6 @@ export const TopLeft: Story = {
   args: {
     direction: "TopLeft",
     text: "Guide text",
-    lang: "ko",
   },
 };
 
@@ -122,7 +113,6 @@ export const BottomRight: Story = {
   args: {
     direction: "BottomRight",
     text: "Guide text",
-    lang: "ko",
   },
 };
 
@@ -135,7 +125,6 @@ export const BottomLeft: Story = {
   args: {
     direction: "BottomLeft",
     text: "Guide text",
-    lang: "ko",
   },
 };
 
@@ -148,7 +137,6 @@ export const Right: Story = {
   args: {
     direction: "Right",
     text: "Guide text",
-    lang: "ko",
   },
 };
 
@@ -161,7 +149,6 @@ export const Left: Story = {
   args: {
     direction: "Left",
     text: "Guide text",
-    lang: "ko",
   },
 };
 
@@ -201,7 +188,6 @@ export const AllDirections: Story = {
           <Popover
             direction={direction as PopoverProps["direction"]}
             text="Guide text"
-            lang="ko"
           />
         </div>
       ))}

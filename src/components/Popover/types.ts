@@ -14,7 +14,6 @@ export interface PopoverProps {
   hotkey?: string;
   children?: React.ReactNode;
   className?: string;
-  lang?: "ko" | "en";
 }
 
 export interface PopoverStyleProps {

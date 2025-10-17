@@ -7,11 +7,7 @@ import color from "../../tokens/color";
 import textColor from "../../tokens/textColor";
 import { borderColor } from "../../tokens/borderColor";
 import { spacing } from "../../tokens/spacing";
-import fontWeight from "../../tokens/fontWeight";
-import fontFamily from "../../tokens/fontFamily";
-import fontSize from "../../tokens/fontSize";
-import lineHeight from "../../tokens/lineHeight";
-import letterSpacing from "../../tokens/letterSpacing";
+import typography from "../../tokens/typography";
 import { IconCheck } from "../icons/IconCheck";
 
 const TRACKER_SIZE = 24;
@@ -34,7 +30,9 @@ export const ProgressTracker = ({
           step
         )}
       </StyledCircle>
-      {showLabel && label && <StyledLabel>{label}</StyledLabel>}
+      {showLabel && label && (
+        <StyledLabel $status={status}>{label}</StyledLabel>
+      )}
     </StyledProgressTracker>
   );
 };
@@ -56,20 +54,8 @@ const StyledCircle = styled.div<{ $status: string }>`
   height: ${TRACKER_SIZE}px;
   border-radius: 50%;
   flex-shrink: 0;
-  font-size: ${fontSize.t2[0]};
-  font-weight: ${fontWeight["500"]};
-  line-height: ${lineHeight.t2[0]};
-  letter-spacing: ${letterSpacing.md};
+  ${typography(undefined, "caption2", "medium")}
   transition: all 0.2s ease-in-out;
-
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
 
   ${({ $status }) => {
     switch ($status) {
@@ -96,24 +82,15 @@ const StyledCircle = styled.div<{ $status: string }>`
   }}
 `;
 
-const StyledLabel = styled.span`
-  font-size: ${fontSize.t2[0]};
-  font-weight: ${fontWeight["500"]};
-  line-height: ${lineHeight.t2[0]};
-  letter-spacing: ${letterSpacing.md};
-  color: ${textColor.light["fg-neutral-primary"]};
+const StyledLabel = styled.span<{ $status: string }>`
+  ${typography(undefined, "caption2", "medium")}
+  color: ${({ $status }) =>
+    $status === "Active"
+      ? textColor.light["fg-neutral-primary"]
+      : textColor.light["fg-neutral-alternative"]};
   white-space: nowrap;
   width: 100%;
   text-align: center; // 컨테이너 폭 내에서 중앙 정렬
-
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
 `;
 
 const StyledIconWrapper = styled.div`

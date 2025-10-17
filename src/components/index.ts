@@ -112,3 +112,11 @@ export type { ChipTabsProps } from "./ChipTabs/types";
 // Popover
 export { Popover } from "./Popover";
 export type { PopoverProps, PopoverDirection } from "./Popover/types";
+
+// StepIndicator
+export { StepIndicator } from "./StepIndicator";
+export type {
+  StepIndicatorProps,
+  StepItem,
+  StepStatus,
+} from "./StepIndicator/types";

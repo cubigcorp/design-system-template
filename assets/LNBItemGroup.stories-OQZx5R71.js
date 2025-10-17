@@ -1,0 +1,11 @@
+import{j as o}from"./jsx-runtime-WsICpuy1.js";import"./TextButton-CNHVloOM.js";import"./IconButton-D8RWm46R.js";import"./Badge-CiZq13SD.js";import"./Chip-DdQxlkW9.js";import"./Switch-BEMtK27c.js";import"./Modal-CKPjysBu.js";import{b as n,a as r}from"./Divider-1MdA8s-Q.js";import"./iframe-_vL07Yt-.js";import"./RadioButton-BHNytY1D.js";import"./Checkbox-B_XTOmzh.js";import"./SegmentItem-D-ph45fR.js";import"./Avatar-DK9bWmuD.js";import"./TabItem-DqjnAEJp.js";import"./ChipTabs-0XbwbdN7.js";import"./Popover-Bo-cwv3s.js";import"./StepIndicator-1PMVp5yO.js";import{I as e}from"./IconSearch-DUeBiIsF.js";import"./IconCheck-eZFJJIcy.js";import"./styled-components.browser.esm-BDiU6mDK.js";import"./color-DqDZjiGS.js";import"./radius-DaoU83SK.js";import"./fontWeight-CRwBdwgF.js";import"./fontSize-BFAJJ5Eh.js";import"./fontFamily-CsG1KcIF.js";import"./borderColor-CQKT7y1f.js";import"./textColor-SSyLf7rE.js";import"./spacing-tE1IiUFl.js";import"./Spinner-Bv5HXls_.js";import"./brandColor-BLjLgDA0.js";import"./negativeColor-MzvdT1cG.js";import"./cautioniaryColor-yy6imxKa.js";import"./typography-BBThIZ7c.js";import"./lineHeight-aJXO3HIm.js";import"./index-DPPWnGNj.js";import"./shadow-DVq_1U2q.js";import"./layerColor-D_HAcI5O.js";const Q={title:"Components/LNB/ItemGroup",component:n,parameters:{layout:"centered"},tags:["autodocs"],argTypes:{title:{control:{type:"text"}},lang:{control:{type:"select"},options:["ko","en"]}},args:{title:"설정",lang:"ko"}},t={render:a=>o.jsx("div",{style:{width:280},children:o.jsxs(n,{...a,children:[o.jsx(r,{value:"내 정보",leadingIcon:e}),o.jsx(r,{value:"플랜 관리",leadingIcon:e}),o.jsx(r,{value:"요금 계산기",leadingIcon:e})]})})};var m,i,p;t.parameters={...t.parameters,docs:{...(m=t.parameters)==null?void 0:m.docs,source:{originalSource:`{
+  render: args => <div style={{
+    width: 280
+  }}>
+      <LNBItemGroup {...args}>
+        <LNBItem value="내 정보" leadingIcon={IconInfo} />
+        <LNBItem value="플랜 관리" leadingIcon={IconInfo} />
+        <LNBItem value="요금 계산기" leadingIcon={IconInfo} />
+      </LNBItemGroup>
+    </div>
+}`,...(p=(i=t.parameters)==null?void 0:i.docs)==null?void 0:p.source}}};const U=["Default"];export{t as Default,U as __namedExportsOrder,Q as default};

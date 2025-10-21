@@ -15,3 +15,7 @@ export { IconSearch } from "./IconSearch";
 // Auto-generated icon exports from SVG files
 export * from "./generated";
 export * from "./types";
+
+// Namespace export for better organization
+import * as GeneratedIcons from "./generated";
+export { GeneratedIcons as Icons };

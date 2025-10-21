@@ -12,3 +12,5 @@ export { IconClose } from './IconClose';
 export { IconSearch } from './IconSearch';
 export * from './generated';
 export * from './types';
+import * as GeneratedIcons from "./generated";
+export { GeneratedIcons as Icons };

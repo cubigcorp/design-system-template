@@ -9,7 +9,7 @@ const StyledTypography = styled.div<{
 }>`
   ${({ $variant, $fontWeight = "medium", $fontFamily = "en" }) => {
     const style = typographyStyles[$variant];
-    const weight = $fontWeight; // 규칙 제거: 사용자가 지정한 weight 그대로 사용
+    const weight = $fontWeight;
 
     return `
       font-size: ${style.fontSize[0]};
@@ -32,20 +32,17 @@ const Typography = ({
   children,
   fontWeight = "medium",
   fontFamily = "en",
-  className = "",
 }: {
   variant: keyof typeof typographyStyles;
   children: React.ReactNode;
   fontWeight?: "regular" | "medium" | "semibold" | "bold";
   fontFamily?: "en" | "ko" | "sans";
-  className?: string;
 }) => {
   return (
     <StyledTypography
       $variant={variant}
       $fontWeight={fontWeight}
       $fontFamily={fontFamily}
-      className={className}
     >
       {children}
     </StyledTypography>
@@ -122,10 +119,8 @@ export const DisplayStyles: Story = {
     controls: { disable: true },
   },
   render: () => (
-    <div className="space-y-4">
-      <h2 className="text-t8 font-700 mb-6">
-        Display Styles (영문 폰트, 500 weight 기본)
-      </h2>
+    <Container>
+      <SectionTitle>Display Styles (영문 폰트, 500 weight 기본)</SectionTitle>
       <Typography variant="display1" fontFamily="en">
         Display 1 - The quick brown fox
       </Typography>
@@ -141,7 +136,7 @@ export const DisplayStyles: Story = {
       <Typography variant="display5" fontFamily="en">
         Display 5 - The quick brown fox
       </Typography>
-    </div>
+    </Container>
   ),
 };
 
@@ -150,10 +145,8 @@ export const TitleStyles: Story = {
     controls: { disable: true },
   },
   render: () => (
-    <div className="space-y-4">
-      <h2 className="text-t8 font-700 mb-6">
-        Title Styles (영문 폰트, 500 weight 기본)
-      </h2>
+    <Container>
+      <SectionTitle>Title Styles (영문 폰트, 500 weight 기본)</SectionTitle>
       <Typography variant="title1" fontFamily="en">
         Title 1 - The quick brown fox
       </Typography>
@@ -166,7 +159,7 @@ export const TitleStyles: Story = {
       <Typography variant="title4" fontFamily="en">
         Title 4 - The quick brown fox
       </Typography>
-    </div>
+    </Container>
   ),
 };
 
@@ -175,10 +168,8 @@ export const HeadingStyles: Story = {
     controls: { disable: true },
   },
   render: () => (
-    <div className="space-y-4">
-      <h2 className="text-t8 font-700 mb-6">
-        Heading Styles (영문 폰트, 500 weight 기본)
-      </h2>
+    <Container>
+      <SectionTitle>Heading Styles (영문 폰트, 500 weight 기본)</SectionTitle>
       <Typography variant="heading1" fontFamily="en">
         Heading 1 - The quick brown fox
       </Typography>
@@ -188,7 +179,7 @@ export const HeadingStyles: Story = {
       <Typography variant="heading3" fontFamily="en">
         Heading 3 - The quick brown fox
       </Typography>
-    </div>
+    </Container>
   ),
 };
 
@@ -197,10 +188,8 @@ export const BodyStyles: Story = {
     controls: { disable: true },
   },
   render: () => (
-    <div className="space-y-4">
-      <h2 className="text-t8 font-700 mb-6">
-        Body Styles (혼합 폰트, 400 weight 기본)
-      </h2>
+    <Container>
+      <SectionTitle>Body Styles (혼합 폰트, 400 weight 기본)</SectionTitle>
       <Typography variant="body1" fontFamily="sans">
         Body 1 - 한글과 English가 혼합된 텍스트입니다.
       </Typography>
@@ -210,7 +199,7 @@ export const BodyStyles: Story = {
       <Typography variant="body3" fontFamily="sans">
         Body 3 - 한글과 English가 혼합된 텍스트입니다.
       </Typography>
-    </div>
+    </Container>
   ),
 };
 
@@ -219,17 +208,15 @@ export const CaptionStyles: Story = {
     controls: { disable: true },
   },
   render: () => (
-    <div className="space-y-4">
-      <h2 className="text-t8 font-700 mb-6">
-        Caption Styles (혼합 폰트, 400 weight 기본)
-      </h2>
+    <Container>
+      <SectionTitle>Caption Styles (혼합 폰트, 400 weight 기본)</SectionTitle>
       <Typography variant="caption1" fontFamily="sans">
         Caption 1 - 작은 설명 텍스트입니다.
       </Typography>
       <Typography variant="caption2" fontFamily="sans">
         Caption 2 - 작은 설명 텍스트입니다.
       </Typography>
-    </div>
+    </Container>
   ),
 };
 
@@ -238,11 +225,11 @@ export const FontWeightVariations: Story = {
     controls: { disable: true },
   },
   render: () => (
-    <div className="space-y-6">
-      <h2 className="text-t8 font-700 mb-6">Font Weight Variations</h2>
+    <LargeContainer>
+      <SectionTitle>Font Weight Variations</SectionTitle>
 
-      <div className="space-y-4">
-        <h3 className="text-t6 font-600">Display 1 Weight Variations</h3>
+      <Container>
+        <SubTitle>Display 1 Weight Variations</SubTitle>
         <Typography variant="display1" fontWeight="regular" fontFamily="en">
           Display 1 Regular (400) - The quick brown fox
         </Typography>
@@ -255,10 +242,10 @@ export const FontWeightVariations: Story = {
         <Typography variant="display1" fontWeight="bold" fontFamily="en">
           Display 1 Bold (700) - The quick brown fox
         </Typography>
-      </div>
+      </Container>
 
-      <div className="space-y-4">
-        <h3 className="text-t6 font-600">Body 2 Weight Variations</h3>
+      <Container>
+        <SubTitle>Body 2 Weight Variations</SubTitle>
         <Typography variant="body2" fontWeight="regular" fontFamily="sans">
           Body 2 Regular (400) - 한글과 English가 혼합된 텍스트입니다.
         </Typography>
@@ -271,8 +258,8 @@ export const FontWeightVariations: Story = {
         <Typography variant="body2" fontWeight="bold" fontFamily="sans">
           Body 2 Bold (700) - 한글과 English가 혼합된 텍스트입니다.
         </Typography>
-      </div>
-    </div>
+      </Container>
+    </LargeContainer>
   ),
 };
 
@@ -281,39 +268,39 @@ export const FontFamilyComparison: Story = {
     controls: { disable: true },
   },
   render: () => (
-    <div className="space-y-6">
-      <h2 className="text-t8 font-700 mb-6">Font Family Comparison</h2>
+    <LargeContainer>
+      <SectionTitle>Font Family Comparison</SectionTitle>
 
-      <div className="space-y-4">
-        <h3 className="text-t6 font-600">영문 폰트 (DM Sans)</h3>
+      <Container>
+        <SubTitle>영문 폰트 (DM Sans)</SubTitle>
         <Typography variant="body2" fontFamily="en">
           This text is displayed in DM Sans font.
         </Typography>
         <Typography variant="body2" fontWeight="bold" fontFamily="en">
           This text is displayed in DM Sans Bold font.
         </Typography>
-      </div>
+      </Container>
 
-      <div className="space-y-4">
-        <h3 className="text-t6 font-600">한글 폰트 (Pretendard)</h3>
+      <Container>
+        <SubTitle>한글 폰트 (Pretendard)</SubTitle>
         <Typography variant="body2" fontFamily="ko">
           프리텐다드 폰트로 표시되는 한글 텍스트입니다.
         </Typography>
         <Typography variant="body2" fontWeight="bold" fontFamily="ko">
           프리텐다드 Bold 폰트로 표시되는 한글 텍스트입니다.
         </Typography>
-      </div>
+      </Container>
 
-      <div className="space-y-4">
-        <h3 className="text-t6 font-600">혼합 폰트 (Sans)</h3>
+      <Container>
+        <SubTitle>혼합 폰트 (Sans)</SubTitle>
         <Typography variant="body2" fontFamily="sans">
           한글과 English가 혼합된 텍스트입니다.
         </Typography>
         <Typography variant="body2" fontWeight="bold" fontFamily="sans">
           한글과 English가 혼합된 Bold 텍스트입니다.
         </Typography>
-      </div>
-    </div>
+      </Container>
+    </LargeContainer>
   ),
 };
 
@@ -322,82 +309,82 @@ export const TokenSystem: Story = {
     controls: { disable: true },
   },
   render: () => (
-    <div className="space-y-6">
-      <h2 className="text-t8 font-700 mb-6">Typography Token System</h2>
+    <LargeContainer>
+      <SectionTitle>Typography Token System</SectionTitle>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="space-y-3">
-          <h3 className="text-t6 font-600">Display Styles</h3>
-          <div className="space-y-2">
-            <div className="flex items-center gap-4">
-              <span className="text-t3 text-gray-500 w-16">Display1</span>
-              <span className="text-t3 text-gray-400 w-12">40px</span>
+      <GridContainer>
+        <GridItem>
+          <SubTitle>Display Styles</SubTitle>
+          <SmallContainer>
+            <TokenRow>
+              <TokenLabel>Display1</TokenLabel>
+              <TokenSize>40px</TokenSize>
               <Typography variant="display1" fontFamily="en">
                 Sample Text
               </Typography>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-t3 text-gray-500 w-16">Display2</span>
-              <span className="text-t3 text-gray-400 w-12">48px</span>
+            </TokenRow>
+            <TokenRow>
+              <TokenLabel>Display2</TokenLabel>
+              <TokenSize>48px</TokenSize>
               <Typography variant="display2" fontFamily="en">
                 Sample Text
               </Typography>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-t3 text-gray-500 w-16">Display3</span>
-              <span className="text-t3 text-gray-400 w-12">56px</span>
+            </TokenRow>
+            <TokenRow>
+              <TokenLabel>Display3</TokenLabel>
+              <TokenSize>56px</TokenSize>
               <Typography variant="display3" fontFamily="en">
                 Sample Text
               </Typography>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-t3 text-gray-500 w-16">Display4</span>
-              <span className="text-t3 text-gray-400 w-12">64px</span>
+            </TokenRow>
+            <TokenRow>
+              <TokenLabel>Display4</TokenLabel>
+              <TokenSize>64px</TokenSize>
               <Typography variant="display4" fontFamily="en">
                 Sample Text
               </Typography>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-t3 text-gray-500 w-16">Display5</span>
-              <span className="text-t3 text-gray-400 w-12">80px</span>
+            </TokenRow>
+            <TokenRow>
+              <TokenLabel>Display5</TokenLabel>
+              <TokenSize>80px</TokenSize>
               <Typography variant="display5" fontFamily="en">
                 Sample Text
               </Typography>
-            </div>
-          </div>
-        </div>
+            </TokenRow>
+          </SmallContainer>
+        </GridItem>
 
-        <div className="space-y-3">
-          <h3 className="text-t6 font-600">Font Weights</h3>
-          <div className="space-y-2">
-            <div className="flex items-center gap-4">
-              <span className="text-t3 text-gray-500 w-12">400</span>
+        <GridItem>
+          <SubTitle>Font Weights</SubTitle>
+          <SmallContainer>
+            <TokenRow>
+              <WeightLabel>400</WeightLabel>
               <Typography variant="body2" fontWeight="regular">
                 Regular Weight
               </Typography>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-t3 text-gray-500 w-12">500</span>
+            </TokenRow>
+            <TokenRow>
+              <WeightLabel>500</WeightLabel>
               <Typography variant="body2" fontWeight="medium">
                 Medium Weight
               </Typography>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-t3 text-gray-500 w-12">600</span>
+            </TokenRow>
+            <TokenRow>
+              <WeightLabel>600</WeightLabel>
               <Typography variant="body2" fontWeight="semibold">
                 Semibold Weight
               </Typography>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-t3 text-gray-500 w-12">700</span>
+            </TokenRow>
+            <TokenRow>
+              <WeightLabel>700</WeightLabel>
               <Typography variant="body2" fontWeight="bold">
                 Bold Weight
               </Typography>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </TokenRow>
+          </SmallContainer>
+        </GridItem>
+      </GridContainer>
+    </LargeContainer>
   ),
 };
 
@@ -406,70 +393,165 @@ export const UsageExamples: Story = {
     controls: { disable: true },
   },
   render: () => (
-    <div className="space-y-8">
-      <h2 className="text-t8 font-700 mb-6">실제 사용 예시</h2>
+    <ExampleContainer>
+      <SectionTitle>실제 사용 예시</SectionTitle>
 
-      <div className="p-6 border border-gray-200 rounded-lg">
+      <ExampleCard>
         <Typography variant="title2" fontFamily="ko" fontWeight="bold">
           블로그 포스트 제목 예시
         </Typography>
-        <Typography
-          variant="body2"
-          fontWeight="regular"
-          fontFamily="sans"
-          className="text-gray-600 mt-2 mb-4"
-        >
-          2024년 3월 15일 • 5분 읽기
-        </Typography>
-        <Typography
-          variant="body2"
-          fontWeight="regular"
-          fontFamily="sans"
-          className="mb-4"
-        >
-          이것은 블로그 포스트의 본문 내용입니다. 한글과 English가 자연스럽게
-          혼합되어 있으며, 적절한 줄간격과 폰트 크기로 가독성을 높였습니다.
-        </Typography>
-        <Typography
-          variant="caption1"
-          fontWeight="regular"
-          fontFamily="sans"
-          className="text-gray-500"
-        >
-          태그: 디자인시스템, 타이포그래피, 웹개발
-        </Typography>
-      </div>
+        <ExampleMeta>
+          <Typography variant="body2" fontWeight="regular" fontFamily="sans">
+            2024년 3월 15일 • 5분 읽기
+          </Typography>
+        </ExampleMeta>
+        <ExampleContent>
+          <Typography variant="body2" fontWeight="regular" fontFamily="sans">
+            이것은 블로그 포스트의 본문 내용입니다. 한글과 English가 자연스럽게
+            혼합되어 있으며, 적절한 줄간격과 폰트 크기로 가독성을 높였습니다.
+          </Typography>
+        </ExampleContent>
+        <ExampleTags>
+          <Typography variant="caption1" fontWeight="regular" fontFamily="sans">
+            태그: 디자인시스템, 타이포그래피, 웹개발
+          </Typography>
+        </ExampleTags>
+      </ExampleCard>
 
-      <div className="p-6 border border-gray-200 rounded-lg bg-gray-50">
+      <ProductCard>
         <Typography variant="heading2" fontFamily="en" fontWeight="semibold">
           Product Card
         </Typography>
-        <Typography
-          variant="body2"
-          fontWeight="regular"
-          fontFamily="sans"
-          className="mt-2 mb-3"
-        >
-          제품에 대한 간단한 설명이 들어갑니다. 이 텍스트는 body2 스타일을
-          사용합니다.
-        </Typography>
-        <Typography
-          variant="title1"
-          fontFamily="en"
-          fontWeight="bold"
-          className="text-blue-600 mb-2"
-        >
-          $29.99
-        </Typography>
-        <Typography
-          variant="caption2"
-          fontWeight="regular"
-          fontFamily="sans"
-          className="text-gray-500"
-        >
-          무료 배송 • 재고 있음
-        </Typography>
-      </div>
-    </div>
+        <ProductDescription>
+          <Typography variant="body2" fontWeight="regular" fontFamily="sans">
+            제품에 대한 간단한 설명이 들어갑니다. 이 텍스트는 body2 스타일을
+            사용합니다.
+          </Typography>
+        </ProductDescription>
+        <ProductPrice>
+          <Typography variant="title1" fontFamily="en" fontWeight="bold">
+            $29.99
+          </Typography>
+        </ProductPrice>
+        <ProductInfo>
+          <Typography variant="caption2" fontWeight="regular" fontFamily="sans">
+            무료 배송 • 재고 있음
+          </Typography>
+        </ProductInfo>
+      </ProductCard>
+    </ExampleContainer>
   ),
 };
+
+// Styled Components
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const LargeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
+const SmallContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 24px;
+`;
+
+const SubTitle = styled.h3`
+  font-size: 20px;
+  font-weight: 600;
+`;
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+`;
+
+const GridItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+const TokenRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
+const TokenLabel = styled.span`
+  font-size: 14px;
+  color: #6b7280;
+  width: 64px;
+`;
+
+const TokenSize = styled.span`
+  font-size: 14px;
+  color: #9ca3af;
+  width: 48px;
+`;
+
+const WeightLabel = styled.span`
+  font-size: 14px;
+  color: #6b7280;
+  width: 48px;
+`;
+
+const ExampleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+`;
+
+const ExampleCard = styled.div`
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+`;
+
+const ExampleMeta = styled.div`
+  margin-top: 8px;
+  margin-bottom: 16px;
+  color: #4b5563;
+`;
+
+const ExampleContent = styled.div`
+  margin-bottom: 16px;
+`;
+
+const ExampleTags = styled.div`
+  color: #6b7280;
+`;
+
+const ProductCard = styled.div`
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #f9fafb;
+`;
+
+const ProductDescription = styled.div`
+  margin-top: 8px;
+  margin-bottom: 12px;
+`;
+
+const ProductPrice = styled.div`
+  margin-bottom: 8px;
+  color: #2563eb;
+`;
+
+const ProductInfo = styled.div`
+  color: #6b7280;
+`;

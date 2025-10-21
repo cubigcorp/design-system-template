@@ -287,11 +287,11 @@ export const CustomColors: Story = {
 
     return (
       <div style={{ display: "flex", gap: "32px", alignItems: "center", padding: "32px" }}>
-        <AccountFill24 fill="#3b82f6" />
-        <AccountFill24 fill="#ef4444" />
-        <AccountFill24 fill="#10b981" />
-        <AccountFill24 fill="#f59e0b" />
-        <AccountFill24 fill="currentColor" style={{ color: "#8b5cf6" }} />
+        <AccountFill24 style={{ color: "#3b82f6" }} />
+        <AccountFill24 style={{ color: "#ef4444" }} />
+        <AccountFill24 style={{ color: "#10b981" }} />
+        <AccountFill24 style={{ color: "#f59e0b" }} />
+        <AccountFill24 style={{ color: "#8b5cf6" }} />
       </div>
     );
   },
@@ -299,7 +299,7 @@ export const CustomColors: Story = {
     docs: {
       description: {
         story:
-          "fill 속성이나 CSS color로 아이콘 색상을 자유롭게 변경할 수 있습니다.",
+          "CSS color 속성으로 아이콘 색상을 자유롭게 변경할 수 있습니다. 모든 아이콘은 currentColor를 사용합니다.",
       },
     },
   },

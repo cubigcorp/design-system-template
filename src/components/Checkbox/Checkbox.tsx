@@ -78,7 +78,7 @@ const StyledCheckbox = styled.div<{
       } else {
         return `
           background-color: ${color.common[100]};
-          border: 1px solid ${borderColor.light["color-border-primary"]};
+          border: 1px solid ${color.gray[400]};
           color: ${textColor.light["fg-neutral-strong"]};
         `;
       }
@@ -86,7 +86,7 @@ const StyledCheckbox = styled.div<{
 
     return `
       background-color: ${color.common[100]};
-      border: 1px solid ${borderColor.light["color-border-primary"]};
+      border: 1px solid ${color.gray[400]};
       color: ${textColor.light["fg-neutral-strong"]};
     `;
   }}

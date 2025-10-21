@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Popover } from "../components/Popover";
 import type { PopoverProps } from "../components/Popover/types";
 import React from "react";

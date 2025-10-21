@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { Modal, ModalProps } from "../components/Modal";
 import { SolidButton, OutlineButton } from "../components/Button";

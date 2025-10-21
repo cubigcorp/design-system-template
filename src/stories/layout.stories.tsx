@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import "../app/globals.css";
+import type { Meta, StoryObj } from "@storybook/react";
+import "../styles/globals.css";
 import { radius } from "../tokens/radius";
 import { spacing } from "../tokens/spacing";
 import { shadow } from "../tokens/shadow";

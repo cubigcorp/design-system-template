@@ -1,12 +1,15 @@
-@import "../styles/fonts.css";
-@import "../styles/display.css";
-@import "../styles/title.css";
-@import "../styles/heading.css";
-@import "../styles/body.css";
-@import "../styles/caption.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "./fonts.css";
+@import "./display.css";
+@import "./title.css";
+@import "./heading.css";
+@import "./body.css";
+@import "./caption.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 :root {
   --background: #ffffff;

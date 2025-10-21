@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 import { Input } from "../components";
 import type { InputProps } from "../components/Input/types";

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { ChipTabs } from "../components/ChipTabs";
 import { Chip } from "../components/Chip";

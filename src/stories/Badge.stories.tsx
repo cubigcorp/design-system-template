@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Badge } from "../components/Badge";
 import type { BadgeProps } from "../components/Badge/types";
 

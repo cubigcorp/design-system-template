@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/react";
 import styled from "styled-components";
 import { typographyStyles } from "../tokens";
 

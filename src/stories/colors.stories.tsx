@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
-import "../app/globals.css";
+import type { Meta, StoryObj } from "@storybook/react";
+import "../styles/globals.css";
 import {
   textColor,
   brandColor,

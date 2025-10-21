@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { IconButton } from "../components/Button/IconButton";
 import type { IconButtonProps } from "../components/Button/IconButton";

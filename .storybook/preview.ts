@@ -1,4 +1,4 @@
-import "../src/app/globals.css";
+import "../src/styles/globals.css";
 
 // 2) 토큰별 @apply 유틸 CSS
 import "../src/styles/display.css";

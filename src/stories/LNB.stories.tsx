@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/react";
 import React, { useState } from "react";
 import { LNB, LNBItem, LNBItemGroup, Divider } from "../components";
 import { IconInfo } from "../components/icons";

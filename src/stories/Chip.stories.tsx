@@ -1,6 +1,6 @@
 import { Chip } from "../components/Chip";
 import type { ChipProps } from "../components/Chip/types";
-import type { Meta, StoryObj } from "@storybook/nextjs";
+import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
   title: "Components/Chip",

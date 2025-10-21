@@ -9,7 +9,7 @@ export default defineConfig({
     react(),
     dts({
       insertTypesEntry: true,
-      include: ["src/components/**/*", "src/tokens/**/*", "src/index.ts"],
+      include: ["src/components/**/*", "src/tokens/**/*", "src/index.ts", "src/vite-env.d.ts"],
       exclude: [
         "src/app/**/*",
         "src/stories/**/*",

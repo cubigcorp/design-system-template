@@ -24,7 +24,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false
   },
-  "include": ["src/components/**/*", "src/tokens/**/*", "src/index.ts"],
+  "include": ["src/components/**/*", "src/tokens/**/*", "src/index.ts", "src/vite-env.d.ts"],
   "exclude": [
     "node_modules",
     "dist",

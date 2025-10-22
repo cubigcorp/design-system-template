@@ -202,6 +202,9 @@ export { default as IconDockRightOutline24 } from '../../assets/icons/icon_dock-
 export { default as IconDockType2Outline16 } from '../../assets/icons/icon_dock-type2_outline_16.svg?react';
 export { default as IconDockType2Outline20 } from '../../assets/icons/icon_dock-type2_outline_20.svg?react';
 export { default as IconDockType2Outline24 } from '../../assets/icons/icon_dock-type2_outline_24.svg?react';
+export { default as IconDocumentOutline16 } from '../../assets/icons/icon_document_outline_16.svg?react';
+export { default as IconDocumentOutline20 } from '../../assets/icons/icon_document_outline_20.svg?react';
+export { default as IconDocumentOutline24 } from '../../assets/icons/icon_document_outline_24.svg?react';
 export { default as IconDownloadOutline16 } from '../../assets/icons/icon_download_outline_16.svg?react';
 export { default as IconDownloadOutline20 } from '../../assets/icons/icon_download_outline_20.svg?react';
 export { default as IconDownloadOutline24 } from '../../assets/icons/icon_download_outline_24.svg?react';

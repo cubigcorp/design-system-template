@@ -199,6 +199,9 @@ export { default as IconDockRightOutline24 } from '../../assets/icons/icon_dock-
 export { default as IconDockType2Outline16 } from '../../assets/icons/icon_dock-type2_outline_16.svg?react';
 export { default as IconDockType2Outline20 } from '../../assets/icons/icon_dock-type2_outline_20.svg?react';
 export { default as IconDockType2Outline24 } from '../../assets/icons/icon_dock-type2_outline_24.svg?react';
+export { default as IconDocumentFill16 } from '../../assets/icons/icon_document_fill_16.svg?react';
+export { default as IconDocumentFill20 } from '../../assets/icons/icon_document_fill_20.svg?react';
+export { default as IconDocumentFill24 } from '../../assets/icons/icon_document_fill_24.svg?react';
 export { default as IconDocumentOutline16 } from '../../assets/icons/icon_document_outline_16.svg?react';
 export { default as IconDocumentOutline20 } from '../../assets/icons/icon_document_outline_20.svg?react';
 export { default as IconDocumentOutline24 } from '../../assets/icons/icon_document_outline_24.svg?react';
@@ -235,9 +238,6 @@ export { default as IconFavoriteFill24 } from '../../assets/icons/icon_favorite_
 export { default as IconFavoriteOutline16 } from '../../assets/icons/icon_favorite_outline_16.svg?react';
 export { default as IconFavoriteOutline20 } from '../../assets/icons/icon_favorite_outline_20.svg?react';
 export { default as IconFavoriteOutline24 } from '../../assets/icons/icon_favorite_outline_24.svg?react';
-export { default as IconFileFill16 } from '../../assets/icons/icon_file_fill_16.svg?react';
-export { default as IconFileFill20 } from '../../assets/icons/icon_file_fill_20.svg?react';
-export { default as IconFileFill24 } from '../../assets/icons/icon_file_fill_24.svg?react';
 export { default as IconFileOutline16 } from '../../assets/icons/icon_file_outline_16.svg?react';
 export { default as IconFileOutline20 } from '../../assets/icons/icon_file_outline_20.svg?react';
 export { default as IconFileOutline24 } from '../../assets/icons/icon_file_outline_24.svg?react';

@@ -5,6 +5,7 @@ export type ButtonState = "default" | "hovered" | "pressed" | "focused";
 export type ButtonVariant =
   | "primary"
   | "secondary"
+  | "tertiary"
   | "brand"
   | "positive"
   | "negative";

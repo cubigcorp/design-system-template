@@ -102,6 +102,17 @@ const StyledButton = styled.button.withConfig({
             default:
               return color.common["100"];
           }
+        case "tertiary":
+          switch (state) {
+            case "hovered":
+              return color.gray["200"];
+            case "pressed":
+              return color.gray["300"];
+            case "focused":
+              return color.gray["200"];
+            default:
+              return color.gray["100"];
+          }
         case "brand":
           switch (state) {
             case "hovered":
@@ -145,6 +156,10 @@ const StyledButton = styled.button.withConfig({
           return state === "focused"
             ? borderColor.light["color-border-focused"]
             : borderColor.light["color-border-primary"];
+        case "tertiary":
+          return state === "focused"
+            ? borderColor.light["color-border-focused"]
+            : borderColor.light["color-border-primary"];
         case "brand":
           switch (state) {
             case "hovered":
@@ -185,6 +200,7 @@ const StyledButton = styled.button.withConfig({
         case "primary":
           return color.common["100"]; // common-white
         case "secondary":
+        case "tertiary":
           return textColor.light["fg-neutral-strong"];
         case "brand":
         case "negative":

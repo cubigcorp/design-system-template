@@ -76,6 +76,50 @@ export const SolidLoading: Story = {
   },
 };
 
+// Solid Secondary Button Stories
+export const SolidSecondary: Story = {
+  render: (args) => <SolidButton {...args}>Button</SolidButton>,
+  args: {
+    variant: "secondary",
+    size: "medium",
+    state: "default",
+  },
+};
+
+// Solid Tertiary Button Stories
+export const SolidTertiary: Story = {
+  render: (args) => <SolidButton {...args}>Button</SolidButton>,
+  args: {
+    variant: "tertiary",
+    size: "medium",
+    state: "default",
+  },
+};
+
+export const SolidTertiaryWithIcon: Story = {
+  render: (args) => <SolidButton {...args}>Button</SolidButton>,
+  args: {
+    ...SolidTertiary.args,
+    leadingIcon: RocketIcon,
+  },
+};
+
+export const SolidTertiaryDisabled: Story = {
+  render: (args) => <SolidButton {...args}>Button</SolidButton>,
+  args: {
+    ...SolidTertiary.args,
+    disabled: true,
+  },
+};
+
+export const SolidTertiaryLoading: Story = {
+  render: (args) => <SolidButton {...args}>Button</SolidButton>,
+  args: {
+    ...SolidTertiary.args,
+    loading: true,
+  },
+};
+
 // Outline Button Stories
 export const Outline: Story = {
   render: (args) => <OutlineButton {...args}>Button</OutlineButton>,

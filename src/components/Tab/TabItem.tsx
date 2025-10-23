@@ -17,7 +17,7 @@ const StyledTabItem = styled.button.withConfig({
   background: transparent;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  padding: ${spacing.gap["gap-2"]} ${spacing.gap["gap-2"]}; // gap-2 (Top/Bottom, Left/Right for flexible width)
+  padding: ${spacing.gap["gap-2"]} ${spacing.gap["gap-1"]}; // gap-2 (Top/Bottom), gap-1 (Left/Right)
   min-width: 120px;
   height: 40px;
   white-space: nowrap;

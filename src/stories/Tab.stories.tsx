@@ -190,16 +190,68 @@ export const Controlled: Story = {
   args: {},
 };
 
-export const Interactive: Story = {
+export const LongText: Story = {
   render: (args) => (
     <Tab {...args}>
-      <TabItem>홈</TabItem>
-      <TabItem>설정</TabItem>
-      <TabItem>프로필</TabItem>
+      <TabItem>탭 1ㄹㄹㄹㄹㄹㄹㄹㄹㄹ</TabItem>
+      <TabItem>탭 2</TabItem>
+      <TabItem>탭 3</TabItem>
     </Tab>
   ),
   args: {
     defaultValue: 0,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "긴 텍스트를 가진 탭 아이템입니다. min-width: 120px로 최소 너비를 유지하되, 텍스트 길이에 따라 자동으로 확장됩니다.",
+      },
+    },
+  },
+};
+
+export const FlexibleWidth: Story = {
+  render: (args) => (
+    <Tab {...args}>
+      <TabItem>짧음</TabItem>
+      <TabItem>중간 길이의 탭 아이템</TabItem>
+      <TabItem>매우 긴 텍스트를 가진 탭 아이템입니다</TabItem>
+      <TabItem>탭</TabItem>
+    </Tab>
+  ),
+  args: {
+    defaultValue: 0,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "다양한 길이의 텍스트를 가진 탭들입니다. 각 탭은 최소 120px를 유지하며, 텍스트 길이에 따라 유동적으로 너비가 조정됩니다.",
+      },
+    },
+  },
+};
+
+export const Interactive: Story = {
+  render: (args) => {
+    const tab1 = args.tab1 || "홈";
+    const tab2 = args.tab2 || "설정";
+    const tab3 = args.tab3 || "프로필";
+
+    return (
+      <Tab defaultValue={args.defaultValue} style={args.style} className={args.className}>
+        <TabItem>{tab1}</TabItem>
+        <TabItem>{tab2}</TabItem>
+        <TabItem>{tab3}</TabItem>
+      </Tab>
+    );
+  },
+  args: {
+    defaultValue: 0,
+    tab1: "홈",
+    tab2: "설정",
+    tab3: "프로필",
     style: {
       backgroundColor: "#f8f9fa",
       padding: "8px",
@@ -207,11 +259,25 @@ export const Interactive: Story = {
     },
     className: "",
   },
+  argTypes: {
+    tab1: {
+      control: { type: "text" },
+      description: "첫 번째 탭 아이템의 텍스트",
+    },
+    tab2: {
+      control: { type: "text" },
+      description: "두 번째 탭 아이템의 텍스트",
+    },
+    tab3: {
+      control: { type: "text" },
+      description: "세 번째 탭 아이템의 텍스트",
+    },
+  },
   parameters: {
     docs: {
       description: {
         story:
-          "Controls 패널에서 스타일과 클래스를 실시간으로 조정할 수 있습니다.",
+          "Controls 패널에서 각 탭의 텍스트, 스타일, 클래스를 실시간으로 조정할 수 있습니다. 긴 텍스트를 입력하여 유동적 너비를 테스트해보세요.",
       },
     },
   },

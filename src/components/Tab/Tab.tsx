@@ -13,25 +13,16 @@ const StyledTab = styled.div`
 `;
 
 const SelectionIndicator = styled.div<{
-  $activeIndex: number;
-  $totalItems: number;
+  $left: number;
+  $width: number;
 }>`
   position: absolute;
   bottom: 0;
   height: 2px;
   background-color: ${textColor.light["fg-neutral-strong"]};
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-  ${({ $activeIndex, $totalItems }) => {
-    const gapSize = 24; // gap-6 = 24px
-    const itemWidth = 120; // 고정 너비 120px
-    const leftPosition = $activeIndex * (itemWidth + gapSize);
-
-    return `
-      left: ${leftPosition}px;
-      width: ${itemWidth}px;
-    `;
-  }}
+  left: ${({ $left }) => $left}px;
+  width: ${({ $width }) => $width}px;
 `;
 
 export const Tab = ({
@@ -44,6 +35,11 @@ export const Tab = ({
 }: TabProps) => {
   const [internalValue, setInternalValue] = React.useState(defaultValue);
   const currentValue = value !== undefined ? value : internalValue;
+  const tabRefs = React.useRef<(HTMLButtonElement | null)[]>([]);
+  const [indicatorStyle, setIndicatorStyle] = React.useState({
+    left: 0,
+    width: 0,
+  });
 
   const handleItemClick = (index: number) => {
     if (value === undefined) {
@@ -62,18 +58,28 @@ export const Tab = ({
     );
   }
 
+  React.useEffect(() => {
+    const activeTab = tabRefs.current[currentValue];
+    if (activeTab) {
+      setIndicatorStyle({
+        left: activeTab.offsetLeft,
+        width: activeTab.offsetWidth,
+      });
+    }
+  }, [currentValue, limitedChildren.length]);
+
   return (
     <StyledTab className={className} {...props}>
-      <SelectionIndicator
-        $activeIndex={currentValue}
-        $totalItems={limitedChildren.length}
-      />
+      <SelectionIndicator $left={indicatorStyle.left} $width={indicatorStyle.width} />
       {limitedChildren.map((child, index) => {
         if (React.isValidElement(child)) {
           return React.cloneElement(child, {
             key: index,
             active: currentValue === index,
             onClick: () => handleItemClick(index),
+            ref: (el: HTMLButtonElement | null) => {
+              tabRefs.current[index] = el;
+            },
           } as unknown as React.ReactElement);
         }
         return child;

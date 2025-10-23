@@ -5,7 +5,7 @@ import { typographyStyles } from "../tokens";
 const StyledTypography = styled.div<{
   $variant: keyof typeof typographyStyles;
   $fontWeight?: "regular" | "medium" | "semibold" | "bold";
-  $fontFamily?: "en" | "ko" | "sans";
+  $fontFamily?: "en" | "ko" | "sans" | "mono";
 }>`
   ${({ $variant, $fontWeight = "medium", $fontFamily = "en" }) => {
     const style = typographyStyles[$variant];
@@ -19,6 +19,8 @@ const StyledTypography = styled.div<{
           ? style.families.en
           : $fontFamily === "ko"
           ? style.families.ko
+          : $fontFamily === "mono"
+          ? '"Geist Mono", monospace'
           : style.families.sans
       };
       letter-spacing: ${style.letterSpacing};
@@ -36,7 +38,7 @@ const Typography = ({
   variant: keyof typeof typographyStyles;
   children: React.ReactNode;
   fontWeight?: "regular" | "medium" | "semibold" | "bold";
-  fontFamily?: "en" | "ko" | "sans";
+  fontFamily?: "en" | "ko" | "sans" | "mono";
 }) => {
   return (
     <StyledTypography
@@ -92,7 +94,7 @@ const meta: Meta<typeof Typography> = {
     },
     fontFamily: {
       control: "select",
-      options: ["en", "ko", "sans"],
+      options: ["en", "ko", "sans", "mono"],
       description: "폰트 패밀리를 선택합니다.",
     },
     children: {
@@ -298,6 +300,16 @@ export const FontFamilyComparison: Story = {
         </Typography>
         <Typography variant="body2" fontWeight="bold" fontFamily="sans">
           한글과 English가 혼합된 Bold 텍스트입니다.
+        </Typography>
+      </Container>
+
+      <Container>
+        <SubTitle>모노스페이스 폰트 (Geist Mono)</SubTitle>
+        <Typography variant="body2" fontFamily="mono">
+          const greeting = "Hello World";
+        </Typography>
+        <Typography variant="body2" fontWeight="bold" fontFamily="mono">
+          function() {"{ return 'Geist Mono Bold'; }"}
         </Typography>
       </Container>
     </LargeContainer>

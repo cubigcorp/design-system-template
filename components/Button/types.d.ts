@@ -1,7 +1,7 @@
 import { SVGProps } from '../../../node_modules/react';
 export type ButtonSize = "small" | "medium" | "large";
 export type ButtonState = "default" | "hovered" | "pressed" | "focused";
-export type ButtonVariant = "primary" | "secondary" | "brand" | "positive" | "negative";
+export type ButtonVariant = "primary" | "secondary" | "tertiary" | "brand" | "positive" | "negative";
 export interface ButtonStyleProps {
     variant?: ButtonVariant;
     size?: ButtonSize;

@@ -17,8 +17,8 @@ const StyledTabItem = styled.button.withConfig({
   background: transparent;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  padding: ${spacing.gap["gap-2"]} 0; // gap-2 (Top/Bottom)
-  width: 120px;
+  padding: ${spacing.gap["gap-2"]} ${spacing.gap["gap-2"]}; // gap-2 (Top/Bottom, Left/Right for flexible width)
+  min-width: 120px;
   height: 40px;
   white-space: nowrap;
   position: relative;
@@ -41,7 +41,7 @@ const StyledTabItem = styled.button.withConfig({
     }
 
     return css`
-      color: ${textColor.light["fg-neutral-assistive"]};
+      color: ${textColor.light["fg-neutral-alternative"]};
     `;
   }}
 

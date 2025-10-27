@@ -51,3 +51,5 @@ export { Popover } from './Popover';
 export type { PopoverProps, PopoverDirection } from './Popover/types';
 export { StepIndicator } from './StepIndicator';
 export type { StepIndicatorProps, StepItem, StepStatus, } from './StepIndicator/types';
+export { Breadcrumbs, BreadcrumbItem } from './Breadcrumbs';
+export type { BreadcrumbsProps, BreadcrumbItemProps, BreadcrumbState, } from './Breadcrumbs/types';

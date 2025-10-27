@@ -120,3 +120,11 @@ export type {
   StepItem,
   StepStatus,
 } from "./StepIndicator/types";
+
+// Breadcrumbs
+export { Breadcrumbs, BreadcrumbItem } from "./Breadcrumbs";
+export type {
+  BreadcrumbsProps,
+  BreadcrumbItemProps,
+  BreadcrumbState,
+} from "./Breadcrumbs/types";

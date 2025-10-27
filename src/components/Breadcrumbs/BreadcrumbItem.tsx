@@ -106,12 +106,21 @@ const StyledBreadcrumbItem = styled.button.withConfig({
 
   ${typography(undefined, "body2", "medium")}
 
-  ${({ $state, $disabled }) => {
+  ${({ $state, $disabled, $active }) => {
     if ($disabled) {
       return css`
         background-color: transparent;
         color: ${textColor.light["fg-neutral-disable"]};
         cursor: not-allowed;
+      `;
+    }
+
+    if ($active) {
+      return css`
+        background-color: transparent;
+        color: ${textColor.light["fg-neutral-primary"]};
+        cursor: default;
+        pointer-events: none;
       `;
     }
 

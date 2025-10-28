@@ -128,3 +128,7 @@ export type {
   BreadcrumbItemProps,
   BreadcrumbState,
 } from "./Breadcrumbs/types";
+
+// Pagination
+export { Pagination } from "./Pagination";
+export type { PaginationProps, PaginationVariant } from "./Pagination/types";

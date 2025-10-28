@@ -53,3 +53,5 @@ export { StepIndicator } from './StepIndicator';
 export type { StepIndicatorProps, StepItem, StepStatus, } from './StepIndicator/types';
 export { Breadcrumbs, BreadcrumbItem } from './Breadcrumbs';
 export type { BreadcrumbsProps, BreadcrumbItemProps, BreadcrumbState, } from './Breadcrumbs/types';
+export { Pagination } from './Pagination';
+export type { PaginationProps, PaginationVariant } from './Pagination/types';

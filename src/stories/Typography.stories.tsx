@@ -52,7 +52,7 @@ const Typography = ({
 };
 
 const meta: Meta<typeof Typography> = {
-  title: "Design System/Typography",
+  title: "Foundation/Typography",
   component: Typography,
   parameters: {
     layout: "padded",

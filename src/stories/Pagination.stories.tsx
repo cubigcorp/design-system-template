@@ -39,6 +39,14 @@ const meta: Meta<typeof Pagination> = {
         defaultValue: { summary: "compact" },
       },
     },
+    maxVisiblePages: {
+      control: { type: "number", min: 3 },
+      description: "한 번에 표시할 최대 페이지 수 (compact variant에서만 사용)",
+      table: {
+        type: { summary: "number" },
+        defaultValue: { summary: "undefined (모든 페이지 표시)" },
+      },
+    },
     onPageChange: {
       action: "page-changed",
       description: "페이지 변경 시 호출되는 함수",
@@ -92,6 +100,36 @@ export const CompactManyPages: Story = {
     currentPage: 5,
     totalPages: 20,
     variant: "compact",
+  },
+};
+
+export const CompactWithMaxVisible: Story = {
+  render: (args) => <PaginationWithState {...args} />,
+  args: {
+    currentPage: 1,
+    totalPages: 100,
+    variant: "compact",
+    maxVisiblePages: 5,
+  },
+};
+
+export const CompactWithMaxVisibleMiddle: Story = {
+  render: (args) => <PaginationWithState {...args} />,
+  args: {
+    currentPage: 50,
+    totalPages: 100,
+    variant: "compact",
+    maxVisiblePages: 5,
+  },
+};
+
+export const CompactWithMaxVisibleEnd: Story = {
+  render: (args) => <PaginationWithState {...args} />,
+  args: {
+    currentPage: 98,
+    totalPages: 100,
+    variant: "compact",
+    maxVisiblePages: 5,
   },
 };
 

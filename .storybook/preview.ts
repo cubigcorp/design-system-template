@@ -11,4 +11,9 @@ import "../src/styles/caption.css";
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: { expanded: true },
+  options: {
+    storySort: {
+      order: ['Foundation', 'Components'],
+    },
+  },
 };

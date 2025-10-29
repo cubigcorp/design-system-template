@@ -210,7 +210,8 @@ const Ellipsis = styled.span`
   align-items: center;
   justify-content: center;
   user-select: none;
-
+  width: 32px;
+  height: 32px;
   svg {
     width: 16px;
     height: 16px;

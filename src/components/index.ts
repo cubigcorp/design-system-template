@@ -132,3 +132,7 @@ export type {
 // Pagination
 export { Pagination } from "./Pagination";
 export type { PaginationProps, PaginationVariant } from "./Pagination/types";
+
+// Callout
+export { Callout } from "./Callout";
+export type { CalloutProps, CalloutVariant } from "./Callout/types";

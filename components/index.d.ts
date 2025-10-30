@@ -55,3 +55,5 @@ export { Breadcrumbs, BreadcrumbItem } from './Breadcrumbs';
 export type { BreadcrumbsProps, BreadcrumbItemProps, BreadcrumbState, } from './Breadcrumbs/types';
 export { Pagination } from './Pagination';
 export type { PaginationProps, PaginationVariant } from './Pagination/types';
+export { Callout } from './Callout';
+export type { CalloutProps, CalloutVariant } from './Callout/types';

@@ -98,6 +98,7 @@ const LeadingIconWrapper = styled.div<{ $variant: string }>`
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  padding-top: 2px;
   color: ${({ $variant }) => {
     switch ($variant) {
       case "positive":

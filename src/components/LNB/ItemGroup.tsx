@@ -4,6 +4,7 @@ import { spacing } from "../../tokens/spacing";
 import { typography } from "../../tokens";
 import textColor from "../../tokens/textColor";
 import fontFamily from "../../tokens/fontFamily";
+import { useLNBContext } from "./LNB";
 
 export interface LNBItemGroupProps {
   title?: string;
@@ -20,9 +21,11 @@ export const LNBItemGroup: React.FC<LNBItemGroupProps> = ({
   className,
   style,
 }) => {
+  const { iconOnly } = useLNBContext();
+
   return (
     <Wrapper className={className} style={style}>
-      {title && <Title lang={lang}>{title}</Title>}
+      {!iconOnly && title && <Title lang={lang}>{title}</Title>}
       <Items>{children}</Items>
     </Wrapper>
   );

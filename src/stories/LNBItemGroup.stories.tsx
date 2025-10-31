@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 import { LNBItemGroup, LNBItem } from "../components";
-import { IconInfo } from "../components/icons";
+import {
+  IconPersonOutline20,
+  IconWalletOutline20,
+  IconMoneyOutline20,
+} from "../components/icons/generated";
 
 const meta: Meta<typeof LNBItemGroup> = {
   title: "Components/LNB/ItemGroup",
@@ -22,9 +26,9 @@ export const Default: Story = {
   render: (args) => (
     <div style={{ width: 280 }}>
       <LNBItemGroup {...args}>
-        <LNBItem value="내 정보" leadingIcon={IconInfo} />
-        <LNBItem value="플랜 관리" leadingIcon={IconInfo} />
-        <LNBItem value="요금 계산기" leadingIcon={IconInfo} />
+        <LNBItem value="내 정보" leadingIcon={IconPersonOutline20} />
+        <LNBItem value="플랜 관리" leadingIcon={IconWalletOutline20} />
+        <LNBItem value="요금 계산기" leadingIcon={IconMoneyOutline20} />
       </LNBItemGroup>
     </div>
   ),

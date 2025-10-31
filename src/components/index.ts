@@ -74,6 +74,7 @@ export type { ToastProps, ToastVariant, ToastPlacement } from "./Toast/types";
 export { LNB } from "./LNB";
 export { LNBItem } from "./LNB";
 export { LNBItemGroup } from "./LNB";
+export { LNBItemProfile } from "./LNB";
 
 // Divider
 export { Divider } from "./Divider";

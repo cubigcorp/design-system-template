@@ -1,9 +1,17 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 import styled from "styled-components";
 import { spacing } from "../../tokens/spacing";
 import { typography } from "../../tokens";
 import fontFamily from "../../tokens/fontFamily";
 import textColor from "../../tokens/textColor";
+
+interface LNBContextValue {
+  iconOnly: boolean;
+}
+
+const LNBContext = createContext<LNBContextValue>({ iconOnly: false });
+
+export const useLNBContext = () => useContext(LNBContext);
 
 export interface LNBProps {
   children?: React.ReactNode;
@@ -12,6 +20,7 @@ export interface LNBProps {
   style?: React.CSSProperties;
   bottom?: React.ReactNode;
   title?: string;
+  iconOnly?: boolean;
 }
 
 export const LNB: React.FC<LNBProps> = ({
@@ -21,17 +30,25 @@ export const LNB: React.FC<LNBProps> = ({
   style,
   bottom,
   title,
+  iconOnly = false,
 }) => {
   return (
-    <Container className={className} lang={lang} style={style}>
-      {title && <Title lang={lang}>{title}</Title>}
-      <Groups>{children}</Groups>
-      {bottom && <Bottom>{bottom}</Bottom>}
-    </Container>
+    <LNBContext.Provider value={{ iconOnly }}>
+      <Container
+        className={className}
+        lang={lang}
+        style={style}
+        $iconOnly={iconOnly}
+      >
+        {!iconOnly && title && <Title lang={lang}>{title}</Title>}
+        <Groups>{children}</Groups>
+        {bottom && <Bottom $iconOnly={iconOnly}>{bottom}</Bottom>}
+      </Container>
+    </LNBContext.Provider>
   );
 };
 
-const Container = styled.nav`
+const Container = styled.nav<{ $iconOnly: boolean }>`
   ${typography(undefined, "body3", "medium")}
   &:lang(en),
   &[lang="en"] {
@@ -45,13 +62,15 @@ const Container = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 0;
-  padding: ${spacing.gap["gap-4"]};
+  padding: ${({ $iconOnly }) =>
+    $iconOnly ? spacing.gap["gap-2"] : spacing.gap["gap-4"]};
+  width: 100%;
   height: 100%;
 `;
 
-const Bottom = styled.div`
+const Bottom = styled.div<{ $iconOnly: boolean }>`
   margin-top: auto;
-  min-height: 89px;
+  min-height: ${({ $iconOnly }) => ($iconOnly ? "auto" : "89px")};
   display: flex;
   flex-direction: column;
   gap: ${spacing.gap["gap-2"]};

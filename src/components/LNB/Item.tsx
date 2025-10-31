@@ -6,6 +6,7 @@ import { typography } from "../../tokens";
 import color from "../../tokens/color";
 import textColor from "../../tokens/textColor";
 import fontFamily from "../../tokens/fontFamily";
+import { useLNBContext } from "./LNB";
 
 export type LNBItemVariant = "default" | "hovered" | "pressed" | "selected";
 
@@ -18,6 +19,7 @@ export interface LNBItemProps {
     height?: number;
     color?: string;
   }>;
+  iconOnly?: boolean;
   onClick?: () => void;
   className?: string;
   lang?: "ko" | "en";
@@ -29,11 +31,15 @@ export const LNBItem: React.FC<LNBItemProps> = ({
   selected = false,
   disabled = false,
   leadingIcon: LeadingIcon,
+  iconOnly: iconOnlyProp,
   onClick,
   className,
   lang = "ko",
   style,
 }) => {
+  const { iconOnly: iconOnlyContext } = useLNBContext();
+  const iconOnly = iconOnlyProp ?? iconOnlyContext;
+
   const iconColor = disabled
     ? textColor.light["fg-neutral-disable"]
     : textColor.light["fg-neutral-primary"];
@@ -44,6 +50,7 @@ export const LNBItem: React.FC<LNBItemProps> = ({
       onClick={disabled ? undefined : onClick}
       $selected={selected}
       $disabled={disabled}
+      $iconOnly={iconOnly}
       className={className}
       lang={lang}
       style={style}
@@ -53,7 +60,7 @@ export const LNBItem: React.FC<LNBItemProps> = ({
           <LeadingIcon width={20} height={20} color={iconColor} />
         </Leading>
       )}
-      <Label lang={lang}>{value}</Label>
+      {!iconOnly && <Label lang={lang}>{value}</Label>}
     </ItemButton>
   );
 };
@@ -61,11 +68,13 @@ export const LNBItem: React.FC<LNBItemProps> = ({
 const ItemButton = styled.button<{
   $selected: boolean;
   $disabled: boolean;
+  $iconOnly: boolean;
 }>`
   width: 100%;
   height: 36px;
   display: flex;
   align-items: center;
+  justify-content: ${({ $iconOnly }) => ($iconOnly ? "center" : "flex-start")};
   gap: ${spacing.gap["gap-1.5"]};
   padding: ${spacing.gap["gap-2"]};
   border: 0;

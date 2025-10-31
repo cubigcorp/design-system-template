@@ -9,6 +9,7 @@ export interface LNBItemProps {
         height?: number;
         color?: string;
     }>;
+    iconOnly?: boolean;
     onClick?: () => void;
     className?: string;
     lang?: "ko" | "en";

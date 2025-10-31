@@ -1,2 +1,2 @@
 import { DividerProps } from './types';
-export declare const StepDivider: ({ status }: DividerProps) => import("react/jsx-runtime").JSX.Element;
+export declare const StepDivider: ({ status, orientation }: DividerProps) => import("react/jsx-runtime").JSX.Element;

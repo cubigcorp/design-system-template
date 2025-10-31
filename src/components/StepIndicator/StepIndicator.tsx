@@ -3,13 +3,13 @@ import styled from "styled-components";
 import { StepIndicatorProps, StepStatus } from "./types";
 import { ProgressTracker } from "./ProgressTracker";
 import { StepDivider } from "./StepDivider";
-import { spacing } from "../../tokens/spacing";
 
 export const StepIndicator = ({
   count,
   currentStep,
   steps,
   showLabel = false,
+  orientation = "vertical",
   className,
 }: StepIndicatorProps) => {
   const getStepStatus = (stepIndex: number): StepStatus => {
@@ -27,14 +27,15 @@ export const StepIndicator = ({
       const label = stepData?.label || `단계`;
 
       stepElements.push(
-        <StyledStepWrapper key={i}>
+        <StyledStepWrapper key={i} $orientation={orientation}>
           <ProgressTracker
             status={status}
             step={i}
             label={label}
             showLabel={showLabel}
+            orientation={orientation}
           />
-          {i < count && <StepDivider status={status} />}
+          {i < count && <StepDivider status={status} orientation={orientation} />}
         </StyledStepWrapper>
       );
     }
@@ -43,7 +44,7 @@ export const StepIndicator = ({
   };
 
   return (
-    <StyledStepIndicator className={className}>
+    <StyledStepIndicator className={className} $orientation={orientation}>
       <StyledStepContainer showLabel={showLabel}>
         {renderSteps()}
       </StyledStepContainer>
@@ -51,10 +52,11 @@ export const StepIndicator = ({
   );
 };
 
-const StyledStepIndicator = styled.div`
+const StyledStepIndicator = styled.div<{ $orientation: string }>`
   display: flex;
   flex-direction: column;
   width: 100%;
+  min-width: ${({ $orientation }) => ($orientation === "horizontal" ? "400px" : "auto")};
 `;
 
 const StyledStepContainer = styled.div<{ showLabel: boolean }>`
@@ -64,12 +66,13 @@ const StyledStepContainer = styled.div<{ showLabel: boolean }>`
   width: 100%;
 `;
 
-const StyledStepWrapper = styled.div`
+const StyledStepWrapper = styled.div<{ $orientation: string }>`
   display: flex;
-  align-items: flex-start; // 라벨이 있을 때도 위에서 시작
+  align-items: flex-start;
+  gap: 0;
   flex: 1;
 
   &:last-child {
-    flex: 0; // 마지막 아이템 뒤쪽 여백 제거 (좌우 균형)
+    flex: 0;
   }
 `;

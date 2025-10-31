@@ -29,6 +29,11 @@ const meta = {
       control: { type: "boolean" },
       description: "라벨 표시 여부",
     },
+    orientation: {
+      control: { type: "select" },
+      options: ["vertical", "horizontal"],
+      description: "라벨 위치 (vertical: 아래, horizontal: 옆)",
+    },
   },
 } satisfies Meta<typeof StepIndicator>;
 
@@ -253,4 +258,24 @@ export const WithoutLabels: Story = {
       </div>
     </div>
   ),
+};
+
+export const Horizontal: Story = {
+  render: (args) => (
+    <div style={{ width: "600px", padding: "40px" }}>
+      <StepIndicator {...args} />
+    </div>
+  ),
+  args: {
+    count: 4,
+    currentStep: 2,
+    showLabel: true,
+    orientation: "horizontal",
+    steps: [
+      { label: "완료" },
+      { label: "단계 2" },
+      { label: "단계 3" },
+      { label: "단계 4" },
+    ],
+  },
 };

@@ -16,9 +16,10 @@ export const ProgressTracker = ({
   step,
   label,
   showLabel = false,
+  orientation = "vertical",
 }: ProgressTrackerProps) => {
   return (
-    <StyledProgressTracker>
+    <StyledProgressTracker $orientation={orientation}>
       <StyledCircle $status={status}>
         {status === "Complete" ? (
           <StyledIconWrapper>
@@ -35,13 +36,15 @@ export const ProgressTracker = ({
   );
 };
 
-const StyledProgressTracker = styled.div`
+const StyledProgressTracker = styled.div<{ $orientation: string }>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({ $orientation }) =>
+    $orientation === "vertical" ? "column" : "row"};
   align-items: center;
   gap: ${spacing.gap["gap-2"]};
-  flex: 0 0 auto; // 고정 폭, divider와 간격 일관
-  width: ${TRACKER_SIZE}px; // 라벨 길이와 무관하게 컨테이너 폭을 원형 크기에 고정
+  flex: 0 0 auto;
+  width: ${({ $orientation }) => ($orientation === "vertical" ? `${TRACKER_SIZE}px` : "auto")};
+  margin-right: ${({ $orientation }) => ($orientation === "horizontal" ? spacing.gap["gap-2"] : "0")};
 `;
 
 const StyledCircle = styled.div<{ $status: string }>`

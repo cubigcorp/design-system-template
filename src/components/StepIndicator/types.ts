@@ -1,4 +1,5 @@
 export type StepStatus = "Inactive" | "Active" | "Complete";
+export type StepOrientation = "vertical" | "horizontal";
 
 export interface StepItem {
   label?: string;
@@ -10,6 +11,7 @@ export interface StepIndicatorProps {
   currentStep: number;
   steps?: StepItem[];
   showLabel?: boolean;
+  orientation?: StepOrientation;
   className?: string;
 }
 
@@ -18,8 +20,10 @@ export interface ProgressTrackerProps {
   step: number;
   label?: string;
   showLabel?: boolean;
+  orientation?: StepOrientation;
 }
 
 export interface DividerProps {
   status: StepStatus;
+  orientation?: StepOrientation;
 }

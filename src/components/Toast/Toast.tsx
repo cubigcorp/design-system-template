@@ -15,8 +15,7 @@ import {
   IconWarning,
 } from "../icons";
 
-// 애니메이션 키프레임 정의
-const fadeInSlideUp = keyframes`
+const fadeInSlideUpBottom = keyframes`
   from {
     opacity: 0;
     transform: translateY(40px);
@@ -27,7 +26,7 @@ const fadeInSlideUp = keyframes`
   }
 `;
 
-const fadeOutSlideUp = keyframes`
+const fadeOutSlideDownBottom = keyframes`
   from {
     opacity: 1;
     transform: translateY(0);
@@ -35,6 +34,28 @@ const fadeOutSlideUp = keyframes`
   to {
     opacity: 0;
     transform: translateY(40px);
+  }
+`;
+
+const fadeInSlideUpTop = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const fadeOutSlideDownTop = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-40px);
   }
 `;
 
@@ -224,23 +245,30 @@ const StyledToast = styled.div<{
 
   /* 애니메이션 상태에 따른 스타일 */
   ${({ $isVisible, $isExiting, $placement }) => {
+    const isTopPlacement = $placement?.startsWith("top");
+
     if ($isExiting) {
       return css`
-        animation: ${fadeOutSlideUp} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-          forwards;
+        animation: ${isTopPlacement
+            ? fadeOutSlideDownTop
+            : fadeOutSlideDownBottom}
+          0.5s ease-in-out forwards;
       `;
     } else if ($isVisible) {
       return css`
-        animation: ${fadeInSlideUp} 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-          forwards;
+        animation: ${isTopPlacement ? fadeInSlideUpTop : fadeInSlideUpBottom}
+          0.5s ease-in-out forwards;
       `;
     } else {
+      const initialTransform = isTopPlacement
+        ? "translateY(-40px)"
+        : "translateY(40px)";
       return css`
         opacity: 0;
         transform: ${$placement === "top-center" ||
         $placement === "bottom-center"
-          ? "translateX(-50%) translateY(40px)"
-          : "translateY(40px)"};
+          ? `translateX(-50%) ${initialTransform}`
+          : initialTransform};
       `;
     }
   }}

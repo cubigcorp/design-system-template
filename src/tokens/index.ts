@@ -16,6 +16,7 @@ export {
   default as typography,
   typographyStyles,
   typographyCSS,
+  typo,
 } from "./typography";
 export { radius } from "./radius";
 export { spacing } from "./spacing";

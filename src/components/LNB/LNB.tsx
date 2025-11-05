@@ -19,7 +19,7 @@ export interface LNBProps {
   lang?: "ko" | "en";
   style?: React.CSSProperties;
   bottom?: React.ReactNode;
-  title?: string;
+  title?: string | React.ReactNode;
   iconOnly?: boolean;
 }
 
@@ -40,7 +40,13 @@ export const LNB: React.FC<LNBProps> = ({
         style={style}
         $iconOnly={iconOnly}
       >
-        {!iconOnly && title && <Title lang={lang}>{title}</Title>}
+        {title && (
+          typeof title === 'string' ? (
+            !iconOnly && <Title lang={lang}>{title}</Title>
+          ) : (
+            <TitleWrapper>{title}</TitleWrapper>
+          )
+        )}
         <Groups>{children}</Groups>
         {bottom && <Bottom $iconOnly={iconOnly}>{bottom}</Bottom>}
       </Container>
@@ -79,6 +85,10 @@ const Bottom = styled.div<{ $iconOnly: boolean }>`
 const Title = styled.div`
   ${typography(undefined, "body3", "medium")}
   color: ${textColor.light["fg-neutral-strong"]};
+  margin-bottom: ${spacing.gap["gap-5"]};
+`;
+
+const TitleWrapper = styled.div`
   margin-bottom: ${spacing.gap["gap-5"]};
 `;
 

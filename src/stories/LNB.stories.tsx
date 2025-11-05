@@ -15,6 +15,7 @@ import {
   IconSettingOutline20,
   IconLogoutOutline20,
   IconChevronRightOutline20,
+  IconDockRightOutline20,
 } from "../components/icons/generated";
 
 const meta: Meta<typeof LNB> = {
@@ -333,6 +334,90 @@ export const WithProfileAndItems: Story = {
         <LNB
           style={{ height: "100%" }}
           title="설정"
+          bottom={
+            <>
+              <LNBItem value="문의하기" leadingIcon={IconSettingOutline20} />
+              <Divider thickness={1} />
+              <LNBItemProfile
+                name="김규빅"
+                avatarType="initial"
+                trailingIcon={IconChevronRightOutline20}
+              />
+            </>
+          }
+        >
+          <ItemsDemo selected={selected} setSelected={setSelected} />
+        </LNB>
+      </div>
+    );
+  },
+};
+
+// 로고 + 접기 버튼이 있는 커스텀 헤더 예시
+const Logo = () => (
+  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <rect width="24" height="24" rx="4" fill="#6366F1" />
+      <path d="M8 8h8v8H8z" fill="white" />
+    </svg>
+    <span style={{ fontWeight: 600, fontSize: "16px" }}>Logo</span>
+  </div>
+);
+
+const CollapseButton = ({ onClick }: { onClick: () => void }) => (
+  <button
+    onClick={onClick}
+    style={{
+      background: "none",
+      border: "none",
+      cursor: "pointer",
+      padding: "4px",
+      display: "flex",
+      alignItems: "center",
+    }}
+  >
+    <IconDockRightOutline20
+      style={{ width: "20px", height: "20px", flexShrink: 0 }}
+    />
+  </button>
+);
+
+const CustomHeader = ({
+  iconOnly,
+  onToggle,
+}: {
+  iconOnly: boolean;
+  onToggle: () => void;
+}) => (
+  <div
+    style={{
+      display: "flex",
+      justifyContent: iconOnly ? "center" : "space-between",
+      alignItems: "center",
+      padding: "8px 0",
+    }}
+  >
+    {!iconOnly && <Logo />}
+    <CollapseButton onClick={onToggle} />
+  </div>
+);
+
+export const WithCustomHeader: Story = {
+  render: () => {
+    const [selected, setSelected] = useState("profile");
+    const [iconOnly, setIconOnly] = useState(false);
+
+    return (
+      <div style={{ width: iconOnly ? "60px" : "280px", height: 640 }}>
+        <LNB
+          iconOnly={iconOnly}
+          style={{ height: "100%" }}
+          title={
+            <CustomHeader
+              iconOnly={iconOnly}
+              onToggle={() => setIconOnly(!iconOnly)}
+            />
+          }
           bottom={
             <>
               <LNBItem value="문의하기" leadingIcon={IconSettingOutline20} />

@@ -40,13 +40,12 @@ export const LNB: React.FC<LNBProps> = ({
         style={style}
         $iconOnly={iconOnly}
       >
-        {title && (
-          typeof title === 'string' ? (
+        {title &&
+          (typeof title === "string" ? (
             !iconOnly && <Title lang={lang}>{title}</Title>
           ) : (
             <TitleWrapper>{title}</TitleWrapper>
-          )
-        )}
+          ))}
         <Groups>{children}</Groups>
         {bottom && <Bottom $iconOnly={iconOnly}>{bottom}</Bottom>}
       </Container>

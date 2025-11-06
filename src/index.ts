@@ -22,6 +22,7 @@ export * from "./components/Avatar";
 export * from "./components/Tab";
 export * from "./components/ChipTabs";
 export * from "./components/Popover";
+export * from "./components/Pagination";
 // Design Tokens
 export * from "./tokens";
 

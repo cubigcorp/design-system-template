@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import styled from "styled-components";
 import { Badge } from "../components/Badge";
 import type { BadgeProps } from "../components/Badge/types";
+import { IconDocumentOutline16 } from "../components/icons";
 
 const meta = {
   title: "Components/Badge",
@@ -57,7 +58,7 @@ export const OutlineWithIcon: Story = {
   render: (args) => <Badge {...args}>텍스트</Badge>,
   args: {
     ...Outline.args,
-    leadingIcon: <span>🚀</span>,
+    leadingIcon: <IconDocumentOutline16 />,
   },
 };
 
@@ -74,7 +75,7 @@ export const SolidWithIcon: Story = {
   render: (args) => <Badge {...args}>텍스트</Badge>,
   args: {
     ...Solid.args,
-    leadingIcon: <span>🚀</span>,
+    leadingIcon: <IconDocumentOutline16 />,
   },
 };
 
@@ -91,7 +92,7 @@ export const StrongWithIcon: Story = {
   render: (args) => <Badge {...args}>텍스트</Badge>,
   args: {
     ...Strong.args,
-    leadingIcon: <span>🚀</span>,
+    leadingIcon: <IconDocumentOutline16 />,
   },
 };
 

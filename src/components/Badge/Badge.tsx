@@ -21,6 +21,22 @@ const StyledBadge = styled.div<BadgeStyleProps>`
   font-weight: ${fontWeight["500"]};
   white-space: nowrap;
 
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+
+      path {
+        fill: currentColor;
+      }
+    }
+  }
+
   // 크기 변형
   ${({ size = "medium" }) => {
     switch (size) {

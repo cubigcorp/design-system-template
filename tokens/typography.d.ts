@@ -395,5 +395,6 @@ declare const typographyCSS: {
     readonly caption1: string;
     readonly caption2: string;
 };
+export declare const typo: (variant: keyof typeof typographyStyles, weight?: "regular" | "medium" | "semibold" | "bold") => string;
 export default typography;
 export { typographyStyles, typographyCSS };

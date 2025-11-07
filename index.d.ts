@@ -6,6 +6,7 @@ export * from './components/Label';
 export * from './components/Description';
 export * from './components/Input';
 export * from './components/TextField';
+export * from './components/Searchfield';
 export * from './components/Selector';
 export * from './components/ComboBox';
 export * from './components/Dropdown';
@@ -21,6 +22,7 @@ export * from './components/Avatar';
 export * from './components/Tab';
 export * from './components/ChipTabs';
 export * from './components/Popover';
+export * from './components/Pagination';
 export * from './tokens';
 export declare const cssFiles: {
     fonts: string;

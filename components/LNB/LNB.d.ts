@@ -9,7 +9,7 @@ export interface LNBProps {
     lang?: "ko" | "en";
     style?: React.CSSProperties;
     bottom?: React.ReactNode;
-    title?: string;
+    title?: string | React.ReactNode;
     iconOnly?: boolean;
 }
 export declare const LNB: React.FC<LNBProps>;

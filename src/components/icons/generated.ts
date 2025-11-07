@@ -106,6 +106,12 @@ export { default as IconCarFill24 } from '../../assets/icons/icon_car_fill_24.sv
 export { default as IconCarOutline16 } from '../../assets/icons/icon_car_outline_16.svg?react';
 export { default as IconCarOutline20 } from '../../assets/icons/icon_car_outline_20.svg?react';
 export { default as IconCarOutline24 } from '../../assets/icons/icon_car_outline_24.svg?react';
+export { default as IconCategorySearchFill16 } from '../../assets/icons/icon_category-search_fill_16.svg?react';
+export { default as IconCategorySearchFill20 } from '../../assets/icons/icon_category-search_fill_20.svg?react';
+export { default as IconCategorySearchFill24 } from '../../assets/icons/icon_category-search_fill_24.svg?react';
+export { default as IconCategorySearchOutline16 } from '../../assets/icons/icon_category-search_outline_16.svg?react';
+export { default as IconCategorySearchOutline20 } from '../../assets/icons/icon_category-search_outline_20.svg?react';
+export { default as IconCategorySearchOutline24 } from '../../assets/icons/icon_category-search_outline_24.svg?react';
 export { default as IconCheckOutline16 } from '../../assets/icons/icon_check_outline_16.svg?react';
 export { default as IconCheckOutline20 } from '../../assets/icons/icon_check_outline_20.svg?react';
 export { default as IconCheckOutline24 } from '../../assets/icons/icon_check_outline_24.svg?react';

@@ -7,6 +7,7 @@ export * from "./components/Label";
 export * from "./components/Description";
 export * from "./components/Input";
 export * from "./components/TextField";
+export * from "./components/Searchfield";
 export * from "./components/Selector";
 export * from "./components/ComboBox";
 export * from "./components/Dropdown";

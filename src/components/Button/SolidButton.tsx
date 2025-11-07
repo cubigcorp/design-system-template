@@ -105,13 +105,13 @@ const StyledButton = styled.button.withConfig({
         case "tertiary":
           switch (state) {
             case "hovered":
-              return color.gray["200"];
-            case "pressed":
-              return color.gray["300"];
-            case "focused":
-              return color.gray["200"];
-            default:
               return color.gray["100"];
+            case "pressed":
+              return color.gray["200"];
+            case "focused":
+              return color.gray["100"];
+            default:
+              return color.gray["50"];
           }
         case "brand":
           switch (state) {

@@ -28,4 +28,5 @@ export interface DropdownProps {
   ) => void;
   className?: string;
   style?: React.CSSProperties;
+  showCheckIcon?: boolean;
 }

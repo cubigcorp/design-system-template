@@ -27,6 +27,7 @@ const Dropdown: React.FC<DropdownProps & { lang?: "ko" | "en" }> = ({
   className = "",
   style,
   lang,
+  showCheckIcon = true,
   ...props
 }) => {
   const effectiveLang = lang;
@@ -60,6 +61,7 @@ const Dropdown: React.FC<DropdownProps & { lang?: "ko" | "en" }> = ({
           onFocus={onFocus}
           onBlur={onBlur}
           lang={effectiveLang}
+          showCheckIcon={showCheckIcon}
         />
       ) : (
         <Selector
@@ -74,6 +76,7 @@ const Dropdown: React.FC<DropdownProps & { lang?: "ko" | "en" }> = ({
           onFocus={onFocus}
           onBlur={onBlur}
           lang={effectiveLang}
+          showCheckIcon={showCheckIcon}
         />
       )}
 

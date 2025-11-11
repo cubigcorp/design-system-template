@@ -9,4 +9,5 @@ export interface CellProps {
     trailingIcon?: React.ComponentType<{ width?: number; height?: number; color?: string }>;
     onClick?: (e: React.MouseEvent) => void;
     className?: string;
+    showCheckIcon?: boolean;
 } 

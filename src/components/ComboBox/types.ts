@@ -17,4 +17,5 @@ export interface ComboBoxProps {
   className?: string;
   style?: React.CSSProperties;
   lang?: "ko" | "en";
+  showCheckIcon?: boolean;
 }

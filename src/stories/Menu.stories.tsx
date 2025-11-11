@@ -9,14 +9,24 @@ const meta: Meta<typeof Menu> = {
         layout: "centered",
     },
     tags: ["autodocs"],
+    argTypes: {
+        width: {
+            control: { type: "text" },
+            description: "Menu의 너비 (예: 300px, 100%, 20rem)",
+        },
+        showCheckIcon: {
+            control: { type: "boolean" },
+            description: "active 상태의 Cell에 체크 아이콘 표시 여부",
+        },
+    },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    render: () => (
-        <Menu>
+    render: (args) => (
+        <Menu {...args}>
             <Cell text="선택 항목 A" />
             <Cell text="선택 항목 B" active />
             <Cell text="선택 항목 C" disable />
@@ -25,8 +35,8 @@ export const Default: Story = {
 };
 
 export const WithIcons: Story = {
-    render: () => (
-        <Menu>
+    render: (args) => (
+        <Menu {...args}>
             <Cell text="홈" leadingIcon={() => <div>🏠</div>} />
             <Cell text="설정" leadingIcon={() => <div>⚙️</div>} active />
             <Cell text="도움말" leadingIcon={() => <div>❓</div>} />
@@ -35,8 +45,8 @@ export const WithIcons: Story = {
 };
 
 export const WithDescriptions: Story = {
-    render: () => (
-        <Menu>
+    render: (args) => (
+        <Menu {...args}>
             <Cell
                 text="기본 설정"
                 description="일반적인 설정을 관리합니다"
@@ -56,8 +66,8 @@ export const WithDescriptions: Story = {
 };
 
 export const WithScroll: Story = {
-    render: () => (
-        <Menu style={{ maxHeight: "200px", overflowY: "auto" }}>
+    render: (args) => (
+        <Menu {...args} style={{ maxHeight: "200px", overflowY: "auto" }}>
             <Cell text="항목 1" />
             <Cell text="항목 2" />
             <Cell text="항목 3" />
@@ -75,4 +85,30 @@ export const WithScroll: Story = {
             <Cell text="항목 15" />
         </Menu>
     ),
+};
+
+export const CustomWidth: Story = {
+    render: (args) => (
+        <Menu {...args}>
+            <Cell text="선택 항목 A" />
+            <Cell text="선택 항목 B" active />
+            <Cell text="선택 항목 C" />
+        </Menu>
+    ),
+    args: {
+        width: "400px",
+    },
+};
+
+export const WithoutCheckIcon: Story = {
+    render: (args) => (
+        <Menu {...args}>
+            <Cell text="선택 항목 A" />
+            <Cell text="선택 항목 B" active />
+            <Cell text="선택 항목 C" />
+        </Menu>
+    ),
+    args: {
+        showCheckIcon: false,
+    },
 }; 

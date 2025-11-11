@@ -26,6 +26,7 @@ const Selector: React.FC<SelectorProps> = ({
   className = "",
   style,
   lang = "ko",
+  showCheckIcon = true,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -172,7 +173,7 @@ const Selector: React.FC<SelectorProps> = ({
             $left={menuPosition.left}
             $width={menuPosition.width}
           >
-            <Menu>
+            <Menu showCheckIcon={showCheckIcon}>
               {options.map((option) => (
                 <Cell
                   key={option.value}

@@ -24,6 +24,8 @@ export * from "./components/Tab";
 export * from "./components/ChipTabs";
 export * from "./components/Popover";
 export * from "./components/Pagination";
+export * from "./components/Menu";
+export * from "./components/Cell";
 // Design Tokens
 export * from "./tokens";
 

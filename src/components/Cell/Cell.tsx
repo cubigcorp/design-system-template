@@ -19,6 +19,7 @@ const Cell: React.FC<CellProps & { lang?: "ko" | "en" }> = ({
   onClick,
   className,
   lang,
+  showCheckIcon = true,
 }) => {
   const effectiveLang = lang;
   const getForegroundColor = () => {
@@ -36,7 +37,7 @@ const Cell: React.FC<CellProps & { lang?: "ko" | "en" }> = ({
   };
 
   const shouldShowTrailingIcon = () => {
-    return active && !disable;
+    return active && !disable && showCheckIcon;
   };
 
   return (

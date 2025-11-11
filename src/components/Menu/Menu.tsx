@@ -6,15 +6,26 @@ import { shadow } from "../../tokens/shadow";
 import color from "../../tokens/color";
 import fontFamily from "../../tokens/fontFamily";
 
-const Menu: React.FC<MenuProps> = ({ children, className, ...props }) => {
+const Menu: React.FC<MenuProps> = ({ children, className, width, showCheckIcon = true, ...props }) => {
+  // children을 순회하면서 showCheckIcon prop을 주입
+  const childrenWithProps = React.Children.map(children, (child) => {
+    if (React.isValidElement(child)) {
+      // Cell 컴포넌트에만 showCheckIcon을 전달 (이미 설정된 경우 무시)
+      if (child.props.showCheckIcon === undefined) {
+        return React.cloneElement(child, { showCheckIcon } as any);
+      }
+    }
+    return child;
+  });
+
   return (
-    <StyledMenu className={className} {...props}>
-      {children}
+    <StyledMenu className={className} $width={width} {...props}>
+      {childrenWithProps}
     </StyledMenu>
   );
 };
 
-const StyledMenu = styled.div`
+const StyledMenu = styled.div<{ $width?: string | number }>`
   display: flex;
   flex-direction: column;
   gap: ${spacing.gap["gap-1"]};
@@ -23,7 +34,8 @@ const StyledMenu = styled.div`
   background-color: white;
   border-radius: 8px;
   box-sizing: border-box;
-  width: 300px;
+  width: ${({ $width }) =>
+    typeof $width === 'number' ? `${$width}px` : $width || '300px'};
 
   &[lang="ko"] {
     font-family: ${fontFamily.ko};

@@ -16,4 +16,5 @@ export interface SelectorProps {
     className?: string;
     style?: React.CSSProperties;
     lang?: "ko" | "en";
+    showCheckIcon?: boolean;
 }

@@ -16,4 +16,5 @@ export interface CellProps {
     }>;
     onClick?: (e: React.MouseEvent) => void;
     className?: string;
+    showCheckIcon?: boolean;
 }

@@ -22,4 +22,5 @@ export interface DropdownProps {
     onBlur?: (event: React.FocusEvent<HTMLButtonElement | HTMLInputElement>) => void;
     className?: string;
     style?: React.CSSProperties;
+    showCheckIcon?: boolean;
 }

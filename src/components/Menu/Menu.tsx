@@ -9,7 +9,7 @@ import fontFamily from "../../tokens/fontFamily";
 const Menu: React.FC<MenuProps> = ({ children, className, width, showCheckIcon = true, ...props }) => {
   // children을 순회하면서 showCheckIcon prop을 주입
   const childrenWithProps = React.Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
+    if (React.isValidElement<{ showCheckIcon?: boolean }>(child)) {
       // Cell 컴포넌트에만 showCheckIcon을 전달 (이미 설정된 경우 무시)
       if (child.props.showCheckIcon === undefined) {
         return React.cloneElement(child, { showCheckIcon } as any);

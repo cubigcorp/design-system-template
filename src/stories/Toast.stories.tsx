@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Toast } from "../components";
+import { Toast, ToastSystem, toast } from "../components";
 
 const meta: Meta<typeof Toast> = {
     title: "Components/Toast",
@@ -120,4 +120,153 @@ export const BottomCenter: Story = {
         variant: "positive",
         placement: "bottom-center",
     },
+};
+
+// ToastSystem Stories
+export const ToastSystemBottomRight: Story = {
+    render: () => (
+        <ToastSystem placement="bottom-right" maxToasts={3}>
+            <div style={{ padding: "40px" }}>
+                <h2>ToastSystem - Bottom Right</h2>
+                <p>아래 버튼을 클릭하여 우측 하단에 토스트를 띄워보세요.</p>
+                <div style={{ display: "flex", gap: "8px", marginTop: "16px" }}>
+                    <button
+                        onClick={() => toast.success("저장 완료!", "변경사항이 저장되었습니다.")}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        Success Toast
+                    </button>
+                    <button
+                        onClick={() => toast.error("오류 발생", "다시 시도해주세요.")}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        Error Toast
+                    </button>
+                    <button
+                        onClick={() => toast.warning("경고", "주의가 필요합니다.")}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        Warning Toast
+                    </button>
+                    <button
+                        onClick={() => toast.info("알림", "새로운 업데이트가 있습니다.")}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        Info Toast
+                    </button>
+                </div>
+            </div>
+        </ToastSystem>
+    ),
+};
+
+export const ToastSystemTopCenter: Story = {
+    render: () => (
+        <ToastSystem placement="top-center" maxToasts={3}>
+            <div style={{ padding: "40px" }}>
+                <h2>ToastSystem - Top Center</h2>
+                <p>아래 버튼을 클릭하여 상단 중앙에 토스트를 띄워보세요.</p>
+                <div style={{ display: "flex", gap: "8px", marginTop: "16px" }}>
+                    <button
+                        onClick={() => toast.success("저장 완료!", "변경사항이 저장되었습니다.")}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        Success Toast
+                    </button>
+                    <button
+                        onClick={() => toast.error("오류 발생", "다시 시도해주세요.")}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        Error Toast
+                    </button>
+                    <button
+                        onClick={() => toast.warning("경고", "주의가 필요합니다.")}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        Warning Toast
+                    </button>
+                    <button
+                        onClick={() => toast.info("알림", "새로운 업데이트가 있습니다.")}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        Info Toast
+                    </button>
+                </div>
+            </div>
+        </ToastSystem>
+    ),
+};
+
+export const ToastSystemTopLeft: Story = {
+    render: () => (
+        <ToastSystem placement="top-left" maxToasts={3}>
+            <div style={{ padding: "40px" }}>
+                <h2>ToastSystem - Top Left</h2>
+                <p>아래 버튼을 클릭하여 좌측 상단에 토스트를 띄워보세요.</p>
+                <div style={{ display: "flex", gap: "8px", marginTop: "16px" }}>
+                    <button
+                        onClick={() => toast.success("저장 완료!", "변경사항이 저장되었습니다.")}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        Success Toast
+                    </button>
+                    <button
+                        onClick={() => toast.error("오류 발생", "다시 시도해주세요.")}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        Error Toast
+                    </button>
+                </div>
+            </div>
+        </ToastSystem>
+    ),
+};
+
+export const ToastSystemBottomCenter: Story = {
+    render: () => (
+        <ToastSystem placement="bottom-center" maxToasts={3}>
+            <div style={{ padding: "40px" }}>
+                <h2>ToastSystem - Bottom Center</h2>
+                <p>아래 버튼을 클릭하여 하단 중앙에 토스트를 띄워보세요.</p>
+                <div style={{ display: "flex", gap: "8px", marginTop: "16px" }}>
+                    <button
+                        onClick={() => toast.success("저장 완료!", "변경사항이 저장되었습니다.")}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        Success Toast
+                    </button>
+                    <button
+                        onClick={() => toast.error("오류 발생", "다시 시도해주세요.")}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        Error Toast
+                    </button>
+                </div>
+            </div>
+        </ToastSystem>
+    ),
+};
+
+export const ToastSystemMultipleToasts: Story = {
+    render: () => (
+        <ToastSystem placement="bottom-right" maxToasts={5}>
+            <div style={{ padding: "40px" }}>
+                <h2>ToastSystem - Multiple Toasts</h2>
+                <p>여러 개의 토스트를 연속으로 띄워 스택킹 동작을 확인하세요.</p>
+                <div style={{ display: "flex", gap: "8px", marginTop: "16px" }}>
+                    <button
+                        onClick={() => {
+                            toast.success("첫 번째", "토스트 1");
+                            setTimeout(() => toast.info("두 번째", "토스트 2"), 300);
+                            setTimeout(() => toast.warning("세 번째", "토스트 3"), 600);
+                            setTimeout(() => toast.error("네 번째", "토스트 4"), 900);
+                        }}
+                        style={{ padding: "8px 16px", cursor: "pointer" }}
+                    >
+                        4개 연속 띄우기
+                    </button>
+                </div>
+            </div>
+        </ToastSystem>
+    ),
 }; 

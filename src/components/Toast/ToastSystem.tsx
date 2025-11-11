@@ -65,32 +65,41 @@ export const ToastSystem: React.FC<ToastSystemProps> = ({
         };
     }, [addToastInternal, removeToastInternal]);
 
+    // placement에 따른 Container 스타일 계산
+    const getContainerStyle = (): React.CSSProperties => {
+        const baseStyle: React.CSSProperties = {
+            position: 'fixed',
+            zIndex: 9999,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '4px',
+            pointerEvents: 'none',
+        };
+
+        switch (placement) {
+            case 'top-left':
+                return { ...baseStyle, top: offset, left: offset, alignItems: 'flex-start' };
+            case 'top-center':
+                return { ...baseStyle, top: offset, left: '50%', transform: 'translateX(-50%)', alignItems: 'center' };
+            case 'top-right':
+                return { ...baseStyle, top: offset, right: offset, alignItems: 'flex-end' };
+            case 'bottom-left':
+                return { ...baseStyle, bottom: offset, left: offset, alignItems: 'flex-start' };
+            case 'bottom-center':
+                return { ...baseStyle, bottom: offset, left: '50%', transform: 'translateX(-50%)', alignItems: 'center' };
+            case 'bottom-right':
+            default:
+                return { ...baseStyle, bottom: offset, right: offset, alignItems: 'flex-end' };
+        }
+    };
+
     return (
         <>
             {children}
 
             {/* Toast Container */}
-            <div style={{
-                position: 'fixed',
-                right: offset,
-                bottom: offset,
-                zIndex: 9999,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-end',
-                pointerEvents: 'none',
-            }}>
-                {toasts.slice(-maxToasts).reverse().map((toast, index) => {
-                    const gap = 4;
-                    const currentHeight = toastHeights[toast.id] || 80;
-
-                    // 이전 토스트들의 높이를 모두 더해서 bottom 위치 계산
-                    let bottomOffset = 0;
-                    for (let i = 0; i < index; i++) {
-                        const prevToastId = toasts.slice(-maxToasts).reverse()[i].id;
-                        bottomOffset += (toastHeights[prevToastId] || 80) + gap;
-                    }
-
+            <div style={getContainerStyle()}>
+                {toasts.slice(-maxToasts).reverse().map((toast) => {
                     return (
                         <div
                             key={toast.id}
@@ -105,13 +114,7 @@ export const ToastSystem: React.FC<ToastSystemProps> = ({
                                     }
                                 }
                             }}
-                            style={{
-                                pointerEvents: 'auto',
-                                position: 'fixed',
-                                bottom: `${offset + bottomOffset}px`,
-                                right: `${offset}px`,
-                                zIndex: 9999 + index,
-                            }}
+                            style={{ pointerEvents: 'auto' }}
                         >
                             <Toast
                                 variant={toast.variant}

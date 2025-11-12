@@ -4,23 +4,24 @@ export interface DropdownOption {
     label: string;
 }
 export interface DropdownProps {
-    type?: "selector" | "combobox";
+    type?: "selector" | "combobox" | "multiselect";
     size?: "small" | "medium" | "large";
     disabled?: boolean;
     active?: boolean;
     focused?: boolean;
     placeholder?: string;
-    value?: string;
+    value?: string | string[];
     options?: DropdownOption[];
     label?: string;
     labelType?: "default" | "required" | "optional";
     description?: string;
     descriptionLeadingIcon?: boolean;
     status?: "default" | "negative" | "positive";
-    onChange?: (value: string) => void;
+    onChange?: (value: string | string[]) => void;
     onFocus?: (event: React.FocusEvent<HTMLButtonElement | HTMLInputElement>) => void;
     onBlur?: (event: React.FocusEvent<HTMLButtonElement | HTMLInputElement>) => void;
     className?: string;
     style?: React.CSSProperties;
     showCheckIcon?: boolean;
+    lineMode?: "single" | "multi";
 }

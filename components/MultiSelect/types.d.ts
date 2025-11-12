@@ -51,4 +51,11 @@ export interface MultiSelectProps {
      * @default "ko"
      */
     lang?: "ko" | "en";
+    /**
+     * 라인 표시 모드
+     * - "single": 한 줄 고정, 가로 스크롤
+     * - "multi": 최대 3줄까지 확장, 이후 세로 스크롤
+     * @default "multi"
+     */
+    lineMode?: "single" | "multi";
 }

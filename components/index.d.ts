@@ -21,6 +21,8 @@ export { Selector } from './Selector';
 export type { SelectorProps, SelectorOption } from './Selector/types';
 export { ComboBox } from './ComboBox';
 export type { ComboBoxProps, ComboBoxOption } from './ComboBox/types';
+export { MultiSelect } from './MultiSelect';
+export type { MultiSelectProps, MultiSelectOption } from './MultiSelect/types';
 export { Dropdown } from './Dropdown';
 export type { DropdownProps, DropdownOption } from './Dropdown/types';
 export { Menu } from './Menu';

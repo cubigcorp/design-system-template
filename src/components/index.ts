@@ -54,6 +54,10 @@ export type { SelectorProps, SelectorOption } from "./Selector/types";
 export { ComboBox } from "./ComboBox";
 export type { ComboBoxProps, ComboBoxOption } from "./ComboBox/types";
 
+// MultiSelect
+export { MultiSelect } from "./MultiSelect";
+export type { MultiSelectProps, MultiSelectOption } from "./MultiSelect/types";
+
 // Dropdown
 export { Dropdown } from "./Dropdown";
 export type { DropdownProps, DropdownOption } from "./Dropdown/types";

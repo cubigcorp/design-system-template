@@ -7,7 +7,11 @@ import type {
 } from "../components/Dropdown/types";
 
 const DropdownWithState = (props: DropdownProps) => {
-  const [value, setValue] = useState(props.value || "");
+  const [value, setValue] = useState<string | string[]>(
+    props.type === "multiselect"
+      ? (Array.isArray(props.value) ? props.value : [])
+      : (props.value || "")
+  );
   return (
     <div style={{ width: "300px" }}>
       <Dropdown
@@ -30,19 +34,29 @@ const sampleOptions: DropdownOption[] = [
   { value: "option8", label: "옵션 8" },
   { value: "option9", label: "옵션 9" },
   { value: "option10", label: "옵션 10" },
+  { value: "option11", label: "옵션 11" },
+  { value: "option12", label: "옵션 12" },
+  { value: "option13", label: "옵션 13" },
+  { value: "option14", label: "옵션 14" },
+  { value: "option15", label: "옵션 15" },
+  { value: "option16", label: "옵션 16" },
+  { value: "option17", label: "옵션 17" },
+  { value: "option18", label: "옵션 18" },
+  { value: "option19", label: "옵션 19" },
+  { value: "option20", label: "옵션 20" },
 ];
 
 const meta: Meta<typeof Dropdown> = {
   title: "Components/Dropdown",
   component: Dropdown,
   parameters: {
-    layout: "centered",
+    layout: "padded",
   },
   tags: ["autodocs"],
   argTypes: {
     type: {
       control: { type: "select" },
-      options: ["selector", "combobox"],
+      options: ["selector", "combobox", "multiselect"],
     },
     size: {
       control: { type: "select" },
@@ -126,6 +140,17 @@ export const ComboBoxType: Story = {
     placeholder: "입력하거나 선택해주세요.",
     label: "검색 가능한 드롭다운",
     description: "텍스트를 입력하거나 옵션을 선택할 수 있습니다.",
+  },
+  render: (args) => <DropdownWithState {...args} />,
+};
+
+export const MultiSelectType: Story = {
+  args: {
+    type: "multiselect",
+    placeholder: "여러 항목을 선택해주세요.",
+    label: "다중 선택 드롭다운",
+    description: "여러 옵션을 선택할 수 있습니다.",
+    value: [],
   },
   render: (args) => <DropdownWithState {...args} />,
 };
@@ -227,6 +252,21 @@ export const TypeComparison: Story = {
           description="직접 입력하거나 옵션을 선택할 수 있습니다."
         />
       </div>
+      <div>
+        <h4
+          style={{ marginBottom: "8px", fontSize: "14px", fontWeight: "600" }}
+        >
+          MultiSelect Type (다중 선택 가능)
+        </h4>
+        <DropdownWithState
+          type="multiselect"
+          label="과일 다중 선택"
+          placeholder="여러 과일을 선택하세요"
+          options={sampleOptions}
+          description="여러 옵션을 선택할 수 있습니다."
+          value={[]}
+        />
+      </div>
     </div>
   ),
 };
@@ -276,6 +316,135 @@ export const AllSizes: Story = {
           size="large"
           label="큰 크기"
           options={sampleOptions}
+        />
+      </div>
+    </div>
+  ),
+};
+
+// MultiSelect 크기별 비교 (Chip 사이즈 확인용)
+export const MultiSelectSizes: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "30px",
+        width: "400px",
+      }}
+    >
+      <div>
+        <h4
+          style={{ marginBottom: "8px", fontSize: "14px", fontWeight: "600" }}
+        >
+          Small (Chip: x-small)
+        </h4>
+        <DropdownWithState
+          type="multiselect"
+          size="small"
+          label="작은 크기"
+          placeholder="옵션 선택"
+          options={sampleOptions}
+          value={["option1", "option2"]}
+          description="Small size에는 x-small Chip이 사용됩니다."
+        />
+      </div>
+      <div>
+        <h4
+          style={{ marginBottom: "8px", fontSize: "14px", fontWeight: "600" }}
+        >
+          Medium (Chip: x-small)
+        </h4>
+        <DropdownWithState
+          type="multiselect"
+          size="medium"
+          label="보통 크기"
+          placeholder="옵션 선택"
+          options={sampleOptions}
+          value={["option1", "option2", "option3"]}
+          description="Medium size에는 x-small Chip이 사용됩니다."
+        />
+      </div>
+      <div>
+        <h4
+          style={{ marginBottom: "8px", fontSize: "14px", fontWeight: "600" }}
+        >
+          Large (Chip: small)
+        </h4>
+        <DropdownWithState
+          type="multiselect"
+          size="large"
+          label="큰 크기"
+          placeholder="옵션 선택"
+          options={sampleOptions}
+          value={["option1", "option2", "option3", "option4"]}
+          description="Large size에는 small Chip이 사용됩니다."
+        />
+      </div>
+    </div>
+  ),
+};
+
+// MultiSelect lineMode 비교
+export const MultiSelectLineMode: Story = {
+  render: () => (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "30px",
+        width: "400px",
+      }}
+    >
+      <div>
+        <h4
+          style={{ marginBottom: "8px", fontSize: "14px", fontWeight: "600" }}
+        >
+          lineMode = "single" (한 줄 고정, 가로 스크롤)
+        </h4>
+        <DropdownWithState
+          type="multiselect"
+          size="medium"
+          label="Single Line"
+          placeholder="옵션 선택"
+          options={sampleOptions}
+          value={["option1", "option2", "option3", "option4", "option5", "option6", "option7", "option8"]}
+          lineMode="single"
+          description="한 줄로만 표시되고, 가로 스크롤이 생깁니다."
+        />
+      </div>
+      <div>
+        <h4
+          style={{ marginBottom: "8px", fontSize: "14px", fontWeight: "600" }}
+        >
+          lineMode = "multi" (최대 3줄, 이후 세로 스크롤)
+        </h4>
+        <DropdownWithState
+          type="multiselect"
+          size="medium"
+          label="Multi Line"
+          placeholder="옵션 선택"
+          options={sampleOptions}
+          value={["option1", "option2", "option3", "option4", "option5", "option6", "option7", "option8", "option9", "option10", "option11", "option12", "option13", "option14", "option15"]}
+          lineMode="multi"
+          description="최대 3줄까지 늘어나고, 이후 세로 스크롤이 생깁니다."
+        />
+      </div>
+      <div>
+        <h4
+          style={{ marginBottom: "8px", fontSize: "14px", fontWeight: "600" }}
+        >
+          Large size with lineMode = "single"
+        </h4>
+        <DropdownWithState
+          type="multiselect"
+          size="large"
+          label="Large Single Line"
+          placeholder="옵션 선택"
+          options={sampleOptions}
+          value={["option1", "option2", "option3", "option4", "option5", "option6", "option7"]}
+          lineMode="single"
+          description="Large size에서도 한 줄로만 표시됩니다."
         />
       </div>
     </div>

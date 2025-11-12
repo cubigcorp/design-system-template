@@ -5,6 +5,7 @@ import { Label } from "../Label";
 import { Description } from "../Description";
 import { Selector } from "../Selector";
 import { ComboBox } from "../ComboBox";
+import { MultiSelect } from "../MultiSelect";
 import { spacing } from "../../tokens";
 
 const Dropdown: React.FC<DropdownProps & { lang?: "ko" | "en" }> = ({
@@ -28,6 +29,7 @@ const Dropdown: React.FC<DropdownProps & { lang?: "ko" | "en" }> = ({
   style,
   lang,
   showCheckIcon = true,
+  lineMode,
   ...props
 }) => {
   const effectiveLang = lang;
@@ -55,13 +57,26 @@ const Dropdown: React.FC<DropdownProps & { lang?: "ko" | "en" }> = ({
           active={active}
           focused={focused}
           placeholder={placeholder}
-          value={value}
+          value={typeof value === "string" ? value : undefined}
           options={options}
-          onChange={onChange}
+          onChange={onChange as (value: string) => void}
           onFocus={onFocus}
           onBlur={onBlur}
           lang={effectiveLang}
           showCheckIcon={showCheckIcon}
+        />
+      ) : type === "multiselect" ? (
+        <MultiSelect
+          size={size}
+          disabled={disabled}
+          placeholder={placeholder}
+          value={Array.isArray(value) ? value : []}
+          options={options}
+          onChange={onChange as (value: string[]) => void}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          lang={effectiveLang}
+          lineMode={lineMode}
         />
       ) : (
         <Selector
@@ -70,9 +85,9 @@ const Dropdown: React.FC<DropdownProps & { lang?: "ko" | "en" }> = ({
           active={active}
           focused={focused}
           placeholder={placeholder}
-          value={value}
+          value={typeof value === "string" ? value : undefined}
           options={options}
-          onChange={onChange}
+          onChange={onChange as (value: string) => void}
           onFocus={onFocus}
           onBlur={onBlur}
           lang={effectiveLang}

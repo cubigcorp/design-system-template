@@ -89,15 +89,25 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
 
       updatePosition();
 
+      // ResizeObserver로 컨테이너 높이 변화 감지
+      const resizeObserver = new ResizeObserver(() => {
+        updatePosition();
+      });
+
+      if (containerRef.current) {
+        resizeObserver.observe(containerRef.current);
+      }
+
       window.addEventListener("scroll", updatePosition, true);
       window.addEventListener("resize", updatePosition);
 
       return () => {
+        resizeObserver.disconnect();
         window.removeEventListener("scroll", updatePosition, true);
         window.removeEventListener("resize", updatePosition);
       };
     }
-  }, [isOpen]);
+  }, [isOpen, selectedValues.length]);
 
   useEffect(() => {
     setSelectedValues(value);

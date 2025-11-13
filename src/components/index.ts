@@ -58,6 +58,10 @@ export type { ComboBoxProps, ComboBoxOption } from "./ComboBox/types";
 export { MultiSelect } from "./MultiSelect";
 export type { MultiSelectProps, MultiSelectOption } from "./MultiSelect/types";
 
+// TokenInput
+export { TokenInput } from "./TokenInput";
+export type { TokenInputProps } from "./TokenInput/types";
+
 // Dropdown
 export { Dropdown } from "./Dropdown";
 export type { DropdownProps, DropdownOption } from "./Dropdown/types";

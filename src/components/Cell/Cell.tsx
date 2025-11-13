@@ -12,7 +12,7 @@ import fontFamily from "../../tokens/fontFamily";
 const Cell: React.FC<CellProps & { lang?: "ko" | "en" }> = ({
   disable = false,
   active = false,
-  leadingIcon: LeadingIcon,
+  leadingContent: LeadingContent,
   text,
   description,
   trailingIcon: TrailingIcon,
@@ -49,10 +49,10 @@ const Cell: React.FC<CellProps & { lang?: "ko" | "en" }> = ({
       className={className}
       lang={lang}
     >
-      {LeadingIcon && (
-        <LeadingIconWrapper>
-          <LeadingIcon width={16} height={16} color={getForegroundColor()} />
-        </LeadingIconWrapper>
+      {LeadingContent && (
+        <LeadingContentWrapper>
+          <LeadingContent color={getForegroundColor()} />
+        </LeadingContentWrapper>
       )}
 
       <ContentWrapper>
@@ -63,7 +63,7 @@ const Cell: React.FC<CellProps & { lang?: "ko" | "en" }> = ({
       {shouldShowTrailingIcon() && (
         <TrailingIconWrapper>
           {TrailingIcon ? (
-            <TrailingIcon width={16} height={16} color={getForegroundColor()} />
+            <TrailingIcon color={getForegroundColor()} />
           ) : (
             <IconCheck width={16} height={16} color={getForegroundColor()} />
           )}
@@ -79,7 +79,7 @@ const StyledCell = styled.div<{
 }>`
   display: flex;
   align-items: center;
-  gap: ${spacing.gap["gap-1"]};
+  gap: ${spacing.gap["gap-2"]};
   padding: ${spacing.gap["gap-1.5"]} ${spacing.gap["gap-2"]};
   border-radius: ${radius["rounded-1"]};
   background-color: ${color.common["100"]};
@@ -91,7 +91,7 @@ const StyledCell = styled.div<{
   }
 `;
 
-const LeadingIconWrapper = styled.div`
+const LeadingContentWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -101,7 +101,6 @@ const LeadingIconWrapper = styled.div`
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${spacing.gap["gap-1"]};
   flex: 1;
   min-width: 0;
 `;

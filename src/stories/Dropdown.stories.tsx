@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
-import { Dropdown } from "../components";
+import { Dropdown, Avatar } from "../components";
 import type {
   DropdownProps,
   DropdownOption,
 } from "../components/Dropdown/types";
+import { IconHomeOutline16, IconSearchOutline16, IconDocumentOutline16 } from "../components/icons/generated";
 
 const DropdownWithState = (props: DropdownProps) => {
   const [value, setValue] = useState<string | string[]>(
@@ -449,4 +450,103 @@ export const MultiSelectLineMode: Story = {
       </div>
     </div>
   ),
+};
+
+// Options with description and leadingContent
+export const WithLeadingContent: Story = {
+  render: () => {
+    const [selected, setSelected] = useState<string[]>([]);
+
+    const memberOptions: DropdownOption[] = [
+      {
+        value: "1",
+        label: "John Doe",
+        description: "john@example.com",
+        leadingContent: () => <Avatar type="initial" size="small" value="JD" />,
+      },
+      {
+        value: "2",
+        label: "Jane Smith",
+        description: "jane@example.com",
+        leadingContent: () => <Avatar type="initial" size="small" value="JS" />,
+      },
+      {
+        value: "3",
+        label: "Bob Johnson",
+        description: "bob@example.com",
+        leadingContent: () => <Avatar type="initial" size="small" value="BJ" />,
+      },
+      {
+        value: "4",
+        label: "홈",
+        description: "메인 페이지로 이동",
+        leadingContent: () => <IconHomeOutline16 />,
+      },
+      {
+        value: "5",
+        label: "검색",
+        description: "검색 기능",
+        leadingContent: () => <IconSearchOutline16 />,
+      },
+      {
+        value: "6",
+        label: "문서",
+        description: "문서 관리",
+        leadingContent: () => <IconDocumentOutline16 />,
+      },
+    ];
+
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "30px",
+          width: "400px",
+        }}
+      >
+        <div>
+          <h4 style={{ fontSize: "14px", fontWeight: "600", marginBottom: "8px" }}>
+            Selector with Avatar & Description
+          </h4>
+          <Dropdown
+            type="selector"
+            label="멤버 선택"
+            placeholder="멤버를 선택하세요"
+            options={memberOptions}
+            description="Avatar와 설명이 포함된 옵션입니다"
+          />
+        </div>
+
+        <div>
+          <h4 style={{ fontSize: "14px", fontWeight: "600", marginBottom: "8px" }}>
+            ComboBox with Icon & Description
+          </h4>
+          <Dropdown
+            type="combobox"
+            label="메뉴 검색"
+            placeholder="검색하거나 선택하세요"
+            options={memberOptions}
+            description="아이콘과 설명이 포함된 옵션입니다"
+          />
+        </div>
+
+        <div>
+          <h4 style={{ fontSize: "14px", fontWeight: "600", marginBottom: "8px" }}>
+            MultiSelect with Avatar & Icon
+          </h4>
+          <Dropdown
+            type="multiselect"
+            label="다중 선택"
+            placeholder="여러 항목을 선택하세요"
+            options={memberOptions}
+            value={selected}
+            onChange={(value) => setSelected(value as string[])}
+            lineMode="multi"
+            description="Avatar, 아이콘, 설명이 모두 포함된 옵션입니다"
+          />
+        </div>
+      </div>
+    );
+  },
 };

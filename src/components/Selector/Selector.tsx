@@ -178,6 +178,8 @@ const Selector: React.FC<SelectorProps> = ({
                 <Cell
                   key={option.value}
                   text={option.label}
+                  description={option.description}
+                  leadingContent={option.leadingContent}
                   active={option.value === value}
                   onClick={(e) => {
                     e.stopPropagation();

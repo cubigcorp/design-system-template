@@ -229,6 +229,8 @@ const ComboBox: React.FC<ComboBoxProps> = ({
                 <Cell
                   key={option.value}
                   text={option.label}
+                  description={option.description}
+                  leadingContent={option.leadingContent}
                   active={option.value === selectedValue}
                   onClick={(e) => {
                     e.stopPropagation();

@@ -284,6 +284,8 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
                 <Cell
                   key={option.value}
                   text={option.label}
+                  description={option.description}
+                  leadingContent={option.leadingContent}
                   onClick={(e) => {
                     e.stopPropagation();
                     handleOptionClick(option);

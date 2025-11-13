@@ -2,7 +2,7 @@ import { default as React } from '../../../node_modules/react';
 export interface CellProps {
     disable?: boolean;
     active?: boolean;
-    leadingIcon?: React.ComponentType<{
+    leadingContent?: React.ComponentType<{
         width?: number;
         height?: number;
         color?: string;

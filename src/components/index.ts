@@ -42,6 +42,10 @@ export type { InputProps } from "./Input/types";
 export { TextField } from "./TextField";
 export type { TextFieldProps } from "./TextField/types";
 
+// TokenField
+export { TokenField } from "./TokenField";
+export type { TokenFieldProps } from "./TokenField/types";
+
 // Searchfield
 export { Searchfield } from "./Searchfield";
 export type { SearchfieldProps } from "./Searchfield/types";

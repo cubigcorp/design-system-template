@@ -1,6 +1,8 @@
 export interface SelectorOption {
   value: string;
   label: string;
+  description?: string;
+  leadingContent?: React.ComponentType<{ width?: number; height?: number; color?: string }>;
 }
 
 export interface SelectorProps {

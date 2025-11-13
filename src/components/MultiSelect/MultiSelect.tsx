@@ -234,7 +234,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
                 }}
               >
                 <Chip
-                  type="outline"
+                  type="solid"
                   size={getChipSize()}
                   disabled={disabled}
                   trailingIcon={

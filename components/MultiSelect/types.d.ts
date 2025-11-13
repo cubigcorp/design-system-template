@@ -1,6 +1,12 @@
 export interface MultiSelectOption {
     value: string;
     label: string;
+    description?: string;
+    leadingContent?: React.ComponentType<{
+        width?: number;
+        height?: number;
+        color?: string;
+    }>;
 }
 export interface MultiSelectProps {
     /**

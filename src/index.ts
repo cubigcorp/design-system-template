@@ -7,6 +7,8 @@ export * from "./components/Label";
 export * from "./components/Description";
 export * from "./components/Input";
 export * from "./components/TextField";
+export * from "./components/TokenField";
+export * from "./components/TokenInput";
 export * from "./components/Searchfield";
 export * from "./components/Selector";
 export * from "./components/ComboBox";

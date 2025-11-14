@@ -1,4 +1,4 @@
-export type CalloutVariant = "default" | "positive" | "negative" | "cautionary";
+export type CalloutVariant = "default" | "positive" | "negative" | "cautionary" | "info";
 export interface CalloutProps {
     /**
      * Callout 변형

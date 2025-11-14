@@ -283,6 +283,12 @@ export { default as IconHomeFill24 } from '../../assets/icons/icon_home_fill_24.
 export { default as IconHomeOutline16 } from '../../assets/icons/icon_home_outline_16.svg?react';
 export { default as IconHomeOutline20 } from '../../assets/icons/icon_home_outline_20.svg?react';
 export { default as IconHomeOutline24 } from '../../assets/icons/icon_home_outline_24.svg?react';
+export { default as IconIdentityPlatformFill16 } from '../../assets/icons/icon_identity-platform_fill_16.svg?react';
+export { default as IconIdentityPlatformFill20 } from '../../assets/icons/icon_identity-platform_fill_20.svg?react';
+export { default as IconIdentityPlatformFill24 } from '../../assets/icons/icon_identity-platform_fill_24.svg?react';
+export { default as IconIdentityPlatformOutline16 } from '../../assets/icons/icon_identity-platform_outline_16.svg?react';
+export { default as IconIdentityPlatformOutline20 } from '../../assets/icons/icon_identity-platform_outline_20.svg?react';
+export { default as IconIdentityPlatformOutline24 } from '../../assets/icons/icon_identity-platform_outline_24.svg?react';
 export { default as IconInfoFill16 } from '../../assets/icons/icon_info_fill_16.svg?react';
 export { default as IconInfoFill20 } from '../../assets/icons/icon_info_fill_20.svg?react';
 export { default as IconInfoFill24 } from '../../assets/icons/icon_info_fill_24.svg?react';

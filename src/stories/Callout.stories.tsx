@@ -17,10 +17,10 @@ const meta: Meta<typeof Callout> = {
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: ["default", "positive", "negative", "cautionary"],
+      options: ["default", "positive", "negative", "cautionary", "info"],
       description: "Callout 변형",
       table: {
-        type: { summary: "default | positive | negative | cautionary" },
+        type: { summary: "default | positive | negative | cautionary | info" },
         defaultValue: { summary: "default" },
       },
     },
@@ -107,6 +107,16 @@ export const Cautionary: Story = {
   },
 };
 
+export const Info: Story = {
+  args: {
+    variant: "info",
+    title: "텍스트를 입력해 주세요.",
+    description: "안내 텍스트를 입력해 주세요.",
+    leadingIcon: true,
+    trailingIcon: false,
+  },
+};
+
 export const WithTrailingIcon: Story = {
   args: {
     variant: "default",
@@ -162,7 +172,12 @@ export const AllVariants: Story = {
         title="Warning"
         description="안내 텍스트를 입력해 주세요."
         leadingIcon={true}
-        trailingIcon={true}
+      />
+      <Callout
+        variant="info"
+        title="Info"
+        description="안내 텍스트를 입력해 주세요."
+        leadingIcon={true}
       />
     </div>
   ),

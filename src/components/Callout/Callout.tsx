@@ -34,6 +34,8 @@ export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
           return <Icons.IconErrorFill20 />;
         case "cautionary":
           return <Icons.IconWarningFill20 />;
+        case "info":
+          return <Icons.IconInfoFill20 />;
         default:
           return <Icons.IconInfoFill20 />;
       }
@@ -87,6 +89,8 @@ const CalloutContainer = styled.div<{ $variant: string }>`
         return color.red["50"];
       case "cautionary":
         return color.orange["50"];
+      case "info":
+        return color.blue["50"];
       default:
         return color.gray["50"];
     }
@@ -107,6 +111,8 @@ const LeadingIconWrapper = styled.div<{ $variant: string }>`
         return negativeColor.light["fg-negative-primary"];
       case "cautionary":
         return color.orange["500"];
+      case "info":
+        return color.blue["500"];
       default:
         return textColor.light["fg-neutral-strong"];
     }
@@ -135,6 +141,8 @@ const Title = styled.div<{ $variant: string }>`
         return negativeColor.light["fg-negative-primary"];
       case "cautionary":
         return color.orange["500"];
+      case "info":
+        return color.blue["500"];
       default:
         return textColor.light["fg-neutral-strong"];
     }
@@ -151,6 +159,8 @@ const Description = styled.div<{ $variant: string }>`
         return color.red["400"];
       case "cautionary":
         return color.orange["400"];
+      case "info":
+        return color.blue["500"];
       default:
         return textColor.light["fg-neutral-alternative"];
     }
@@ -172,6 +182,8 @@ const TrailingIconWrapper = styled.div<{ $variant: string }>`
         return negativeColor.light["fg-negative-primary"];
       case "cautionary":
         return color.orange["500"];
+      case "info":
+        return color.blue["500"];
       default:
         return textColor.light["fg-neutral-strong"];
     }

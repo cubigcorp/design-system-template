@@ -218,6 +218,58 @@ export const Interactive: Story = {
   },
 };
 
+export const WrappedInModal: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <div
+        style={{
+          width: "400px",
+          padding: "20px",
+          backgroundColor: "#fff",
+          border: "1px solid #ddd",
+          borderRadius: "8px",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+        }}
+      >
+        <h4 style={{ marginTop: 0 }}>모달 내부 (좁은 컨테이너)</h4>
+        <ChipTabs defaultValue={0}>
+          <Chip>전체</Chip>
+          <Chip>진행중</Chip>
+          <Chip>완료</Chip>
+          <Chip>보류</Chip>
+          <Chip>취소</Chip>
+          <Chip>대기</Chip>
+          <Chip>대기</Chip>
+          <Chip>대기</Chip>
+          <Chip>대기</Chip>
+          <Chip>대기</Chip>
+        </ChipTabs>
+      </div>
+      <div
+        style={{
+          padding: "12px",
+          backgroundColor: "#e7f3ff",
+          border: "1px solid #b3d9ff",
+          borderRadius: "4px",
+          fontSize: "14px",
+          color: "#0066cc",
+        }}
+      >
+        ✅ 칩이 컨테이너를 넘어가면 자동으로 다음 줄로 wrap됩니다.
+      </div>
+    </div>
+  ),
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        story:
+          "모달이나 좁은 컨테이너 안에서 ChipTabs가 공간을 넘어가면 자동으로 여러 줄로 wrap됩니다.",
+      },
+    },
+  },
+};
+
 export const Styling: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>

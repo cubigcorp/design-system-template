@@ -5,6 +5,7 @@ import React from "react";
 
 const StyledChipTabs = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: ${spacing.gap["gap-2"]}; // gap-2 (8px)
 `;
 

@@ -68,6 +68,7 @@ export type IconName =
   | "history"
   | "history-2"
   | "home"
+  | "identity-platform"
   | "info"
   | "integration-instructions"
   | "link"
@@ -404,6 +405,12 @@ export type IconComponentName =
   | "IconHomeOutline16"
   | "IconHomeOutline20"
   | "IconHomeOutline24"
+  | "IconIdentityPlatformFill16"
+  | "IconIdentityPlatformFill20"
+  | "IconIdentityPlatformFill24"
+  | "IconIdentityPlatformOutline16"
+  | "IconIdentityPlatformOutline20"
+  | "IconIdentityPlatformOutline24"
   | "IconInfoFill16"
   | "IconInfoFill20"
   | "IconInfoFill24"
@@ -2326,6 +2333,42 @@ export const ICON_METADATA: IconMetadata[] = [
     variant: "outline",
     size: 24,
     componentName: "IconHomeOutline24",
+  },
+  {
+    name: "identity-platform",
+    variant: "fill",
+    size: 16,
+    componentName: "IconIdentityPlatformFill16",
+  },
+  {
+    name: "identity-platform",
+    variant: "fill",
+    size: 20,
+    componentName: "IconIdentityPlatformFill20",
+  },
+  {
+    name: "identity-platform",
+    variant: "fill",
+    size: 24,
+    componentName: "IconIdentityPlatformFill24",
+  },
+  {
+    name: "identity-platform",
+    variant: "outline",
+    size: 16,
+    componentName: "IconIdentityPlatformOutline16",
+  },
+  {
+    name: "identity-platform",
+    variant: "outline",
+    size: 20,
+    componentName: "IconIdentityPlatformOutline20",
+  },
+  {
+    name: "identity-platform",
+    variant: "outline",
+    size: 24,
+    componentName: "IconIdentityPlatformOutline24",
   },
   {
     name: "info",

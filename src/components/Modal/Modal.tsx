@@ -208,7 +208,8 @@ const CloseButton = styled.button`
 const Content = styled.div`
   padding: ${spacing.gap["gap-3"]} ${spacing.gap["gap-6"]};
   flex: 1;
-  overflow: visible;
+  overflow-y: auto;
+  min-height: 0;
 `;
 
 const ActionArea = styled.div`

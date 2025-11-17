@@ -692,3 +692,147 @@ export const AllPositions: Story = {
     </div>
   ),
 };
+
+export const NestedModals: Story = {
+  parameters: {
+    controls: { disable: true },
+  },
+  render: () => {
+    const [firstModalOpen, setFirstModalOpen] = useState(false);
+    const [secondModalOpen, setSecondModalOpen] = useState(false);
+
+    return (
+      <div>
+        <button
+          onClick={() => setFirstModalOpen(true)}
+          style={{
+            padding: "8px 16px",
+            backgroundColor: "#007bff",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+        >
+          첫 번째 모달 열기
+        </button>
+
+        <Modal
+          size="large"
+          open={firstModalOpen}
+          onClose={() => setFirstModalOpen(false)}
+          title="첫 번째 모달"
+          showCloseButton={true}
+          actions={
+            <div
+              style={{
+                display: "flex",
+                gap: "8px",
+                justifyContent: "flex-end",
+                width: "100%",
+              }}
+            >
+              <OutlineButton
+                variant="secondary"
+                onClick={() => setFirstModalOpen(false)}
+              >
+                닫기
+              </OutlineButton>
+            </div>
+          }
+        >
+          <div style={{ padding: "20px" }}>
+            <h3 style={{ margin: "0 0 16px 0", color: "#333" }}>
+              첫 번째 모달 콘텐츠
+            </h3>
+            <p style={{ margin: "0 0 20px 0", color: "#666" }}>
+              이 모달 위에 또 다른 모달을 띄울 수 있습니다.
+              <br />
+              아래 버튼을 클릭하면 두 번째 모달이 열립니다.
+            </p>
+
+            <button
+              onClick={() => setSecondModalOpen(true)}
+              style={{
+                padding: "8px 16px",
+                backgroundColor: "#28a745",
+                color: "white",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+              }}
+            >
+              두 번째 모달 열기
+            </button>
+
+            <div
+              style={{
+                marginTop: "20px",
+                padding: "16px",
+                backgroundColor: "#f8f9fa",
+                borderRadius: "8px",
+                border: "1px solid #e9ecef",
+              }}
+            >
+              <strong>참고:</strong>
+              <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
+                <li>두 번째 모달이 첫 번째 모달 위에 표시됩니다</li>
+                <li>각 모달의 배경 클릭으로 닫을 수 있습니다</li>
+                <li>z-index가 자동으로 관리됩니다</li>
+              </ul>
+            </div>
+          </div>
+        </Modal>
+
+        <Modal
+          size="medium"
+          open={secondModalOpen}
+          onClose={() => setSecondModalOpen(false)}
+          title="두 번째 모달"
+          showCloseButton={true}
+          actions={
+            <div
+              style={{
+                display: "flex",
+                gap: "8px",
+                justifyContent: "flex-end",
+                width: "100%",
+              }}
+            >
+              <OutlineButton
+                variant="secondary"
+                onClick={() => setSecondModalOpen(false)}
+              >
+                닫기
+              </OutlineButton>
+              <SolidButton
+                variant="primary"
+                onClick={() => setSecondModalOpen(false)}
+              >
+                확인
+              </SolidButton>
+            </div>
+          }
+        >
+          <div
+            style={{
+              padding: "20px",
+              backgroundColor: "#fff3cd",
+              borderRadius: "8px",
+              textAlign: "center",
+            }}
+          >
+            <p style={{ margin: "0 0 12px 0", color: "#856404" }}>
+              <strong>두 번째 모달입니다!</strong>
+            </p>
+            <p style={{ margin: "0", color: "#856404" }}>
+              첫 번째 모달 위에 표시됩니다.
+              <br />
+              이 모달을 닫으면 첫 번째 모달이 다시 보입니다.
+            </p>
+          </div>
+        </Modal>
+      </div>
+    );
+  },
+};

@@ -22,3 +22,4 @@ export { radius } from "./radius";
 export { spacing } from "./spacing";
 export { shadow } from "./shadow";
 export { default as opacity } from "./opacity";
+export { withOpacity } from "./colorUtils";

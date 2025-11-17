@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Modal, ModalProps } from "../components/Modal";
 import { SolidButton, OutlineButton } from "../components/Button";
 import { Dropdown } from "../components/Dropdown";
+import { toast, ToastSystem } from "../components/Toast";
 
 const ModalWithState = ({
   size = "medium",
@@ -702,7 +703,9 @@ export const NestedModals: Story = {
     const [secondModalOpen, setSecondModalOpen] = useState(false);
 
     return (
-      <div>
+      <>
+        <ToastSystem />
+        <div>
         <button
           onClick={() => setFirstModalOpen(true)}
           style={{
@@ -778,7 +781,8 @@ export const NestedModals: Story = {
               <ul style={{ margin: "8px 0 0 0", paddingLeft: "20px" }}>
                 <li>두 번째 모달이 첫 번째 모달 위에 표시됩니다</li>
                 <li>각 모달의 배경 클릭으로 닫을 수 있습니다</li>
-                <li>z-index가 자동으로 관리됩니다</li>
+                <li>두 번째 모달에서 확인 버튼을 누르면 Toast가 표시됩니다</li>
+                <li>Toast는 모든 Modal 위에 표시됩니다 (z-index: 10000)</li>
               </ul>
             </div>
           </div>
@@ -807,7 +811,13 @@ export const NestedModals: Story = {
               </OutlineButton>
               <SolidButton
                 variant="primary"
-                onClick={() => setSecondModalOpen(false)}
+                onClick={() => {
+                  toast.success(
+                    "저장되었습니다",
+                    "Toast가 모든 Modal 위에 표시됩니다"
+                  );
+                  setSecondModalOpen(false);
+                }}
               >
                 확인
               </SolidButton>
@@ -832,7 +842,8 @@ export const NestedModals: Story = {
             </p>
           </div>
         </Modal>
-      </div>
+        </div>
+      </>
     );
   },
 };

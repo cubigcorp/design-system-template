@@ -199,7 +199,7 @@ const StyledToast = styled.div<{
     !$disablePositioning &&
     css`
       position: fixed;
-      z-index: ${9999 + $index};
+      z-index: ${10000 + $index};
 
       /* placement에 따른 위치 설정 */
       ${() => {

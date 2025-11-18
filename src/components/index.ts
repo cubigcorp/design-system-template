@@ -151,5 +151,9 @@ export { Callout } from "./Callout";
 export type { CalloutProps, CalloutVariant } from "./Callout/types";
 
 // TopBanner
-export { TopBanner } from "./TopBanner";
-export type { TopBannerProps } from "./TopBanner/types";
+export { TopBanner, TopBannerList } from "./TopBanner";
+export type {
+  TopBannerProps,
+  TopBannerListProps,
+  BannerItem,
+} from "./TopBanner/types";

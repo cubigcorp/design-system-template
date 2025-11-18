@@ -184,15 +184,10 @@ export const S3JsonExample = {
       link: banner[language].landing_url,
       startDate: banner.start,
       endDate: banner.end,
+      backgroundColor: banner.bg_color,
     }));
 
-    return (
-      <TopBannerList
-        banners={transformedBanners}
-        interval={4000}
-        style={{ backgroundColor: bannerList[0]?.bg_color || "#F7F7F8" }}
-      />
-    );
+    return <TopBannerList banners={transformedBanners} interval={4000} />;
   },
   parameters: {
     docs: {

@@ -10,6 +10,8 @@ export interface TopBannerProps
   startDate?: string;
   /** 노출 종료 날짜 (ISO 8601 형식) */
   endDate?: string;
+  /** 배경 색상 */
+  backgroundColor?: string;
 }
 
 export interface BannerItem {
@@ -21,6 +23,8 @@ export interface BannerItem {
   startDate?: string;
   /** 노출 종료 날짜 (ISO 8601 형식) */
   endDate?: string;
+  /** 배경 색상 */
+  backgroundColor?: string;
 }
 
 export interface TopBannerListProps

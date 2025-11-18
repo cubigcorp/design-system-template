@@ -8,6 +8,7 @@ const TopBanner: React.FC<TopBannerProps> = ({
   link,
   startDate,
   endDate,
+  backgroundColor = color.gray["950"],
   ...props
 }) => {
   const [hasError, setHasError] = useState(false);
@@ -59,6 +60,7 @@ const TopBanner: React.FC<TopBannerProps> = ({
     <BannerContainer
       $hasLink={!!link}
       $hasError={hasError}
+      $backgroundColor={backgroundColor}
       onClick={link ? handleClick : undefined}
       {...props}
     >
@@ -79,12 +81,13 @@ const TopBanner: React.FC<TopBannerProps> = ({
 const BannerContainer = styled.div<{
   $hasLink: boolean;
   $hasError: boolean;
+  $backgroundColor: string;
 }>`
   position: relative;
   width: 100%;
   height: 64px;
   overflow: hidden;
-  background-color: ${color.gray["950"]};
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
   cursor: ${({ $hasLink, $hasError }) =>
     $hasLink && !$hasError ? "pointer" : "default"};
   display: flex;
@@ -95,7 +98,7 @@ const BannerContainer = styled.div<{
 const BannerImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 `;
 
 const ErrorMessage = styled.div`

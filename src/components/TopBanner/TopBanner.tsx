@@ -83,7 +83,9 @@ const BannerContainer = styled.div<{
   $hasError: boolean;
   $backgroundColor: string;
 }>`
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 64px;
   overflow: hidden;
@@ -93,6 +95,7 @@ const BannerContainer = styled.div<{
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
 `;
 
 const BannerImage = styled.img`

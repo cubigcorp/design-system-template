@@ -9,7 +9,10 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
   ...props
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [prevIndex, setPrevIndex] = useState<number | null>(null);
+  const [isCrossfading, setIsCrossfading] = useState(false);
+  const [isCurrentVisible, setIsCurrentVisible] = useState(true);
+  const FADE_DURATION_MS = 400;
 
   // 날짜 범위에 맞는 배너들만 필터링
   const validBanners = useMemo(() => {
@@ -30,6 +33,9 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
   // validBanners가 변경되면 currentIndex 리셋
   useEffect(() => {
     setCurrentIndex(0);
+    setPrevIndex(null);
+    setIsCrossfading(false);
+    setIsCurrentVisible(true);
   }, [validBanners]);
 
   // 배너 자동 전환
@@ -37,15 +43,24 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
     if (validBanners.length <= 1) return;
 
     const timer = setInterval(() => {
-      setIsTransitioning(true);
+      const nextIndex = (currentIndex + 1) % validBanners.length;
+      setPrevIndex(currentIndex);
+      setCurrentIndex(nextIndex);
+      setIsCrossfading(true);
+      setIsCurrentVisible(false); // 새 배너는 0에서 시작
+      // 다음 프레임에 1로 전환하여 애니메이션 트리거
       setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % validBanners.length);
-        setIsTransitioning(false);
-      }, 300); // fade-out 시간
+        setIsCurrentVisible(true);
+      }, 0);
+      // 애니메이션 종료 후 이전 배너 제거
+      setTimeout(() => {
+        setPrevIndex(null);
+        setIsCrossfading(false);
+      }, FADE_DURATION_MS);
     }, interval);
 
     return () => clearInterval(timer);
-  }, [validBanners.length, interval]);
+  }, [validBanners.length, interval, currentIndex]);
 
   // 유효한 배너가 없으면 렌더링하지 않음
   if (validBanners.length === 0) {
@@ -56,9 +71,35 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
 
   return (
     <BannerWrapper>
-      <FadeContainer $isVisible={!isTransitioning}>
+      {prevIndex !== null && validBanners[prevIndex] && (
+        <Layer
+          style={{
+            opacity: isCrossfading ? 0 : 1,
+            transition: `opacity ${FADE_DURATION_MS}ms ease`,
+            pointerEvents: "none",
+          }}
+        >
+          <TopBanner
+            key={`prev-${validBanners[prevIndex].src}`}
+            src={validBanners[prevIndex].src}
+            link={validBanners[prevIndex].link}
+            startDate={validBanners[prevIndex].startDate}
+            endDate={validBanners[prevIndex].endDate}
+            backgroundColor={validBanners[prevIndex].backgroundColor}
+            {...props}
+          />
+        </Layer>
+      )}
+      <Layer
+        style={{
+          opacity: isCurrentVisible ? 1 : 0.5,
+          transition: `opacity ${FADE_DURATION_MS}ms ease`,
+          pointerEvents: "auto",
+        }}
+        key={`curr-layer-${currentBanner.src}`}
+      >
         <TopBanner
-          key={currentBanner.src}
+          key={`curr-${currentBanner.src}`}
           src={currentBanner.src}
           link={currentBanner.link}
           startDate={currentBanner.startDate}
@@ -66,7 +107,7 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
           backgroundColor={currentBanner.backgroundColor}
           {...props}
         />
-      </FadeContainer>
+      </Layer>
     </BannerWrapper>
   );
 };
@@ -77,11 +118,13 @@ const BannerWrapper = styled.div`
   height: 64px;
 `;
 
-const FadeContainer = styled.div<{ $isVisible: boolean }>`
+const Layer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
-  opacity: ${({ $isVisible }) => ($isVisible ? 1 : 0.5)};
-  transition: opacity 0.3s ease-in-out;
+  height: 64px;
+  z-index: 1000;
 `;
 
 TopBannerList.displayName = "TopBannerList";

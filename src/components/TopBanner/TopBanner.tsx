@@ -96,12 +96,21 @@ const BannerContainer = styled.div<{
   align-items: center;
   justify-content: center;
   z-index: 1000;
+ 
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  contain: paint;
+  isolation: isolate;
 `;
 
 const BannerImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
+  cursor: pointer;
 `;
 
 const ErrorMessage = styled.div`

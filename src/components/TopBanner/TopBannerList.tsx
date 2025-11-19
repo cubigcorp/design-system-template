@@ -2,15 +2,30 @@ import React, { useState, useEffect, useMemo } from "react";
 import styled from "styled-components";
 import { TopBannerListProps } from "./types";
 import color from "../../tokens/color";
+import { IconCloseOutline24 } from "../icons";
+
+const textColorByHex = (hexColor: string): string => {
+  const hex = hexColor.replace("#", "");
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+
+  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+  return yiq >= 128 ? "#000000" : "#FFFFFF";
+};
 
 const TopBannerList: React.FC<TopBannerListProps> = ({
   banners,
   interval = 4000,
-  ...props
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
-  const FADE_DURATION_MS = 800;
+  const [isClosed, setIsClosed] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const handleClose = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsClosed(true);
+  };
 
   // 날짜 범위에 맞는 배너들만 필터링
   const validBanners = useMemo(() => {
@@ -31,7 +46,6 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
   // validBanners가 변경되면 currentIndex 리셋
   useEffect(() => {
     setCurrentIndex(0);
-    setIsVisible(true);
   }, [validBanners]);
 
   // 배너 자동 전환
@@ -39,21 +53,18 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
     if (validBanners.length <= 1) return;
 
     const timer = setInterval(() => {
-      // 페이드아웃
-      setIsVisible(false);
-
-      // 페이드아웃 완료 후 배너 변경하고 페이드인
+      setIsTransitioning(true);
       setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % validBanners.length);
-        setIsVisible(true);
-      }, FADE_DURATION_MS);
+        setIsTransitioning(false);
+      }, 300);
     }, interval);
 
     return () => clearInterval(timer);
   }, [validBanners.length, interval]);
 
-  // 유효한 배너가 없으면 렌더링하지 않음
-  if (validBanners.length === 0) {
+  // 유효한 배너가 없거나 닫혔으면 렌더링하지 않음
+  if (validBanners.length === 0 || isClosed) {
     return null;
   }
 
@@ -65,18 +76,24 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
     }
   };
 
+  const backgroundColor = currentBanner.backgroundColor || color.gray["950"];
+  const closeButtonColor = textColorByHex(backgroundColor);
+
   return (
     <BannerContainer
       $hasLink={!!currentBanner.link}
-      $backgroundColor={currentBanner.backgroundColor || color.gray["950"]}
+      $backgroundColor={backgroundColor}
+      $isTransitioning={isTransitioning}
       onClick={currentBanner.link ? handleClick : undefined}
-      style={{
-        opacity: isVisible ? 1 : 0.3,
-        transition: `opacity ${FADE_DURATION_MS}ms ease-in-out`,
-      }}
-      {...props}
     >
       <BannerImage src={currentBanner.src} alt="배너" />
+      <CloseButton
+        $color={closeButtonColor}
+        onClick={handleClose}
+        aria-label="배너 닫기"
+      >
+        <IconCloseOutline24 />
+      </CloseButton>
     </BannerContainer>
   );
 };
@@ -84,13 +101,13 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
 const BannerContainer = styled.div<{
   $hasLink: boolean;
   $backgroundColor: string;
+  $isTransitioning: boolean;
 }>`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 64px;
-  overflow: hidden;
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   cursor: ${({ $hasLink }) => ($hasLink ? "pointer" : "default")};
   display: flex;
@@ -104,6 +121,27 @@ const BannerImage = styled.img`
   width: auto;
   max-width: 100%;
   object-fit: contain;
+`;
+
+const CloseButton = styled.button<{ $color: string }>`
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ $color }) => $color};
+  transition: opacity 0.2s;
+  z-index: 10;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 TopBannerList.displayName = "TopBannerList";

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import styled from "styled-components";
-import { TopBanner } from "./TopBanner";
 import { TopBannerListProps } from "./types";
+import color from "../../tokens/color";
 
 const TopBannerList: React.FC<TopBannerListProps> = ({
   banners,
@@ -9,10 +9,8 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
   ...props
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [prevIndex, setPrevIndex] = useState<number | null>(null);
-  const [isCrossfading, setIsCrossfading] = useState(false);
-  const [isCurrentVisible, setIsCurrentVisible] = useState(true);
-  const FADE_DURATION_MS = 400;
+  const [isVisible, setIsVisible] = useState(true);
+  const FADE_DURATION_MS = 800;
 
   // 날짜 범위에 맞는 배너들만 필터링
   const validBanners = useMemo(() => {
@@ -33,9 +31,7 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
   // validBanners가 변경되면 currentIndex 리셋
   useEffect(() => {
     setCurrentIndex(0);
-    setPrevIndex(null);
-    setIsCrossfading(false);
-    setIsCurrentVisible(true);
+    setIsVisible(true);
   }, [validBanners]);
 
   // 배너 자동 전환
@@ -43,24 +39,18 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
     if (validBanners.length <= 1) return;
 
     const timer = setInterval(() => {
-      const nextIndex = (currentIndex + 1) % validBanners.length;
-      setPrevIndex(currentIndex);
-      setCurrentIndex(nextIndex);
-      setIsCrossfading(true);
-      setIsCurrentVisible(false); // 새 배너는 0에서 시작
-      // 다음 프레임에 1로 전환하여 애니메이션 트리거
+      // 페이드아웃
+      setIsVisible(false);
+
+      // 페이드아웃 완료 후 배너 변경하고 페이드인
       setTimeout(() => {
-        setIsCurrentVisible(true);
-      }, 0);
-      // 애니메이션 종료 후 이전 배너 제거
-      setTimeout(() => {
-        setPrevIndex(null);
-        setIsCrossfading(false);
+        setCurrentIndex((prev) => (prev + 1) % validBanners.length);
+        setIsVisible(true);
       }, FADE_DURATION_MS);
     }, interval);
 
     return () => clearInterval(timer);
-  }, [validBanners.length, interval, currentIndex]);
+  }, [validBanners.length, interval]);
 
   // 유효한 배너가 없으면 렌더링하지 않음
   if (validBanners.length === 0) {
@@ -69,62 +59,51 @@ const TopBannerList: React.FC<TopBannerListProps> = ({
 
   const currentBanner = validBanners[currentIndex];
 
+  const handleClick = () => {
+    if (currentBanner.link) {
+      window.open(currentBanner.link, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
-    <BannerWrapper>
-      {prevIndex !== null && validBanners[prevIndex] && (
-        <Layer
-          style={{
-            opacity: isCrossfading ? 0 : 1,
-            transition: `opacity ${FADE_DURATION_MS}ms ease`,
-            pointerEvents: "none",
-          }}
-        >
-          <TopBanner
-            key={`prev-${validBanners[prevIndex].src}`}
-            src={validBanners[prevIndex].src}
-            link={validBanners[prevIndex].link}
-            startDate={validBanners[prevIndex].startDate}
-            endDate={validBanners[prevIndex].endDate}
-            backgroundColor={validBanners[prevIndex].backgroundColor}
-            {...props}
-          />
-        </Layer>
-      )}
-      <Layer
-        style={{
-          opacity: isCurrentVisible ? 1 : 0.5,
-          transition: `opacity ${FADE_DURATION_MS}ms ease`,
-          pointerEvents: "auto",
-        }}
-        key={`curr-layer-${currentBanner.src}`}
-      >
-        <TopBanner
-          key={`curr-${currentBanner.src}`}
-          src={currentBanner.src}
-          link={currentBanner.link}
-          startDate={currentBanner.startDate}
-          endDate={currentBanner.endDate}
-          backgroundColor={currentBanner.backgroundColor}
-          {...props}
-        />
-      </Layer>
-    </BannerWrapper>
+    <BannerContainer
+      $hasLink={!!currentBanner.link}
+      $backgroundColor={currentBanner.backgroundColor || color.gray["950"]}
+      onClick={currentBanner.link ? handleClick : undefined}
+      style={{
+        opacity: isVisible ? 1 : 0.3,
+        transition: `opacity ${FADE_DURATION_MS}ms ease-in-out`,
+      }}
+      {...props}
+    >
+      <BannerImage src={currentBanner.src} alt="배너" />
+    </BannerContainer>
   );
 };
 
-const BannerWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  height: 64px;
-`;
-
-const Layer = styled.div`
+const BannerContainer = styled.div<{
+  $hasLink: boolean;
+  $backgroundColor: string;
+}>`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 64px;
+  overflow: hidden;
+  background-color: ${({ $backgroundColor }) => $backgroundColor};
+  cursor: ${({ $hasLink }) => ($hasLink ? "pointer" : "default")};
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1000;
+`;
+
+const BannerImage = styled.img`
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
 `;
 
 TopBannerList.displayName = "TopBannerList";

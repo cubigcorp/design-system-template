@@ -8,16 +8,30 @@ import {
   Chip,
   TopBannerList,
   color,
-  spacing,
-  fontSize,
   typography,
 } from ".";
-import BannerSample from "./assets/images/banner_sample.svg";
-import BannerSample2 from "./assets/images/llmcapsule_banner_dan25.svg";
+
+interface BannerData {
+  start: string;
+  end: string;
+  env: string;
+  bg_color: string;
+  channels: string[];
+  kor: {
+    image_url: string;
+    landing_url: string;
+  };
+  eng: {
+    image_url: string;
+    landing_url: string;
+  };
+}
 
 function App() {
   const [lang, setLang] = React.useState<"ko" | "en">("ko");
   const [showToast, setShowToast] = React.useState(false);
+  const [bannerList, setBannerList] = React.useState<BannerData[]>([]);
+  const [isBannerLoading, setIsBannerLoading] = React.useState(true);
 
   React.useEffect(() => {
     if (typeof document !== "undefined") {
@@ -25,23 +39,48 @@ function App() {
     }
   }, [lang]);
 
+  React.useEffect(() => {
+    fetch(
+      "https://cubig-banner.s3.ap-northeast-2.amazonaws.com/dev/banner_list.json"
+    )
+      .then((res) => res.json())
+      .then((data: BannerData[]) => {
+        if (data && data.length > 0) {
+          setBannerList(data);
+        }
+        setIsBannerLoading(false);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch banner data:", error);
+        setIsBannerLoading(false);
+      });
+  }, []);
+
+  const transformedBanners = React.useMemo(() => {
+    return bannerList.map((banner) => ({
+      src: banner.kor.image_url,
+      link: banner.kor.landing_url,
+      startDate: banner.start,
+      endDate: banner.end,
+      backgroundColor: banner.bg_color,
+    }));
+  }, [bannerList]);
+
+  // 배너 이미지 프리로드
+  React.useEffect(() => {
+    if (transformedBanners.length === 0) return;
+
+    transformedBanners.forEach((banner) => {
+      const img = new Image();
+      img.src = banner.src;
+    });
+  }, [transformedBanners]);
+
   return (
     <Page>
-      <TopBannerList
-        banners={[
-          {
-            src: BannerSample,
-            link: "https://example.com/1",
-            backgroundColor: color.blue["50"],
-          },
-          {
-            src: BannerSample2,
-            link: "https://example.com/2",
-            backgroundColor: color.blue["50"],
-          },
-        ]}
-        interval={4000}
-      />
+      {!isBannerLoading && transformedBanners.length > 0 && (
+        <TopBannerList banners={transformedBanners} interval={4000} />
+      )}
       <div className="App" style={{ padding: 24 }}>
         <header style={{ marginBottom: 32 }}>
           <h1

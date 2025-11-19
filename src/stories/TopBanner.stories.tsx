@@ -2,6 +2,23 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { TopBanner, TopBannerList } from "../components/TopBanner";
 import { useState, useEffect } from "react";
 
+// S3 JSON 데이터 타입 정의
+interface BannerData {
+  start: string;
+  end: string;
+  env: string;
+  bg_color: string;
+  channels: string[];
+  kor: {
+    image_url: string;
+    landing_url: string;
+  };
+  eng: {
+    image_url: string;
+    landing_url: string;
+  };
+}
+
 const meta = {
   title: "Components/TopBanner",
   component: TopBanner,
@@ -39,7 +56,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 import BannerImage from "../assets/images/llmcapsule_banner_dan25.svg";
-import BannerSample from "../assets/images/banner_sample.svg";
 
 export const Default: Story = {
   args: {
@@ -67,76 +83,122 @@ export const WithDateRange: Story = {
 
 // TopBannerList 예시
 export const ListMultiple = {
-  render: () => (
-    <TopBannerList
-      banners={[
-        {
-          src: BannerImage,
-          link: "https://blog.naver.com/cubig_",
-        },
-        {
-          src: BannerSample,
-          link: "https://google.com",
-        },
-      ]}
-      interval={4000}
-    />
-  ),
+  render: () => {
+    const [bannerList, setBannerList] = useState<BannerData[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const language = "kor";
+
+    useEffect(() => {
+      fetch(
+        "https://cubig-banner.s3.ap-northeast-2.amazonaws.com/dev/banner_list.json"
+      )
+        .then((res) => res.json())
+        .then((data: BannerData[]) => {
+          if (data && data.length > 0) {
+            setBannerList(data);
+          }
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch banner data:", error);
+          setIsLoading(false);
+        });
+    }, []);
+
+    if (isLoading) {
+      return (
+        <div style={{ padding: "20px", textAlign: "center" }}>
+          배너 데이터 로딩 중...
+        </div>
+      );
+    }
+
+    if (bannerList.length === 0) {
+      return (
+        <div style={{ padding: "20px", textAlign: "center" }}>
+          배너 데이터를 불러올 수 없습니다
+        </div>
+      );
+    }
+
+    const transformedBanners = bannerList.map((banner) => ({
+      src: banner[language].image_url,
+      link: banner[language].landing_url,
+      startDate: banner.start,
+      endDate: banner.end,
+      backgroundColor: banner.bg_color,
+    }));
+
+    return <TopBannerList banners={transformedBanners} interval={4000} />;
+  },
   parameters: {
     docs: {
       description: {
         story:
-          "TopBannerList는 여러 배너를 받아 자동으로 4초마다 전환합니다. 가장 일반적인 사용 방법입니다.",
+          "S3에서 배너 데이터를 불러와 TopBannerList로 여러 배너를 표시합니다. 자동으로 4초마다 전환됩니다.",
       },
     },
   },
 };
 
 export const ListWithDateFilter = {
-  render: () => (
-    <TopBannerList
-      banners={[
-        {
-          src: BannerImage,
-          link: "https://blog.naver.com/cubig_",
-          startDate: "2025-01-01",
-          endDate: "2025-12-31",
-        },
-        {
-          src: BannerSample,
-          link: "https://google.com",
-          startDate: "2025-11-01",
-          endDate: "2025-11-30",
-        },
-      ]}
-    />
-  ),
+  render: () => {
+    const [bannerList, setBannerList] = useState<BannerData[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const language = "kor";
+
+    useEffect(() => {
+      fetch(
+        "https://cubig-banner.s3.ap-northeast-2.amazonaws.com/dev/banner_list.json"
+      )
+        .then((res) => res.json())
+        .then((data: BannerData[]) => {
+          if (data && data.length > 0) {
+            setBannerList(data);
+          }
+          setIsLoading(false);
+        })
+        .catch((error) => {
+          console.error("Failed to fetch banner data:", error);
+          setIsLoading(false);
+        });
+    }, []);
+
+    if (isLoading) {
+      return (
+        <div style={{ padding: "20px", textAlign: "center" }}>
+          배너 데이터 로딩 중...
+        </div>
+      );
+    }
+
+    if (bannerList.length === 0) {
+      return (
+        <div style={{ padding: "20px", textAlign: "center" }}>
+          배너 데이터를 불러올 수 없습니다
+        </div>
+      );
+    }
+
+    const transformedBanners = bannerList.map((banner) => ({
+      src: banner[language].image_url,
+      link: banner[language].landing_url,
+      startDate: banner.start,
+      endDate: banner.end,
+      backgroundColor: banner.bg_color,
+    }));
+
+    return <TopBannerList banners={transformedBanners} interval={4000} />;
+  },
   parameters: {
     docs: {
       description: {
         story:
-          "TopBannerList는 내부에서 날짜 필터링을 자동으로 처리합니다. 현재 날짜가 범위를 벗어난 배너는 자동으로 제외되어 유효한 배너들만 순환합니다.",
+          "S3에서 배너 데이터를 불러와 TopBannerList로 표시합니다. TopBannerList는 내부에서 날짜 필터링을 자동으로 처리하며, 현재 날짜가 범위를 벗어난 배너는 자동으로 제외되어 유효한 배너들만 순환합니다.",
       },
     },
   },
 };
-
-// S3 JSON 데이터 타입 정의
-interface BannerData {
-  start: string;
-  end: string;
-  env: string;
-  bg_color: string;
-  channels: string[];
-  kor: {
-    image_url: string;
-    landing_url: string;
-  };
-  eng: {
-    image_url: string;
-    landing_url: string;
-  };
-}
 
 export const S3JsonExample = {
   render: () => {

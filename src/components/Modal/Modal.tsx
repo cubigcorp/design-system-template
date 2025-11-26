@@ -133,7 +133,7 @@ const Overlay = styled.div<{ $isVisible: boolean; $position: string }>`
 `;
 
 const ModalContainer = styled.div<{
-  $size: "x-small" | "small" | "medium" | "large";
+  $size: "x-small" | "small" | "medium" | "large" | "x-large";
   $isVisible: boolean;
 }>`
   background-color: ${layerColor.light["bg-layer-floating"]};
@@ -164,6 +164,10 @@ const ModalContainer = styled.div<{
       case "large":
         return `
           width: 960px;
+        `;
+      case "x-large":
+        return `
+          width: 1200px;
         `;
       default:
         return `

@@ -1,6 +1,6 @@
 import { HTMLAttributes, ReactNode } from "react";
 
-export type ModalSize = "x-small" | "small" | "medium" | "large";
+export type ModalSize = "x-small" | "small" | "medium" | "large" | "x-large";
 export type ModalPosition =
   | "top-left"
   | "top-center"

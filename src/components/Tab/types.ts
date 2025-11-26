@@ -12,4 +12,5 @@ export interface TabProps
   value?: number;
   onChange?: (index: number) => void;
   children: ReactNode;
+  showDivider?: boolean;
 }

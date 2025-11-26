@@ -50,6 +50,10 @@ const meta = {
       control: false,
       description: "TabItem 컴포넌트들입니다.",
     },
+    showDivider: {
+      control: { type: "boolean" },
+      description: "하단 구분선 표시 여부를 설정합니다.",
+    },
   },
 } satisfies Meta<typeof Tab>;
 
@@ -283,6 +287,26 @@ export const Interactive: Story = {
   },
 };
 
+export const WithoutDivider: Story = {
+  render: (args) => (
+    <Tab {...args} showDivider={false}>
+      <TabItem>홈</TabItem>
+      <TabItem>설정</TabItem>
+      <TabItem>프로필</TabItem>
+    </Tab>
+  ),
+  args: {
+    defaultValue: 0,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "하단 구분선이 없는 탭입니다.",
+      },
+    },
+  },
+};
+
 export const Styling: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "32px" }}>
@@ -295,6 +319,15 @@ export const Styling: Story = {
             borderRadius: "8px",
           }}
         >
+          <TabItem>홈</TabItem>
+          <TabItem>설정</TabItem>
+          <TabItem>프로필</TabItem>
+        </Tab>
+      </div>
+
+      <div>
+        <h4>구분선 없음</h4>
+        <Tab showDivider={false}>
           <TabItem>홈</TabItem>
           <TabItem>설정</TabItem>
           <TabItem>프로필</TabItem>

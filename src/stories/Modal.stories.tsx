@@ -75,7 +75,7 @@ const meta: Meta<typeof Modal> = {
   argTypes: {
     size: {
       control: "select",
-      options: ["x-small", "small", "medium", "large"],
+      options: ["x-small", "small", "medium", "large", "x-large"],
       description: "모달의 크기를 선택합니다.",
     },
     position: {
@@ -209,6 +209,19 @@ export const AllSizes: Story = {
           }}
         >
           Large 크기
+        </div>
+      </ModalWithState>
+      <ModalWithState size="x-large" title="X-Large Modal">
+        <div
+          style={{
+            padding: "20px",
+            backgroundColor: "#f0f8ff",
+            borderRadius: "8px",
+            textAlign: "center",
+            color: "#666",
+          }}
+        >
+          X-Large 크기 (1200px)
         </div>
       </ModalWithState>
     </div>

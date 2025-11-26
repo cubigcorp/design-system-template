@@ -5,9 +5,10 @@ import color from "../../tokens/color";
 import textColor from "../../tokens/textColor";
 import React from "react";
 
-const StyledTab = styled.div`
+const StyledTab = styled.div<{ $showDivider: boolean }>`
   display: flex;
-  border-bottom: 1px solid ${color.gray["200"]};
+  border-bottom: ${({ $showDivider }) =>
+    $showDivider ? `1px solid ${color.gray["200"]}` : "none"};
   gap: ${spacing.gap["gap-6"]};
   position: relative;
 `;
@@ -31,6 +32,7 @@ export const Tab = ({
   defaultValue = 0,
   value,
   onChange,
+  showDivider = true,
   ...props
 }: TabProps) => {
   const [internalValue, setInternalValue] = React.useState(defaultValue);
@@ -69,7 +71,7 @@ export const Tab = ({
   }, [currentValue, limitedChildren.length]);
 
   return (
-    <StyledTab className={className} {...props}>
+    <StyledTab className={className} $showDivider={showDivider} {...props}>
       <SelectionIndicator $left={indicatorStyle.left} $width={indicatorStyle.width} />
       {limitedChildren.map((child, index) => {
         if (React.isValidElement(child)) {

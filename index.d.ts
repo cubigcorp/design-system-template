@@ -27,6 +27,11 @@ export * from './components/Popover';
 export * from './components/Pagination';
 export * from './components/Menu';
 export * from './components/Cell';
+export * from './components/StepIndicator';
+export * from './components/Breadcrumbs';
+export * from './components/Callout';
+export * from './components/MultiSelect';
+export * from './components/TopBanner';
 export * from './tokens';
 export declare const cssFiles: {
     fonts: string;

@@ -9,4 +9,5 @@ export interface TabProps extends Omit<HTMLAttributes<HTMLDivElement>, "onChange
     value?: number;
     onChange?: (index: number) => void;
     children: ReactNode;
+    showDivider?: boolean;
 }

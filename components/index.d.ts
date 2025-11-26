@@ -64,3 +64,5 @@ export { Pagination } from './Pagination';
 export type { PaginationProps, PaginationVariant } from './Pagination/types';
 export { Callout } from './Callout';
 export type { CalloutProps, CalloutVariant } from './Callout/types';
+export { TopBanner, TopBannerList } from './TopBanner';
+export type { TopBannerProps, TopBannerListProps, BannerItem, } from './TopBanner/types';

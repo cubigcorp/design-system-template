@@ -2,7 +2,6 @@ import React, { createContext, useContext } from "react";
 import styled from "styled-components";
 import { spacing } from "../../tokens/spacing";
 import { typography } from "../../tokens";
-import fontFamily from "../../tokens/fontFamily";
 import textColor from "../../tokens/textColor";
 
 interface LNBContextValue {
@@ -55,14 +54,6 @@ export const LNB: React.FC<LNBProps> = ({
 
 const Container = styled.nav<{ $iconOnly: boolean }>`
   ${typography(undefined, "body3", "medium")}
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
 
   display: flex;
   flex-direction: column;

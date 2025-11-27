@@ -195,17 +195,7 @@ const typography = (
     font-weight: ${style.weights[fontWeight]};
     letter-spacing: ${style.letterSpacing};
     line-height: ${style.lineHeight[0]};
-    
 
-    &:lang(en),
-    &[lang="en"] {
-      font-family: ${style.families.en};
-    }
-    &:lang(ko),
-    &[lang="ko"] {
-      font-family: ${style.families.ko};
-    }
-    
     @media (max-width: 768px) {
       font-size: ${style.fontSize[1]["@media (max-width: 768px)"][0]};
       line-height: ${style.lineHeight[1]["@media (max-width: 768px)"][0]};

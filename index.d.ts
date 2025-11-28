@@ -32,6 +32,7 @@ export * from './components/Breadcrumbs';
 export * from './components/Callout';
 export * from './components/MultiSelect';
 export * from './components/TopBanner';
+export * from './components/Tooltip';
 export * from './tokens';
 export declare const cssFiles: {
     fonts: string;

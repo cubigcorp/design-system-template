@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import styled, { css, keyframes } from "styled-components";
-import { TooltipProps, TooltipPlacement } from "./types";
+import { TooltipProps } from "./types";
 import { typography } from "../../tokens";
 import { spacing } from "../../tokens/spacing";
 import { radius } from "../../tokens/radius";
@@ -27,6 +28,62 @@ export const Tooltip: React.FC<TooltipProps> = ({
   className,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [position, setPosition] = useState({ top: 0, left: 0 });
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const tooltipRef = useRef<HTMLDivElement>(null);
+
+  const calculatePosition = () => {
+    if (!triggerRef.current || !tooltipRef.current) return;
+
+    const triggerRect = triggerRef.current.getBoundingClientRect();
+    const tooltipRect = tooltipRef.current.getBoundingClientRect();
+
+    let top = 0;
+    let left = 0;
+
+    switch (placement) {
+      case "top-left":
+        top = triggerRect.top - tooltipRect.height - offset;
+        left = triggerRect.left;
+        break;
+      case "top-center":
+        top = triggerRect.top - tooltipRect.height - offset;
+        left = triggerRect.left + (triggerRect.width - tooltipRect.width) / 2;
+        break;
+      case "top-right":
+        top = triggerRect.top - tooltipRect.height - offset;
+        left = triggerRect.right - tooltipRect.width;
+        break;
+      case "bottom-left":
+        top = triggerRect.bottom + offset;
+        left = triggerRect.left;
+        break;
+      case "bottom-center":
+        top = triggerRect.bottom + offset;
+        left = triggerRect.left + (triggerRect.width - tooltipRect.width) / 2;
+        break;
+      case "bottom-right":
+        top = triggerRect.bottom + offset;
+        left = triggerRect.right - tooltipRect.width;
+        break;
+      case "left":
+        top = triggerRect.top + (triggerRect.height - tooltipRect.height) / 2;
+        left = triggerRect.left - tooltipRect.width - offset;
+        break;
+      case "right":
+        top = triggerRect.top + (triggerRect.height - tooltipRect.height) / 2;
+        left = triggerRect.right + offset;
+        break;
+    }
+
+    setPosition({ top, left });
+  };
+
+  useEffect(() => {
+    if (isVisible) {
+      calculatePosition();
+    }
+  }, [isVisible, placement, offset]);
 
   const handleMouseEnter = () => {
     setIsVisible(true);
@@ -38,17 +95,24 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
   return (
     <Container
+      ref={triggerRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={className}
     >
       {children}
-      {isVisible && (
-        <TooltipContent $variant={variant} $placement={placement} $offset={offset}>
-          <Text $variant={variant}>{text}</Text>
-          {hotkey && <Hotkey $variant={variant}>{hotkey}</Hotkey>}
-        </TooltipContent>
-      )}
+      {isVisible &&
+        createPortal(
+          <TooltipContent
+            ref={tooltipRef}
+            $variant={variant}
+            style={{ top: position.top, left: position.left }}
+          >
+            <Text $variant={variant}>{text}</Text>
+            {hotkey && <Hotkey $variant={variant}>{hotkey}</Hotkey>}
+          </TooltipContent>,
+          document.body
+        )}
     </Container>
   );
 };
@@ -58,79 +122,19 @@ const Container = styled.div`
   display: inline-flex;
 `;
 
-const getPlacementStyles = (placement: TooltipPlacement, offset: number) => {
-  switch (placement) {
-    case "top-left":
-      return css`
-        bottom: 100%;
-        left: 0;
-        margin-bottom: ${offset}px;
-      `;
-    case "top-center":
-      return css`
-        bottom: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-bottom: ${offset}px;
-      `;
-    case "top-right":
-      return css`
-        bottom: 100%;
-        right: 0;
-        margin-bottom: ${offset}px;
-      `;
-    case "bottom-left":
-      return css`
-        top: 100%;
-        left: 0;
-        margin-top: ${offset}px;
-      `;
-    case "bottom-center":
-      return css`
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        margin-top: ${offset}px;
-      `;
-    case "bottom-right":
-      return css`
-        top: 100%;
-        right: 0;
-        margin-top: ${offset}px;
-      `;
-    case "left":
-      return css`
-        right: 100%;
-        top: 50%;
-        transform: translateY(-50%);
-        margin-right: ${offset}px;
-      `;
-    case "right":
-      return css`
-        left: 100%;
-        top: 50%;
-        transform: translateY(-50%);
-        margin-left: ${offset}px;
-      `;
-  }
-};
-
 const TooltipContent = styled.div<{
   $variant: "primary" | "secondary";
-  $placement: TooltipPlacement;
-  $offset: number;
 }>`
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   gap: ${spacing.gap["gap-1.5"]};
   padding: ${spacing.gap["gap-1"]} ${spacing.gap["gap-2"]};
   border-radius: ${radius["rounded-1.5"]};
   white-space: nowrap;
-  z-index: 1000;
+  z-index: 9999;
   animation: ${fadeIn} 0.15s ease-in-out;
-
-  ${({ $placement, $offset }) => getPlacementStyles($placement, $offset)}
+  pointer-events: none;
 
   ${({ $variant }) =>
     $variant === "primary"

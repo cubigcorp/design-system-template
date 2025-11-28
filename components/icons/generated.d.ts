@@ -52,6 +52,9 @@ export { default as IconArrowUpOutline24 } from '../../assets/icons/icon_arrow-u
 export { default as IconArrowUpwardOutline16 } from '../../assets/icons/icon_arrow-upward_outline_16.svg?react';
 export { default as IconArrowUpwardOutline20 } from '../../assets/icons/icon_arrow-upward_outline_20.svg?react';
 export { default as IconArrowUpwardOutline24 } from '../../assets/icons/icon_arrow-upward_outline_24.svg?react';
+export { default as IconAssignmentOutline16 } from '../../assets/icons/icon_assignment_outline_16.svg?react';
+export { default as IconAssignmentOutline20 } from '../../assets/icons/icon_assignment_outline_20.svg?react';
+export { default as IconAssignmentOutline24 } from '../../assets/icons/icon_assignment_outline_24.svg?react';
 export { default as IconAwardMealOutline16 } from '../../assets/icons/icon_award-meal_outline_16.svg?react';
 export { default as IconAwardMealOutline20 } from '../../assets/icons/icon_award-meal_outline_20.svg?react';
 export { default as IconAwardMealOutline24 } from '../../assets/icons/icon_award-meal_outline_24.svg?react';
@@ -139,6 +142,9 @@ export { default as IconCloseOutline24 } from '../../assets/icons/icon_close_out
 export { default as IconCloseSmallOutline16 } from '../../assets/icons/icon_close-small_outline_16.svg?react';
 export { default as IconCloseSmallOutline20 } from '../../assets/icons/icon_close-small_outline_20.svg?react';
 export { default as IconCloseSmallOutline24 } from '../../assets/icons/icon_close-small_outline_24.svg?react';
+export { default as IconColumnOutline16 } from '../../assets/icons/icon_column_outline_16.svg?react';
+export { default as IconColumnOutline20 } from '../../assets/icons/icon_column_outline_20.svg?react';
+export { default as IconColumnOutline24 } from '../../assets/icons/icon_column_outline_24.svg?react';
 export { default as IconColumnsOutline16 } from '../../assets/icons/icon_columns_outline_16.svg?react';
 export { default as IconColumnsOutline20 } from '../../assets/icons/icon_columns_outline_20.svg?react';
 export { default as IconColumnsOutline24 } from '../../assets/icons/icon_columns_outline_24.svg?react';
@@ -403,6 +409,9 @@ export { default as IconProgressOutline24 } from '../../assets/icons/icon_progre
 export { default as IconRefreshOutline16 } from '../../assets/icons/icon_refresh_outline_16.svg?react';
 export { default as IconRefreshOutline20 } from '../../assets/icons/icon_refresh_outline_20.svg?react';
 export { default as IconRefreshOutline24 } from '../../assets/icons/icon_refresh_outline_24.svg?react';
+export { default as IconRowOutline16 } from '../../assets/icons/icon_row_outline_16.svg?react';
+export { default as IconRowOutline20 } from '../../assets/icons/icon_row_outline_20.svg?react';
+export { default as IconRowOutline24 } from '../../assets/icons/icon_row_outline_24.svg?react';
 export { default as IconScanFill16 } from '../../assets/icons/icon_scan_fill_16.svg?react';
 export { default as IconScanFill20 } from '../../assets/icons/icon_scan_fill_20.svg?react';
 export { default as IconScanFill24 } from '../../assets/icons/icon_scan_fill_24.svg?react';

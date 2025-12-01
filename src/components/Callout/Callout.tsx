@@ -13,7 +13,7 @@ import negativeColor from "../../tokens/negativeColor";
 export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
   (
     {
-      variant = "default",
+      variant = "primary",
       title,
       description,
       leadingIcon = true,
@@ -83,6 +83,10 @@ const CalloutContainer = styled.div<{ $variant: string }>`
   width: 100%;
   background-color: ${({ $variant }) => {
     switch ($variant) {
+      case "primary":
+        return color.gray["50"];
+      case "secondary":
+        return color.gray["50"];
       case "positive":
         return color.green["50"];
       case "negative":
@@ -105,6 +109,10 @@ const LeadingIconWrapper = styled.div<{ $variant: string }>`
   padding-top: 2px;
   color: ${({ $variant }) => {
     switch ($variant) {
+      case "primary":
+        return textColor.light["fg-neutral-strong"];
+      case "secondary":
+        return textColor.light["fg-neutral-alternative"];
       case "positive":
         return positiveColor.light["fg-positive-primary"];
       case "negative":
@@ -135,6 +143,10 @@ const Title = styled.div<{ $variant: string }>`
   ${typography(undefined, "body2", "medium")}
   color: ${({ $variant }) => {
     switch ($variant) {
+      case "primary":
+        return textColor.light["fg-neutral-strong"];
+      case "secondary":
+        return textColor.light["fg-neutral-alternative"];
       case "positive":
         return positiveColor.light["fg-positive-primary"];
       case "negative":
@@ -153,6 +165,10 @@ const Description = styled.div<{ $variant: string }>`
   ${typography(undefined, "caption2", "regular")}
   color: ${({ $variant }) => {
     switch ($variant) {
+      case "primary":
+        return textColor.light["fg-neutral-alternative"];
+      case "secondary":
+        return textColor.light["fg-neutral-alternative"];
       case "positive":
         return color.green["500"];
       case "negative":
@@ -176,6 +192,10 @@ const TrailingIconWrapper = styled.div<{ $variant: string }>`
   cursor: pointer;
   color: ${({ $variant }) => {
     switch ($variant) {
+      case "primary":
+        return textColor.light["fg-neutral-strong"];
+      case "secondary":
+        return textColor.light["fg-neutral-alternative"];
       case "positive":
         return positiveColor.light["fg-positive-primary"];
       case "negative":

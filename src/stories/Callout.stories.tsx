@@ -17,11 +17,11 @@ const meta: Meta<typeof Callout> = {
   argTypes: {
     variant: {
       control: { type: "select" },
-      options: ["default", "positive", "negative", "cautionary", "info"],
+      options: ["primary", "secondary", "positive", "negative", "cautionary", "info"],
       description: "Callout 변형",
       table: {
-        type: { summary: "default | positive | negative | cautionary | info" },
-        defaultValue: { summary: "default" },
+        type: { summary: "primary | secondary | positive | negative | cautionary | info" },
+        defaultValue: { summary: "primary" },
       },
     },
     title: {
@@ -67,9 +67,19 @@ const meta: Meta<typeof Callout> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Primary: Story = {
   args: {
-    variant: "default",
+    variant: "primary",
+    title: "텍스트를 입력해 주세요.",
+    description: "안내 텍스트를 입력해 주세요.",
+    leadingIcon: true,
+    trailingIcon: false,
+  },
+};
+
+export const Secondary: Story = {
+  args: {
+    variant: "secondary",
     title: "텍스트를 입력해 주세요.",
     description: "안내 텍스트를 입력해 주세요.",
     leadingIcon: true,
@@ -119,7 +129,7 @@ export const Info: Story = {
 
 export const WithTrailingIcon: Story = {
   args: {
-    variant: "default",
+    variant: "primary",
     title: "텍스트를 입력해 주세요.",
     description: "안내 텍스트를 입력해 주세요.",
     leadingIcon: true,
@@ -129,7 +139,7 @@ export const WithTrailingIcon: Story = {
 
 export const WithoutLeadingIcon: Story = {
   args: {
-    variant: "default",
+    variant: "primary",
     title: "텍스트를 입력해 주세요.",
     description: "안내 텍스트를 입력해 주세요.",
     leadingIcon: false,
@@ -139,7 +149,7 @@ export const WithoutLeadingIcon: Story = {
 
 export const TitleOnly: Story = {
   args: {
-    variant: "default",
+    variant: "primary",
     title: "텍스트를 입력해 주세요.",
     leadingIcon: true,
     trailingIcon: false,
@@ -150,8 +160,14 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "16px", width: "500px" }}>
       <Callout
-        variant="default"
-        title="Notice"
+        variant="primary"
+        title="Primary"
+        description="안내 텍스트를 입력해 주세요."
+        leadingIcon={true}
+      />
+      <Callout
+        variant="secondary"
+        title="Secondary"
         description="안내 텍스트를 입력해 주세요."
         leadingIcon={true}
       />

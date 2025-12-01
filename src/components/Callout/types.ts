@@ -1,5 +1,6 @@
 export type CalloutVariant =
-  | "default"
+  | "primary"
+  | "secondary"
   | "positive"
   | "negative"
   | "cautionary"

@@ -147,18 +147,18 @@ export const toast = {
     },
 
     success: (message: string, description?: string) => {
-        toast.show({ message, description, variant: 'positive', showDivider: true });
+        toast.show({ message, description, variant: 'positive', showDivider: false });
     },
 
     error: (message: string, description?: string) => {
-        toast.show({ message, description, variant: 'negative', showDivider: true });
+        toast.show({ message, description, variant: 'negative', showDivider: false });
     },
 
     warning: (message: string, description?: string) => {
-        toast.show({ message, description, variant: 'cautionary', showDivider: true });
+        toast.show({ message, description, variant: 'cautionary', showDivider: false });
     },
 
     info: (message: string, description?: string) => {
-        toast.show({ message, description, variant: 'default', showDivider: true });
+        toast.show({ message, description, variant: 'default', showDivider: false });
     },
 }; 

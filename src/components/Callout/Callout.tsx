@@ -79,7 +79,7 @@ const CalloutContainer = styled.div<{ $variant: string }>`
   gap: ${spacing.gap["gap-2"]};
   padding: ${spacing.gap["gap-4"]};
   border-radius: ${radius["rounded-3"]};
-  min-width: 320px;
+  min-width: 240px;
   width: 100%;
   background-color: ${({ $variant }) => {
     switch ($variant) {
@@ -106,7 +106,7 @@ const LeadingIconWrapper = styled.div<{ $variant: string }>`
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  padding-top: 2px;
+  padding-top: ${spacing.gap["gap-0.5"]};
   color: ${({ $variant }) => {
     switch ($variant) {
       case "primary":

@@ -72,7 +72,7 @@ const StyledBadge = styled.div<BadgeStyleProps>`
           switch (variant) {
             case "primary":
               return {
-                background: color.gray["50"],
+                background: color.gray["100"],
                 text: textColor.light["fg-neutral-primary"],
                 border: "transparent",
               };

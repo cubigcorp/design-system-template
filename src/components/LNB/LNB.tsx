@@ -66,7 +66,6 @@ const Container = styled.nav<{ $iconOnly: boolean }>`
 
 const Bottom = styled.div<{ $iconOnly: boolean }>`
   margin-top: auto;
-  min-height: ${({ $iconOnly }) => ($iconOnly ? "auto" : "89px")};
   display: flex;
   flex-direction: column;
   gap: ${spacing.gap["gap-2"]};

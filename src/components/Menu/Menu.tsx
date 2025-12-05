@@ -37,13 +37,7 @@ const StyledMenu = styled.div<{ $width?: string | number }>`
   width: ${({ $width }) =>
     typeof $width === 'number' ? `${$width}px` : $width || '300px'};
 
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
-
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
+  font-family: inherit;
 
   .dropdown-container & {
     position: absolute;

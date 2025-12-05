@@ -100,15 +100,7 @@ const Name = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
+  font-family: inherit;
 `;
 
 const TrailingIconWrapper = styled.span`

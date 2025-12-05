@@ -52,14 +52,7 @@ const StyledLabel = styled.label<{
   $type: "default" | "required" | "optional";
 }>`
   ${typography(undefined, "body2", "medium")}
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
+  font-family: inherit;
   height: 20px;
   display: flex;
   align-items: center;

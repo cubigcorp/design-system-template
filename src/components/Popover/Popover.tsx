@@ -24,15 +24,7 @@ const StyledPopover = styled.div`
   border-radius: ${radius["rounded-1.5"]};
   white-space: nowrap;
   width: fit-content;
-
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
+  font-family: inherit;
 `;
 
 const StyledText = styled.span`

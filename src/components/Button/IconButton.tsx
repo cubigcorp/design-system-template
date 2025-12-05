@@ -52,14 +52,7 @@ const StyledIconButton = styled.button.withConfig({
   transition: all 0.2s ease-in-out;
   position: relative;
 
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
+  font-family: inherit;
 
   ${({ size = "medium" }) => {
     switch (size) {

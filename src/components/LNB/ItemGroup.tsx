@@ -40,14 +40,7 @@ const Wrapper = styled.div`
 const Title = styled.div`
   ${typography(undefined, "body2", "regular")}
   color: ${textColor.light["fg-neutral-alternative"]};
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
+  font-family: inherit;
 `;
 
 const Items = styled.div`

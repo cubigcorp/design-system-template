@@ -108,28 +108,12 @@ const ContentWrapper = styled.div`
 const Text = styled.div`
   ${typography(undefined, "body2", "regular")}
   font-family: inherit;
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
   color: inherit;
 `;
 
 const Description = styled.div`
   ${typography(undefined, "caption2", "regular")}
   font-family: inherit;
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
   color: ${textColor.light["fg-neutral-alternative"]};
 `;
 

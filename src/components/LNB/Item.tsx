@@ -106,12 +106,5 @@ const Leading = styled.span`
 
 const Label = styled.span`
   ${typography(undefined, "body2", "medium")}
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
+  font-family: inherit;
 `;

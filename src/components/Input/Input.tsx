@@ -205,14 +205,7 @@ const StyledInput = styled.input<{
   position: relative;
   transition: all 0.2s ease-in-out;
 
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
+  font-family: inherit;
 
   /* Size styles */
   ${({ $size, lang = "ko" }) => {

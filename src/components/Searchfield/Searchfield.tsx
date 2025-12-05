@@ -146,14 +146,7 @@ const FieldContainer = styled.div<{
       : borderColor.light["color-border-primary"]};
   transition: all 0.2s ease-in-out;
 
-  &:lang(ko),
-  &[lang="ko"] {
-    font-family: ${fontFamily.ko};
-  }
-  &:lang(en),
-  &[lang="en"] {
-    font-family: ${fontFamily.en};
-  }
+  font-family: inherit;
 
   ${({ $size, lang = "ko" }) => {
     switch ($size) {

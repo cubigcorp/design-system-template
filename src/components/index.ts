@@ -111,8 +111,9 @@ export type {
 } from "./SegmentedControl/types";
 
 // Avatar
-export { Avatar } from "./Avatar";
+export { Avatar, AvatarGroup } from "./Avatar";
 export type { AvatarProps, AvatarType, AvatarSize } from "./Avatar/types";
+export type { AvatarGroupProps } from "./Avatar/AvatarGroup";
 
 // Tab
 export { Tab, TabItem } from "./Tab";

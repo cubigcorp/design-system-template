@@ -2,12 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 import styled, { css } from "styled-components";
 import { AvatarProps } from "./types";
 import { Avatar } from "./Avatar";
+import { Menu } from "../Menu";
+import { Cell } from "../Cell";
 import color from "../../tokens/color";
 import { radius } from "../../tokens/radius";
 import textColor from "../../tokens/textColor";
 import { spacing } from "../../tokens/spacing";
-import { shadow } from "../../tokens/shadow";
-import typography from "../../tokens/typography";
 import { Icons } from "../icons";
 
 type AvatarGroupState = "default" | "hovered" | "pressed" | "selected";
@@ -62,7 +62,10 @@ export const AvatarGroup = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -81,7 +84,10 @@ export const AvatarGroup = ({
             if (isLast) {
               return (
                 <LastAvatarWrapper key={index} $index={index}>
-                  <LastAvatarContainer $state={state} $bgColor={getBackgroundColor()}>
+                  <LastAvatarContainer
+                    $state={state}
+                    $bgColor={getBackgroundColor()}
+                  >
                     <Avatar {...avatarProps} size="x-small" />
                     <IconWrapper>
                       <Icons.IconChevronDownOutline16
@@ -103,18 +109,24 @@ export const AvatarGroup = ({
       </TriggerWrapper>
 
       {isOpen && (
-        <DropdownMenu $width={dropdownWidth}>
-          {avatars.map((avatar, index) => (
-            <DropdownItem
-              key={index}
-              onClick={() => handleItemClick(avatar, index)}
-              $isFirst={index === 0}
-            >
-              <Avatar {...avatar} size="x-small" />
-              <ItemName>{avatar.name || avatar.value || "Name"}</ItemName>
-            </DropdownItem>
-          ))}
-        </DropdownMenu>
+        <DropdownMenuWrapper $width={dropdownWidth}>
+          <Menu width={dropdownWidth || 160} showCheckIcon={false}>
+            {avatars.map((avatar, index) => {
+              const AvatarLeading = () => (
+                <Avatar {...avatar} size="x-small" />
+              );
+              return (
+                <Cell
+                  key={index}
+                  leadingContent={AvatarLeading}
+                  text={avatar.name || avatar.value || "Name"}
+                  active={index === 0}
+                  onClick={() => handleItemClick(avatar, index)}
+                />
+              );
+            })}
+          </Menu>
+        </DropdownMenuWrapper>
       )}
     </Container>
   );
@@ -192,45 +204,10 @@ const IconWrapper = styled.div`
   color: ${textColor.light["fg-neutral-alternative"]};
 `;
 
-const DropdownMenu = styled.div<{ $width?: number }>`
+const DropdownMenuWrapper = styled.div<{ $width?: number }>`
   position: absolute;
   top: calc(100% + ${spacing.gap["gap-1"]});
   right: 0;
   transform: translateX(calc(50% - 8px));
-  ${({ $width }) => $width && `width: ${$width}px;`}
-  white-space: nowrap;
-  background-color: ${color.common["100"]};
-  border-radius: ${radius["rounded-2"]};
-  box-shadow: ${shadow.light["shadow-md"]};
-  padding: ${spacing.gap["gap-1"]};
   z-index: 1000;
-`;
-
-const DropdownItem = styled.div<{ $isFirst: boolean }>`
-  display: flex;
-  align-items: center;
-  gap: ${spacing.gap["gap-4"]};
-  padding: ${spacing.gap["gap-2"]};
-  border-radius: ${radius["rounded-1"]};
-  cursor: pointer;
-  transition: background-color 0.15s ease;
-
-  ${({ $isFirst }) =>
-    $isFirst &&
-    css`
-      background-color: ${color.gray["50"]};
-    `}
-
-  &:hover {
-    background-color: ${color.gray["50"]};
-  }
-
-  &:active {
-    background-color: ${color.gray["100"]};
-  }
-`;
-
-const ItemName = styled.span`
-  ${typography(undefined, "body2", "regular")}
-  color: ${textColor.light["fg-neutral-primary"]};
 `;

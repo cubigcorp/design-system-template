@@ -4,9 +4,15 @@ import { MenuProps } from "./types";
 import { spacing } from "../../tokens/spacing";
 import { shadow } from "../../tokens/shadow";
 import color from "../../tokens/color";
-import fontFamily from "../../tokens/fontFamily";
+import { borderColor } from "../../tokens/borderColor";
 
-const Menu: React.FC<MenuProps> = ({ children, className, width, showCheckIcon = true, ...props }) => {
+const Menu: React.FC<MenuProps> = ({
+  children,
+  className,
+  width,
+  showCheckIcon = true,
+  ...props
+}) => {
   // children을 순회하면서 showCheckIcon prop을 주입
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement<{ showCheckIcon?: boolean }>(child)) {
@@ -32,10 +38,11 @@ const StyledMenu = styled.div<{ $width?: string | number }>`
   padding: ${spacing.gap["gap-1"]};
   box-shadow: ${shadow.light["shadow-md"]};
   background-color: white;
+  border: 1px solid ${borderColor.light["color-border-primary"]};
   border-radius: 8px;
   box-sizing: border-box;
   width: ${({ $width }) =>
-    typeof $width === 'number' ? `${$width}px` : $width || '300px'};
+    typeof $width === "number" ? `${$width}px` : $width || "300px"};
 
   font-family: inherit;
 

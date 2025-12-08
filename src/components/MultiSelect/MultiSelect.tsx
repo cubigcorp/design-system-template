@@ -220,7 +220,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
         $hasChips={selectedValues.length > 0}
         lang={lang}
       >
-        <ChipsContainer $maxHeight={getMaxHeight()} $lineMode={lineMode}>
+        <ChipsContainer $maxHeight={getMaxHeight()} $lineMode={lineMode} $size={size}>
           {selectedValues.map((val) => {
             const option = getSelectedOption(val);
             return option ? (
@@ -237,11 +237,7 @@ const MultiSelect: React.FC<MultiSelectProps> = ({
                   type="solid"
                   size={getChipSize()}
                   disabled={disabled}
-                  trailingIcon={
-                    !disabled ? (
-                      <IconCloseOutline16 color="currentColor" />
-                    ) : undefined
-                  }
+                  trailingIcon={<IconCloseOutline16 color="currentColor" />}
                 >
                   {option.label}
                 </Chip>
@@ -356,13 +352,26 @@ const MultiSelectInputWrapper = styled.div<{
   }}
 `;
 
-const ChipsContainer = styled.div<{ $maxHeight: number; $lineMode: "single" | "multi" }>`
+const ChipsContainer = styled.div<{
+  $maxHeight: number;
+  $lineMode: "single" | "multi";
+  $size: "small" | "medium" | "large";
+}>`
   display: flex;
   flex-wrap: ${({ $lineMode }) => ($lineMode === "single" ? "nowrap" : "wrap")};
   gap: ${spacing.gap["gap-1"]};
   align-items: center;
   flex: 1;
-  padding: ${spacing.gap["gap-1"]} ${spacing.gap["gap-2"]};
+  padding: ${({ $size }) => {
+    switch ($size) {
+      case "small":
+        return `${spacing.gap["gap-1"]} ${spacing.gap["gap-2"]}`;
+      case "large":
+        return `${spacing.gap["gap-3"]} ${spacing.gap["gap-2.5"]}`;
+      default:
+        return `${spacing.gap["gap-2"]} ${spacing.gap["gap-2"]}`;
+    }
+  }};
   min-height: inherit;
   max-height: ${({ $maxHeight }) => `${$maxHeight}px`};
   overflow-x: ${({ $lineMode }) => ($lineMode === "single" ? "auto" : "hidden")};

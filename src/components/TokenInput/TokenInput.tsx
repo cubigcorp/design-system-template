@@ -140,7 +140,7 @@ const TokenInput: React.FC<TokenInputProps> = ({
         lang={lang}
         onClick={() => inputRef.current?.focus()}
       >
-        <ChipsContainer $maxHeight={getMaxHeight()} $lineMode={lineMode}>
+        <ChipsContainer $maxHeight={getMaxHeight()} $lineMode={lineMode} $size={size}>
           {tokens.map((token, index) => (
             <StyledChipWrapper
               key={`${token}-${index}`}
@@ -155,11 +155,7 @@ const TokenInput: React.FC<TokenInputProps> = ({
                 type="solid"
                 size={getChipSize()}
                 disabled={disabled}
-                trailingIcon={
-                  !disabled ? (
-                    <IconCloseOutline16 color="currentColor" />
-                  ) : undefined
-                }
+                trailingIcon={<IconCloseOutline16 color="currentColor" />}
               >
                 {token}
               </Chip>
@@ -245,13 +241,26 @@ const TokenInputWrapper = styled.div<{
   }}
 `;
 
-const ChipsContainer = styled.div<{ $maxHeight: number; $lineMode: "single" | "multi" }>`
+const ChipsContainer = styled.div<{
+  $maxHeight: number;
+  $lineMode: "single" | "multi";
+  $size: "small" | "medium" | "large";
+}>`
   display: flex;
   flex-wrap: ${({ $lineMode }) => ($lineMode === "single" ? "nowrap" : "wrap")};
   gap: ${spacing.gap["gap-1"]};
   align-items: center;
   flex: 1;
-  padding: ${spacing.gap["gap-1"]} ${spacing.gap["gap-2"]};
+  padding: ${({ $size }) => {
+    switch ($size) {
+      case "small":
+        return `${spacing.gap["gap-1"]} ${spacing.gap["gap-2"]}`;
+      case "large":
+        return `${spacing.gap["gap-3"]} ${spacing.gap["gap-2.5"]}`;
+      default:
+        return `${spacing.gap["gap-2"]} ${spacing.gap["gap-2"]}`;
+    }
+  }};
   min-height: inherit;
   max-height: ${({ $maxHeight }) => `${$maxHeight}px`};
   overflow-x: ${({ $lineMode }) => ($lineMode === "single" ? "auto" : "hidden")};
@@ -331,7 +340,7 @@ const StyledInput = styled.input<{
   }}
 
   &::placeholder {
-    color: ${textColor.light["fg-neutral-alternative"]};
+    color: ${textColor.light["fg-neutral-assistive"]};
   }
 `;
 

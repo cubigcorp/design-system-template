@@ -451,7 +451,7 @@ const MultiSelectInput = styled.input<{
   }}
 
   &::placeholder {
-    color: ${textColor.light["fg-neutral-alternative"]};
+    color: ${textColor.light["fg-neutral-assistive"]};
   }
 `;
 

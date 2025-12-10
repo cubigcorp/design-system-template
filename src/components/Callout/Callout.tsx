@@ -14,6 +14,7 @@ export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
   (
     {
       variant = "primary",
+      size = "medium",
       title,
       description,
       leadingIcon = true,
@@ -29,15 +30,15 @@ export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
 
       switch (variant) {
         case "positive":
-          return <Icons.IconCirclecheckFill20 />;
+          return <Icons.IconCirclecheckFill16 />;
         case "negative":
-          return <Icons.IconErrorFill20 />;
+          return <Icons.IconErrorFill16 />;
         case "cautionary":
-          return <Icons.IconWarningFill20 />;
+          return <Icons.IconWarningFill16 />;
         case "info":
-          return <Icons.IconInfoFill20 />;
+          return <Icons.IconInfoFill16 />;
         default:
-          return <Icons.IconInfoFill20 />;
+          return <Icons.IconInfoFill16 />;
       }
     };
 
@@ -46,10 +47,11 @@ export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
         ref={ref}
         className={className}
         $variant={variant}
+        $size={size}
         {...props}
       >
         {leadingIcon && (
-          <LeadingIconWrapper $variant={variant}>
+          <LeadingIconWrapper $variant={variant} $size={size}>
             {getLeadingIcon()}
           </LeadingIconWrapper>
         )}
@@ -73,12 +75,15 @@ export const Callout = React.forwardRef<HTMLDivElement, CalloutProps>(
 
 Callout.displayName = "Callout";
 
-const CalloutContainer = styled.div<{ $variant: string }>`
+const CalloutContainer = styled.div<{ $variant: string; $size: string }>`
   display: flex;
   align-items: flex-start;
   gap: ${spacing.gap["gap-2"]};
-  padding: ${spacing.gap["gap-4"]};
-  border-radius: ${radius["rounded-3"]};
+  padding: ${({ $size }) =>
+    $size === "small"
+      ? `${spacing.gap["gap-2.5"]} ${spacing.gap["gap-3"]}`
+      : `${spacing.gap["gap-3.5"]} ${spacing.gap["gap-3"]}`};
+  border-radius: ${radius["rounded-2"]};
   min-width: 240px;
   width: 100%;
   background-color: ${({ $variant }) => {
@@ -101,7 +106,7 @@ const CalloutContainer = styled.div<{ $variant: string }>`
   }};
 `;
 
-const LeadingIconWrapper = styled.div<{ $variant: string }>`
+const LeadingIconWrapper = styled.div<{ $variant: string; $size: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,8 +132,8 @@ const LeadingIconWrapper = styled.div<{ $variant: string }>`
   }};
 
   svg {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
   }
 `;
 

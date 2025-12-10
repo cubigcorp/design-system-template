@@ -6,11 +6,18 @@ export type CalloutVariant =
   | "cautionary"
   | "info";
 
+export type CalloutSize = "small" | "medium";
+
 export interface CalloutProps {
   /**
    * Callout 변형
    */
   variant?: CalloutVariant;
+
+  /**
+   * Callout 크기
+   */
+  size?: CalloutSize;
 
   /**
    * 제목 텍스트

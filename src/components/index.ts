@@ -149,7 +149,7 @@ export type { PaginationProps, PaginationVariant } from "./Pagination/types";
 
 // Callout
 export { Callout } from "./Callout";
-export type { CalloutProps, CalloutVariant } from "./Callout/types";
+export type { CalloutProps, CalloutVariant, CalloutSize } from "./Callout/types";
 
 // TopBanner
 export { TopBanner, TopBannerList } from "./TopBanner";

@@ -15,6 +15,8 @@ export { Input } from './Input';
 export type { InputProps } from './Input/types';
 export { TextField } from './TextField';
 export type { TextFieldProps } from './TextField/types';
+export { TextArea } from './TextArea';
+export type { TextAreaProps } from './TextArea/types';
 export { TokenField } from './TokenField';
 export type { TokenFieldProps } from './TokenField/types';
 export { Searchfield } from './Searchfield';

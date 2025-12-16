@@ -42,6 +42,10 @@ export type { InputProps } from "./Input/types";
 export { TextField } from "./TextField";
 export type { TextFieldProps } from "./TextField/types";
 
+// TextArea
+export { TextArea } from "./TextArea";
+export type { TextAreaProps } from "./TextArea/types";
+
 // TokenField
 export { TokenField } from "./TokenField";
 export type { TokenFieldProps } from "./TokenField/types";

@@ -162,3 +162,11 @@ export type {
   TopBannerListProps,
   BannerItem,
 } from "./TopBanner/types";
+
+// Tooltip
+export { Tooltip } from "./Tooltip";
+export type {
+  TooltipProps,
+  TooltipVariant,
+  TooltipPlacement,
+} from "./Tooltip/types";

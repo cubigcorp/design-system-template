@@ -24,13 +24,33 @@ export const Spinner = ({
 }: SpinnerProps) => {
   const pixelSize = sizeMap[size];
   const defaultColor = spinnerColor || color.gray["950"];
+  const strokeWidth = Math.max(2, pixelSize / 8);
+  const radius = (pixelSize - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
 
   return (
-    <CircularSpinner
-      className={className}
-      $size={pixelSize}
-      $color={defaultColor}
-    />
+    <SpinnerWrapper className={className} $size={pixelSize}>
+      <SpinnerSvg viewBox={`0 0 ${pixelSize} ${pixelSize}`}>
+        <circle
+          cx={pixelSize / 2}
+          cy={pixelSize / 2}
+          r={radius}
+          fill="none"
+          stroke={color.gray["200"]}
+          strokeWidth={strokeWidth}
+        />
+        <SpinnerCircle
+          cx={pixelSize / 2}
+          cy={pixelSize / 2}
+          r={radius}
+          fill="none"
+          stroke={defaultColor}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeDasharray={`${circumference * 0.25} ${circumference * 0.75}`}
+        />
+      </SpinnerSvg>
+    </SpinnerWrapper>
   );
 };
 
@@ -43,13 +63,17 @@ const rotate = keyframes`
   }
 `;
 
-const CircularSpinner = styled.div<{ $size: number; $color: string }>`
+const SpinnerWrapper = styled.div<{ $size: number }>`
   width: ${({ $size }) => $size}px;
   height: ${({ $size }) => $size}px;
-  border: ${({ $size }) => Math.max(2, $size / 8)}px solid ${color.gray["200"]};
-  border-top-color: ${({ $color }) => $color};
-  border-radius: 50%;
+`;
+
+const SpinnerSvg = styled.svg`
+  width: 100%;
+  height: 100%;
   animation: ${rotate} 0.8s linear infinite;
 `;
+
+const SpinnerCircle = styled.circle``;
 
 Spinner.displayName = "Spinner";

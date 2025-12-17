@@ -57,9 +57,9 @@
     "lib:clean": "rm -rf dist",
     "lib:prepare": "npm run lib:clean && npm run lib:build",
     "prepublishOnly": "npm run lib:prepare",
-    "release": "npm run lib:prepare && npm version patch && git push && git push --tags && npm publish",
-    "release:minor": "npm run lib:prepare && npm version minor && git push && git push --tags && npm publish",
-    "release:major": "npm run lib:prepare && npm version major && git push && git push --tags && npm publish",
+    "release": "npm run lib:prepare && npm version patch && git push && git push --tags && echo '\\n이제 npm publish 실행하세요'",
+    "release:minor": "npm run lib:prepare && npm version minor && git push && git push --tags && echo '\\n이제 npm publish 실행하세요'",
+    "release:major": "npm run lib:prepare && npm version major && git push && git push --tags && echo '\\n이제 npm publish 실행하세요'",
     "storybook:deploy": "npm run build-storybook && npm run deploy-storybook"
   },
   "publishConfig": {

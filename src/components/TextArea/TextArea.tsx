@@ -22,7 +22,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       active = false,
       focused = false,
       placeholder,
-      value = "",
+      value,
       showCharacterCounter = false,
       maxCount,
       maxHeight = 232,
@@ -43,7 +43,8 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
 
     useImperativeHandle(ref, () => textareaRef.current as HTMLTextAreaElement);
 
-    const currentValue = value !== undefined ? value : internalValue;
+    const rawValue = value !== undefined ? value : internalValue;
+    const currentValue = maxCount ? (rawValue || "").slice(0, maxCount) : (rawValue || "");
     const characterCount = currentValue.length;
 
     const adjustHeight = () => {
@@ -133,6 +134,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             placeholder={placeholder}
             value={currentValue}
             disabled={disabled}
+            maxLength={maxCount}
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}

@@ -32,13 +32,17 @@ type Story = StoryObj<typeof TextArea>;
 export const Default: Story = {
   args: {
     placeholder: "텍스트를 입력해 주세요.",
+    showCharacterCounter: true,
     maxCount: 500,
   },
-  render: (args) => (
-    <Wrapper>
-      <TextArea {...args} />
-    </Wrapper>
-  ),
+  render: (args) => {
+    const { value, ...rest } = args;
+    return (
+      <Wrapper>
+        <TextArea {...rest} />
+      </Wrapper>
+    );
+  },
 };
 
 export const WithLabel: Story = {

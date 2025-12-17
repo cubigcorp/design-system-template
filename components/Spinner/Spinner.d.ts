@@ -1,4 +1,4 @@
-type SpinnerSize = "small" | "medium" | "large";
+type SpinnerSize = "small" | "medium" | "large" | "x-large";
 export interface SpinnerProps {
     size?: SpinnerSize;
     color?: string;

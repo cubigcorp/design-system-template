@@ -56,6 +56,7 @@
     "lib:watch": "vite build --watch",
     "lib:clean": "rm -rf dist",
     "lib:prepare": "npm run lib:clean && npm run lib:build",
+    "prepare": "npm run lib:prepare",
     "release": "npm run lib:prepare && npm version patch && git push && git push --tags",
     "release:minor": "npm run lib:prepare && npm version minor && git push && git push --tags",
     "release:major": "npm run lib:prepare && npm version major && git push && git push --tags",

@@ -1,0 +1,56 @@
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import"./SolidButton-DiUg7Oe2.js";import"./TextButton-Bhy_pj9h.js";import"./IconButton-Ckd5Kzg7.js";import"./Badge-DqfpFiiJ.js";import"./Chip-BEbScxvp.js";import"./Switch-DMuFMUx3.js";import"./Description-CgJdkAhF.js";import{a as t}from"./Divider-uGoGs9iF.js";import"./TextArea-CqMn28y0.js";import"./TokenField-CHJLyzMo.js";import"./Modal-CZnLwamM.js";import"./MultiSelect-DRDRFDCv.js";import"./TokenInput-QnJLx-9q.js";import"./Cell-bkDkwhmH.js";import"./RadioButton-BphB9Xf9.js";import"./Checkbox-DD8aZVQT.js";import"./SegmentItem-DXX5fZiH.js";import"./AvatarGroup-CX5JjXbm.js";import"./TabItem-CY416s89.js";import"./ChipTabs-5LfA4djK.js";import"./Popover-BDGQaLdQ.js";import"./StepIndicator-D_4EX1l3.js";import"./Breadcrumbs-D_wxAlwr.js";import"./BreadcrumbItem-Dv3U5xk5.js";import"./Pagination-MKr8N35P.js";import"./Callout-CrzalG_1.js";import"./TopBannerList-B3kvZrWF.js";import"./Tooltip-8N6yqZki.js";import"./iframe-L1CEGzuW.js";import{S as o}from"./icon_person_outline_20-bpPzauD1.js";import"./styled-components.browser.esm-CPJhxV7n.js";import"./color-CiwAFuFb.js";import"./radius-DaoU83SK.js";import"./fontWeight-CRwBdwgF.js";import"./fontSize-BFAJJ5Eh.js";import"./borderColor-C_RHITEf.js";import"./textColor-DLZeZODc.js";import"./spacing-tE1IiUFl.js";import"./Spinner-IPgNsnGg.js";import"./brandColor-OQPP65_V.js";import"./negativeColor-DPOOrHeE.js";import"./infoColor-DKdsGjD4.js";import"./layerColor-7aOJUZki.js";import"./typography-hbgufnaT.js";import"./lineHeight-aJXO3HIm.js";import"./IconSearch-D4pbJy3T.js";import"./IconCheck-CKtc9n1_.js";import"./index-jhqWgfOc.js";import"./index-DmyLRZ_Y.js";import"./shadow-DVq_1U2q.js";import"./icon_close_outline_16-1ahVzeUX.js";import"./icon_chevron-down_outline_16-B3vMYtLH.js";import"./icon_chevron-right_outline_20-CAThzgjg.js";import"./icon_more_outline_16-BhWNgq1Z.js";import"./icon_chevron-right_outline_16-e7vq1GRS.js";import"./icon_warning_fill_16-CeuyuPad.js";import"./icon_close_outline_24-4CpKikC8.js";const Se={title:"Components/LNB/Item",component:t,parameters:{layout:"centered"},tags:["autodocs"],argTypes:{value:{control:{type:"text"}},selected:{control:{type:"boolean"}},disabled:{control:{type:"boolean"}},iconOnly:{control:{type:"boolean"}},lang:{control:{type:"select"},options:["ko","en"]}},args:{value:"내 정보",selected:!1,disabled:!1,lang:"ko"}},n={render:r=>e.jsx("div",{style:{width:280},children:e.jsx(t,{...r,leadingIcon:o})})},i={args:{selected:!0},render:r=>e.jsx("div",{style:{width:280},children:e.jsx(t,{...r,leadingIcon:o})})},s={args:{disabled:!0},render:r=>e.jsx("div",{style:{width:280},children:e.jsx(t,{...r,leadingIcon:o})})},d={render:r=>e.jsx("div",{style:{width:280},children:e.jsx(t,{...r})})},a={args:{iconOnly:!0},render:r=>e.jsxs("div",{style:{display:"flex",gap:"8px",width:"fit-content"},children:[e.jsx("div",{style:{width:60},children:e.jsx(t,{...r,leadingIcon:o})}),e.jsx("div",{style:{width:60},children:e.jsx(t,{...r,leadingIcon:o,selected:!0})}),e.jsx("div",{style:{width:60},children:e.jsx(t,{...r,leadingIcon:o,disabled:!0})})]})};var p,m,l;n.parameters={...n.parameters,docs:{...(p=n.parameters)==null?void 0:p.docs,source:{originalSource:`{
+  render: args => <div style={{
+    width: 280
+  }}>
+      <LNBItem {...args} leadingIcon={IconPersonOutline20} />
+    </div>
+}`,...(l=(m=n.parameters)==null?void 0:m.docs)==null?void 0:l.source}}};var c,u,g;i.parameters={...i.parameters,docs:{...(c=i.parameters)==null?void 0:c.docs,source:{originalSource:`{
+  args: {
+    selected: true
+  },
+  render: args => <div style={{
+    width: 280
+  }}>
+      <LNBItem {...args} leadingIcon={IconPersonOutline20} />
+    </div>
+}`,...(g=(u=i.parameters)==null?void 0:u.docs)==null?void 0:g.source}}};var I,y,v;s.parameters={...s.parameters,docs:{...(I=s.parameters)==null?void 0:I.docs,source:{originalSource:`{
+  args: {
+    disabled: true
+  },
+  render: args => <div style={{
+    width: 280
+  }}>
+      <LNBItem {...args} leadingIcon={IconPersonOutline20} />
+    </div>
+}`,...(v=(y=s.parameters)==null?void 0:y.docs)==null?void 0:v.source}}};var h,x,j;d.parameters={...d.parameters,docs:{...(h=d.parameters)==null?void 0:h.docs,source:{originalSource:`{
+  render: args => <div style={{
+    width: 280
+  }}>
+      <LNBItem {...args} />
+    </div>
+}`,...(j=(x=d.parameters)==null?void 0:x.docs)==null?void 0:j.source}}};var w,O,f;a.parameters={...a.parameters,docs:{...(w=a.parameters)==null?void 0:w.docs,source:{originalSource:`{
+  args: {
+    iconOnly: true
+  },
+  render: args => <div style={{
+    display: "flex",
+    gap: "8px",
+    width: "fit-content"
+  }}>
+      <div style={{
+      width: 60
+    }}>
+        <LNBItem {...args} leadingIcon={IconPersonOutline20} />
+      </div>
+      <div style={{
+      width: 60
+    }}>
+        <LNBItem {...args} leadingIcon={IconPersonOutline20} selected={true} />
+      </div>
+      <div style={{
+      width: 60
+    }}>
+        <LNBItem {...args} leadingIcon={IconPersonOutline20} disabled={true} />
+      </div>
+    </div>
+}`,...(f=(O=a.parameters)==null?void 0:O.docs)==null?void 0:f.source}}};const Pe=["Default","Selected","Disabled","WithoutIcon","IconOnly"];export{n as Default,s as Disabled,a as IconOnly,i as Selected,d as WithoutIcon,Pe as __namedExportsOrder,Se as default};

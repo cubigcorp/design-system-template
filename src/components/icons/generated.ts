@@ -13,6 +13,9 @@ export { default as IconAddOutline24 } from '../../assets/icons/icon_add_outline
 export { default as IconAllcheckOutline16 } from '../../assets/icons/icon_allcheck_outline_16.svg?react';
 export { default as IconAllcheckOutline20 } from '../../assets/icons/icon_allcheck_outline_20.svg?react';
 export { default as IconAllcheckOutline24 } from '../../assets/icons/icon_allcheck_outline_24.svg?react';
+export { default as IconAnalyticsFill16 } from '../../assets/icons/icon_analytics_fill_16.svg?react';
+export { default as IconAnalyticsFill20 } from '../../assets/icons/icon_analytics_fill_20.svg?react';
+export { default as IconAnalyticsFill24 } from '../../assets/icons/icon_analytics_fill_24.svg?react';
 export { default as IconAnalyticsOutline16 } from '../../assets/icons/icon_analytics_outline_16.svg?react';
 export { default as IconAnalyticsOutline20 } from '../../assets/icons/icon_analytics_outline_20.svg?react';
 export { default as IconAnalyticsOutline24 } from '../../assets/icons/icon_analytics_outline_24.svg?react';
@@ -226,6 +229,9 @@ export { default as IconDocumentFill24 } from '../../assets/icons/icon_document_
 export { default as IconDocumentOutline16 } from '../../assets/icons/icon_document_outline_16.svg?react';
 export { default as IconDocumentOutline20 } from '../../assets/icons/icon_document_outline_20.svg?react';
 export { default as IconDocumentOutline24 } from '../../assets/icons/icon_document_outline_24.svg?react';
+export { default as IconDotRingOutline16 } from '../../assets/icons/icon_dot-ring_outline_16.svg?react';
+export { default as IconDotRingOutline20 } from '../../assets/icons/icon_dot-ring_outline_20.svg?react';
+export { default as IconDotRingOutline24 } from '../../assets/icons/icon_dot-ring_outline_24.svg?react';
 export { default as IconDownloadOutline16 } from '../../assets/icons/icon_download_outline_16.svg?react';
 export { default as IconDownloadOutline20 } from '../../assets/icons/icon_download_outline_20.svg?react';
 export { default as IconDownloadOutline24 } from '../../assets/icons/icon_download_outline_24.svg?react';
@@ -412,6 +418,9 @@ export { default as IconProgressOutline24 } from '../../assets/icons/icon_progre
 export { default as IconRefreshOutline16 } from '../../assets/icons/icon_refresh_outline_16.svg?react';
 export { default as IconRefreshOutline20 } from '../../assets/icons/icon_refresh_outline_20.svg?react';
 export { default as IconRefreshOutline24 } from '../../assets/icons/icon_refresh_outline_24.svg?react';
+export { default as IconReplayOutline16 } from '../../assets/icons/icon_replay_outline_16.svg?react';
+export { default as IconReplayOutline20 } from '../../assets/icons/icon_replay_outline_20.svg?react';
+export { default as IconReplayOutline24 } from '../../assets/icons/icon_replay_outline_24.svg?react';
 export { default as IconRowOutline16 } from '../../assets/icons/icon_row_outline_16.svg?react';
 export { default as IconRowOutline20 } from '../../assets/icons/icon_row_outline_20.svg?react';
 export { default as IconRowOutline24 } from '../../assets/icons/icon_row_outline_24.svg?react';
@@ -445,6 +454,12 @@ export { default as IconSmsFill24 } from '../../assets/icons/icon_sms_fill_24.sv
 export { default as IconSmsOutline16 } from '../../assets/icons/icon_sms_outline_16.svg?react';
 export { default as IconSmsOutline20 } from '../../assets/icons/icon_sms_outline_20.svg?react';
 export { default as IconSmsOutline24 } from '../../assets/icons/icon_sms_outline_24.svg?react';
+export { default as IconStarFill16 } from '../../assets/icons/icon_star_fill_16.svg?react';
+export { default as IconStarFill20 } from '../../assets/icons/icon_star_fill_20.svg?react';
+export { default as IconStarFill24 } from '../../assets/icons/icon_star_fill_24.svg?react';
+export { default as IconStarOutline16 } from '../../assets/icons/icon_star_outline_16.svg?react';
+export { default as IconStarOutline20 } from '../../assets/icons/icon_star_outline_20.svg?react';
+export { default as IconStarOutline24 } from '../../assets/icons/icon_star_outline_24.svg?react';
 export { default as IconSyncLockOutline16 } from '../../assets/icons/icon_sync-lock_outline_16.svg?react';
 export { default as IconSyncLockOutline20 } from '../../assets/icons/icon_sync-lock_outline_20.svg?react';
 export { default as IconSyncLockOutline24 } from '../../assets/icons/icon_sync-lock_outline_24.svg?react';

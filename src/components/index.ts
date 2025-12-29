@@ -171,6 +171,6 @@ export type {
   TooltipPlacement,
 } from "./Tooltip/types";
 
-// Spinner
-export { Spinner } from "./Spinner";
-export type { SpinnerProps } from "./Spinner";
+// LoadingIndicator
+export { LoadingIndicator, Spinner } from "./LoadingIndicator";
+export type { LoadingIndicatorProps, SpinnerProps } from "./LoadingIndicator";

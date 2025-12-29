@@ -35,7 +35,7 @@ export * from "./components/MultiSelect";
 export * from "./components/TopBanner";
 export * from "./components/Tooltip";
 export * from "./components/TextArea";
-export * from "./components/Spinner";
+export * from "./components/LoadingIndicator";
 // Design Tokens
 export * from "./tokens";
 

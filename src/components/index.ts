@@ -164,11 +164,12 @@ export type {
 } from "./TopBanner/types";
 
 // Tooltip
-export { Tooltip } from "./Tooltip";
+export { Tooltip, VisualTooltip } from "./Tooltip";
 export type {
   TooltipProps,
   TooltipVariant,
   TooltipPlacement,
+  VisualTooltipProps,
 } from "./Tooltip/types";
 
 // LoadingIndicator

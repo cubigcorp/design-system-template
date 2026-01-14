@@ -69,16 +69,11 @@ export const Primary: Story = {
 };
 
 export const Secondary: Story = {
-  render: (args) => (
-    <Tooltip {...args}>
+  render: () => (
+    <Tooltip text="Tooltip text" variant="secondary" placement="top-center">
       <SolidButton>Hover me</SolidButton>
     </Tooltip>
   ),
-  args: {
-    text: "Tooltip text",
-    variant: "secondary",
-    placement: "top-center",
-  },
 };
 
 export const WithHotkey: Story = {

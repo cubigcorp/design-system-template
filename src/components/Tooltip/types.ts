@@ -20,3 +20,16 @@ export interface TooltipProps {
   offset?: number;
   className?: string;
 }
+
+export interface VisualTooltipProps {
+  children: ReactNode;
+  text: string;
+  description?: string;
+  content?: ReactNode;
+  contentWidth?: number;
+  contentHeight?: number;
+  placement?: TooltipPlacement;
+  offset?: number;
+  className?: string;
+  defaultVisible?: boolean;
+}

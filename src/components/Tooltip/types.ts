@@ -8,9 +8,11 @@ export type TooltipPlacement =
   | "bottom-left"
   | "bottom-center"
   | "bottom-right"
+  | "left"
   | "left-top"
   | "left-center"
   | "left-bottom"
+  | "right"
   | "right-top"
   | "right-center"
   | "right-bottom";

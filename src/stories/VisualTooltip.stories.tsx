@@ -27,8 +27,12 @@ const meta = {
         "bottom-left",
         "bottom-center",
         "bottom-right",
-        "left",
-        "right",
+        "left-top",
+        "left-center",
+        "left-bottom",
+        "right-top",
+        "right-center",
+        "right-bottom",
       ],
       description: "툴팁이 표시되는 위치를 설정합니다.",
     },
@@ -198,22 +202,58 @@ export const Placements: Story = {
         </VisualTooltip>
       </div>
       <div style={{ display: "flex", gap: "300px" }}>
-        <VisualTooltip
-          text="Left"
-          description="왼쪽 정렬"
-          content={<PlaceholderContent />}
-          placement="left"
-        >
-          <SolidButton>Left</SolidButton>
-        </VisualTooltip>
-        <VisualTooltip
-          text="Right"
-          description="오른쪽 정렬"
-          content={<PlaceholderContent />}
-          placement="right"
-        >
-          <SolidButton>Right</SolidButton>
-        </VisualTooltip>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+          <VisualTooltip
+            text="Left Top"
+            description="왼쪽 상단 정렬"
+            content={<PlaceholderContent />}
+            placement="left-top"
+          >
+            <SolidButton>Left Top</SolidButton>
+          </VisualTooltip>
+          <VisualTooltip
+            text="Left Center"
+            description="왼쪽 중앙 정렬"
+            content={<PlaceholderContent />}
+            placement="left-center"
+          >
+            <SolidButton>Left Center</SolidButton>
+          </VisualTooltip>
+          <VisualTooltip
+            text="Left Bottom"
+            description="왼쪽 하단 정렬"
+            content={<PlaceholderContent />}
+            placement="left-bottom"
+          >
+            <SolidButton>Left Bottom</SolidButton>
+          </VisualTooltip>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+          <VisualTooltip
+            text="Right Top"
+            description="오른쪽 상단 정렬"
+            content={<PlaceholderContent />}
+            placement="right-top"
+          >
+            <SolidButton>Right Top</SolidButton>
+          </VisualTooltip>
+          <VisualTooltip
+            text="Right Center"
+            description="오른쪽 중앙 정렬"
+            content={<PlaceholderContent />}
+            placement="right-center"
+          >
+            <SolidButton>Right Center</SolidButton>
+          </VisualTooltip>
+          <VisualTooltip
+            text="Right Bottom"
+            description="오른쪽 하단 정렬"
+            content={<PlaceholderContent />}
+            placement="right-bottom"
+          >
+            <SolidButton>Right Bottom</SolidButton>
+          </VisualTooltip>
+        </div>
       </div>
       <div style={{ display: "flex", gap: "40px" }}>
         <VisualTooltip
@@ -247,7 +287,7 @@ export const Placements: Story = {
     docs: {
       description: {
         story:
-          "툴팁의 위치를 top-left, top-center, top-right, bottom-left, bottom-center, bottom-right, left, right로 설정할 수 있습니다.",
+          "툴팁의 위치를 top-left, top-center, top-right, bottom-left, bottom-center, bottom-right, left-top, left-center, left-bottom, right-top, right-center, right-bottom으로 설정할 수 있습니다.",
       },
     },
   },

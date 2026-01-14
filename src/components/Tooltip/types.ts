@@ -8,8 +8,12 @@ export type TooltipPlacement =
   | "bottom-left"
   | "bottom-center"
   | "bottom-right"
-  | "left"
-  | "right";
+  | "left-top"
+  | "left-center"
+  | "left-bottom"
+  | "right-top"
+  | "right-center"
+  | "right-bottom";
 
 export interface TooltipProps {
   children: ReactNode;

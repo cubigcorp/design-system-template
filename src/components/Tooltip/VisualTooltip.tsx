@@ -30,7 +30,9 @@ export const VisualTooltip: React.FC<VisualTooltipProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(defaultVisible);
   const [position, setPosition] = useState({ top: 0, left: 0 });
-  const [pointerPosition, setPointerPosition] = useState<"top" | "bottom" | "left" | "right">("top");
+  const [pointerPosition, setPointerPosition] = useState<
+    "top" | "bottom" | "left" | "right"
+  >("top");
   const triggerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
@@ -75,13 +77,33 @@ export const VisualTooltip: React.FC<VisualTooltipProps> = ({
         left = triggerRect.right - tooltipRect.width;
         setPointerPosition("top");
         break;
-      case "left":
+      case "left-top":
+        top = triggerRect.top;
+        left = triggerRect.left - tooltipRect.width - offset - pointerHeight;
+        setPointerPosition("right");
+        break;
+      case "left-center":
         top = triggerRect.top + (triggerRect.height - tooltipRect.height) / 2;
         left = triggerRect.left - tooltipRect.width - offset - pointerHeight;
         setPointerPosition("right");
         break;
-      case "right":
+      case "left-bottom":
+        top = triggerRect.bottom - tooltipRect.height;
+        left = triggerRect.left - tooltipRect.width - offset - pointerHeight;
+        setPointerPosition("right");
+        break;
+      case "right-top":
+        top = triggerRect.top;
+        left = triggerRect.right + offset + pointerHeight;
+        setPointerPosition("left");
+        break;
+      case "right-center":
         top = triggerRect.top + (triggerRect.height - tooltipRect.height) / 2;
+        left = triggerRect.right + offset + pointerHeight;
+        setPointerPosition("left");
+        break;
+      case "right-bottom":
+        top = triggerRect.bottom - tooltipRect.height;
         left = triggerRect.right + offset + pointerHeight;
         setPointerPosition("left");
         break;
@@ -119,6 +141,19 @@ export const VisualTooltip: React.FC<VisualTooltipProps> = ({
     }
   };
 
+  const getPointerTopPosition = () => {
+    switch (placement) {
+      case "left-top":
+      case "right-top":
+        return "24px";
+      case "left-bottom":
+      case "right-bottom":
+        return "calc(100% - 24px)";
+      default:
+        return "50%";
+    }
+  };
+
   return (
     <Container
       ref={triggerRef}
@@ -133,9 +168,15 @@ export const VisualTooltip: React.FC<VisualTooltipProps> = ({
             ref={tooltipRef}
             style={{ top: position.top, left: position.left }}
           >
-            <Pointer $position={pointerPosition} $left={getPointerLeftPosition()} />
+            <Pointer
+              $position={pointerPosition}
+              $left={getPointerLeftPosition()}
+              $top={getPointerTopPosition()}
+            />
             {content && (
-              <ContentArea style={{ width: contentWidth, height: contentHeight }}>
+              <ContentArea
+                style={{ width: contentWidth, height: contentHeight }}
+              >
                 {content}
               </ContentArea>
             )}
@@ -160,11 +201,12 @@ const TooltipContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${spacing.gap["gap-2"]};
-  padding: ${spacing.gap["gap-2"]} ${spacing.gap["gap-2"]} ${spacing.gap["gap-2.5"]} ${spacing.gap["gap-2"]};
+  padding: ${spacing.gap["gap-2"]} ${spacing.gap["gap-2"]}
+    ${spacing.gap["gap-2.5"]} ${spacing.gap["gap-2"]};
   border-radius: ${radius["rounded-2"]};
   background-color: ${color.gray["990"]};
   z-index: 9999;
-  animation: ${fadeIn} 0.15s ease-in-out;
+  animation: ${fadeIn} 0.25s ease-in-out;
   pointer-events: none;
 `;
 
@@ -203,11 +245,12 @@ const Description = styled.span`
 const Pointer = styled.div<{
   $position: "top" | "bottom" | "left" | "right";
   $left: string;
+  $top: string;
 }>`
   position: absolute;
   background-color: ${color.gray["990"]};
 
-  ${({ $position, $left }) => {
+  ${({ $position, $left, $top }) => {
     switch ($position) {
       case "top":
         return `
@@ -232,7 +275,7 @@ const Pointer = styled.div<{
           width: 8px;
           height: 16px;
           left: -7px;
-          top: 50%;
+          top: ${$top};
           transform: translateY(-50%);
           clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
         `;
@@ -241,7 +284,7 @@ const Pointer = styled.div<{
           width: 8px;
           height: 16px;
           right: -7px;
-          top: 50%;
+          top: ${$top};
           transform: translateY(-50%);
           clip-path: polygon(100% 50%, 0% 0%, 0% 100%);
         `;

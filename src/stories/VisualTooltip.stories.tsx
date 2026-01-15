@@ -338,3 +338,26 @@ export const AlwaysVisible: Story = {
     },
   },
 };
+
+export const LongText: Story = {
+  render: () => (
+    <div style={{ padding: "200px" }}>
+      <VisualTooltip
+        text="이것은 매우 긴 텍스트입니다. 툴팁의 너비가 고정되어 있기 때문에 긴 텍스트는 자동으로 줄바꿈됩니다."
+        description="설명 텍스트도 마찬가지로 길어지면 자동으로 줄바꿈되어 여러 줄로 표시됩니다. 이렇게 하면 사용자가 긴 내용도 편하게 읽을 수 있습니다."
+        content={<PlaceholderContent />}
+        placement="bottom-center"
+        defaultVisible
+      >
+        <SolidButton>긴 텍스트</SolidButton>
+      </VisualTooltip>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: "텍스트가 길면 툴팁 너비 내에서 자동으로 줄바꿈됩니다.",
+      },
+    },
+  },
+};

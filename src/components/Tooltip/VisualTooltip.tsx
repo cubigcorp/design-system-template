@@ -166,7 +166,7 @@ export const VisualTooltip: React.FC<VisualTooltipProps> = ({
         createPortal(
           <TooltipContent
             ref={tooltipRef}
-            style={{ top: position.top, left: position.left }}
+            style={{ top: position.top, left: position.left, width: contentWidth + 16 }}
           >
             <Pointer
               $position={pointerPosition}
@@ -240,11 +240,13 @@ const TextArea = styled.div`
 const Text = styled.span`
   ${typography(undefined, "body2", "medium")}
   color: ${color.common["100"]};
+  word-break: break-word;
 `;
 
 const Description = styled.span`
   ${typography(undefined, "caption2", "regular")}
   color: ${color.gray["800"]};
+  word-break: break-word;
 `;
 
 const Pointer = styled.div<{

@@ -9,7 +9,13 @@ export type TooltipPlacement =
   | "bottom-center"
   | "bottom-right"
   | "left"
-  | "right";
+  | "left-top"
+  | "left-center"
+  | "left-bottom"
+  | "right"
+  | "right-top"
+  | "right-center"
+  | "right-bottom";
 
 export interface TooltipProps {
   children: ReactNode;
@@ -19,4 +25,17 @@ export interface TooltipProps {
   placement?: TooltipPlacement;
   offset?: number;
   className?: string;
+}
+
+export interface VisualTooltipProps {
+  children: ReactNode;
+  text: string;
+  description?: string;
+  content?: ReactNode;
+  contentWidth?: number;
+  contentHeight?: number;
+  placement?: TooltipPlacement;
+  offset?: number;
+  className?: string;
+  defaultVisible?: boolean;
 }

@@ -48,7 +48,7 @@ const Modal: React.FC<ModalProps> = ({
 
   if (!shouldRender) return null;
 
-  const handleOverlayClick = (e: React.MouseEvent) => {
+  const handleOverlayMouseDown = (e: React.MouseEvent) => {
     const target = e.target as Element;
 
     // Portal 드롭다운 메뉴 내부 클릭은 모달을 닫지 않음
@@ -71,7 +71,7 @@ const Modal: React.FC<ModalProps> = ({
     <Overlay
       $isVisible={isVisible}
       $position={position}
-      onClick={handleOverlayClick}
+      onMouseDown={handleOverlayMouseDown}
     >
       <ModalContainer
         $size={size}

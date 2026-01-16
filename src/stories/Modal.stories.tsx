@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Modal, ModalProps } from "../components/Modal";
 import { SolidButton, OutlineButton } from "../components/Button";
 import { Dropdown } from "../components/Dropdown";
+import { TextField } from "../components/TextField";
 import { toast, ToastSystem } from "../components/Toast";
 
 const ModalWithState = ({
@@ -705,6 +706,62 @@ export const AllPositions: Story = {
       </ModalWithState>
     </div>
   ),
+};
+
+export const WithTextField: Story = {
+  render: () => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [description, setDescription] = useState("");
+
+    return (
+      <ModalWithState
+        size="medium"
+        title="정보 입력"
+        actions={
+          <div
+            style={{
+              display: "flex",
+              gap: "8px",
+              justifyContent: "flex-end",
+              width: "100%",
+            }}
+          >
+            <OutlineButton variant="secondary">취소</OutlineButton>
+            <SolidButton variant="primary">저장</SolidButton>
+          </div>
+        }
+      >
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <TextField
+            label="이름"
+            placeholder="이름을 입력하세요"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <TextField
+            label="이메일"
+            placeholder="이메일을 입력하세요"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            label="설명"
+            placeholder="설명을 입력하세요"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
+      </ModalWithState>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "모달 안에 TextField를 포함한 폼 예시입니다.",
+      },
+    },
+  },
 };
 
 export const NestedModals: Story = {

@@ -1,4 +1,4 @@
-export type PaginationVariant = "compact" | "minimize";
+export type PaginationVariant = 'compact' | 'minimize';
 export interface PaginationProps {
     /**
      * 현재 페이지 (1부터 시작)
@@ -28,3 +28,4 @@ export interface PaginationProps {
      */
     className?: string;
 }
+//# sourceMappingURL=types.d.ts.map

@@ -1,2 +1,3 @@
 export { Cell } from './Cell';
 export type { CellProps } from './types';
+//# sourceMappingURL=index.d.ts.map

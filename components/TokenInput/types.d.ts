@@ -2,7 +2,7 @@ export interface TokenInputProps {
     /**
      * 컴포넌트 크기
      */
-    size?: "small" | "medium" | "large";
+    size?: 'small' | 'medium' | 'large';
     /**
      * 비활성화 상태
      */
@@ -38,11 +38,12 @@ export interface TokenInputProps {
     /**
      * 언어 설정 (타이포그래피 적용)
      */
-    lang?: "ko" | "en";
+    lang?: 'ko' | 'en';
     /**
      * 칩 표시 모드
      * - single: 한 줄로 표시, 넘치면 가로 스크롤
      * - multi: 여러 줄로 표시 (최대 3줄), 넘치면 세로 스크롤
      */
-    lineMode?: "single" | "multi";
+    lineMode?: 'single' | 'multi';
 }
+//# sourceMappingURL=types.d.ts.map

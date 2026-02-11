@@ -9,3 +9,4 @@ export interface IconMetadata {
     componentName: IconComponentName;
 }
 export declare const ICON_METADATA: IconMetadata[];
+//# sourceMappingURL=types.d.ts.map

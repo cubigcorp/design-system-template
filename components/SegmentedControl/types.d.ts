@@ -12,3 +12,4 @@ export interface SegmentedControlProps {
     value?: number;
     onChange?: (index: number) => void;
 }
+//# sourceMappingURL=types.d.ts.map

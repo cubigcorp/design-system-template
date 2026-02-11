@@ -1,11 +1,11 @@
-import { default as React } from '../../../node_modules/react';
+import { default as React } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
 export interface LNBItemProfileProps {
     name: string;
     avatarSrc?: string;
-    avatarType?: "default" | "custom" | "initial";
+    avatarType?: 'default' | 'custom' | 'initial';
     onClick?: () => void;
     className?: string;
-    lang?: "ko" | "en";
+    lang?: 'ko' | 'en';
     style?: React.CSSProperties;
     trailingIcon?: React.ComponentType<{
         width?: number;
@@ -14,3 +14,4 @@ export interface LNBItemProfileProps {
     }>;
 }
 export declare const LNBItemProfile: React.FC<LNBItemProfileProps>;
+//# sourceMappingURL=ItemProfile.d.ts.map

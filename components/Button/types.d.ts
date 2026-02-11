@@ -1,7 +1,7 @@
-import { SVGProps } from '../../../node_modules/react';
-export type ButtonSize = "small" | "medium" | "large";
-export type ButtonState = "default" | "hovered" | "pressed" | "focused";
-export type ButtonVariant = "primary" | "secondary" | "tertiary" | "brand" | "positive" | "negative";
+import { SVGProps } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
+export type ButtonSize = 'small' | 'medium' | 'large';
+export type ButtonState = 'default' | 'hovered' | 'pressed' | 'focused';
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'brand' | 'positive' | 'negative';
 export interface ButtonStyleProps {
     variant?: ButtonVariant;
     size?: ButtonSize;
@@ -17,5 +17,6 @@ export interface ButtonProps extends ButtonStyleProps {
     children?: React.ReactNode;
     onClick?: () => void;
     className?: string;
-    lang?: "ko" | "en";
+    lang?: 'ko' | 'en';
 }
+//# sourceMappingURL=types.d.ts.map

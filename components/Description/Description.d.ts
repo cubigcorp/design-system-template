@@ -1,6 +1,7 @@
-import { default as React } from '../../../node_modules/react';
+import { default as React } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
 import { DescriptionProps } from './types';
 declare const Description: React.FC<DescriptionProps & {
-    lang?: "ko" | "en";
+    lang?: 'ko' | 'en';
 }>;
 export { Description };
+//# sourceMappingURL=Description.d.ts.map

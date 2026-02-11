@@ -13,7 +13,7 @@ export interface MultiSelectProps {
      * 컴포넌트 크기
      * @default "medium"
      */
-    size?: "small" | "medium" | "large";
+    size?: 'small' | 'medium' | 'large';
     /**
      * 비활성화 상태
      * @default false
@@ -56,12 +56,13 @@ export interface MultiSelectProps {
      * 언어 설정
      * @default "ko"
      */
-    lang?: "ko" | "en";
+    lang?: 'ko' | 'en';
     /**
      * 라인 표시 모드
      * - "single": 한 줄 고정, 가로 스크롤
      * - "multi": 최대 3줄까지 확장, 이후 세로 스크롤
      * @default "multi"
      */
-    lineMode?: "single" | "multi";
+    lineMode?: 'single' | 'multi';
 }
+//# sourceMappingURL=types.d.ts.map

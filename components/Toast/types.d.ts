@@ -1,7 +1,7 @@
-import { default as React } from '../../../node_modules/react';
-export type ToastVariant = "default" | "positive" | "negative" | "cautionary";
-export type ToastPlacement = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right";
-export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "children"> {
+import { default as React } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
+export type ToastVariant = 'default' | 'positive' | 'negative' | 'cautionary';
+export type ToastPlacement = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
+export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'children'> {
     children: React.ReactNode;
     description?: string;
     variant?: ToastVariant;
@@ -17,3 +17,4 @@ export interface ToastProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "
     index?: number;
     disablePositioning?: boolean;
 }
+//# sourceMappingURL=types.d.ts.map

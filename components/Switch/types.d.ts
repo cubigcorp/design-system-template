@@ -1,6 +1,6 @@
-import { default as React } from '../../../node_modules/react';
+import { default as React } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
 export interface SwitchProps {
-    size?: "small" | "medium" | "large";
+    size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
     active?: boolean;
     onChange?: (active: boolean) => void;
@@ -9,5 +9,6 @@ export interface SwitchProps {
     onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
     className?: string;
     style?: React.CSSProperties;
-    lang?: "ko" | "en";
+    lang?: 'ko' | 'en';
 }
+//# sourceMappingURL=types.d.ts.map

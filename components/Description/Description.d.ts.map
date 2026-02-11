@@ -1,0 +1,1 @@
+{"version":3,"file":"Description.d.ts","sourceRoot":"","sources":["../../../src/components/Description/Description.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAW1B,OAAO,KAAK,EAAE,gBAAgB,EAAE,MAAM,SAAS,CAAC;AAEhD,QAAA,MAAM,WAAW,EAAE,KAAK,CAAC,EAAE,CAAC,gBAAgB,GAAG;IAAE,IAAI,CAAC,EAAE,IAAI,GAAG,IAAI,CAAA;CAAE,CAoCpE,CAAC;AA2CF,OAAO,EAAE,WAAW,EAAE,CAAC"}

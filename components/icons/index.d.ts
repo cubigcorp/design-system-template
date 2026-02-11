@@ -1,3 +1,4 @@
+import * as GeneratedIcons from './generated';
 export { IconCancel } from './IconCancel';
 export { IconError } from './IconError';
 export { IconCircleCheck } from './IconCircleCheck';
@@ -12,5 +13,5 @@ export { IconClose } from './IconClose';
 export { IconSearch } from './IconSearch';
 export * from './generated';
 export * from './types';
-import * as GeneratedIcons from "./generated";
 export { GeneratedIcons as Icons };
+//# sourceMappingURL=index.d.ts.map

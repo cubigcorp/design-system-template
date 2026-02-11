@@ -1,5 +1,5 @@
-type LoadingIndicatorType = "spinner" | "dots";
-type LoadingIndicatorSize = "small" | "medium" | "large" | "x-large";
+type LoadingIndicatorType = 'spinner' | 'dots';
+type LoadingIndicatorSize = 'small' | 'medium' | 'large' | 'x-large';
 export interface LoadingIndicatorProps {
     type?: LoadingIndicatorType;
     size?: LoadingIndicatorSize;
@@ -11,3 +11,4 @@ export declare const LoadingIndicator: {
     displayName: string;
 };
 export {};
+//# sourceMappingURL=LoadingIndicator.d.ts.map

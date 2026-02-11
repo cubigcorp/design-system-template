@@ -1,3 +1,4 @@
 export { Tooltip } from './Tooltip';
-export { VisualTooltip } from './VisualTooltip';
-export type { TooltipProps, TooltipVariant, TooltipPlacement, VisualTooltipProps, } from './types';
+export type { TooltipPlacement, TooltipProps, TooltipVariant, VisualTooltipProps } from './types';
+export { ContentImage, ContentVideo, VisualTooltip } from './VisualTooltip';
+//# sourceMappingURL=index.d.ts.map

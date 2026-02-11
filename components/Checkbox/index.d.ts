@@ -1,2 +1,3 @@
 export { Checkbox } from './Checkbox';
 export type { CheckboxProps, CheckboxVariant, CheckboxState } from './types';
+//# sourceMappingURL=index.d.ts.map

@@ -1,4 +1,4 @@
-export type PopoverDirection = "TopCenter" | "TopRight" | "TopLeft" | "BottomCenter" | "BottomRight" | "BottomLeft" | "Right" | "Left";
+export type PopoverDirection = 'TopCenter' | 'TopRight' | 'TopLeft' | 'BottomCenter' | 'BottomRight' | 'BottomLeft' | 'Right' | 'Left';
 export interface PopoverProps {
     direction?: PopoverDirection;
     text: string;
@@ -9,3 +9,4 @@ export interface PopoverProps {
 export interface PopoverStyleProps {
     $direction: PopoverDirection;
 }
+//# sourceMappingURL=types.d.ts.map

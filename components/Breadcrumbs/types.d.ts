@@ -1,4 +1,4 @@
-export type BreadcrumbState = "default" | "hovered" | "pressed" | "focused" | "disabled";
+export type BreadcrumbState = 'default' | 'hovered' | 'pressed' | 'focused' | 'disabled';
 export interface BreadcrumbItemProps {
     /**
      * 브레드크럼 아이템의 텍스트
@@ -43,3 +43,4 @@ export interface BreadcrumbsProps {
      */
     style?: React.CSSProperties;
 }
+//# sourceMappingURL=types.d.ts.map

@@ -1,5 +1,5 @@
-import { default as React } from '../../../node_modules/react';
-export type LNBItemVariant = "default" | "hovered" | "pressed" | "selected";
+import { default as React } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
+export type LNBItemVariant = 'default' | 'hovered' | 'pressed' | 'selected';
 export interface LNBItemProps {
     value: string;
     selected?: boolean;
@@ -12,7 +12,8 @@ export interface LNBItemProps {
     iconOnly?: boolean;
     onClick?: () => void;
     className?: string;
-    lang?: "ko" | "en";
+    lang?: 'ko' | 'en';
     style?: React.CSSProperties;
 }
 export declare const LNBItem: React.FC<LNBItemProps>;
+//# sourceMappingURL=Item.d.ts.map

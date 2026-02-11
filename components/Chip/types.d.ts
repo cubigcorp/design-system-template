@@ -1,7 +1,7 @@
-export type ChipType = "outline" | "solid";
-export type ChipSize = "x-small" | "small" | "medium" | "large";
-export type ChipState = "default" | "hovered" | "pressed" | "focused";
-export type ChipRadius = "rounded-1" | "rounded-1.5" | "rounded-2" | "rounded-3" | "rounded-4" | "rounded-5" | "rounded-full";
+export type ChipType = 'outline' | 'solid';
+export type ChipSize = 'x-small' | 'small' | 'medium' | 'large';
+export type ChipState = 'default' | 'hovered' | 'pressed' | 'focused';
+export type ChipRadius = 'rounded-1' | 'rounded-1.5' | 'rounded-2' | 'rounded-3' | 'rounded-4' | 'rounded-5' | 'rounded-full';
 export interface ChipProps {
     type?: ChipType;
     size?: ChipSize;
@@ -15,7 +15,7 @@ export interface ChipProps {
     onClick?: () => void;
     className?: string;
     radius?: ChipRadius;
-    lang?: "ko" | "en";
+    lang?: 'ko' | 'en';
 }
 export interface ChipStyleProps {
     type: ChipType;
@@ -25,3 +25,4 @@ export interface ChipStyleProps {
     active: boolean;
     radius: ChipRadius;
 }
+//# sourceMappingURL=types.d.ts.map

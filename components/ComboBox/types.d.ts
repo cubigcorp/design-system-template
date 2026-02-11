@@ -9,7 +9,7 @@ export interface ComboBoxOption {
     }>;
 }
 export interface ComboBoxProps {
-    size?: "small" | "medium" | "large";
+    size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
     active?: boolean;
     focused?: boolean;
@@ -21,6 +21,7 @@ export interface ComboBoxProps {
     onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
     className?: string;
     style?: React.CSSProperties;
-    lang?: "ko" | "en";
+    lang?: 'ko' | 'en';
     showCheckIcon?: boolean;
 }
+//# sourceMappingURL=types.d.ts.map

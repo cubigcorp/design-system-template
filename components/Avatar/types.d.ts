@@ -1,6 +1,6 @@
-import { SVGProps } from '../../../node_modules/react';
-export type AvatarType = "default" | "custom" | "initial";
-export type AvatarSize = "x-small" | "small" | "medium" | "large";
+import { SVGProps } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
+export type AvatarType = 'default' | 'custom' | 'initial';
+export type AvatarSize = 'x-small' | 'small' | 'medium' | 'large';
 export interface AvatarProps {
     type?: AvatarType;
     size?: AvatarSize;
@@ -10,3 +10,4 @@ export interface AvatarProps {
     icon?: React.ComponentType<SVGProps<SVGSVGElement>>;
     className?: string;
 }
+//# sourceMappingURL=types.d.ts.map

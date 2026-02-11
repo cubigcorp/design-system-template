@@ -1,5 +1,5 @@
-export type StepStatus = "Inactive" | "Active" | "Complete";
-export type StepOrientation = "vertical" | "horizontal";
+export type StepStatus = 'Inactive' | 'Active' | 'Complete';
+export type StepOrientation = 'vertical' | 'horizontal';
 export interface StepItem {
     label?: string;
     status?: StepStatus;
@@ -23,3 +23,4 @@ export interface DividerProps {
     status: StepStatus;
     orientation?: StepOrientation;
 }
+//# sourceMappingURL=types.d.ts.map

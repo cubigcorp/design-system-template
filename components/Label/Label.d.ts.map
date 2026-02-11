@@ -1,0 +1,1 @@
+{"version":3,"file":"Label.d.ts","sourceRoot":"","sources":["../../../src/components/Label/Label.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAS1B,OAAO,EAAE,UAAU,EAAE,MAAM,SAAS,CAAC;AAErC,QAAA,MAAM,KAAK,EAAE,KAAK,CAAC,EAAE,CAAC,UAAU,GAAG;IAAE,IAAI,CAAC,EAAE,IAAI,GAAG,IAAI,CAAA;CAAE,CAkCxD,CAAC;AA2BF,OAAO,EAAE,KAAK,EAAE,CAAC"}

@@ -1,5 +1,5 @@
-export type CalloutVariant = "primary" | "secondary" | "positive" | "negative" | "cautionary" | "info";
-export type CalloutSize = "small" | "medium";
+export type CalloutVariant = 'primary' | 'secondary' | 'positive' | 'negative' | 'cautionary' | 'info';
+export type CalloutSize = 'small' | 'medium';
 export interface CalloutProps {
     /**
      * Callout 변형
@@ -34,3 +34,4 @@ export interface CalloutProps {
      */
     className?: string;
 }
+//# sourceMappingURL=types.d.ts.map

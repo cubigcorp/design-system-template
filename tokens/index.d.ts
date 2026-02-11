@@ -12,9 +12,10 @@ export { default as fontWeight } from './fontWeight';
 export { default as fontSize } from './fontSize';
 export { default as lineHeight } from './lineHeight';
 export { default as letterSpacing } from './letterSpacing';
-export { default as typography, typographyStyles, typographyCSS, typo, } from './typography';
+export { default as typography, typographyStyles, typographyCSS, typo } from './typography';
 export { radius } from './radius';
 export { spacing } from './spacing';
 export { shadow } from './shadow';
 export { default as opacity } from './opacity';
 export { withOpacity } from './colorUtils';
+//# sourceMappingURL=index.d.ts.map

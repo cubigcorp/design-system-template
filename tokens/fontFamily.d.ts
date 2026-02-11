@@ -5,3 +5,4 @@ declare const fontFamily: {
     readonly mono: "\"Geist Mono\", monospace";
 };
 export default fontFamily;
+//# sourceMappingURL=fontFamily.d.ts.map

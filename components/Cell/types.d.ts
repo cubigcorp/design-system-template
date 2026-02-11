@@ -1,4 +1,4 @@
-import { default as React } from '../../../node_modules/react';
+import { default as React } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
 export interface CellProps {
     disable?: boolean;
     active?: boolean;
@@ -18,3 +18,4 @@ export interface CellProps {
     className?: string;
     showCheckIcon?: boolean;
 }
+//# sourceMappingURL=types.d.ts.map

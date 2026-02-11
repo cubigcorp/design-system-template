@@ -1,4 +1,4 @@
-import { default as React } from '../../../node_modules/react';
+import { default as React } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
 interface IconCancelProps {
     width?: number;
     height?: number;
@@ -7,3 +7,4 @@ interface IconCancelProps {
 }
 export declare const IconCancel: React.FC<IconCancelProps>;
 export {};
+//# sourceMappingURL=IconCancel.d.ts.map

@@ -1,4 +1,4 @@
-import { default as React } from '../../../node_modules/react';
+import { default as React } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
 interface IconVisibilityOffProps {
     width?: number;
     height?: number;
@@ -6,3 +6,4 @@ interface IconVisibilityOffProps {
 }
 export declare const IconVisibilityOff: React.FC<IconVisibilityOffProps>;
 export {};
+//# sourceMappingURL=IconVisibilityOff.d.ts.map

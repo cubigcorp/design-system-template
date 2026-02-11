@@ -6,7 +6,7 @@ export interface TextAreaProps {
     /**
      * Label 타입
      */
-    labelType?: "default" | "required" | "optional";
+    labelType?: 'default' | 'required' | 'optional';
     /**
      * Description 텍스트
      */
@@ -18,7 +18,7 @@ export interface TextAreaProps {
     /**
      * 상태
      */
-    status?: "default" | "error" | "success";
+    status?: 'default' | 'error' | 'success';
     /**
      * 비활성화 여부
      */
@@ -70,5 +70,6 @@ export interface TextAreaProps {
     /**
      * 언어 설정
      */
-    lang?: "ko" | "en";
+    lang?: 'ko' | 'en';
 }
+//# sourceMappingURL=types.d.ts.map

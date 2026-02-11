@@ -1,6 +1,6 @@
-import { ReactNode } from '../../../node_modules/react';
-export type TooltipVariant = "primary" | "secondary";
-export type TooltipPlacement = "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right" | "left-top" | "left-center" | "left-bottom" | "right-top" | "right-center" | "right-bottom";
+import { ReactNode } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
+export type TooltipVariant = 'primary' | 'secondary';
+export type TooltipPlacement = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right' | 'left' | 'left-top' | 'left-center' | 'left-bottom' | 'right' | 'right-top' | 'right-center' | 'right-bottom';
 export interface TooltipProps {
     children: ReactNode;
     text: string;
@@ -22,3 +22,4 @@ export interface VisualTooltipProps {
     className?: string;
     defaultVisible?: boolean;
 }
+//# sourceMappingURL=types.d.ts.map

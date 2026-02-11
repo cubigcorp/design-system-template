@@ -5,3 +5,4 @@
  * @returns 8자리 hex 색상 값
  */
 export declare function withOpacity(hexColor: string, opacity: number): string;
+//# sourceMappingURL=colorUtils.d.ts.map

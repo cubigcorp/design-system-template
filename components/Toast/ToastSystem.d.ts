@@ -1,5 +1,5 @@
-import { default as React, ReactNode } from '../../../node_modules/react';
-import { ToastVariant, ToastPlacement } from './types';
+import { default as React, ReactNode } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
+import { ToastPlacement, ToastVariant } from './types';
 interface ToastItem {
     id: string;
     message: string;
@@ -25,3 +25,4 @@ export declare const toast: {
     info: (message: string, description?: string) => void;
 };
 export {};
+//# sourceMappingURL=ToastSystem.d.ts.map

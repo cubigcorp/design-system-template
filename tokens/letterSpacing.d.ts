@@ -3,3 +3,4 @@ declare const letterSpacing: {
     readonly md: "0px";
 };
 export default letterSpacing;
+//# sourceMappingURL=letterSpacing.d.ts.map

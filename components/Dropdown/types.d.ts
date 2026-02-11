@@ -1,4 +1,4 @@
-import { default as React } from '../../../node_modules/react';
+import { default as React } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
 export interface DropdownOption {
     value: string;
     label: string;
@@ -10,8 +10,8 @@ export interface DropdownOption {
     }>;
 }
 export interface DropdownProps {
-    type?: "selector" | "combobox" | "multiselect";
-    size?: "small" | "medium" | "large";
+    type?: 'selector' | 'combobox' | 'multiselect';
+    size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
     active?: boolean;
     focused?: boolean;
@@ -19,15 +19,16 @@ export interface DropdownProps {
     value?: string | string[];
     options?: DropdownOption[];
     label?: string;
-    labelType?: "default" | "required" | "optional";
+    labelType?: 'default' | 'required' | 'optional';
     description?: string;
     descriptionLeadingIcon?: boolean;
-    status?: "default" | "negative" | "positive";
+    status?: 'default' | 'negative' | 'positive';
     onChange?: (value: string | string[]) => void;
     onFocus?: (event: React.FocusEvent<HTMLButtonElement | HTMLInputElement>) => void;
     onBlur?: (event: React.FocusEvent<HTMLButtonElement | HTMLInputElement>) => void;
     className?: string;
     style?: React.CSSProperties;
     showCheckIcon?: boolean;
-    lineMode?: "single" | "multi";
+    lineMode?: 'single' | 'multi';
 }
+//# sourceMappingURL=types.d.ts.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"IconArrowUp.d.ts","sourceRoot":"","sources":["../../../src/components/icons/IconArrowUp.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAE1B,UAAU,gBAAgB;IACxB,KAAK,CAAC,EAAE,MAAM,CAAC;IACf,MAAM,CAAC,EAAE,MAAM,CAAC;IAChB,KAAK,CAAC,EAAE,MAAM,CAAC;CAChB;AAED,eAAO,MAAM,WAAW,EAAE,KAAK,CAAC,EAAE,CAAC,gBAAgB,CAmBlD,CAAC"}

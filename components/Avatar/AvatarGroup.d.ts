@@ -1,5 +1,5 @@
 import { AvatarProps } from './types';
-type AvatarGroupState = "default" | "hovered" | "pressed" | "selected";
+type AvatarGroupState = 'default' | 'hovered' | 'pressed' | 'selected';
 interface AvatarItemData extends AvatarProps {
     name?: string;
 }
@@ -13,3 +13,4 @@ export interface AvatarGroupProps {
 }
 export declare const AvatarGroup: ({ avatars, max, state, dropdownWidth, onItemClick, className, }: AvatarGroupProps) => import("react/jsx-runtime").JSX.Element;
 export {};
+//# sourceMappingURL=AvatarGroup.d.ts.map

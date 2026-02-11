@@ -1,0 +1,1 @@
+{"version":3,"file":"IconCancel.d.ts","sourceRoot":"","sources":["../../../src/components/icons/IconCancel.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAE1B,UAAU,eAAe;IACvB,KAAK,CAAC,EAAE,MAAM,CAAC;IACf,MAAM,CAAC,EAAE,MAAM,CAAC;IAChB,KAAK,CAAC,EAAE,MAAM,CAAC;IACf,SAAS,CAAC,EAAE,MAAM,CAAC;CACpB;AAED,eAAO,MAAM,UAAU,EAAE,KAAK,CAAC,EAAE,CAAC,eAAe,CAoBhD,CAAC"}

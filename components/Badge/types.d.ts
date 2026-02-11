@@ -1,6 +1,6 @@
-export type BadgeVariant = "primary" | "secondary" | "brand" | "positive" | "negative" | "info" | "cautionary";
-export type BadgeType = "outline" | "solid" | "strong";
-export type BadgeSize = "small" | "medium" | "large";
+export type BadgeVariant = 'primary' | 'secondary' | 'brand' | 'positive' | 'negative' | 'info' | 'cautionary';
+export type BadgeType = 'outline' | 'solid' | 'strong';
+export type BadgeSize = 'small' | 'medium' | 'large';
 export interface BadgeProps {
     variant?: BadgeVariant;
     type?: BadgeType;
@@ -16,3 +16,4 @@ export interface BadgeStyleProps {
     type: BadgeType;
     size: BadgeSize;
 }
+//# sourceMappingURL=types.d.ts.map

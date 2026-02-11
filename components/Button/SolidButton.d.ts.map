@@ -1,1 +1,1 @@
-{"version":3,"file":"SolidButton.d.ts","sourceRoot":"","sources":["../../../src/components/Button/SolidButton.tsx"],"names":[],"mappings":"AAYA,OAAO,EAAE,WAAW,EAA0C,MAAM,SAAS,CAAC;AAqO9E,eAAO,MAAM,WAAW,GAAI,+HAczB,WAAW,4CAyFb,CAAC"}
+{"version":3,"file":"SolidButton.d.ts","sourceRoot":"","sources":["../../../src/components/Button/SolidButton.tsx"],"names":[],"mappings":"AAYA,OAAO,EAAE,WAAW,EAAwD,MAAM,SAAS,CAAC;AA2O5F,eAAO,MAAM,WAAW,GAAI,4HAczB,WAAW,4CAyFb,CAAC"}

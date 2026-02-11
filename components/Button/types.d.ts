@@ -1,14 +1,15 @@
 import { SVGProps } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
 export type ButtonSize = 'small' | 'medium' | 'large';
+export type ButtonRadius = 'small' | 'medium' | 'large';
 export type ButtonState = 'default' | 'hovered' | 'pressed' | 'focused';
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'brand' | 'positive' | 'negative';
 export interface ButtonStyleProps {
     variant?: ButtonVariant;
     size?: ButtonSize;
+    radius?: ButtonRadius;
     state?: ButtonState;
     disabled?: boolean;
     loading?: boolean;
-    radiusKey?: keyof typeof import('../../tokens/radius').radius;
 }
 export interface ButtonProps extends ButtonStyleProps {
     leadingIcon?: React.ComponentType<SVGProps<SVGSVGElement>>;

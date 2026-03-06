@@ -1,6 +1,8 @@
-import { SVGProps } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
+import { SVGProps } from '../../../../../node_modules/.pnpm/react@19.2.1/node_modules/react';
+import { radius } from '../../tokens/radius';
 export type ButtonSize = 'small' | 'medium' | 'large';
 export type ButtonRadius = 'small' | 'medium' | 'large';
+export declare const radiusMap: Record<ButtonRadius, keyof typeof radius>;
 export type ButtonState = 'default' | 'hovered' | 'pressed' | 'focused';
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'brand' | 'positive' | 'negative';
 export interface ButtonStyleProps {

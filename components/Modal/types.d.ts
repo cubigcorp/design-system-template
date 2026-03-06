@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
+import { HTMLAttributes, ReactNode } from '../../../../../node_modules/.pnpm/react@19.2.1/node_modules/react';
 export type ModalSize = 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
 export type ModalPosition = 'top-left' | 'top-center' | 'top-right' | 'center-left' | 'center' | 'center-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
 export interface ModalProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {

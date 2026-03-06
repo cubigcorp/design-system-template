@@ -1,6 +1,7 @@
-import { SVGProps, default as React } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
+import { SVGProps, default as React } from '../../../../../node_modules/.pnpm/react@19.2.1/node_modules/react';
+import { ButtonRadius } from './types';
 export type IconButtonSize = 'small' | 'medium' | 'large';
-export type IconButtonRadius = 'small' | 'medium' | 'large';
+export type IconButtonRadius = ButtonRadius;
 export type IconButtonState = 'default' | 'hovered' | 'pressed' | 'focused';
 export type IconButtonType = 'solid' | 'outline';
 export type IconButtonVariant = 'primary' | 'secondary' | 'brand' | 'positive' | 'negative';

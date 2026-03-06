@@ -1,4 +1,4 @@
-import { ReactNode } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
+import { ReactNode } from '../../../../../node_modules/.pnpm/react@19.2.1/node_modules/react';
 export type TooltipVariant = 'primary' | 'secondary';
 export type TooltipPlacement = 'top-left' | 'top-center' | 'top-right' | 'bottom-left' | 'bottom-center' | 'bottom-right' | 'left' | 'left-top' | 'left-center' | 'left-bottom' | 'right' | 'right-top' | 'right-center' | 'right-bottom';
 export interface TooltipProps {
@@ -12,7 +12,7 @@ export interface TooltipProps {
 }
 export interface VisualTooltipProps {
     children: ReactNode;
-    text: string;
+    text?: string;
     description?: string;
     content?: ReactNode;
     contentWidth?: number;

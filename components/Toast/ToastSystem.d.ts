@@ -1,4 +1,4 @@
-import { default as React, ReactNode } from '../../../../../node_modules/.pnpm/react@19.1.2/node_modules/react';
+import { default as React, ReactNode } from '../../../../../node_modules/.pnpm/react@19.2.1/node_modules/react';
 import { ToastPlacement, ToastVariant } from './types';
 interface ToastItem {
     id: string;

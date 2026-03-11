@@ -15,6 +15,11 @@ export interface MultiSelectProps {
      */
     size?: 'small' | 'medium' | 'large';
     /**
+     * 상태
+     * @default "default"
+     */
+    status?: 'default' | 'negative' | 'positive';
+    /**
      * 비활성화 상태
      * @default false
      */

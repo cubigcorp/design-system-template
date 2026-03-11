@@ -10,6 +10,7 @@ export interface SelectorOption {
 }
 export interface SelectorProps {
     size?: 'small' | 'medium' | 'large';
+    status?: 'default' | 'negative' | 'positive';
     disabled?: boolean;
     active?: boolean;
     focused?: boolean;

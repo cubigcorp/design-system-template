@@ -18,7 +18,7 @@ export interface TextAreaProps {
     /**
      * 상태
      */
-    status?: 'default' | 'error' | 'success';
+    status?: 'default' | 'negative';
     /**
      * 비활성화 여부
      */

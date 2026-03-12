@@ -1,4 +1,4 @@
-export type CalloutVariant = 'primary' | 'secondary' | 'positive' | 'negative' | 'cautionary' | 'info';
+export type CalloutVariant = 'primary' | 'secondary' | 'positive' | 'negative' | 'cautionary' | 'info' | 'brand';
 export type CalloutSize = 'small' | 'medium';
 export interface CalloutProps {
     /**

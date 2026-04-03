@@ -28,5 +28,7 @@ export interface TopBannerListProps extends Omit<React.HTMLAttributes<HTMLDivEle
     banners: BannerItem[];
     /** 배너 전환 간격 (밀리초, 기본값: 4000ms) */
     interval?: number;
+    /** 배너가 닫힐 때 호출되는 콜백 */
+    onClose?: () => void;
 }
 //# sourceMappingURL=types.d.ts.map

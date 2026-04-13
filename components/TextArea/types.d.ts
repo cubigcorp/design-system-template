@@ -7,6 +7,7 @@ export interface TextAreaProps {
      * Label 타입
      */
     labelType?: 'default' | 'required' | 'optional';
+    optionalText?: string;
     /**
      * Description 텍스트
      */

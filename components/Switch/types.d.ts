@@ -3,6 +3,7 @@ export interface SwitchProps {
     size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
     active?: boolean;
+    activeColor?: string;
     onChange?: (active: boolean) => void;
     onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
     onFocus?: (event: React.FocusEvent<HTMLButtonElement>) => void;

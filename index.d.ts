@@ -25,6 +25,7 @@ export * from './components/RadioButton';
 export * from './components/Searchfield';
 export * from './components/SegmentedControl';
 export * from './components/Selector';
+export * from './components/Skeleton';
 export * from './components/StepIndicator';
 export * from './components/Switch';
 export * from './components/Tab';

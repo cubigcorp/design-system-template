@@ -20,6 +20,7 @@ export interface DropdownProps {
     options?: DropdownOption[];
     label?: string;
     labelType?: 'default' | 'required' | 'optional';
+    optionalText?: string;
     description?: string;
     descriptionLeadingIcon?: boolean;
     status?: 'default' | 'negative' | 'positive';

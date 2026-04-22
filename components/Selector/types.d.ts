@@ -2,6 +2,7 @@ export interface SelectorOption {
     value: string;
     label: string;
     description?: string;
+    disabled?: boolean;
     leadingContent?: React.ComponentType<{
         width?: number;
         height?: number;

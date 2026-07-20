@@ -9,6 +9,11 @@ export interface TooltipProps {
     placement?: TooltipPlacement;
     offset?: number;
     className?: string;
+    /**
+     * 다중행 텍스트 지원. 지정 시 white-space 가 `pre-line` 으로 바뀌어 텍스트 내 `\n`
+     * 으로 줄바꿈, max-width 로 자동 wrap 됨. 미지정 시 기존 동작(nowrap) 유지.
+     */
+    maxWidth?: number;
 }
 export interface VisualTooltipProps {
     children: ReactNode;

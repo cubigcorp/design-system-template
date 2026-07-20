@@ -24,17 +24,22 @@ declare const color: {
         readonly '1000': "#0f0f10";
     };
     readonly neutral: {
-        readonly '50': "#fafafa";
-        readonly '100': "#f5f5f5";
-        readonly '200': "#e5e5e5";
-        readonly '300': "#d4d4d4";
-        readonly '400': "#a1a1a1";
-        readonly '500': "#737373";
-        readonly '600': "#525252";
-        readonly '700': "#404040";
-        readonly '800': "#262626";
-        readonly '900': "#171717";
-        readonly '950': "#0a0a0a";
+        readonly '25': "#F9FAFB";
+        readonly '50': "#F6F7F9";
+        readonly '100': "#EDF0F5";
+        readonly '200': "#E0E4EE";
+        readonly '300': "#D1D8E5";
+        readonly '400': "#C6CDDA";
+        readonly '500': "#AFB7C1";
+        readonly '600': "#A1A9B4";
+        readonly '700': "#8D95A0";
+        readonly '800': "#737C89";
+        readonly '900': "#505967";
+        readonly '925': "#3C4452";
+        readonly '950': "#343C4A";
+        readonly '975': "#303745";
+        readonly '990': "#2A2F39";
+        readonly '1000': "#232832";
     };
     readonly red: {
         readonly '50': "#fef2f2";
@@ -42,7 +47,7 @@ declare const color: {
         readonly '200': "#ffc9c9";
         readonly '300': "#ffa2a2";
         readonly '400': "#ff6467";
-        readonly '500': "#fb2c36";
+        readonly '500': "#f04452";
         readonly '600': "#e7000b";
         readonly '700': "#c10007";
         readonly '800': "#9f0712";
@@ -146,7 +151,7 @@ declare const color: {
         readonly '200': "#bedbff";
         readonly '300': "#8ec5ff";
         readonly '400': "#51a2ff";
-        readonly '500': "#2b7fff";
+        readonly '500': "#3182f6";
         readonly '600': "#155dfc";
         readonly '700': "#1447e6";
         readonly '800': "#193cb8";
@@ -167,17 +172,17 @@ declare const color: {
         readonly '950': "#3c0366";
     };
     readonly deeppurple: {
-        readonly '50': "#f7f5ff";
-        readonly '100': "#efebff";
-        readonly '200': "#d5cffa";
-        readonly '300': "#b5abf2";
-        readonly '400': "#9f8deb";
-        readonly '500': "#8a77e0";
-        readonly '600': "#7a65d0";
-        readonly '700': "#6c58be";
-        readonly '800': "#684fac";
-        readonly '900': "#473477";
-        readonly '950': "#30244d";
+        readonly '50': "#f2f3ff";
+        readonly '100': "#e6e8ff";
+        readonly '200': "#d5d8ff";
+        readonly '300': "#c1c5ff";
+        readonly '400': "#a9b0f7";
+        readonly '500': "#7481f0";
+        readonly '600': "#5c5eef";
+        readonly '700': "#3e32e3";
+        readonly '800': "#2e18d7";
+        readonly '900': "#230ec5";
+        readonly '950': "#13009f";
     };
     readonly pink: {
         readonly '50': "#fdf2f8";

@@ -13,12 +13,11 @@ export interface ButtonStyleProps {
     disabled?: boolean;
     loading?: boolean;
 }
-export interface ButtonProps extends ButtonStyleProps {
+export interface ButtonProps extends ButtonStyleProps, Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'> {
     leadingIcon?: React.ComponentType<SVGProps<SVGSVGElement>>;
     trailingIcon?: React.ComponentType<SVGProps<SVGSVGElement>>;
     label?: string;
     children?: React.ReactNode;
-    onClick?: () => void;
     className?: string;
     lang?: 'ko' | 'en';
 }

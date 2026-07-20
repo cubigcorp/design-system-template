@@ -1,1 +1,0 @@
-import{c as r}from"./color-m2U5piog.js";const a={light:{"fg-brand-primary":r.purple[500],"fg-brand-strong":r.purple[800],"bg-brand-primary-default":r.purple[800],"bg-brand-primary-pressed":r.purple[900]},dark:{"fg-brand-primary":r.purple[500],"fg-brand-strong":r.purple[50],"bg-brand-primary-default":r.purple[800],"bg-brand-primary-pressed":r.purple[700]}};export{a as b};

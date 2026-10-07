@@ -25,5 +25,8 @@ export interface SelectorProps {
     style?: React.CSSProperties;
     lang?: 'ko' | 'en';
     showCheckIcon?: boolean;
+    menuMaxHeight?: number;
+    /** 선택된 값 표기에 옵션의 leadingContent 아이콘을 함께 표시 (기본 false, 미지정 시 기존 동작과 동일) */
+    showSelectedIcon?: boolean;
 }
 //# sourceMappingURL=types.d.ts.map

@@ -1,5 +1,6 @@
 import { TokenInputProps } from '../TokenInput/types';
 export interface TokenFieldProps extends Omit<TokenInputProps, 'value' | 'onChange'> {
+    id?: string;
     label?: string;
     labelType?: 'default' | 'required' | 'optional';
     description?: string;

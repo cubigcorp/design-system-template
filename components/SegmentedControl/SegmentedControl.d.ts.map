@@ -1,1 +1,1 @@
-{"version":3,"file":"SegmentedControl.d.ts","sourceRoot":"","sources":["../../../src/components/SegmentedControl/SegmentedControl.tsx"],"names":[],"mappings":"AAQA,OAAO,EAAE,qBAAqB,EAAE,MAAM,SAAS,CAAC;AA0BhD,eAAO,MAAM,gBAAgB,GAAI,yDAM9B,qBAAqB,4CA0CvB,CAAC"}
+{"version":3,"file":"SegmentedControl.d.ts","sourceRoot":"","sources":["../../../src/components/SegmentedControl/SegmentedControl.tsx"],"names":[],"mappings":"AAQA,OAAO,EAAE,qBAAqB,EAAwB,MAAM,SAAS,CAAC;AAiCtE,eAAO,MAAM,gBAAgB,GAAI,+DAO9B,qBAAqB,4CA2CvB,CAAC"}

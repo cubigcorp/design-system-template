@@ -147,6 +147,7 @@ declare const color: {
     };
     readonly blue: {
         readonly '50': "#eff6ff";
+        readonly '75': "#eaf2fe";
         readonly '100': "#dbeafe";
         readonly '200': "#bedbff";
         readonly '300': "#8ec5ff";

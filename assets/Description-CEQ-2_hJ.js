@@ -1,0 +1,23 @@
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";import{c as a}from"./styled-components.browser.esm-BsJdvhJY.js";import{t as f}from"./typography-CIxJpf_z.js";import{c as g}from"./color-CZjzAmeO.js";import{p as r,n}from"./negativeColor-BkNdSW00.js";import{I as v,a as h}from"./IconCircleCheck-BBUUqRs3.js";import{s as y}from"./spacing-tE1IiUFl.js";const s=({children:t,status:i="default",leadingIcon:o=!1,className:c="",lang:p,...u})=>{const d=p,m=()=>{if(!o)return null;switch(i){case"negative":return e.jsx(j,{children:e.jsx(h,{})});case"positive":return e.jsx(w,{children:e.jsx(v,{})});default:return null}};return e.jsxs(x,{status:i,lang:d,className:c,...u,children:[m(),e.jsx("span",{children:t})]})},x=a.div`
+  ${f(void 0,"body1","regular")}
+  font-family: inherit;
+  min-height: 16px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  word-break: keep-all;
+
+  color: ${({status:t})=>{switch(t){case"negative":return n.light["fg-negative-primary"];case"positive":return r.light["fg-positive-primary"];default:return g.gray[500]}}};
+`,l=a.div`
+  width: 16px;
+  height: 16px;
+  margin-right: ${y.gap["gap-1"]};
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+`,j=a(l)`
+  color: ${n.light["fg-negative-primary"]};
+`,w=a(l)`
+  color: ${r.light["fg-positive-primary"]};
+`;s.displayName="Description";s.__docgenInfo={description:"",methods:[],displayName:"Description",props:{children:{required:!0,tsType:{name:"ReactReactNode",raw:"React.ReactNode"},description:""},status:{required:!1,tsType:{name:"union",raw:"'default' | 'negative' | 'positive'",elements:[{name:"literal",value:"'default'"},{name:"literal",value:"'negative'"},{name:"literal",value:"'positive'"}]},description:"",defaultValue:{value:"'default'",computed:!1}},leadingIcon:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"false",computed:!1}},className:{required:!1,tsType:{name:"string"},description:"",defaultValue:{value:"''",computed:!1}},lang:{required:!1,tsType:{name:"union",raw:"'ko' | 'en'",elements:[{name:"literal",value:"'ko'"},{name:"literal",value:"'en'"}]},description:""}}};export{s as D};

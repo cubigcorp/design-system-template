@@ -1,4 +1,5 @@
 export interface TextAreaProps {
+    id?: string;
     /**
      * Label 텍스트
      */
@@ -52,6 +53,7 @@ export interface TextAreaProps {
      * 최대 높이 (px)
      */
     maxHeight?: number;
+    minHeight?: number;
     /**
      * 변경 이벤트
      */

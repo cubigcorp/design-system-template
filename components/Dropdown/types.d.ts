@@ -31,5 +31,8 @@ export interface DropdownProps {
     style?: React.CSSProperties;
     showCheckIcon?: boolean;
     lineMode?: 'single' | 'multi';
+    menuMaxHeight?: number;
+    /** selector 타입에서 선택값에 옵션 아이콘 표시 (기본 false) */
+    showSelectedIcon?: boolean;
 }
 //# sourceMappingURL=types.d.ts.map

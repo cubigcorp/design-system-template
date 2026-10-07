@@ -2,6 +2,7 @@ export interface TokenInputProps {
     /**
      * 컴포넌트 크기
      */
+    inputId?: string;
     size?: 'small' | 'medium' | 'large';
     /**
      * 비활성화 상태
